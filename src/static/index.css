@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: khmerOsSiemReap;
+  src: url('../font/KhmerOSsiemreap.ttf');
+}
+
+@font-face {
+  font-family: khmerOsMuolLight;
+  src: url('../font/KhmerOSmuollight.ttf');
+}
+
+@font-face {
+  font-family: tacteng;
+  src: url('../font/TACTENG.TTF');
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  margin-top: 10px !important;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #bdbdbd;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

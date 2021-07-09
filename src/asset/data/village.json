@@ -1,0 +1,4542 @@
+[
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្លក្រាម",
+    "village": "ស្លក្រាម"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្លក្រាម",
+    "village": "បឹងដូនប៉ា"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្លក្រាម",
+    "village": "ចុងកៅស៊ូ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្លក្រាម",
+    "village": "ដកពោធិ៍"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្លក្រាម",
+    "village": "បន្ទាយចាស់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្លក្រាម",
+    "village": "ទ្រាំង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្លក្រាម",
+    "village": "មណ្ឌល៣"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្លក្រាម",
+    "village": "ធ្លកអណ្តូង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "ភ្ញាជ័យ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "កន្ត្រក"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "គោកក្រសាំង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "ស្វាយព្រៃ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "ពោធិ៍បុស្ស"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "ស្វាយដង្គំ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "សាលាកន្សែង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "គ្រួស"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "វិហារចិន"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "ស្ទឹងថ្មី"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "មណ្ឌល១"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "មណ្ឌល២"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្វាយដង្គំ",
+    "village": "តាភុល"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "គោកចក",
+    "village": "ត្រពាំងសេះ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "គោកចក",
+    "village": "វាល"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "គោកចក",
+    "village": "ទក្សិណខាងត្បូង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "គោកចក",
+    "village": "គោកតាចាន់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "គោកចក",
+    "village": "ខ្វៀន"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "គោកចក",
+    "village": "គោកបេង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "គោកចក",
+    "village": "គោកត្នោត"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "គោកចក",
+    "village": "នគរក្រៅ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សាលាកំរើក",
+    "village": "វត្តបូព៌"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សាលាកំរើក",
+    "village": "វត្តស្វាយ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សាលាកំរើក",
+    "village": "វត្តដំណាក់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សាលាកំរើក",
+    "village": "សាលាកំរើក"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សាលាកំរើក",
+    "village": "ជន្លង់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សាលាកំរើក",
+    "village": "តាវៀន"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សាលាកំរើក",
+    "village": "ត្រពាំងត្រែង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "នគរធំ",
+    "village": "រហាល"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "នគរធំ",
+    "village": "ស្រះស្រង់ខាងជើង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "នគរធំ",
+    "village": "ស្រះស្រង់ខាងត្បូង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "នគរធំ",
+    "village": "ក្រវ៉ាន់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "នគរធំ",
+    "village": "អារក្សស្វាយ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "នគរធំ",
+    "village": "អញ្ជាញ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ជ្រាវ",
+    "village": "ជ្រាវ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ជ្រាវ",
+    "village": "ខ្នារ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ជ្រាវ",
+    "village": "បុស្សក្រឡាញ់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ជ្រាវ",
+    "village": "តាចេក"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ជ្រាវ",
+    "village": "វាល"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ជ្រាវ",
+    "village": "ក្រសាំង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ជ្រាវ",
+    "village": "បឹង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ចុងឃ្នៀស",
+    "village": "ទី១"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ចុងឃ្នៀស",
+    "village": "ទី២"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ចុងឃ្នៀស",
+    "village": "ទី៣"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ចុងឃ្នៀស",
+    "village": "ទី៤"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ចុងឃ្នៀស",
+    "village": "ទី៥"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ចុងឃ្នៀស",
+    "village": "ទី៦"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ចុងឃ្នៀស",
+    "village": "ទី៧"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សំបួរ",
+    "village": "ព្នៅ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សំបួរ",
+    "village": "សំបួរ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សំបួរ",
+    "village": "វាល"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សំបួរ",
+    "village": "ជ្រៃ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សំបួរ",
+    "village": "តាគង់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សៀមរាប",
+    "village": "ពោធិបន្ទាយជ័យ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សៀមរាប",
+    "village": "ភ្នំក្រោម"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សៀមរាប",
+    "village": "ប្រឡាយ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សៀមរាប",
+    "village": "កក្រាញ់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សៀមរាប",
+    "village": "ក្រសាំងរលើង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សៀមរាប",
+    "village": "ស្ពានជ្រាវ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សៀមរាប",
+    "village": "អារញ្ញ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "សៀមរាប",
+    "village": "ត្រៀក"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្រង៉ែ",
+    "village": "កសិកម្ម"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្រង៉ែ",
+    "village": "ថ្នល់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្រង៉ែ",
+    "village": "រការធំ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្រង៉ែ",
+    "village": "ព្រៃធំ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្រង៉ែ",
+    "village": "ស្រង៉ែ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្រង៉ែ",
+    "village": "ចន្លោង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ស្រង៉ែ",
+    "village": "តាចក"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "តារស់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "រកា"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "ព្រៃពោធិ៍"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "ទទា"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "ក្រសាំង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "ពពិស"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "ត្រពាំងវែង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "គោកដូង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "បឹង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "ប្រម៉ា"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "ខ្នារ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ក្របីរៀល",
+    "village": "ព្រៃក្រូច"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "គោកដូង"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "សណ្តាន់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "ជ្រៃ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "ប្រយុទ្ធ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "បន្ទាយឈើ"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "ទឹកវិល"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "ប្រីយ៍ចាស់"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "ទឹកថ្លា"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "ប្រីយ៍ថ្មី"
+  },
+  {
+    "district": "សៀមរាប",
+    "commune": "ទឹកវិល",
+    "village": "ជ័យ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ប្រាសាទ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "យាង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "អានូក"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ព្រៃលៃ្វ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ព្រៃចេង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ក្បាលចាម"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "គោកល្វា"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ចាររកា"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ថ្នល់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ឈូក"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "គោកក្បាត់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "តាទយ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ព្រៃទទឹង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ដូនស្វា"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "មាជា"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "គោកថ្នល់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ខ្លុង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "គោកធ្នង់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ចារឈូក",
+    "village": "កត្រកៀត"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ដូនពេង",
+    "village": "រកា"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ដូនពេង",
+    "village": "បត់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ដូនពេង",
+    "village": "គោកយាង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ដូនពេង",
+    "village": "បុស្សល្ហុង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ដូនពេង",
+    "village": "បេង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ដូនពេង",
+    "village": "ខ្ចាស់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ដូនពេង",
+    "village": "ដូនពេង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ដូនពេង",
+    "village": "រំដួលថ្មី"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "ទំលាប់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "ខ្ចារ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "គោកដូងថ្មី"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "គោកភ្នៅ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "គោកត្របែក"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "អន្ទិតសុខ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "រកា"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "គោកក្រោល"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "កប្តៀក"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "ចេកក្បូរ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "គោកស្នួល"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "ប្រាសាទត្រាវ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "កំប្លើប"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "ដូនអែម"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "គោកដូងចាស់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "បុះក្រឡុង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោកដូង",
+    "village": "អូរគោល"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោល",
+    "village": "ខ្វាវ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោល",
+    "village": "ខាន់សរ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោល",
+    "village": "គោល"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោល",
+    "village": "អំពិលធ្នង់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោល",
+    "village": "ដូនមៀវ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោល",
+    "village": "តាគួយ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "គោល",
+    "village": "ព្រៃអារ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "រមៀត"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "ល្បើក"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "សំបួរ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "គោកថ្មី"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "ទនេ្លស"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "កុក"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "ពង្រ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "នគរភាស១"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "នគរភាស២"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "នគរភាស",
+    "village": "ជំពូង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "រាជជន្ទល់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "រវៀងថ្មី"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "ស្រែខ្វាវ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "គោកក្នាំង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "គោកចាស់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "ជំនុំរាជ្យ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "ស្លាត"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "ស្រែប្រាំង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "រណ្តាស"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "រលំ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "ស្រែខ្វាវ",
+    "village": "ទឹកថ្លា"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "ថ្នល់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "ភ្នៅ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "ម្កាក់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "គោកចាន់"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "ករលំ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "ទំពូង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "ប្រាំដំឡឹង"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "តាលាវ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "បាយម៉ាត"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "ត្រពាំងភ្លោះ"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "តាសោម"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "គោកថ្មី"
+  },
+  {
+    "district": "អង្គរជុំ",
+    "commune": "តាសោម",
+    "village": "ស្វាយជុំ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ជប់តាត្រាវ",
+    "village": "ត្រពាំងទូក"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ជប់តាត្រាវ",
+    "village": "ជប់"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ជប់តាត្រាវ",
+    "village": "ប្រាសាទ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ជប់តាត្រាវ",
+    "village": "ទ័ពស្វាយ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ជប់តាត្រាវ",
+    "village": "ពងទឹក"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "លាងដៃ",
+    "village": "លាងដៃ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "លាងដៃ",
+    "village": "ដូនឪ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "លាងដៃ",
+    "village": "ភ្លង់"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "លាងដៃ",
+    "village": "តាប្រុក"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "លាងដៃ",
+    "village": "សំរោង"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "លាងដៃ",
+    "village": "ត្រពាំងស្វាយ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "លាងដៃ",
+    "village": "បំពេញរាជ្យ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "លាងដៃ",
+    "village": "ស្ពានថ្មី"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ពាក់ស្នែង",
+    "village": "ពាក់សែ្នងថ្មី"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ពាក់ស្នែង",
+    "village": "ពាក់សែ្នងចាស់"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ពាក់ស្នែង",
+    "village": "លៀប"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ពាក់ស្នែង",
+    "village": "ខី្ទង"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ពាក់ស្នែង",
+    "village": "សណ្តាន់"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ពាក់ស្នែង",
+    "village": "ជប់សោម"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ស្វាយចេក",
+    "village": "គោកកក់"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ស្វាយចេក",
+    "village": "ស្វាយចេក"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ស្វាយចេក",
+    "village": "កណ្តោល"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ស្វាយចេក",
+    "village": "តាត្រាវ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ស្វាយចេក",
+    "village": "បុស្សតាត្រាវ"
+  },
+  {
+    "district": "អង្គរធំ",
+    "commune": "ស្វាយចេក",
+    "village": "ព្រះគោថ្មី"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ខ្នារសណ្តាយ",
+    "village": "បន្ទាយស្រី"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ខ្នារសណ្តាយ",
+    "village": "ខ្នារ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ខ្នារសណ្តាយ",
+    "village": "ប្រីយ៍"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ខ្នារសណ្តាយ",
+    "village": "សណ្តាយ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ខ្នារសណ្តាយ",
+    "village": "កកោះជ្រុំ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ខ្នារសណ្តាយ",
+    "village": "ទួលក្រឡាញ់"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ឃុនរាម",
+    "village": "ខ្នាររង្វាស"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ឃុនរាម",
+    "village": "កំព្រហ្ម"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ឃុនរាម",
+    "village": "ឃុនរាម"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ឃុនរាម",
+    "village": "ឈូកស"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ឃុនរាម",
+    "village": "ទួលគ្រួស"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ឃុនរាម",
+    "village": "ត្រពាំងថ្ម"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ឃុនរាម",
+    "village": "ពើងឆ័ត្រ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ព្រះដាក់",
+    "village": "ព្រះដាក់"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ព្រះដាក់",
+    "village": "ថ្នល់បណ្តោយ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ព្រះដាក់",
+    "village": "តាត្រៃ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ព្រះដាក់",
+    "village": "ថ្នល់ទទឹង"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ព្រះដាក់",
+    "village": "តាកុះ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ព្រះដាក់",
+    "village": "អូរទទឹង"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រំចេក",
+    "village": "រំចេក"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រំចេក",
+    "village": "សាលាក្រវ៉ាន់"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រំចេក",
+    "village": "រវៀងតាទុំ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រុនតាឯក",
+    "village": "តាឯក"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រុនតាឯក",
+    "village": "ត្នាតពង"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រុនតាឯក",
+    "village": "តានី"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រុនតាឯក",
+    "village": "រុន"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រុនតាឯក",
+    "village": "ជ័យ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រុនតាឯក",
+    "village": "ថ្នល់"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "រុនតាឯក",
+    "village": "ស្រែចង្ហូត"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ត្បែង",
+    "village": "ត្បែងកើត"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ត្បែង",
+    "village": "ត្បែងលិច"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ត្បែង",
+    "village": "វត្ត"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ត្បែង",
+    "village": "ស្រះខ្វាវ"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ត្បែង",
+    "village": "គូលែនថ្មី"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ត្បែង",
+    "village": "ស្គន់"
+  },
+  {
+    "district": "បន្ទាយស្រី",
+    "commune": "ត្បែង",
+    "village": "ថ្មជល់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "ស្តៅ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "អន្លង់ព្រីងក្រោម"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "អន្លង់ព្រីងលើ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "តាគឹមក្រោម"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "តាគឹមលើ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "ត្រពាំងត្រស់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "អន្លង់សំណរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "អន្លង់ប្ញស្សី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "ស្វាយតាដោក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "សំរោងធំ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "ចែកខ្សាច់លើ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "ចែកខ្សាច់ក្រោម"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "ល្បើក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "ព្រែកអង្គរថ្មី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "ស្ទឹងជ្រៅ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "អន្លង់សំណរ",
+    "village": "មាត់ខ្លា"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "កំពង់ស្នោលិច"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "សណ្តាន់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "ជីក្រែង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "ព្រីង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "ស្រមរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "កំពង់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "អន្លង់ត្នោត"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "អន្លង់ចំបក់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "បេង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "គរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "តារាម"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "ភ្នៀត"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "បុសពក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ជីក្រែង",
+    "village": "កំពង់ស្នោកើត"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "រកា"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "សាលា"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "សែ្លង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "ចំបក់ធំ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "ច្រាំងខ្ពស់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "អន្សងពង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "ត្រាចថ្មី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "ប្រាសាទ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "រំលោង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "កំពង់ក្តី១"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "កំពង់ក្តី២"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "ពោធិ៍សេរី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "ពន្លឺព្រះផុស"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "សងែ្កមានជ័យ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "តាពៀម"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "កំពង់ក្តី",
+    "village": "ត្រពាំងជ្រៃ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "អូរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "ខ្វាវ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "ព្រះធាតុ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "ស្រោង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "ក្រាំង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "ពោធិ៍រីង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "រវៀង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "ចុងស្ពាន"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ខ្វាវ",
+    "village": "កំបោអរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "ក្របីរៀល"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "ប៉ាតត"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "កកោះ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "អន្លង់វិល"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "កំពង់ម្កាក់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "ត្រពាំងត្រាវ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "ដូនរាជ្យ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "តាទរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "ថ្នល់តាសិត"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "ដូនសុខ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "គីឡូតាឈឹម"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "បេង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "បាក់អង្រុត"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "បុស្សគរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "គោករមាស"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "បឹងធំ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកក្រោម",
+    "village": "ទ័ពសៀម"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "ខ្លាឃ្មុំ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "សាលា"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "ត្រពាំងវែង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "សងែ្ក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "គោកធ្លក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "ព្រៃធំ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "ថ្លុកស្មាច់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "សែ្លងកោង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "ស្វាយពក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "តាភ្ញា"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "ថ្នល់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "តាលៀន"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "គោកធ្លកលើ",
+    "village": "ម្កាក់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "តាអុង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "គោកអំពិល"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "រំជៃច្រុះ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "ថ្នល់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "ក្នុង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "ព្រៃទទឹង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "ក្បាលក្តួច"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "បាឡាំង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "ចំបក់ខ្ពស់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "រូងថ្មី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "លែ្វងប្ញស្សី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "តាងួន"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ល្វែងឫស្សី",
+    "village": "កកោះ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "ពពេល"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "ពង្រ១"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "ពង្រ២"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "សំបូរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "អូររូង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "ពោធិ៍"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "ជ័យបូរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "ផ្លុង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "តាព័រ១"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "តាព័រ២"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "អូរខ្លុង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រក្រោម",
+    "village": "ដងផ្អាវ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "ត្រពាំងភ្លោះ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "ចេក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "គ្រាំង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "ក្បាលដំរី"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "គំរូ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "ស្វាយចេក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "ដុបត្នោត"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "ស្រឡៅស្រោង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "ព្រៃឆ្ការ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ពង្រលើ",
+    "village": "ល្អក់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ឫស្សីលក",
+    "village": "សំរោងកញ្ជោច"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ឫស្សីលក",
+    "village": "បឹង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ឫស្សីលក",
+    "village": "ស្ពានតូច"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ឫស្សីលក",
+    "village": "យាង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ឫស្សីលក",
+    "village": "ប្ញស្សីលក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ឫស្សីលក",
+    "village": "ទទឹងថៃ្ង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ឫស្សីលក",
+    "village": "ក្រូច"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ឫស្សីលក",
+    "village": "ត្រពាំងរុន"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "ពាក់ស្ពា"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "អូរ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "ចក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "តាព្រុំ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "ថ្នល់ដាច់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "ដំរីឆ្លង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "កនែ្សង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "ព្រៃប្រស់"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "សង្វើយ",
+    "village": "ក្របៅ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ស្ពានត្នោត១"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ស្ពានត្នោត២"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ចំរេះ"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ថ្នល់កែង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ថ្នល់លោក"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ក្ងានពង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "រំដេង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ត្រពាំងវែង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "តាយ៉ុន"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ទទា"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "ល្វា"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "សំរោង"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "អូរត្រាច"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "អូរក្រោម"
+  },
+  {
+    "district": "ជីក្រែង",
+    "commune": "ស្ពានត្នោត",
+    "village": "អូរលើ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "ត្រាំកង់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "ឈូករ័ត្ន"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "រុន"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "គោកត្នោត"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "ខ្នាជោ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "ដំរីស្លាប់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "តាមាឃ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "ចន្លាស់ដៃ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "ព្រះលាន"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "រលំស្វាយ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "កំបោរ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ចន្លាសដៃ",
+    "village": "ដូនកាយថ្មី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "កំពង់ថ្កូវ",
+    "village": "កំពង់ថ្កូវ១"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "កំពង់ថ្កូវ",
+    "village": "កំពង់ថ្កូវ២"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "កំពង់ថ្កូវ",
+    "village": "ខ្សាច់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "កំពង់ថ្កូវ",
+    "village": "អូរថ្កូវ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "កំពង់ថ្កូវ",
+    "village": "គោកដូង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "កំពង់ថ្កូវ",
+    "village": "ដូរ្យដន្រ្តី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "កំពង់ថ្កូវ",
+    "village": "ចំបក់ហែរ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "កំពង់ថ្កូវ",
+    "village": "ភ្នំទ្រង់បាត"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រឡាញ់",
+    "village": "តាច្រែង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រឡាញ់",
+    "village": "ត្រពាំងច្រាំង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រឡាញ់",
+    "village": "អូរក្រឡាញ់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រឡាញ់",
+    "village": "កោះក្របៅ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រឡាញ់",
+    "village": "ក្រឡាញ់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រឡាញ់",
+    "village": "ពេជ្ជោរ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រឡាញ់",
+    "village": "សំពៅលូន"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រូចគរ",
+    "village": "គោកចំបក់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រូចគរ",
+    "village": "ព្រៃខ្យង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រូចគរ",
+    "village": "រើល"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រូចគរ",
+    "village": "គោកថ្មី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រូចគរ",
+    "village": "ខ្នារជើង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ក្រូចគរ",
+    "village": "ខ្នារត្បូង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "រោងគោ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "ព្រៃគាប"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "បុស្សធំ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "តានី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "កញ្ជន់ជ្រៅ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "ខ្ជាយ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "ល្បើកប្រីយ៍"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "ល្បើក"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "រោងគោ",
+    "village": "ប្ញស្សី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សំបួរ",
+    "village": "គោកក្រូច"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សំបួរ",
+    "village": "អន្លង់សារ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សំបួរ",
+    "village": "ដំណាក់ខ្ចាស់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សំបួរ",
+    "village": "សំបួរ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សំបួរ",
+    "village": "ឪម៉ាល់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សំបួរ",
+    "village": "គោកចាស់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សំបួរ",
+    "village": "អំពិល"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សំបួរ",
+    "village": "សន្ថន"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ច្រនៀង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ព្រៃក្រឡាញ់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "គោកកី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "គោកភ្ងាស"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "គោកយាង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ស្មាច់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "អង្កោល"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ដំរីស្លាប់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "តាសុខ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "តាស្រី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ខ្សី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ស្វាយ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ទ្រាស"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ក្រូច"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "ព្រៃថ្កូវ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "សែនសុខ",
+    "village": "តាប៉ាង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "ស្នួល"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "តាឡឹង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "សំរោង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "តាពេជ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "សងែ្ក"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "ព្រៃល្ងៀង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "តាសែង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "ធាស្នា"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្នួល",
+    "village": "តាយិន"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "ល្អុង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "ស្រណាល"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "គោកត្រុំ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "រំដេង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "គំរូ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "តាំងយូ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "ទន្លាប់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "សែ្លង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "គោកចាស់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "ផ្លាំង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "មានជ័យ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "គោកត្នោត"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "ស្រណាល",
+    "village": "រវៀង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "ក្តុល"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "ភ្នំតូច"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "តាអាន"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "តាឡឹង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "សំរោង"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "ទឹកជុំ"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "ត្រពាំងឈូក"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "អន្លង់"
+  },
+  {
+    "district": "ក្រឡាញ់",
+    "commune": "តាអាន",
+    "village": "សសៃពង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "ស្វាយ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "សសរស្តម្ភ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "គោកកណ្តាល"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "គោករុន"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "គោកចាស់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "ពង្រថ្មី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "គោកព្នៅ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "គោកជ្រៃ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "ខ្ជាយ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "គោកត្នាត"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "ដំណាក់ស្លាញ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "ប៉ាក់ប៉ាន់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "ចាន់តាសាយ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សសរស្តម្ភ",
+    "village": "ពង្រចាស់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "គោកព្នៅ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "អន្តង្កន់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "តាកាំ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "ដូនកែវ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "ល្បើក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "ត្នោតជ្រំ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "ប្រាសាទចារ្យ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "គោកពោធិ៍"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "ពាម"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "តាស្នេហ៍"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "គោកថ្មី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "រហាល"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ដូនកែវ",
+    "village": "ដូនអុន"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ក្តីរុន",
+    "village": "បង្កោង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ក្តីរុន",
+    "village": "ត្រពាំងវែង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ក្តីរុន",
+    "village": "ព្រៃយាង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ក្តីរុន",
+    "village": "តាប៉ាង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ក្តីរុន",
+    "village": "ល្បើក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ក្តីរុន",
+    "village": "គោកពោធិ៍"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ក្តីរុន",
+    "village": "ក្តីរុន"
+  },
+  {
+    "district": "ពួក",
+    "commune": "កែវពណ៌",
+    "village": "កំភេម"
+  },
+  {
+    "district": "ពួក",
+    "commune": "កែវពណ៌",
+    "village": "ព្រៃដង្អើម"
+  },
+  {
+    "district": "ពួក",
+    "commune": "កែវពណ៌",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "កែវពណ៌",
+    "village": "រកាយា"
+  },
+  {
+    "district": "ពួក",
+    "commune": "កែវពណ៌",
+    "village": "គោកប្ញស្សី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "កែវពណ៌",
+    "village": "គោកពោធិ៍"
+  },
+  {
+    "district": "ពួក",
+    "commune": "កែវពណ៌",
+    "village": "ស្វាយចេក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "កែវពណ៌",
+    "village": "ពាមតាអួរ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "ខ្នាត"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "ប្រឡាយ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "គោកស្នួល"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "ត្រមេង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "ស្វាយ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "ព្រៃធ្លក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "ជ្រលង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "គោកត្រាច"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "អំពិលពាម"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "បឹងខ្នារ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "ព្រៃកេ្មង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ខ្នាត",
+    "village": "ទឹកថ្លា"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "គំរូ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "ដូនទ្រ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "ស្ទឹងព្រះ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "គោកស្រម៉"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "ទួលរវៀង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "គោកថ្មី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "ប្រហូត"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "ជ្រាស់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "ល្វា"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "រកា"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "ព្រះអង្កទ្រង់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ល្វា",
+    "village": "ស្នោ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "មុខប៉ែន",
+    "village": "តាត្រាវ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "មុខប៉ែន",
+    "village": "មុខប៉ែន"
+  },
+  {
+    "district": "ពួក",
+    "commune": "មុខប៉ែន",
+    "village": "ត្រកៀត"
+  },
+  {
+    "district": "ពួក",
+    "commune": "មុខប៉ែន",
+    "village": "គោករាំង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "មុខប៉ែន",
+    "village": "គោករុន"
+  },
+  {
+    "district": "ពួក",
+    "commune": "មុខប៉ែន",
+    "village": "ស្វាហួល"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពោធិទ្រាយ",
+    "village": "ពោធិ៍"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពោធិទ្រាយ",
+    "village": "ទ្រាយ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "ពួកចាស់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "ប្រយុទ្ធ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "គោកជួន"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "កំពង់តាយ៉ង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "គោក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "តាទក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "គោកដូង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "គោកថ្មី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "ពួកថ្មី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "ចំបក់ហែរ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ពួក",
+    "village": "អូរតាប្រាក់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ព្រៃជ្រូក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "កិត្តិយស"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ដូនតុក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ស្វាយចន្ទរ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ប្រាសាទ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ផ្លាំង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ប្របម៉ៃ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ជ្រេស"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ប្រដាក់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ច្រនៀង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "តាមោក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ព្រៃជ្រូក",
+    "village": "ពង្រ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "គោកវាល"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "ទំរឹង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "រើល"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "ត្រពាំងស្វាយ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "ត្រពាំងប្ញស្សី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "ព្រលឹត"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "កែ្អកទំ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "រំដួល"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "ក្បាលក្រពើ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "ត្រពាំងធំ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "គោកខ្នាំង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "គោកត្រាច"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "ស្រះ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "រើល",
+    "village": "សំបួរ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សំរោងយា",
+    "village": "តាជេត"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សំរោងយា",
+    "village": "សំរោងយា"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សំរោងយា",
+    "village": "អំពិល"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សំរោងយា",
+    "village": "ប្រាសាទ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សំរោងយា",
+    "village": "ដូនស្វា"
+  },
+  {
+    "district": "ពួក",
+    "commune": "សំរោងយា",
+    "village": "ព្រៃវែង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "ចំបក់ស"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "គោកដូង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "ស្វាយ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "តាហុក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "ធិបតី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "ជួយចក្រី"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "ឈូក"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "ត្រីញ័រ"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "ធ្វាស"
+  },
+  {
+    "district": "ពួក",
+    "commune": "ត្រីញ័រ",
+    "village": "ត្រពាំងព្រីង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "យាង",
+    "village": "សួនសា"
+  },
+  {
+    "district": "ពួក",
+    "commune": "យាង",
+    "village": "ចុងថ្នល់"
+  },
+  {
+    "district": "ពួក",
+    "commune": "យាង",
+    "village": "យាង"
+  },
+  {
+    "district": "ពួក",
+    "commune": "យាង",
+    "village": "សុខសាន្ត"
+  },
+  {
+    "district": "ពួក",
+    "commune": "យាង",
+    "village": "កញ្ចន់គុយ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "គោកចាន់"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "ថ្នល់បាក់"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "ត្នោត"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "ត្រពាំងរុន"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "តាប៉ាង"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "ព្រៃគុយ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "បង្កោង"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "គីរីមានន្ទ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "បុស្សធំ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "អំពិល",
+    "village": "ត្រាចជ្រុំ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បាគង",
+    "village": "ថ្នល់ត្រង់"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បាគង",
+    "village": "ឱឡោក"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បាគង",
+    "village": "លលៃ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បាគង",
+    "village": "ស្ទឹង"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បាគង",
+    "village": "គោកត្រាច"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បាគង",
+    "village": "តាភោគ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បល្ល័ង្គ",
+    "village": "ធ្លកកំបុត"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បល្ល័ង្គ",
+    "village": "គោកប្ញស្សី"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បល្ល័ង្គ",
+    "village": "ខ្នារសង្រ្គាម"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បល្ល័ង្គ",
+    "village": "ក្រពើ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បល្ល័ង្គ",
+    "village": "តាកុយ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បល្ល័ង្គ",
+    "village": "ព្រុំកុដ្ឋ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បល្ល័ង្គ",
+    "village": "ត្រាច"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "បល្ល័ង្គ",
+    "village": "ពពេល"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កំពង់ភ្លុក",
+    "village": "គោកក្តុល"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កំពង់ភ្លុក",
+    "village": "ត្នោតកំបុត"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កំពង់ភ្លុក",
+    "village": "ដីក្រហម"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កន្ទ្រាំង",
+    "village": "អង្រ្គង"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កន្ទ្រាំង",
+    "village": "កន្រ្ទាំង"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កន្ទ្រាំង",
+    "village": "ស្រិតខាងលិច"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កន្ទ្រាំង",
+    "village": "ស្រិតខាងកើត"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កន្ទ្រាំង",
+    "village": "សូភី"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កន្ទ្រាំង",
+    "village": "ត្រពាំងថ្នល់"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កន្ទ្រាំង",
+    "village": "តាត្រាវ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កន្ទ្រាំង",
+    "village": "ពង្រ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "គោកធ្លក"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "ត្រពាំងទឹម"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "ឃុនមោឃ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "ច្រេស"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "អូរ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "ស្ពានកែ្អក"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "ត្រាង"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "ជ្រៃ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "គោកត្នោត"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "កណ្តែក",
+    "village": "ល្អក់"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "មានជ័យ",
+    "village": "ត្រពាំងធំ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "មានជ័យ",
+    "village": "តាប្រាក់"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "មានជ័យ",
+    "village": "ដូននំ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "មានជ័យ",
+    "village": "ជាស្មន់"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "មានជ័យ",
+    "village": "បន្ទាយប្ញស្សី"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "មានជ័យ",
+    "village": "កំពង់ថ្កូវ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "រលួស",
+    "village": "មមាញ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "រលួស",
+    "village": "គោក"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "រលួស",
+    "village": "កញ្ជរ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "រលួស",
+    "village": "រលួសខាងកើត"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "រលួស",
+    "village": "ចំបក់"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "រលួស",
+    "village": "ដូនទាវ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "រលួស",
+    "village": "រលួសខាងលិច"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "កូនសត្វ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "បឹងជុំ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "តាអី"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "រកាកំបុត"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "សួង"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "ភ្នំដី"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "ល្វា"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "ស្វាយជ័យ"
+  },
+  {
+    "district": "ប្រាសាទបាគង",
+    "commune": "ត្រពាំងធំ",
+    "village": "អន្លង់ពីរ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ជាំ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "គោកតឺង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ស្រែប្រីយ៍"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ត្រពាំងទូក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ជប់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "តាតោកខាងកើត"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "កនែ្សងក្រោម"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "កនែ្សងលើ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "តាតោកខាងលិច"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "តាតោកកណ្តាល"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "សន្លោង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ស្វាយស"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ដូនដៀវ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ថ្នល់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "បែកកាំភ្លើង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "គោកចិន"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ចាន់សខាងជើង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ចាន់សខាងត្បូង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ចាន់ស",
+    "village": "ច្បារលើ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "ដូនហុង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "ដំដែកលើ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "ត្របែក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "ព្រះត្រពាំង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "អូរលុះ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "គោករលួស"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "ក្រសាទុំ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "គោកមន"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "ដំដែកថ្មី"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "បន្ទាយស្រី"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "ស្រែធ្នង់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "ដំដែកផ្សារ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដំដែក",
+    "village": "បុស្ស"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "ថ្នល់ដាច់ខាងលិច"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "ត្រាវកៀត"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "គោកប្ញស្សីខាងត្បូង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "គោកប្ញស្សីខាងជើង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "រុនខាងត្បូង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "រុនខាងជើង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "ស្រម៉ធំ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "វាល"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "បន្ទាត់បោះ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "សនៃ្ទ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "ធ្នង់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "គោកចាន់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ដានរុន",
+    "village": "បេង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "ព្រែកស្រមោច"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "ស្ពានវែង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "តាអួរស"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "ផ្សារឃ្លាំង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "ចំការយួន"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "តាច្រនៀង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "អូរតាពុក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "ជ័យជេត"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "មុខវត្ត"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កំពង់ឃ្លាំង",
+    "village": "រទាំង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "កំពង់គ២"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "កំពង់គ១"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "សាលាកកោះ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "គោកដី"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "ជ្រៃខាងជើង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "ជ្រៃខាងត្បូង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "ដូនឡី"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "ត្រពាំងព្រៃ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "ថ្នល់ដាច់ខាងកើត"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "ថ្នល់ចែក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "កៀនសង្កែ",
+    "village": "ជីគាក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្ចាស់",
+    "village": "ថ្លាត"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្ចាស់",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្ចាស់",
+    "village": "ក្បូន"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្ចាស់",
+    "village": "គោកសងែ្ក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្ចាស់",
+    "village": "ជ្រៃ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្ចាស់",
+    "village": "យាងទេស"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្ចាស់",
+    "village": "ខ្ចាស់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្នារពោធិ៍",
+    "village": "ឈូក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្នារពោធិ៍",
+    "village": "បុស្ស"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្នារពោធិ៍",
+    "village": "បុស្សធំ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្នារពោធិ៍",
+    "village": "ដំរីឆ្លង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្នារពោធិ៍",
+    "village": "សំបាត"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្នារពោធិ៍",
+    "village": "សំរោង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្នារពោធិ៍",
+    "village": "រំដេង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ខ្នារពោធិ៍",
+    "village": "ជប់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ព្រៃលាន"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ត្រពាំងត្រាវ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "គោល"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ថ្នល់ត្រង់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ត្រពាំងត្រុំ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ត្រាចពក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ពពេលកណ្តាល"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ពពេលលិច"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "កៀ្រលពង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ដំរីកូន"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ត្រពាំងផុង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "ត្រពាំងប្រីយ៍"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "ពពេល",
+    "village": "គោលថ្មី"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "សំរោងជើង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "ថ្នល់ចែក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "បិតមាស"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "ស្ទឹង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "អង្គុញ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "បត់ដង្កោ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "ស្វាយជ្រុំ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "ក្រាំងខ្ជាយ"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "សំរោង",
+    "village": "សំរោងត្បូង"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "បឹងង៉ត"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "ដាក់ផ្កា"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "ត្រាវបាក់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "ផ្ការំចេក"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "ចំប៊ី"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "ប៉ោយស្មាច់"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "បវ៉ាល"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "បឹងវៀន"
+  },
+  {
+    "district": "សូទ្រនិគម",
+    "commune": "តាយ៉ែក",
+    "village": "តាយ៉ែក"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ជ្រោយនាងងួន",
+    "village": "ត្រុំខាងជើង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ជ្រោយនាងងួន",
+    "village": "ប្ញស្សីសាញ់"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ជ្រោយនាងងួន",
+    "village": "ត្រុំខាងត្បូង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ជ្រោយនាងងួន",
+    "village": "យាយម៉ី"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ជ្រោយនាងងួន",
+    "village": "ស្តៅពក"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ជ្រោយនាងងួន",
+    "village": "អំពៅដៀប"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ជ្រោយនាងងួន",
+    "village": "ជ្រោយនាងងួន"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ក្លាំងហាយ",
+    "village": "សែ្លងតាវេត"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ក្លាំងហាយ",
+    "village": "ពង្របត់ចាន់"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ក្លាំងហាយ",
+    "village": "សែ្លងគង់"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ក្លាំងហាយ",
+    "village": "ល្បើក"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ក្លាំងហាយ",
+    "village": "សំរោង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ក្លាំងហាយ",
+    "village": "ក្លាំងហាយ"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ក្លាំងហាយ",
+    "village": "គោកថ្កូវ"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ត្រាំសសរ",
+    "village": "នាងស្រោង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ត្រាំសសរ",
+    "village": "រំដេង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ត្រាំសសរ",
+    "village": "ធ្លក"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ត្រាំសសរ",
+    "village": "ស្មាច់"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ត្រាំសសរ",
+    "village": "ព្រេច"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ត្រាំសសរ",
+    "village": "បេង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ត្រាំសសរ",
+    "village": "ពង្រ"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "មោង",
+    "village": "មោងខាងត្បូង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "មោង",
+    "village": "មោងខាងជើង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "មោង",
+    "village": "ខែ្វក"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "មោង",
+    "village": "កំបោរ"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "មោង",
+    "village": "ល្វា"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ប្រីយ៍",
+    "village": "ប្រីយ៍១"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ប្រីយ៍",
+    "village": "ប្រីយ៍២"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ប្រីយ៍",
+    "village": "ត្រាំសសរ"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ប្រីយ៍",
+    "village": "ក្របៅ"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ប្រីយ៍",
+    "village": "ក្រូចចារ"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ស្លែងស្ពាន",
+    "village": "សែ្លងស្ពាន"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ស្លែងស្ពាន",
+    "village": "ច្រនៀង"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ស្លែងស្ពាន",
+    "village": "ភ្នំដី"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ស្លែងស្ពាន",
+    "village": "ដំណាក់ដំរី"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ស្លែងស្ពាន",
+    "village": "ចំការចេក"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ស្លែងស្ពាន",
+    "village": "ព្រះខែ្សត"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ស្លែងស្ពាន",
+    "village": "ធ្លក"
+  },
+  {
+    "district": "ស្រីស្នំ",
+    "commune": "ស្លែងស្ពាន",
+    "village": "ត្រាំកង់"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "បឹងមាលា",
+    "village": "បឹងមាលា"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "បឹងមាលា",
+    "village": "ត្រពាំងប្ញស្សី"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "បឹងមាលា",
+    "village": "ទឹកលិច"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "បឹងមាលា",
+    "village": "សក្តា"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "បឹងមាលា",
+    "village": "ចាន់ហៀរ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "បឹងមាលា",
+    "village": "ទ័ពជ័យ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "បឹងមាលា",
+    "village": "ស្រែរបង"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "កន្ទួត",
+    "village": "កន្ទួត"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "កន្ទួត",
+    "village": "ខ្នារក្រៅ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "កន្ទួត",
+    "village": "អភិវឌ្ឍន៍"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "កន្ទួត",
+    "village": "រុងរឿង"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "កន្ទួត",
+    "village": "សែនជ័យ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "កន្ទួត",
+    "village": "ជប់រំដេង"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ខ្នងភ្នំ",
+    "village": "តាពេញ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ខ្នងភ្នំ",
+    "village": "ខ្លាឃ្មុំ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ខ្នងភ្នំ",
+    "village": "ថ្មជ្រួញ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ខ្នងភ្នំ",
+    "village": "សងែ្កឡាក់"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ខ្នងភ្នំ",
+    "village": "អន្លង់ធំ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "ជប់លើ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "ជប់ក្រោម"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "ត្រពាំងខ្នារ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "បិទផ្កា"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "ឆេះចាន"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "ត្រពាំងស្វាយ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "អង្កាញ់"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "រំចេក"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "អូរមានជ័យ"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "ស្វាយលើ",
+    "village": "ថ្មី"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "តាសៀម",
+    "village": "តាសៀម"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "តាសៀម",
+    "village": "ដំបូកខ្ពស់"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "តាសៀម",
+    "village": "រហាល"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "តាសៀម",
+    "village": "ត្រពាំងទឹម"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "តាសៀម",
+    "village": "ត្រពាំងពពេល"
+  },
+  {
+    "district": "ស្វាយលើ",
+    "commune": "តាសៀម",
+    "village": "ត្រពាំងថ្ម"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ប្រាសាទ",
+    "village": "កញ្ចន់រុន"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ប្រាសាទ",
+    "village": "ទំនាបស្វាយ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ប្រាសាទ",
+    "village": "កាប់ដៃ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ប្រាសាទ",
+    "village": "ប្រាសាទ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ប្រាសាទ",
+    "village": "វៀន"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ល្វាក្រាំង",
+    "village": "គោកចាន់"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ល្វាក្រាំង",
+    "village": "ឧទ័យ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ល្វាក្រាំង",
+    "village": "គោកកណ្តាល"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្រែណូយ",
+    "village": "ស្រែណូយ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្រែណូយ",
+    "village": "ស្រែពោធិ៍"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្រែណូយ",
+    "village": "ល្វា"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្រែណូយ",
+    "village": "គោកវត្ត"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្រែណូយ",
+    "village": "ស្រែសមុទ្រ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្រែណូយ",
+    "village": "វត្ត"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្វាយស",
+    "village": "អូរ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្វាយស",
+    "village": "ស្វាយស"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្វាយស",
+    "village": "ប្ញស្សីធំ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្វាយស",
+    "village": "ប្ញស្សីតូច"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្វាយស",
+    "village": "កំបោរ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "ស្វាយស",
+    "village": "ចារ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "វ៉ារិន",
+    "village": "នេល"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "វ៉ារិន",
+    "village": "រំដួល"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "វ៉ារិន",
+    "village": "វ៉ារិន"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "វ៉ារិន",
+    "village": "គោកភ្នំ"
+  },
+  {
+    "district": "វ៉ារិន",
+    "commune": "វ៉ារិន",
+    "village": "គោកស្រុក"
+  }
+]

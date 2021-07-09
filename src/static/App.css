@@ -1,0 +1,79 @@
+.App {
+  /* text-align: center; */
+}
+
+h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
+  font-family: khmerOsSiemReap;
+}
+
+.HeaderFont{
+  font-family: khmerOsMuolLight;
+  font-size: 9pt !important;
+}
+.HeaderFont1{
+  font-family: tacteng;
+  font-size: 9pt !important;
+}
+.HeaderStyle{
+  text-align: justify !important;
+}
+
+.logo{
+  width: 100%;
+  padding: 10px 20%;
+  cursor: pointer;
+}
+
+.dashboard-card-mid-text{
+  font-size: 10pt;
+  color: red
+}
+
+.dashboard-card-footer-text{
+  font-size: 11pt;
+}
+
+.dashboard-card{
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid rgb(197, 197, 197);
+  box-shadow: 2px 2px 5px rgb(187, 187, 187);
+  border-radius: 8px;
+}
+
+.inCol{
+  padding: 5px;
+  /* float: right; */
+}
+
+.inCol1{
+  padding: 5px 0;
+}
+
+.link{
+  cursor: pointer;
+  color: green
+}
+
+.ant-list-split .ant-list-item{
+  border-bottom: 1px solid #5555 !important;
+}
+
+.ant-list-split .ant-list-header{
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+  font-size: 16pt;
+  text-align: center;
+  border-bottom: 1px solid #5555 !important;
+}
+
+.subCase-card{
+  /* margin: 5px; */
+  padding: 15px 15px 0 15px;
+  background-color: #FFF;
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgb(187, 187, 187);
+  /* border-radius: 8px; */
+}
