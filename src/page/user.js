@@ -1,5 +1,5 @@
-import React, {useContext, useState,useEffect} from 'react'
-import { Row, Col, Button, Input, Table } from 'antd'
+import React, { useContext, useState } from 'react'
+import { Row, Col, Button, Input, Table, message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { userCol } from '../component/user/tableColumn/userColumn'
 import { UserController } from '../context/userContext'
@@ -8,30 +8,27 @@ import EditUser from '../component/user/modal/editUser';
 
 export default function User() {
 
-    const {userData, userDataDispatch} = useContext(UserController)
+    const { userData, userDataDispatch } = useContext(UserController)
 
     const [openAdd, setOpenAdd] = useState(false)
     const [openEdit, setOpenEdit] = useState(false)
-    const [userID,setUserID] = useState(-1);
     const [userEdit, setUserEdit] = useState({});
 
-    useEffect(() => {
-        handleUserEdit(userID)
-    }, [userID])
-
-    const handleUserEdit =(id)=>{
-        let index = userData.findIndex(e => e.id === id)
-        setUserEdit(userData[index])
+    const handleUserEdit = (e) => {
+        setUserEdit(e)
+        setOpenEdit(true)
     }
 
     const handleDelete = (e) => {
-        userDataDispatch({type: "DELETE_CASE", payload: e})
+        userDataDispatch({ type: "DELETE_USER", payload: e })
+        
+        message.success("លុបបានជោគជ័យ")
     }
 
     return (
         <Row>
             <AddUser open={openAdd} setOpen={setOpenAdd} />
-            <EditUser open={openEdit} setOpen={setOpenEdit} user={userEdit} />
+            <EditUser open={openEdit} setOpen={setOpenEdit} data={userEdit} />
             <Col
                 xs={8}
                 md={18}
@@ -57,13 +54,13 @@ export default function User() {
                 style={{ marginTop: 20 }}
             >
                 <Table
-                // caseCol({handleDelete})
-                    columns={userCol({handleDelete,openEdit,setOpenEdit,setUserID})}
+                    // caseCol({handleDelete})
+                    columns={userCol({ handleDelete, handleUserEdit })}
                     dataSource={userData}
                     rowKey={record => record.id}
                     pagination={true}
-                    scroll={{ x: 1500 }} 
-                    sticky 
+                    scroll={{ x: 400 }}
+                    sticky
                 />
             </Col>
         </Row>

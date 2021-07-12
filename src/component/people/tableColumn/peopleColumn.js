@@ -1,16 +1,17 @@
 import { Space, Popconfirm } from 'antd'
 import {
-    EditOutlined,
+    EyeOutlined,
     DeleteOutlined
 } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
-export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
+export const peopleCol = ({handleDelete}) => {
     var array = [
         {
             title: 'ល.រ',
             dataIndex: 'id',
             key: 'id',
-            width: 20,
+            width: 60,
             render: (text, record, i) => (
                 <Space size="middle">
                     {i += 1}
@@ -18,28 +19,40 @@ export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
             ),
         },
         {
+            title: 'អត្តសញ្ញាណប័ណ្ណ',
+            dataIndex: 'idCard',
+            key: 'idCard',
+            width: 150,
+        },
+        {
             title: 'ឈ្មោះ',
             dataIndex: 'name',
             key: 'name',
-            width: 50,
+            width: 150,
         },
         {
             title: 'ភេទ',
             dataIndex: 'gender',
             key: 'gender',
-            width: 20,
-            // render: (text, record) => (
-            //     <Space size="middle">
-            //         {moment(record.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
-            //     </Space>
-            // ),
+            width: 100,
         },
-
+        {
+            title: 'អាយុ',
+            dataIndex: 'age',
+            key: 'age',
+            width: 100,
+        },
+        {
+            title: 'សញ្ជាតិ',
+            dataIndex: 'nationality',
+            key: 'nationality',
+            width: 100,
+        },
         {
             title: 'អាស័យដ្ឋាន',
             dataIndex: 'address',
             key: 'address',
-            width: 100,
+            width: 250,
             render: (text, record) => (
                 <Space size="middle">
                     {record.village + "," + record.commune + "," + record.district + "," + record.province}
@@ -47,29 +60,35 @@ export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
             ),
         },
         {
-            title: 'ស្ថានភាព',
-            dataIndex: 'status',
-            key: 'status',
-            width: 50,
+            title: 'មុខរបរ',
+            dataIndex: 'job',
+            key: 'job',
+            width: 150,
         },
         {
-            title: 'លក្ខណៈពាក់ព័ន្ធ',
-            dataIndex: 'relatedInfo',
-            key: 'relatedInfo',
-            width: 50,
+            title: 'ទូរស័ព្ទ',
+            dataIndex: 'tel',
+            key: 'tel',
+            width: 150,
+        },
+        {
+            title: 'ចំណាំ',
+            dataIndex: 'remark',
+            key: 'remark',
+            width: 150,
         },
         {
             key: 'action',
             dataIndex: 'action',
             fixed: 'right',
-            width: 20,
+            width: 80,
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <span className="link" onClick={() => handleEditSubCase(record)}><EditOutlined /></span>
+                    <Link to={"/subPeople/" + record.id}><EyeOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
-                        onConfirm={() => {handleDelete(record.id) }}
+                        onConfirm={() => { handleDelete(record.id) }}
                         okText="ចង់"
                         cancelText="មិនចង់"
                     >

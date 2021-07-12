@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
 import { CaseController } from '../../../context/caseContext'
 import { ListSelect } from '../../../static/own-comp'
-import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
+import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
 
 const { Option } = Select
@@ -105,7 +105,7 @@ export default function AddSubCase({ open, setOpen, caseId }) {
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
 
-                            <ListSelect type={0} data={[{ id: 0, title: "ប្រុស" }, { id: 1, title: "ស្រី" }]} title="ភេទ" setValue={setToGenderFn} />
+                            <ListSelect type={0} data={genderData} title="ភេទ" setValue={setToGenderFn} />
                         </Form.Item>
                     </Col>
 

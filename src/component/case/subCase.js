@@ -1,5 +1,5 @@
 import { Col, Row, Typography, Table } from 'antd'
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { CaseController } from '../../context/caseContext'
 import moment from 'moment'
@@ -17,12 +17,16 @@ export default function SubCase() {
 
     let { id } = useParams();
 
-    const [headerData, setHeaderData] = useState(caseData[caseData.findIndex(e => e.id === id)])
+    const [headerData, setHeaderData] = useState()
     const [updateSubData, setUpdateSubData] = useState({})
 
     const [openEdit, setOpenEdit] = useState(false)
     const [openAddSub, setOpenAddSub] = useState(false)
     const [openEditSub, setOpenEditSub] = useState(false)
+
+    useEffect(() => {
+        setHeaderData(caseData[caseData.findIndex(e => e.id === id)])
+    }, [])
 
     // console.log(headerData)
     const handleDelete = (e) => {
@@ -52,8 +56,8 @@ export default function SubCase() {
                 className="subCase-card"
             >
                 <p>កាលបរិច្ឆេទ៖ {moment(headerData?.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}</p>
-                <p>ទីតាំង៖ {headerData.place}</p>
-                <p>អាសយដ្ឋាន៖ {headerData.village},{headerData.commune},{headerData.district},{headerData.province}</p>
+                <p>ទីតាំង៖ {headerData?.place}</p>
+                <p>អាសយដ្ឋាន៖ {headerData?.village},{headerData?.commune},{headerData?.district},{headerData?.province}</p>
                 <p>ចំនួនអ្នកពាក់ព័ន្ធករណី៖</p>
             </Col>
             <Col

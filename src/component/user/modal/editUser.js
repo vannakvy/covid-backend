@@ -1,33 +1,20 @@
-import React, { useContext,useEffect,useState } from 'react'
-import { Modal, Form, Input, DatePicker, Row, Col, Button,Select} from 'antd';
+import React, { useContext } from 'react'
+import { Modal, Form, Input, Row, Col, Button, Select, message } from 'antd';
 import { UserController } from '../../../context/userContext'
+import { setEditUser } from '../../../function/set';
 
 
 const { Option } = Select;
 
-export default function EditUser({ open, setOpen ,user}) {
-    const {userData, userDataDispatch } = useContext(UserController)
-    // const [user,setUser] = useState(u)
+export default function EditUser({ open, setOpen, data }) {
+    const { userDataDispatch } = useContext(UserController)
 
     let [form] = Form.useForm()
 
-    console.log(user)
-
-    // useEffect(() => {
-    //     handleUser(userID)
-    // }, [userID])
-
-    // const handleUser =(id)=>{
-    //     let index = userData.findIndex(e => e.id === id)
-    //     console.log(userID,index)
-    //     setUser(userData[index])
-    // }
-
     const onFinish = (values) => {
-        // console.log('Success:', values);
 
-        userDataDispatch({ type: 'ADD_EDIT', payload: values })
-
+        userDataDispatch({ type: 'EDIT_USER', payload: { id: data.id, ...values } })
+        message.success("កែប្រែបានជោគជ័យ")
         setOpen(false)
         form.resetFields()
     };
@@ -35,8 +22,6 @@ export default function EditUser({ open, setOpen ,user}) {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-
-    console.log(user,'user')
 
     return (
         <Modal
@@ -49,6 +34,7 @@ export default function EditUser({ open, setOpen ,user}) {
             <Form
                 form={form}
                 name="addUser"
+                initialValues={setEditUser(data)}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
@@ -58,7 +44,7 @@ export default function EditUser({ open, setOpen ,user}) {
                             name="username"
                             rules={[{ required: true, message: 'Field is required!' }]}
                         >
-                            <Input placeholder="ឈ្មោះសម្គាល់អ្នកប្រើប្រាស់" value={user?.username}/>
+                            <Input placeholder="ឈ្មោះសម្គាល់អ្នកប្រើប្រាស់" />
                         </Form.Item>
                     </Col>
 
@@ -67,7 +53,7 @@ export default function EditUser({ open, setOpen ,user}) {
                             name="password"
                             rules={[{ required: true, message: 'Field is required!' }]}
                         >
-                            <Input placeholder="លេខកូដសម្ងាត់" style={{ width: "100%" }} value={user?.password} />
+                            <Input placeholder="លេខកូដសម្ងាត់" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
 
@@ -77,10 +63,10 @@ export default function EditUser({ open, setOpen ,user}) {
                             rules={[{ required: true, message: 'Field is required!' }]}
                         >
 
-                            <Select placeholder="តួនាទី" value={user?.role} style={{ width: "100%" }}>
+                            <Select placeholder="តួនាទី" style={{ width: "100%" }}>
                                 <Option value="ADMIN">ADMIN</Option>
                                 <Option value="USER">USER</Option>
-                               
+
                             </Select>
                         </Form.Item>
                     </Col>
@@ -89,7 +75,7 @@ export default function EditUser({ open, setOpen ,user}) {
                             name="tel"
                         // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="លេខទូរស័ព្ទ" value={user?.tel} />
+                            <Input placeholder="លេខទូរស័ព្ទ" />
                         </Form.Item>
                     </Col>
 
@@ -98,7 +84,7 @@ export default function EditUser({ open, setOpen ,user}) {
                             name="note"
                         // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="ចំណាំ" value={user?.note} />
+                            <Input placeholder="ចំណាំ" />
                         </Form.Item>
                     </Col>
 

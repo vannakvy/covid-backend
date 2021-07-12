@@ -1,24 +1,22 @@
 import React, {useContext, useState} from 'react'
 import { Row, Col, Button, Input, Table } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
-import { quarantineCol } from '../component/quarantine/tableColumn/quarantineColumn'
-import { QuarantineController } from '../context/quarantineContext'
-import AddQuarantine from '../component/quarantine/modal/addQuarantine';
+import { PeopleController } from '../context/peopleContext';
+import { peopleCol } from '../component/people/tableColumn/peopleColumn';
+import AddPeople from '../component/people/modal/addPeople';
 
-export default function Quarantine() {
-
-    const {quarantineData, quarantineDataDispatch} = useContext(QuarantineController)
+export default function People() {
+    const {peopleData, peopleDataDispatch} = useContext(PeopleController)
 
     const [openAdd, setOpenAdd] = useState(false)
 
     const handleDelete = (e) => {
-        quarantineDataDispatch({type: "DELETE_QUARANTINE", payload: e})
+        peopleDataDispatch({type: "DELETE_PEOPLE", payload: e})
     }
 
     return (
         <Row>
-            <AddQuarantine open={openAdd} setOpen={setOpenAdd}/>
-            {/* <EditUser open={openEdit} setOpen={setOpenEdit} user={userEdit} /> */}
+            <AddPeople open={openAdd} setOpen={setOpenAdd} />
             <Col
                 xs={8}
                 md={18}
@@ -27,7 +25,7 @@ export default function Quarantine() {
                     type="primary"
                     onClick={() => setOpenAdd(true)}
                 >
-                    បញ្ចូលមណ្ឌលចត្តាឡីស័ក
+                    បញ្ចូលករណី
                     <PlusOutlined />
                 </Button>
             </Col>
@@ -44,12 +42,11 @@ export default function Quarantine() {
                 style={{ marginTop: 20 }}
             >
                 <Table
-                // caseCol({handleDelete})
-                    columns={quarantineCol({handleDelete})}
-                    dataSource={quarantineData}
+                    columns={peopleCol({handleDelete})}
+                    dataSource={peopleData}
                     rowKey={record => record.id}
                     pagination={true}
-                    scroll={{ x: 1500 }} 
+                    scroll={{ x: 1000 }} 
                     sticky 
                 />
             </Col>

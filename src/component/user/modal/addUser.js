@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Modal, Form, Input, DatePicker, Row, Col, Button,Select} from 'antd';
+import { Modal, Form, Input, Row, Col, Button,Select, message} from 'antd';
 import { UserController } from '../../../context/userContext'
 
 
@@ -14,6 +14,7 @@ export default function AddUser({ open, setOpen }) {
         console.log('Success:', values);
 
         userDataDispatch({ type: 'ADD_USER', payload: values })
+        message.success("បញ្ចូលបានជោគជ័យ")
 
         setOpen(false)
         form.resetFields()

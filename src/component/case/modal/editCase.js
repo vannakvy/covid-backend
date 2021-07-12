@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { Modal, Form, Input, DatePicker, Row, Col, Button } from 'antd'
 import {CaseController} from '../../../context/caseContext'
 import {setEditCase} from '../../../function/set'
@@ -7,6 +7,12 @@ export default function EditCase({ open, setOpen, data, setData }) {
     const {caseDataDispatch} = useContext(CaseController)
 
     let [form] = Form.useForm()
+
+    useEffect(() => {
+        if (data !== undefined){
+            form.setFieldsValue(setEditCase(data))
+        }
+    }, [data])
 
     const onFinish = (values) => {
         console.log('Success:', values);
@@ -29,11 +35,14 @@ export default function EditCase({ open, setOpen, data, setData }) {
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
             footer={null}
+            destroyOnClose={false} 
+            getContainer={false}
+            forceRender
         >
             <Form
                 form={form}
                 name="editCase"
-                initialValues={setEditCase(data)}
+                // initialValues={setEditCase(data)}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >

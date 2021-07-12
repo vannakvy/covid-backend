@@ -77,3 +77,11 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   box-shadow: 2px 2px 5px rgb(187, 187, 187);
   /* border-radius: 8px; */
 }
+
+.list{
+  list-style: none;
+}
+
+.list li{
+  margin: 10px 0;
+}

@@ -4,6 +4,7 @@ import { headerReducer } from '../reducer/headerReducer'
 
 export const HeaderData = createContext()
 
+export const genderData = require('../asset/data/gender.json')
 export const provinceData = require('../asset/data/province.json')
 export const districtData = require('../asset/data/district.json')
 export const communeData = require('../asset/data/commune.json')

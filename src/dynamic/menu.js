@@ -6,7 +6,8 @@ import {
     ExportOutlined,
     HomeOutlined,
     LoginOutlined,
-    UserOutlined
+    UserOutlined,
+    BankOutlined
 } from '@ant-design/icons';
 import Logo from '../asset/srLogo.png'
 import { Link } from 'react-router-dom'
@@ -52,6 +53,10 @@ export default function MenuHeader() {
                 <Menu.Item key="/people" icon={<TeamOutlined />}>
                     ប្រវត្តិរូបប្រជាជន
                     <Link to="/people" />
+                </Menu.Item>
+                <Menu.Item key="/quarantine" icon={<BankOutlined />}>
+                    ចត្តាឡីស័ក
+                    <Link to="/quarantine" />
                 </Menu.Item>
                 <SubMenu key="sub1" icon={<ContainerOutlined />} title="របាយការណ៍">
                     <Menu.Item key="/reportdaily">

@@ -21,6 +21,9 @@ import SubCase from './component/case/subCase';
 import User from './page/user';
 import Quarantine from './page/quarantine'
 import SubQuarantine from './component/quarantine/subQuarantine';
+import PeopleContext from './context/peopleContext';
+import People from './page/people';
+import SubPeople from './component/people/subPeople';
 
 const { Footer, Content } = Layout
 
@@ -43,28 +46,36 @@ function App() {
                 <CaseContext>
                   <UserContext>
                     <QuarantineContext>
+                      <PeopleContext>
 
-                      <Switch>
-                        <Route exact path="/">
-                          <Dashboard />
-                        </Route>
-                        <Route path="/case">
-                          <Case />
-                        </Route>
-                        <Route path="/subCase/:id">
-                          <SubCase />
-                        </Route>
-                        <Route path="/user">
-                          <User />
-                        </Route>
-                        <Route path="/quarantine">
-                          <Quarantine />
-                        </Route>
-                        <Route path="/subQuarantine/:id">
-                          <SubQuarantine />
-                        </Route>
-                      </Switch>
+                        <Switch>
+                          <Route exact path="/">
+                            <Dashboard />
+                          </Route>
+                          <Route path="/case">
+                            <Case />
+                          </Route>
+                          <Route path="/subCase/:id">
+                            <SubCase />
+                          </Route>
+                          <Route path="/people">
+                            <People />
+                          </Route>
+                          <Route path="/subPeople/:id">
+                            <SubPeople />
+                          </Route>
+                          <Route path="/user">
+                            <User />
+                          </Route>
+                          <Route path="/quarantine">
+                            <Quarantine />
+                          </Route>
+                          <Route path="/subQuarantine/:id">
+                            <SubQuarantine />
+                          </Route>
+                        </Switch>
 
+                      </PeopleContext>
                     </QuarantineContext>
                   </UserContext>
                 </CaseContext>

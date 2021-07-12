@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
 import { CaseController } from '../../../context/caseContext'
 import { ListSelect } from '../../../static/own-comp'
-import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
+import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
 import {setEditSubCase} from '../../../function/set'
 
@@ -18,9 +18,9 @@ export default function EditSubCase({ open, setOpen, data, setData }) {
     const [commune, setCommune] = useState("")
 
     useEffect(() => {
-        form.setFieldsValue(
-            setEditSubCase(data)
-        )
+        // form.setFieldsValue(
+        //     setEditSubCase(data)
+        // )
         setProvince(data.province)
         setDistrict(data.district)
         setCommune(data.commune)
@@ -86,8 +86,6 @@ export default function EditSubCase({ open, setOpen, data, setData }) {
         });
     };
 
-    console.log(data)
-
     return (
         <Modal
             title="បញ្ចូលករណីថ្មី"
@@ -99,7 +97,7 @@ export default function EditSubCase({ open, setOpen, data, setData }) {
             <Form
                 form={form}
                 name="editSubCase"
-                // initialValues={setEditSubCase(data)}
+                initialValues={setEditSubCase(data)}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
@@ -119,7 +117,7 @@ export default function EditSubCase({ open, setOpen, data, setData }) {
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
 
-                            <ListSelect type={0} data={[{ id: 0, title: "ប្រុស" }, { id: 1, title: "ស្រី" }]} title="ភេទ" setValue={setToGenderFn} />
+                            <ListSelect type={0} data={genderData} title="ភេទ" setValue={setToGenderFn} />
                         </Form.Item>
                     </Col>
 

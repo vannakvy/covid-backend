@@ -63,8 +63,8 @@ export const caseCol = ({handleDelete}) => {
         },
         {
             title: 'ចំណាំ',
-            dataIndex: 'tel',
-            key: 'tel',
+            dataIndex: 'remark',
+            key: 'remark',
             width: 150,
         },
         {

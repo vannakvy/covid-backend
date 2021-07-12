@@ -1,26 +1,17 @@
-import React,{useState} from 'react'
-import { Space, Tooltip, Popconfirm } from 'antd'
+import React from 'react'
+import { Space, Popconfirm } from 'antd'
 import {
     EditOutlined,
     DeleteOutlined
 } from '@ant-design/icons';
-import moment from 'moment'
-import { Link } from 'react-router-dom'
-import {EditUser} from '../modal/editUser'
-// import {EditUser}
 
-export const userCol = ({handleDelete,openEdit, setOpenEdit,setUserID}) => {
-    // const [openEdit, setOpenEdit] = useState(false)
-    const handleEditClick =(id)=>{
-        setOpenEdit(true)
-        setUserID(id)
-    }
+export const userCol = ({ handleDelete, handleUserEdit }) => {
     var array = [
         {
             title: 'ល.រ',
             dataIndex: 'id',
             key: 'id',
-            width: 50,
+            width: 20,
             render: (text, record, i) => (
                 <Space size="middle">
                     {i += 1}
@@ -31,20 +22,20 @@ export const userCol = ({handleDelete,openEdit, setOpenEdit,setUserID}) => {
             title: 'ឈ្មោះសម្គាល់អ្នកប្រើប្រាស់',
             dataIndex: 'username',
             key: 'username',
-            width: 150,
+            width: 100,
         },
         {
             title: 'តួនាទី',
             dataIndex: 'role',
             key: 'role',
-            width: 100,
-            
+            width: 50,
+
         },
         {
             title: 'លេខទូរស័ព្ទ',
             dataIndex: 'tel',
             key: 'tel',
-            width: 100,
+            width: 80,
         },
         {
             title: 'ចំណាំ',
@@ -52,7 +43,7 @@ export const userCol = ({handleDelete,openEdit, setOpenEdit,setUserID}) => {
             key: 'note',
             width: 100,
         },
-    
+
         {
             key: 'action',
             dataIndex: 'action',
@@ -61,7 +52,7 @@ export const userCol = ({handleDelete,openEdit, setOpenEdit,setUserID}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <a onClick={()=>handleEditClick(record.id)}><EditOutlined /></a>
+                    <span className="link" onClick={() => handleUserEdit(record)}><EditOutlined /></span>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}
