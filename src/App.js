@@ -12,10 +12,15 @@ import Navbar from './dynamic/navbar';
 import HeaderContext from './context/headerContext';
 import DashBoardContext from './context/dashboardContext'
 import CaseContext from './context/caseContext'
+import UserContext from './context/userContext';
+import QuarantineContext from './context/quarantineContext';
 
 import Dashboard from './page/dashboard';
 import Case from './page/case'
 import SubCase from './component/case/subCase';
+import User from './page/user';
+import Quarantine from './page/quarantine'
+import SubQuarantine from './component/quarantine/subQuarantine';
 
 const { Footer, Content } = Layout
 
@@ -36,19 +41,32 @@ function App() {
             <Content style={{ margin: '20px' }}>
               <DashBoardContext>
                 <CaseContext>
+                  <UserContext>
+                    <QuarantineContext>
 
-                  <Switch>
-                    <Route exact path="/">
-                      <Dashboard />
-                    </Route>
-                    <Route path="/case">
-                      <Case />
-                    </Route>
-                    <Route path="/subCase/:id">
-                      <SubCase />
-                    </Route>
-                  </Switch>
+                      <Switch>
+                        <Route exact path="/">
+                          <Dashboard />
+                        </Route>
+                        <Route path="/case">
+                          <Case />
+                        </Route>
+                        <Route path="/subCase/:id">
+                          <SubCase />
+                        </Route>
+                        <Route path="/user">
+                          <User />
+                        </Route>
+                        <Route path="/quarantine">
+                          <Quarantine />
+                        </Route>
+                        <Route path="/subQuarantine/:id">
+                          <SubQuarantine />
+                        </Route>
+                      </Switch>
 
+                    </QuarantineContext>
+                  </UserContext>
                 </CaseContext>
               </DashBoardContext>
             </Content>

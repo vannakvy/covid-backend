@@ -68,9 +68,9 @@ export default function MenuHeader() {
                     <Link to="/setting" />
                 </Menu.Item>
                 {user.role === "Admin" ? (
-                    <Menu.Item key="/admin" icon={<UserOutlined />}>
+                    <Menu.Item key="/user" icon={<UserOutlined />}>
                         អ្នកប្រើប្រាស់
-                        <Link to="/admin" />
+                        <Link to="/user" />
                     </Menu.Item>
                 ) : (
                     <></>

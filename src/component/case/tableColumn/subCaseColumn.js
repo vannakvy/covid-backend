@@ -5,7 +5,7 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom'
 
-export const subCaseCol = () => {
+export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
     var array = [
         {
             title: 'ល.រ',
@@ -35,18 +35,16 @@ export const subCaseCol = () => {
             //     </Space>
             // ),
         },
-      
+
         {
             title: 'អាស័យដ្ឋាន',
             dataIndex: 'address',
             key: 'address',
             width: 100,
             render: (text, record) => (
-                <Tooltip placement="top" title={record.village + "," + record.commune + "," + record.district + "," + record.province}>
-                    <Space size="middle">
-                        {record.village}
-                    </Space>
-                </Tooltip>
+                <Space size="middle">
+                    {record.village + "," + record.commune + "," + record.district + "," + record.province}
+                </Space>
             ),
         },
         {
@@ -69,10 +67,10 @@ export const subCaseCol = () => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <Link to={"/subCase/" + record.id}><EditOutlined /></Link>
+                    <span className="link" onClick={() => handleEditSubCase(record)}><EditOutlined /></span>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
-                        onConfirm={() => { }}
+                        onConfirm={() => {handleDelete(record.id) }}
                         okText="ចង់"
                         cancelText="មិនចង់"
                     >

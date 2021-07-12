@@ -32,7 +32,7 @@ export default function EditCase({ open, setOpen, data, setData }) {
         >
             <Form
                 form={form}
-                name="addCase"
+                name="editCase"
                 initialValues={setEditCase(data)}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}

@@ -1,25 +1,36 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
 import { CaseController } from '../../../context/caseContext'
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
 import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
+import {setEditSubCase} from '../../../function/set'
 
 const { Option } = Select
 
-export default function AddSubCase({ open, setOpen, caseId }) {
-    const { subCaseDataDispatch } = useContext(CaseController)
-
+export default function EditSubCase({ open, setOpen, data, setData }) {
+    const {subCaseDataDispatch} = useContext(CaseController)
+    
     let [form] = Form.useForm()
 
     const [province, setProvince] = useState("")
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
 
+    useEffect(() => {
+        form.setFieldsValue(
+            setEditSubCase(data)
+        )
+        setProvince(data.province)
+        setDistrict(data.district)
+        setCommune(data.commune)
+    }, [data])
+
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        subCaseDataDispatch({ type: 'ADD_SUB_CASE', payload: {...values, caseId: caseId} })
+        subCaseDataDispatch({type: 'EDIT_SUB_CASE', payload: {...values, id: data.id}})
+        setData({...values, id: data.id})
 
         setOpen(false)
         form.resetFields()
@@ -75,9 +86,11 @@ export default function AddSubCase({ open, setOpen, caseId }) {
         });
     };
 
+    console.log(data)
+
     return (
         <Modal
-            title="បញ្ចូលអ្ន​កពាក់ព័ន្ធ"
+            title="បញ្ចូលករណីថ្មី"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
@@ -85,7 +98,8 @@ export default function AddSubCase({ open, setOpen, caseId }) {
         >
             <Form
                 form={form}
-                name="addSubCase"
+                name="editSubCase"
+                // initialValues={setEditSubCase(data)}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >

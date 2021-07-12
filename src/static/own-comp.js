@@ -44,7 +44,7 @@ export function ListSelect({ type, data, title, value, setValue, id, disabled })
                     }
                 >
                     {data.map(load => {
-                        return <Option value={load.title} key={load.id}>{load.title}</Option>
+                        return <Option value={load.title} key={load.title}>{load.title}</Option>
                     })}
                 </Select>
             ) : (

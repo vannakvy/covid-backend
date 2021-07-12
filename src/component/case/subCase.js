@@ -7,24 +7,38 @@ import { subCaseCol } from './tableColumn/subCaseColumn'
 import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
 import EditCase from './modal/editCase'
 import AddSubCase from './modal/addSubCase'
+import EditSubCase from './modal/editSubCase'
+import { getRelated } from '../../function/fn'
 
 const { Title } = Typography
 
 export default function SubCase() {
-    const { caseData, subCaseData } = useContext(CaseController)
+    const { caseData, subCaseData, subCaseDataDispatch } = useContext(CaseController)
 
     let { id } = useParams();
 
     const [headerData, setHeaderData] = useState(caseData[caseData.findIndex(e => e.id === id)])
+    const [updateSubData, setUpdateSubData] = useState({})
+
     const [openEdit, setOpenEdit] = useState(false)
     const [openAddSub, setOpenAddSub] = useState(false)
+    const [openEditSub, setOpenEditSub] = useState(false)
 
     // console.log(headerData)
+    const handleDelete = (e) => {
+        subCaseDataDispatch({type: "DELETE_SUB_CASE", payload: e})
+    }
+
+    const handleEditSubCase = (e) => {
+        setUpdateSubData(e)
+        setOpenEditSub(true)
+    }
 
     return (
         <Row>
             <EditCase open={openEdit} setOpen={setOpenEdit} data={headerData} setData={setHeaderData} />
-            <AddSubCase open={openAddSub} setOpen={setOpenAddSub} />
+            <AddSubCase open={openAddSub} setOpen={setOpenAddSub} caseId={id} />
+            <EditSubCase open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData}  />
             <Col
                 xs={24}
             >
@@ -47,10 +61,10 @@ export default function SubCase() {
                 md={{ span: 11, offset: 2 }}
                 className="subCase-card"
             >
-                <p>ចំនួនអ្នកពាក់ព័ន្ធផ្ទាល់៖</p>
-                <p>ចំនួនអ្នកពាក់ព័ន្ធប្រយោល៖</p>
-                <p>ចំនួនអ្នកជាសះស្បើយ៖</p>
-                <p>ចំនួនអ្នកស្លាប់៖</p>
+                <p>ចំនួនអ្នកពាក់ព័ន្ធផ្ទាល់៖ {getRelated(subCaseData, "ផ្ទាល់")}នាក់</p>
+                <p>ចំនួនអ្នកពាក់ព័ន្ធប្រយោល៖ {getRelated(subCaseData, "ប្រយោល")}នាក់</p>
+                <p>ចំនួនអ្នកជាសះស្បើយ៖ {getRelated(subCaseData, "សះស្បើយ")}នាក់</p>
+                <p>ចំនួនអ្នកស្លាប់៖ {getRelated(subCaseData, "ស្លាប់")}នាក់</p>
             </Col>
 
 
@@ -70,7 +84,7 @@ export default function SubCase() {
                 md={24}
             >
                 <Table
-                    columns={subCaseCol()}
+                    columns={subCaseCol({handleDelete, handleEditSubCase})}
                     dataSource={subCaseData}
                     rowKey={record => record.id}
                     pagination={true}

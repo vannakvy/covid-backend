@@ -34,6 +34,7 @@ export default function CaseContext(props) {
     const [subCaseData, subCaseDataDispatch] = useReducer(caseReducer, [
         {
             id: "1",
+            caseId: "1",
             name: "សំបូរ",
             gender: "ប្រុស",
             province: "សៀមរាប",
@@ -41,9 +42,11 @@ export default function CaseContext(props) {
             commune: "ស្វាយដង្គំ",
             village: "ល្វា",
             status: "អវិជ្ជមាន",
+            relatedInfo: "ប្រយោល"
         },
         {
             id: "2",
+            caseId: "2",
             name: "សំណាង",
             gender: "ប្រុស",
             province: "សៀមរាប",
@@ -51,6 +54,7 @@ export default function CaseContext(props) {
             commune: "ស្វាយដង្គំ",
             village: "ល្វា",
             status: "វិជ្ជមាន",
+            relatedInfo: "ផ្ទាល់"
         },
     ])
 
