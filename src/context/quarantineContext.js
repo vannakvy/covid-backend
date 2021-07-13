@@ -31,37 +31,39 @@ export default function QuarantineContext(props) {
         },
     ])
 
-    // const [subCaseData, subCaseDataDispatch] = useReducer(caseReducer, [
-    //     {
-    //         id: "1",
-    //         name: "សំបូរ",
-    //         gender: "ប្រុស",
-    //         province: "សៀមរាប",
-    //         district: "សៀមរាប",
-    //         commune: "ស្វាយដង្គំ",
-    //         village: "ល្វា",
-    //         status: "អវិជ្ជមាន",
-    //     },
-    //     {
-    //         id: "2",
-    //         name: "សំណាង",
-    //         gender: "ប្រុស",
-    //         province: "សៀមរាប",
-    //         district: "សៀមរាប",
-    //         commune: "ស្វាយដង្គំ",
-    //         village: "ល្វា",
-    //         status: "វិជ្ជមាន",
-    //     },
-    // ])
+    const [subQuarantineData, subQuarantineDataDispatch] = useReducer(quarantineReducer, [
+        {
+            id: "1",
+            name: "សំបូរ",
+            gender: "ប្រុស",
+            province: "សៀមរាប",
+            district: "សៀមរាប",
+            commune: "ស្វាយដង្គំ",
+            village: "ល្វា",
+            status: "អវិជ្ជមាន",
+            relatedInfo:'ផ្ទាល់',
+        },
+        {
+            id: "2",
+            name: "សំណាង",
+            gender: "ប្រុស",
+            province: "សៀមរាប",
+            district: "សៀមរាប",
+            commune: "ស្វាយដង្គំ",
+            village: "ល្វា",
+            status: "វិជ្ជមាន",
+            relatedInfo:'ប្រយោល',
+        },
+    ])
 
     return (
         <QuarantineController.Provider
             value={{
                 quarantineData,
-                //subCaseData,
+                subQuarantineData,
 
                 quarantineDataDispatch,
-                //subCaseDataDispatch,
+                subQuarantineDataDispatch,
             }}
         >
             {props.children}

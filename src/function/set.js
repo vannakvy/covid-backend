@@ -118,11 +118,62 @@ export function setQuarantine(values, length) {
         place: values.place === undefined ? "" : values.place,
         village: values.village === undefined ? "" : values.village,
         commune: values.commune === undefined ? "" : values.commune,
-        district: values.disctrict === undefined ? "" : values.district,
+        district: values.district === undefined ? "" : values.district,
         province: values.province === undefined ? "" : values.province,
         inCharge: values.inCharge === undefined ? "" : values.inCharge,
         tel: values.tel === undefined ? "" : values.tel,
         note: values.note === undefined ? "" : values.note,
+    }
+
+    return array
+}
+
+export function setEditQuarantine(values, length) {
+    var array = {
+        id: values.id + "",
+        quarantineName: values.quarantineName === undefined ? "" : values.quarantineName,
+        place: values.place === undefined ? "" : values.place,
+        village: values.village === undefined ? "" : values.village,
+        commune: values.commune === undefined ? "" : values.commune,
+        district: values.district === undefined ? "" : values.district,
+        province: values.province === undefined ? "" : values.province,
+        inCharge: values.inCharge === undefined ? "" : values.inCharge,
+        tel: values.tel === undefined ? "" : values.tel,
+        note: values.note === undefined ? "" : values.note,
+    }
+
+    return array
+}
+
+export function setSubQuarantine(values, length) {
+    var array = {
+        id: values.id === undefined ? length += 1 + "" : values.id,
+        caseId: values.caseId === undefined ? "" : values.caseId,
+        name: values.name === undefined ? "" : values.name,
+        gender: values.gender === undefined ? "" : values.gender,
+        province: values.province === undefined ? "" : values.province,
+        district: values.district === undefined ? "" : values.district,
+        commune: values.commune === undefined ? "" : values.commune,
+        village: values.village === undefined ? "" : values.village,
+        status: values.status === undefined ? "" : values.status,
+        relatedInfo: values.relatedInfo === undefined ? "" : values.relatedInfo,
+    }
+
+    return array
+}
+
+export function setEditSubQuarantine(values) {
+    var array = {
+        id: values.id + "",
+        caseId: values.caseId === undefined ? "" : values.caseId,
+        name: values.name === undefined ? "" : values.name,
+        gender: values.gender === undefined ? "" : values.gender,
+        province: values.province === undefined ? "" : values.province,
+        district: values.district === undefined ? "" : values.district,
+        commune: values.commune === undefined ? "" : values.commune,
+        village: values.village === undefined ? "" : values.village,
+        status: values.status === undefined ? "" : values.status,
+        relatedInfo: values.relatedInfo === undefined ? "" : values.relatedInfo,
     }
 
     return array
