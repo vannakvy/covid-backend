@@ -22,7 +22,6 @@ export default function HeaderContext(props) {
             value={{
                 urlPath,
                 user,
-
                 userDispatch
             }}
         >

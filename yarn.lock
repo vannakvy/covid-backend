@@ -36,11 +36,7 @@
     "lodash" "^4.17.21"
     "resize-observer-polyfill" "^1.5.0"
 
-<<<<<<< HEAD
-"@apollo/client@^3.3.21":
-=======
-"@apollo/client@^3.0.0", "@apollo/client@^3.3.21":
->>>>>>> 3079f0370903c499893120d5b36ebbd40638756f
+"@apollo/client@^3.0.0", "@apollo/client@^3.3.18":
   "integrity" "sha512-RAmZReFuKCKx0Rs5C0nVJwKomAHUHn+gGP/YvbEsXQWu0sXoncEUZa71UqlfCPVXa/0MkYOIbCXSQdOcuRrHgw=="
   "resolved" "https://registry.npmjs.org/@apollo/client/-/client-3.3.21.tgz"
   "version" "3.3.21"
@@ -5631,11 +5627,7 @@
   dependencies:
     "tslib" "^2.1.0"
 
-<<<<<<< HEAD
-"graphql@^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0", "graphql@^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0", "graphql@^14.0.0 || ^15.0.0":
-=======
 "graphql@^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0", "graphql@^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0", "graphql@^14.0.0 || ^15.0.0", "graphql@^15.5.1", "graphql@>=0.10.0", "graphql@14 - 15":
->>>>>>> 3079f0370903c499893120d5b36ebbd40638756f
   "integrity" "sha512-FeTRX67T3LoE3LWAxxOlW2K3Bz+rMYAC18rRguK4wgXaTZMiJwSUwDmPFo3UadAKbzirKIg5Qy+sNJXbpPRnQw=="
   "resolved" "https://registry.npmjs.org/graphql/-/graphql-15.5.1.tgz"
   "version" "15.5.1"
@@ -11325,14 +11317,11 @@
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
 
-<<<<<<< HEAD
-=======
 "symbol-observable@^1.0.4":
   "integrity" "sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ=="
   "resolved" "https://registry.npmjs.org/symbol-observable/-/symbol-observable-1.2.0.tgz"
   "version" "1.2.0"
 
->>>>>>> 3079f0370903c499893120d5b36ebbd40638756f
 "symbol-observable@^4.0.0":
   "integrity" "sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ=="
   "resolved" "https://registry.npmjs.org/symbol-observable/-/symbol-observable-4.0.0.tgz"
