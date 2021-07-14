@@ -28,7 +28,6 @@ export function caseReducer(state, action) {
             return item;
         case 'DELETE_SUB_CASE':
             item.splice(index, 1)
-
             return item;
 
         default:
