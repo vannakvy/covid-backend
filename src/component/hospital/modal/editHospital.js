@@ -1,12 +1,16 @@
-import React, { useContext, useState } from 'react'
-import { Modal, Form, Input, Row, Col, Button, Select } from 'antd'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
-import { ListSelect } from '../../../static/own-comp'
-import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
-import { PeopleController } from '../../../context/peopleContext'
+import React, {useContext, useEffect, useState} from 'react'
+import { Modal, Form, Input, DatePicker, Row, Col, Button ,Select} from 'antd'
+import {HospitalController} from '../../../context/hospitalContext'
+import {setEditHospital} from '../../../function/set'
 
-export default function AddPeople({ open, setOpen }) {
-    const { peopleDataDispatch } = useContext(PeopleController)
+import { ListSelect } from '../../../static/own-comp'
+import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
+import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
+
+const { Option } = Select
+
+export default function EditHospital({ open, setOpen, data, setData }) {
+    const {hospitalDataDispatch} = useContext(HospitalController)
 
     let [form] = Form.useForm()
 
@@ -14,10 +18,24 @@ export default function AddPeople({ open, setOpen }) {
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
 
+
+    useEffect(() => {
+        
+        if (data !== undefined){
+            form.setFieldsValue(setEditHospital(data))
+            setProvince(data.province)
+            setDistrict(data.district)
+            setCommune(data.commune)
+        }
+
+        
+    }, [data])
+
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        peopleDataDispatch({ type: 'ADD_PEOPLE', payload: values })
+        hospitalDataDispatch({type: 'EDIT_HOSPITAL', payload: {...values, id: data.id}})
+        setData({...values, id: data.id})
 
         setOpen(false)
         form.resetFields()
@@ -75,94 +93,64 @@ export default function AddPeople({ open, setOpen }) {
 
     return (
         <Modal
-            title="បញ្ចូលករណីថ្មី"
+            title="កែប្រែមន្ទីរពេទ្យ"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
             footer={null}
+            destroyOnClose={false} 
+            getContainer={false}
+            forceRender
         >
             <Form
                 form={form}
-                name="addPeople"
+                name="editHospital"
+                // initialValues={setEditCase(data)}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
-                    <Col xs={24} md={{ span: 24 }}>
+                    <Col xs={24} md={{span:11}}>
                         <Form.Item
-                            name="idCard"
+                            name="hospitalName"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="អត្តសញ្ញាណប័ណ្ណ" />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} md={{ span: 11 }}>
-                        <Form.Item
-                            name="name"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="ឈ្មោះ" />
+                            <Input placeholder="ឈ្មោះមណ្ឌល" />
                         </Form.Item>
                     </Col>
 
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
-                            name="gender"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            name="inCharge"
+                            rules={[{ required: true, message: 'Field is required!' }]}
                         >
-
-                            <ListSelect type={0} data={genderData} title="ភេទ" setValue={setToGenderFn} />
+                            <Input placeholder="អ្នកទទួលខុសត្រូវ" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11 }}>
+                    <Col xs={24} md={{ span: 11}}>
                         <Form.Item
-                            name="age"
+                            name="place"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="អាយុ" type="number" />
+                            <Input placeholder="ទីកន្លែង" />
                         </Form.Item>
                     </Col>
 
+                 
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="job"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="មុខរបរ" />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="tel"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="ទូរស័ព្ទ" addonBefore="+855" type="number" />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="nationality"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="សញ្ជាតិ" />
+                            <Input placeholder="លេខទូរស័ព្ទ" />
                         </Form.Item>
                     </Col>
 
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="remark"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="ចំណាំ" />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11 , offset: 2}}>
-                        <Form.Item
                             name="province"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'Field is required!' }]}
                         >
                             <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
@@ -170,26 +158,26 @@ export default function AddPeople({ open, setOpen }) {
 
                     {province === "សៀមរាប" ? (
                         <>
-                            <Col xs={24} md={{ span: 11 }}>
+                            <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="district"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'Field is required!' }]}
                                 >
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
+                            <Col xs={24} md={{ span: 11 }}>
                                 <Form.Item
                                     name="commune"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'Field is required!' }]}
                                 >
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} md={{ span: 24 }}>
+                            <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="village"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'Field is required!' }]}
                                 >
                                     <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
                                 </Form.Item>
@@ -197,8 +185,14 @@ export default function AddPeople({ open, setOpen }) {
                         </>
                     ) : null}
 
-
-                    
+                    <Col xs={24}>
+                        <Form.Item
+                            name="note"
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="ចំណាំ" />
+                        </Form.Item>
+                    </Col>
 
                     <Col xs={24}>
                         <Button

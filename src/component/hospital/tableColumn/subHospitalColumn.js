@@ -4,7 +4,7 @@ import {
     DeleteOutlined
 } from '@ant-design/icons';
 
-export const subQuarantineCol = ({handleDelete, handleEditSubQuarantine}) => {
+export const subHospitalCol = ({handleDelete, handleEditSubHospital}) => {
     var array = [
         {
             title: 'ល.រ',
@@ -66,7 +66,7 @@ export const subQuarantineCol = ({handleDelete, handleEditSubQuarantine}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <span className="link" onClick={() => handleEditSubQuarantine(record)}><EditOutlined /></span>
+                    <span className="link" onClick={() => handleEditSubHospital(record)}><EditOutlined /></span>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => {handleDelete(record.id) }}

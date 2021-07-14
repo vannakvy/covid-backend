@@ -7,7 +7,8 @@ import {
     HomeOutlined,
     LoginOutlined,
     UserOutlined,
-    BankOutlined
+    BankOutlined,
+    ReconciliationOutlined
 } from '@ant-design/icons';
 import Logo from '../asset/srLogo.png'
 import { Link } from 'react-router-dom'
@@ -58,6 +59,10 @@ export default function MenuHeader() {
                     ចត្តាឡីស័ក
                     <Link to="/quarantine" />
                 </Menu.Item>
+                <Menu.Item key="/hospital" icon={<ReconciliationOutlined />}>
+                    មន្ទីរពេទ្យ
+                    <Link to="/hospital" />
+                </Menu.Item>
                 <SubMenu key="sub1" icon={<ContainerOutlined />} title="របាយការណ៍">
                     <Menu.Item key="/reportdaily">
                         របាយការណ៍ប្រចាំថ្ងៃ
@@ -68,10 +73,10 @@ export default function MenuHeader() {
                         <Link to="/reportall" />
                     </Menu.Item> */}
                 </SubMenu>
-                <Menu.Item key="/setting" icon={<SettingOutlined />}>
+                {/* <Menu.Item key="/setting" icon={<SettingOutlined />}>
                     ការកំណត់
                     <Link to="/setting" />
-                </Menu.Item>
+                </Menu.Item> */}
                 {user.role === "Admin" ? (
                     <Menu.Item key="/user" icon={<UserOutlined />}>
                         អ្នកប្រើប្រាស់

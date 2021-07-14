@@ -36,7 +36,7 @@ export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
         },
 
         {
-            title: 'អាស័យដ្ឋាន',
+            title: 'អាសយដ្ឋាន',
             dataIndex: 'address',
             key: 'address',
             width: 100,

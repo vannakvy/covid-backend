@@ -1,13 +1,13 @@
 import React, {useReducer, createContext} from 'react'
-import { quarantineReducer } from '../reducer/quarantineReducer'
+import { hospitalReducer } from '../reducer/hospitalReducer'
 
-export const QuarantineController = createContext()
+export const HospitalController = createContext()
 
-export default function QuarantineContext(props) {
-    const [quarantineData, quarantineDataDispatch] = useReducer(quarantineReducer, [
+export default function HospitalContext(props) {
+    const [hospitalData, hospitalDataDispatch] = useReducer(hospitalReducer, [
         {
             id: "1",
-            quarantineName: "សាលាគ្រួស",
+            hospitalName: "ពេទ្យខេត្តសៀមរាប",
             place: "សាលា",
             village: "គ្រួស" ,
             commune: "ស្វាយដង្គំ",
@@ -22,7 +22,7 @@ export default function QuarantineContext(props) {
         },
         {
             id: "2",
-            quarantineName: "សាលាសម្ដេចឪ",
+            hospitalName: "ពេទ្យនាគទេព",
             place: "សាលា",
             village: "គោកដូង" ,
             commune: "ទឹកវិល",
@@ -37,7 +37,7 @@ export default function QuarantineContext(props) {
         },
     ])
 
-    const [subQuarantineData, subQuarantineDataDispatch] = useReducer(quarantineReducer, [
+    const [subHospitalData, subHospitalDataDispatch] = useReducer(hospitalReducer, [
         {
             id: "1",
             name: "សំបូរ",
@@ -63,16 +63,16 @@ export default function QuarantineContext(props) {
     ])
 
     return (
-        <QuarantineController.Provider
+        <HospitalController.Provider
             value={{
-                quarantineData,
-                subQuarantineData,
+                hospitalData,
+                subHospitalData,
 
-                quarantineDataDispatch,
-                subQuarantineDataDispatch,
+                hospitalDataDispatch,
+                subHospitalDataDispatch,
             }}
         >
             {props.children}
-        </QuarantineController.Provider>
+        </HospitalController.Provider>
     )
 }

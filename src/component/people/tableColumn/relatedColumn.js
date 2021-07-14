@@ -52,7 +52,7 @@ export const relatedCol = ({handleDelete}) => {
             key: 'action',
             dataIndex: 'action',
             fixed: 'right',
-            width: 30,
+            width: 40,
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">

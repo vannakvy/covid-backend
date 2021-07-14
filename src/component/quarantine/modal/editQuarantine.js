@@ -93,7 +93,7 @@ export default function EditQuarantine({ open, setOpen, data, setData }) {
 
     return (
         <Modal
-            title="កែប្រែចត្តាឡីស័កថ្មី"
+            title="កែប្រែមណ្ឌលចត្តាឡីស័ក"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}

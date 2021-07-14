@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react'
-import { Modal, Form, Input, Row, Col, Button, Select } from 'antd'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
+import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
+import { HospitalController } from '../../../context/hospitalContext'
 import { ListSelect } from '../../../static/own-comp'
-import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
-import { PeopleController } from '../../../context/peopleContext'
+import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
+import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
 
-export default function AddPeople({ open, setOpen }) {
-    const { peopleDataDispatch } = useContext(PeopleController)
+const { Option } = Select
+
+export default function AddSubHospital({ open, setOpen, hospitalId }) {
+    const { subHospitalDataDispatch } = useContext(HospitalController)
 
     let [form] = Form.useForm()
 
@@ -17,7 +19,7 @@ export default function AddPeople({ open, setOpen }) {
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        peopleDataDispatch({ type: 'ADD_PEOPLE', payload: values })
+        subHospitalDataDispatch({ type: 'ADD_SUB_HOSPITAL', payload: {...values, hospitalId: hospitalId} })
 
         setOpen(false)
         form.resetFields()
@@ -75,7 +77,7 @@ export default function AddPeople({ open, setOpen }) {
 
     return (
         <Modal
-            title="បញ្ចូលករណីថ្មី"
+            title="បញ្ចូលអ្ន​កជំងឺ"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
@@ -83,19 +85,11 @@ export default function AddPeople({ open, setOpen }) {
         >
             <Form
                 form={form}
-                name="addPeople"
+                name="addSubHospital"
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
-                    <Col xs={24} md={{ span: 24 }}>
-                        <Form.Item
-                            name="idCard"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="អត្តសញ្ញាណប័ណ្ណ" />
-                        </Form.Item>
-                    </Col>
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="name"
@@ -117,50 +111,6 @@ export default function AddPeople({ open, setOpen }) {
 
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="age"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="អាយុ" type="number" />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="job"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="មុខរបរ" />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} md={{ span: 11 }}>
-                        <Form.Item
-                            name="tel"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="ទូរស័ព្ទ" addonBefore="+855" type="number" />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="nationality"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="សញ្ជាតិ" />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11 }}>
-                        <Form.Item
-                            name="remark"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="ចំណាំ" />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11 , offset: 2}}>
-                        <Form.Item
                             name="province"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
@@ -170,7 +120,7 @@ export default function AddPeople({ open, setOpen }) {
 
                     {province === "សៀមរាប" ? (
                         <>
-                            <Col xs={24} md={{ span: 11 }}>
+                            <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="district"
                                     rules={[{ required: true, message: 'Please input your username!' }]}
@@ -178,7 +128,7 @@ export default function AddPeople({ open, setOpen }) {
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
+                            <Col xs={24} md={{ span: 11 }}>
                                 <Form.Item
                                     name="commune"
                                     rules={[{ required: true, message: 'Please input your username!' }]}
@@ -186,7 +136,7 @@ export default function AddPeople({ open, setOpen }) {
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} md={{ span: 24 }}>
+                            <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="village"
                                     rules={[{ required: true, message: 'Please input your username!' }]}
@@ -198,7 +148,45 @@ export default function AddPeople({ open, setOpen }) {
                     ) : null}
 
 
-                    
+                    <Col xs={24} md={province === "សៀមរាប" ? { span: 11 } : {span: 11, offset: 2}}>
+                        <Form.Item
+                            name="status"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Select
+                                showSearch
+                                style={{ width: "100%" }}
+                                placeholder="ស្ថានភាព"
+                                optionFilterProp="children"
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                <Option value="វិជ្ជមាន">វិជ្ជមាន</Option>
+                                <Option value="អវិជ្ជមាន">អវិជ្ជមាន</Option>
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={province === "សៀមរាប" ? {span: 11, offset: 2} : { span: 24 }}>
+                        <Form.Item
+                            name="relatedInfo"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Select
+                                showSearch
+                                style={{ width: "100%" }}
+                                placeholder="លក្ខណៈពាក់ព័ន្ធ"
+                                optionFilterProp="children"
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                <Option value="ផ្ទាល់">ផ្ទាល់</Option>
+                                <Option value="ប្រយោល">ប្រយោល</Option>
+                            </Select>
+                        </Form.Item>
+                    </Col>
 
                     <Col xs={24}>
                         <Button

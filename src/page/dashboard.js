@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
-import { Row, Col, Typography, DatePicker, Select, List } from 'antd'
+import { Row, Col, Typography, DatePicker, Select, List,Button } from 'antd'
 import { DashboardController } from '../context/dashboardContext'
+import DatePickerTwo from '../component/datepickertwo/datePickerTwo'
 
 const { Title } = Typography
 const { RangePicker } = DatePicker
@@ -12,7 +13,16 @@ export default function Dashboard() {
     const [dataTop, setDataTop] = useState(dashBoardData)
     const [dataTopRight, setDataTopRight] = useState(dashboardList)
 
+    const [displayDate, setDisplayDate] = useState("none")
+
     const dataTitle = ["ចាប់ពី", "រហូតដល់"]
+
+    const [ranges,setRange] =useState({
+        startDate:"",
+        endDate:""
+    })
+
+    console.log(ranges)
 
     return (
         <Row>
@@ -27,7 +37,11 @@ export default function Dashboard() {
                         md={12}
                         className="inCol"
                     >
-                        <RangePicker placeholder={dataTitle} style={{width:"100%"}} />
+                        {/* <RangePicker placeholder={dataTitle} style={{width:"100%"}} /> */}
+                        <Button style={{color:'#CCC', width: "100%"}} onClick={()=> setDisplayDate(displayDate==="block" ? "none":"block")}>ជ្រើសរើសកាលបរិច្ឆេទ</Button>
+                        <div style={{position:'absolute',zIndex:99,display:displayDate}}>
+                        <DatePickerTwo ranges={ranges} setRange={setRange} />
+                        </div>
                     </Col>
                     <Col
                         xs={24}
@@ -102,7 +116,7 @@ export default function Dashboard() {
                                 bordered
                                 dataSource={dataTopRight}
                                 renderItem={item => (
-                                    <List.Item>
+                                    <List.Item style={{backgroundColor:'#FFF'}}>
                                         <span>{item.title}</span>
                                         <span>{item.case}នាក់</span>
                                     </List.Item>

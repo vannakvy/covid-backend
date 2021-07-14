@@ -1,19 +1,19 @@
 import { Col, Row, Typography, Table } from 'antd'
 import React, { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { QuarantineController } from '../../context/quarantineContext'
+import { HospitalController } from '../../context/hospitalContext'
 import moment from 'moment'
-import { subQuarantineCol } from './tableColumn/subQuarantineColumn'
+import { subHospitalCol } from './tableColumn/subHospitalColumn'
 import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
-import EditQuarantine from './modal/editQuarantine'
-import AddSubQuarantine from './modal/addSubQuarantine'
-import EditSubQuarantine from './modal/editSubQuarantine'
+import EditHospital from './modal/editHospital'
+import AddSubHospital from './modal/addSubHospital'
+import EditSubHospital from './modal/editSubHospital'
 
 const {Title} = Typography
 
-export default function SubQuarantine() {
+export default function SubHospital() {
 
-    const { quarantineData, subQuarantineData, subQuarantineDataDispatch } = useContext(QuarantineController)
+    const { hospitalData, subHospitalData, subHospitalDataDispatch } = useContext(HospitalController)
 
     let { id } = useParams();
 
@@ -25,23 +25,23 @@ export default function SubQuarantine() {
     const [openEditSub, setOpenEditSub] = useState(false)
 
     useEffect(() => {
-        setHeaderData(quarantineData[quarantineData.findIndex(e => e.id === id)])
+        setHeaderData(hospitalData[hospitalData.findIndex(e => e.id === id)])
     }, [])
 
     // console.log(headerData)
     const handleDelete = (e) => {
-        subQuarantineDataDispatch({type: "DELETE_SUB_QUARANTINE", payload: e})
+        subHospitalDataDispatch({type: "DELETE_SUB_HOSPITAL", payload: e})
     }
 
-    const handleEditSubQuarantine = (e) => {
+    const handleEditSubHospital = (e) => {
         setUpdateSubData(e)
         setOpenEditSub(true)
     }
     return (
         <Row>
-            <EditQuarantine open={openEdit} setOpen={setOpenEdit} data={headerData} setData={setHeaderData} />
-            <AddSubQuarantine open={openAddSub} setOpen={setOpenAddSub} quaratineId={id} />
-            <EditSubQuarantine open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData}  />
+            <EditHospital open={openEdit} setOpen={setOpenEdit} data={headerData} setData={setHeaderData} />
+            <AddSubHospital open={openAddSub} setOpen={setOpenAddSub} hospitalId={id} />
+            <EditSubHospital open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData}  />
             <Col
                 xs={24}
             >
@@ -54,7 +54,7 @@ export default function SubQuarantine() {
                 md={11}
                 className="subCase-card"
             >
-                <p>ឈ្មោះមណ្ឌល៖ {headerData?.quarantineName} <EditOutlined className="link" onClick={() => setOpenEdit(true)}/></p>
+                <p>ឈ្មោះមណ្ឌល៖ {headerData?.hospitalName} <EditOutlined className="link" onClick={() => setOpenEdit(true)}/></p>
                 <p>ទីតាំង៖ {headerData?.place}</p>
                 <p>អាចផ្ទុក៖ {headerData?.capacity}</p>
                 <p>អាសយដ្ឋាន៖ {headerData?.village},{headerData?.commune},{headerData?.district},{headerData?.province}</p>
@@ -62,18 +62,18 @@ export default function SubQuarantine() {
                 <p>លេខទូរស័ព្ទ៖ {headerData?.tel}</p>
                 <p>ចំណាំ៖ {headerData?.note}</p>
             </Col>
-            <Col
+            {/* <Col
                 xs={24}
                 md={{ span: 11, offset: 2 }}
                 className="subCase-card"
             >
                 <p>មណ្ឌលព្យាបាល៖ </p>
-                {/* <EditOutlined className="link" onClick={() => setOpenEdit(true)}/> */}
+
                 <p>ឈ្មោះមណ្ឌល៖​ </p>
                 <p>ទីតាំង៖ </p>
                 <p>កាលបរិច្ឆេទ​ចូល៖ </p>
                 <p>កាលបរិច្ឆេទចេញ៖ </p>
-            </Col>
+            </Col> */}
 
 
             <Col
@@ -81,7 +81,7 @@ export default function SubQuarantine() {
                 style={{ marginTop: 20 }}
             >
                 <Title level={5}>
-                    អ្នកធ្វើចត្តាឡីស័ក៖ 
+                    អ្នកជំងឺ៖ 
 
                     <PlusCircleOutlined className="link" onClick={() => setOpenAddSub(true)}/>
                 </Title>
@@ -92,8 +92,8 @@ export default function SubQuarantine() {
                 md={24}
             >
                 <Table
-                    columns={subQuarantineCol({handleDelete, handleEditSubQuarantine})}
-                    dataSource={subQuarantineData}
+                    columns={subHospitalCol({handleDelete, handleEditSubHospital})}
+                    dataSource={subHospitalData}
                     rowKey={record => record.id}
                     pagination={true}
                     scroll={{ x: 240 }}

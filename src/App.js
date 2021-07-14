@@ -14,6 +14,7 @@ import DashBoardContext from './context/dashboardContext'
 import CaseContext from './context/caseContext'
 import UserContext from './context/userContext';
 import QuarantineContext from './context/quarantineContext';
+import HospitalContext from './context/hospitalContext';
 
 import Dashboard from './page/dashboard';
 import Case from './page/case'
@@ -24,6 +25,8 @@ import SubQuarantine from './component/quarantine/subQuarantine';
 import PeopleContext from './context/peopleContext';
 import People from './page/people';
 import SubPeople from './component/people/subPeople';
+import Hospital from './page/hospital';
+import SubHospital from './component/hospital/subHospital';
 
 const { Footer, Content } = Layout
 
@@ -47,6 +50,7 @@ function App() {
                   <UserContext>
                     <QuarantineContext>
                       <PeopleContext>
+                        <HospitalContext>
 
                         <Switch>
                           <Route exact path="/">
@@ -73,8 +77,14 @@ function App() {
                           <Route path="/subQuarantine/:id">
                             <SubQuarantine />
                           </Route>
+                          <Route path="/hospital">
+                            <Hospital />
+                          </Route>
+                          <Route path="/subHospital/:id">
+                            <SubHospital />
+                          </Route>
                         </Switch>
-
+                        </HospitalContext>
                       </PeopleContext>
                     </QuarantineContext>
                   </UserContext>

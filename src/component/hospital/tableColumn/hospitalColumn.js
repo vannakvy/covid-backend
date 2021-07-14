@@ -1,12 +1,14 @@
+import React from 'react'
 import { Space, Tooltip, Popconfirm } from 'antd'
 import {
     EditOutlined,
     DeleteOutlined
 } from '@ant-design/icons';
-import moment from 'moment'
 import { Link } from 'react-router-dom'
 
-export const caseCol = ({handleDelete}) => {
+
+export const hospitalCol = ({handleDelete}) => {
+   
     var array = [
         {
             title: 'ល.រ',
@@ -20,36 +22,20 @@ export const caseCol = ({handleDelete}) => {
             ),
         },
         {
-            title: 'ឈ្មោះករណី',
-            dataIndex: 'caseTitle',
-            key: 'caseTitle',
+            title: 'ឈ្មោះមណ្ឌល',
+            dataIndex: 'hospitalName',
+            key: 'hospital',
             width: 150,
         },
         {
-            title: 'កាលបរិច្ឆេទ',
-            dataIndex: 'date',
-            key: 'date',
-            width: 100,
-            render: (text, record) => (
-                <Space size="middle">
-                    {moment(record.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
-                </Space>
-            ),
-        },
-        {
-            title: 'ទីតាំង',
+            title: 'ទីតាំង ',
             dataIndex: 'place',
             key: 'place',
             width: 100,
+            
         },
         {
-            title: 'ចំនួនអ្នកពាក់ព័ន្ធ',
-            dataIndex: 'related',
-            key: 'related',
-            width: 100,
-        },
-        {
-            title: 'អាសយដ្ឋាន',
+            title: 'អាសយដ្ឋាន  ',
             dataIndex: 'address',
             key: 'address',
             width: 100,
@@ -60,13 +46,28 @@ export const caseCol = ({handleDelete}) => {
                     </Space>
                 </Tooltip>
             ),
+            
+        },
+        {
+            title: 'អ្នកទទួលខុសត្រូវ',
+            dataIndex: 'inCharge',
+            key: 'inCharge',
+            width: 100,
+            
+        },
+        {
+            title: 'លេខទូរស័ព្ទ',
+            dataIndex: 'tel',
+            key: 'tel',
+            width: 100,
         },
         {
             title: 'ចំណាំ',
-            dataIndex: 'remark',
-            key: 'remark',
-            width: 150,
+            dataIndex: 'note',
+            key: 'note',
+            width: 100,
         },
+    
         {
             key: 'action',
             dataIndex: 'action',
@@ -75,7 +76,7 @@ export const caseCol = ({handleDelete}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <Link to={"/subCase/" + record.id}><EditOutlined /></Link>
+                    <Link to={"/subHospital/"+record.id}><EditOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}

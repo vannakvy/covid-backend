@@ -1,27 +1,27 @@
 import { setQuarantine, setSubQuarantine } from '../function/set'
 
-export function quarantineReducer(state, action) {
+export function hospitalReducer(state, action) {
 
     let item = [...state]
     let index1 = item.findIndex(e => e.id === action.payload.id)
     let index = item.findIndex(e => e.id === action.payload)
     switch (action.type) {
-        case 'ADD_QUARANTINE':
+        case 'ADD_HOSPITAL':
             item.push(setQuarantine(action.payload, item.length))
             return item;
-        case 'EDIT_QUARANTINE':
+        case 'EDIT_HOSPITAL':
             item[index1] = action.payload
             return item;
-        case 'DELETE_QUARANTINE':
+        case 'DELETE_HOSPITAL':
             item.splice(index, 1)
             return item;
-        case 'ADD_SUB_QUARANTINE':
+        case 'ADD_SUB_HOSPITAL':
             item.push(setSubQuarantine(action.payload, item.length))
             return item;
-        case 'EDIT_SUB_QUARANTINE':
+        case 'EDIT_SUB_HOSPITAL':
             item[index1] = action.payload
             return item;
-        case 'DELETE_SUB_QUARANTINE':
+        case 'DELETE_SUB_HOSPITAL':
             item.splice(index, 1)
             return item;
 

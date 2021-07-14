@@ -12,7 +12,6 @@ export function userReducer(state, action) {
             return item;
         case 'EDIT_USER':
             item[index1] = action.payload
-
             return item;
         case 'DELETE_USER':
             item.splice(index, 1)
@@ -21,7 +20,6 @@ export function userReducer(state, action) {
         case 'DELETE_SUB_CASE':
             item.push(setUser(action.payload, item.length))
             return item;
-
         default:
             throw new Error();
     }
