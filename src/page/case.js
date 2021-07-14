@@ -4,8 +4,6 @@ import { PlusOutlined } from '@ant-design/icons';
 import { caseCol } from '../component/case/tableColumn/caseColumn'
 import { CaseController } from '../context/caseContext'
 import AddCase from '../component/case/modal/addCase';
-import {GET_ALL_CASES} from '../graphql/case'
-import {useQuery} from '@apollo/client'
 
 export default function Case() {
     const {caseData, caseDataDispatch} = useContext(CaseController)
@@ -15,10 +13,6 @@ export default function Case() {
     const handleDelete = (e) => {
         caseDataDispatch({type: "DELETE_CASE", payload: e})
     }
-
-    const {data, loading, error} = useQuery(GET_ALL_CASES);
-    loading && console.log("loading")
-    console.log(data);
 
     return (
         <Row>
