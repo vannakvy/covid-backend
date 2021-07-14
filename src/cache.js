@@ -14,7 +14,6 @@ export const cache = new InMemoryCache({
               return isUserVar();
             }
           },
-  
         }
       }
     }
