@@ -27,11 +27,71 @@ import People from './page/people';
 import SubPeople from './component/people/subPeople';
 import Hospital from './page/hospital';
 import SubHospital from './component/hospital/subHospital';
+///
+import {
+  split,
+   HttpLink,
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider
+} from "@apollo/client";
+import { createUploadLink } from 'apollo-upload-client';
+import { getMainDefinition } from '@apollo/client/utilities';
+import { WebSocketLink } from '@apollo/client/link/ws';
+import {cache} from './cache'
 
+
+////
 const { Footer, Content } = Layout
+
+
+
+const upLoadLink = createUploadLink({
+  uri: "http://96.9.90.104:4000/graphql",
+  // headers:{
+  //   Authorization: localStorage.getItem('token')
+  // }
+})
+
+
+// const httpLink = new HttpLink({
+//   uri: 'http://96.9.90.104:4000/graphql',
+
+// });
+
+const wsLink = new WebSocketLink({
+uri: 'ws://96.9.90.104:4000/graphql',
+options: {
+  reconnect: true
+}
+});
+const splitLink = split(
+({ query }) => {
+  const definition = getMainDefinition(query);
+  return (
+    definition.kind === 'OperationDefinition' &&
+    definition.operation === 'subscription'
+  );
+},
+wsLink,
+upLoadLink
+
+
+);
+
+const client = new ApolloClient({
+cache,
+onError: ({ networkError, graphQLErrors }) => {
+  console.log('graphQLErrors', graphQLErrors)
+  console.log('networkError', networkError)
+},
+
+link:splitLink
+});
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <Router>
       <div className="App">
         <Layout style={{ minHeight: '100vh' }}>
@@ -51,7 +111,6 @@ function App() {
                     <QuarantineContext>
                       <PeopleContext>
                         <HospitalContext>
-
                         <Switch>
                           <Route exact path="/">
                             <Dashboard />
@@ -96,6 +155,7 @@ function App() {
         </Layout>
       </div>
     </Router>
+    </ApolloProvider>
   );
 }
 
