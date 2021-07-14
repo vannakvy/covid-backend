@@ -4,6 +4,8 @@ import { PlusOutlined } from '@ant-design/icons';
 import { caseCol } from '../component/case/tableColumn/caseColumn'
 import { CaseController } from '../context/caseContext'
 import AddCase from '../component/case/modal/addCase';
+import { useQuery } from '@apollo/client';
+import {GET_ALL_CASES} from '../graphql/case'
 
 export default function Case() {
     const {caseData, caseDataDispatch} = useContext(CaseController)
