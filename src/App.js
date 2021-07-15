@@ -21,13 +21,13 @@ import Routes from './Routes';
     // }
   })
 
-
 const wsLink = new WebSocketLink({
   uri: 'ws://96.9.90.104:4000/graphql',
   options: {
     reconnect: true
   }
 });
+
 const splitLink = split(
   ({ query }) => {
     const definition = getMainDefinition(query);
@@ -38,8 +38,6 @@ const splitLink = split(
   },
   wsLink,
   upLoadLink
-
-  
 );
 
 const client = new ApolloClient({
