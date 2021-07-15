@@ -33,16 +33,17 @@ import {IS_LOGGED_IN} from './graphql/auth'
 const { Footer, Content } = Layout
 const Routes = () => {
     const { data: isLogin } = useQuery(IS_LOGGED_IN);
-
+    console.log(isLogin)
+    const login = isLogin?.isLoggedIn;
+  
     return (
         <Router>
-        {isLogin ? (
+        {login ? (
           <div className="App">
             <Layout style={{ minHeight: '100vh' }}>
               <HeaderContext>
                 <MenuHeader />
               </HeaderContext>
-  
               <Layout className="site-layout">
                 <HeaderContext>
                   <Navbar />

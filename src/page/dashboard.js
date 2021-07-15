@@ -12,7 +12,6 @@ export default function Dashboard() {
 
     const [dataTop, setDataTop] = useState(dashBoardData)
     const [dataTopRight, setDataTopRight] = useState(dashboardList)
-
     const [displayDate, setDisplayDate] = useState("none")
 
     const dataTitle = ["ចាប់ពី", "រហូតដល់"]
@@ -22,7 +21,6 @@ export default function Dashboard() {
         endDate:""
     })
 
-    console.log(ranges)
 
     return (
         <Row>
