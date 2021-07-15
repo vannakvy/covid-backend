@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react';
 import { HeaderData } from '../context/headerContext';
 // import { auth } from '../api/firebase';
+import { isLoggedInVar } from '../cache';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -23,6 +24,11 @@ export default function MenuHeader() {
     const { urlPath, user } = useContext(HeaderData)
 
     const [collapsed, setCollapsed] = useState(true)
+
+    const handleLoggout = ()=>{
+        localStorage.removeItem("user")
+        isLoggedInVar(false)
+    }
 
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)}
@@ -90,6 +96,7 @@ export default function MenuHeader() {
                     // onClick={() => auth.signOut()}
                     key="6"
                     icon={<ExportOutlined />}
+                    onClick={() => handleLoggout()}
                 >
                     ចាកចេញ
                 </Menu.Item>

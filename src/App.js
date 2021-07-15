@@ -50,8 +50,6 @@ const client = new ApolloClient({
   link:splitLink
 });
 
-
-
 function App() {
  
   return (

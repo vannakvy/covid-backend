@@ -33,12 +33,12 @@ import {IS_LOGGED_IN} from './graphql/auth'
 const { Footer, Content } = Layout
 const Routes = () => {
     const { data: isLogin } = useQuery(IS_LOGGED_IN);
-    const login = isLogin?.isLoggedIn;
+    const login = isLogin.isLoggedIn;
     return (
         <Router>
-        {login ? (
           <div className="App">
             <Layout style={{ minHeight: '100vh' }}>
+              {login? <>
               <HeaderContext>
                 <MenuHeader />
               </HeaderContext>
@@ -53,7 +53,7 @@ const Routes = () => {
                         <QuarantineContext>
                           <PeopleContext>
                             <HospitalContext>
-                              <Switch>
+                              <Switch >
                                 <Route exact path="/">
                                   <Dashboard />
                                 </Route>
@@ -93,16 +93,21 @@ const Routes = () => {
                   </DashBoardContext>
                 </Content>
                 <Footer style={{ textAlign: 'center', color: 'red', fontSize: 17 }}>រដ្ឋបាលខេត្តសៀមរាប/Siem Reap Provincial Hall &copy;2021</Footer>
-              </Layout>
+              </Layout></>: <Switch>
+                <Route>
+                  <Login/>
+                </Route>
+              </Switch>
+              }
             </Layout>
           </div>
-        ) : (
-          <div className="App">
+       
+          {/* <div className="App">
             <Route exact path="/login">
               <Login />
             </Route>
-          </div>
-        )}
+          </div> */}
+        
   
       </Router>
     )
