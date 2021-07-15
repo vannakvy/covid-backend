@@ -12,7 +12,7 @@ export default function Login() {
     onCompleted: ({ loginUser }) => {
       localStorage.setItem("user", loginUser);
       isLoggedInVar(true);
-      history.push('/')
+      // history.push('/')
     },
     onError: (e) => {
       console.log(e.message);
