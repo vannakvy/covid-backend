@@ -109,3 +109,36 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   width: 128px;
   height: 128px;
 }
+
+/* login */
+.login-form {
+  border: 1px solid #000;
+  /* min-width: 500px; */
+  padding: 10%;
+  box-shadow: 2px 8px 20px #CCC;
+  border:none;
+  margin:20px;
+}
+
+.login-input{
+  box-shadow: 2px 8px 20px #CCC;
+  border-radius: 2px;
+  border:none;
+  background-color: #FFF;
+  padding: 15px;
+}
+
+.login-logo{
+  width: 150px; 
+  height: 150px;
+  margin:20px auto;
+  /* padding: 10px 20%; */
+  border-radius: 100%;
+  box-shadow: 2px 8px 20px #CCC;
+}
+
+.line-shape{
+  border-bottom: 5px solid #707070;
+  width: 80px;
+  margin:20px 0px;
+}
