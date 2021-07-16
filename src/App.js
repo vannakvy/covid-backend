@@ -13,12 +13,17 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import Routes from './Routes';
 
+const token =()=>{
+  let newToken =  JSON.parse(localStorage.getItem('user'))
+  return newToken.token
+}
 
  const upLoadLink = createUploadLink({
     uri: "http://96.9.90.104:4000/graphql",
-    // headers:{
-    //   Authorization: localStorage.getItem('token')
-    // }
+    headers:{
+      Authorization: token()
+    }
+    
   })
 
 const wsLink = new WebSocketLink({
@@ -51,7 +56,6 @@ const client = new ApolloClient({
 });
 
 function App() {
- 
   return (
     <ApolloProvider client={client}>
       <Routes/>

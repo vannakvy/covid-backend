@@ -12,7 +12,7 @@ export default function Login() {
   const { data: isLogin } = useQuery(IS_LOGGED_IN);
   const [loginUser, { error, loading }] = useMutation(LOGIN_USER, {
     onCompleted: ({ loginUser }) => {
-      localStorage.setItem("user", loginUser);
+      localStorage.setItem("user", JSON.stringify(loginUser));
       isLoggedInVar(true);
     },
     onError: (e) => {
@@ -48,7 +48,7 @@ export default function Login() {
         </div>
         <h2 style={{ color: '#707070' }}>ការចូលគណនី</h2>
         <div className="line-shape"></div>
-        <Form
+        <Form autoComplete="off"
             name="basic"
             // style={{margin:'20%'}}
             onFinish={onFinish}
@@ -64,7 +64,7 @@ export default function Login() {
                     },
                 ]}
             >
-                <Input placeholder="ឈ្មោះសម្គាល់" className="login-input" />
+                <Input  placeholder="ឈ្មោះសម្គាល់" className="login-input" />
             </Form.Item>
 
             <Form.Item
