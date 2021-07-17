@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f5f6fa;
+  padding: 20px;
+}
+
+.app__dropdown {
+  width: 400px;
+  background-color: white;
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+/* .app__header > h1 {
+  color: #fc3c3c;
+  font-size: 2rem;
+} */
+
+.app__stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app__left {
+  flex: 0.9;
+}
+
+.app__information > h3 {
+  color: #6a5d5d;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.app__information > h3:last-of-type {
+  margin-top: 1rem;
+}
+
+@media (max-width: 990px) {
+  .app {
+    flex-direction: column;
+  }
+}
+.ti {
+  border: 1px solid rgb(41, 233, 217);
+  padding: 8px;
+  border-radius: 5px;
+  background: rgba(10, 207, 131, 0.568);
+  font-family: myriad-pro, Lucida Grande, Arial, "Kantumruy", "Siemreap",
+    sans-serif;
+  font-weight: 400;
+}
+.covid_table {
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  background: rgba(216, 182, 30, 0.568);
+
+  font-family: myriad-pro, Lucida Grande, Arial, "Kantumruy", "Siemreap";
+}
+
+.app__information h3 {
+  font-family: myriad-pro, Lucida Grande, Arial, "Kantumruy", "Siemreap",
+    sans-serif;
+  font-weight: 400;
+}

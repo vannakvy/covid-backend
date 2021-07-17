@@ -15,19 +15,21 @@ import Routes from './Routes';
 
 const token =()=>{
   let newToken =  JSON.parse(localStorage.getItem('user'))
-  return newToken.token
+  return newToken?.token
 }
 
+const tokens = token()
+
  const upLoadLink = createUploadLink({
-    uri: "http://96.9.90.104:4000/graphql",
+    uri: "http://192.168.1.152:4000/graphql",
     headers:{
-      Authorization: token()
+      Authorization: tokens
     }
     
   })
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://96.9.90.104:4000/graphql',
+  uri: 'ws://192.168.1.152:4000/graphql',
   options: {
     reconnect: true
   }
