@@ -34,11 +34,12 @@ import MapScreen from './page/map';
 const { Footer, Content } = Layout
 const Routes = () => {
     const { data: isLogin } = useQuery(IS_LOGGED_IN);
-    const login = isLogin.isLoggedIn;
+    const login = false;
+     {/* <Dashboard /> */}
     return (
-        <Router>
+        // <Router>
           <div className="App">
-            <Layout style={{ minHeight: '100vh' }}>
+            {/* <Layout style={{ minHeight: '100vh' }}>
               {login? <>
               <HeaderContext>
                 <MenuHeader />
@@ -56,7 +57,7 @@ const Routes = () => {
                             <HospitalContext>
                               <Switch >
                                 <Route exact path="/">
-                                  {/* <Dashboard /> */}
+                                 
                                   <MapScreen/>
                                 </Route>
                                 <Route path="/case">
@@ -101,17 +102,14 @@ const Routes = () => {
                 </Route>
               </Switch>
               }
-            </Layout>
+            </Layout> */}
+            Hello workd 
           </div>
        
-          {/* <div className="App">
-            <Route exact path="/login">
-              <Login />
-            </Route>
-          </div> */}
+        
         
   
-      </Router>
+      // </Router>
     )
 }
 

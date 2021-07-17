@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState,useEffect} from 'react'
 import { Row, Col, Button, Input, Table } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { caseCol } from '../component/case/tableColumn/caseColumn'
@@ -8,17 +8,34 @@ import { useQuery } from '@apollo/client';
 import {GET_ALL_CASES} from '../graphql/case'
 
 export default function Case() {
-    const {caseData, caseDataDispatch} = useContext(CaseController)
-
+    //const {caseData, caseDataDispatch} = useContext(CaseController)
+    const [caseData,setCaseData] = useState([])
     const [openAdd, setOpenAdd] = useState(false)
 
+    const [page, setPage] = useState(1)
+    const [limit, setLimit] = useState(10)
+    const [keyword, setKeyword] = useState("")
+
+    const {data, loading,error, refetch} = useQuery(GET_ALL_CASES,{variables:{
+        page:page,
+        limit:limit,
+        keyword:keyword,
+    },onCompleted:({getCaseWithPagination})=>{
+        console.log(getCaseWithPagination)
+        setCaseData(getCaseWithPagination)
+    }})
+
+    useEffect(() => {
+        refetch()
+    }, [page,limit,keyword])
+
     const handleDelete = (e) => {
-        caseDataDispatch({type: "DELETE_CASE", payload: e})
+        //caseDataDispatch({type: "DELETE_CASE", payload: e})
     }
 
     return (
         <Row>
-            <AddCase open={openAdd} setOpen={setOpenAdd} />
+            <AddCase open={openAdd} refetch={refetch} setOpen={setOpenAdd} />
             <Col
                 xs={8}
                 md={18}
@@ -36,6 +53,7 @@ export default function Case() {
                 md={6}
             >
                 <Input.Search
+                    onChange={(e)=> setKeyword(e.target.value)}
                     placeholder="ស្វែងរក..."
                 />
             </Col>
@@ -44,10 +62,14 @@ export default function Case() {
                 style={{ marginTop: 20 }}
             >
                 <Table
-                    columns={caseCol({handleDelete})}
-                    dataSource={caseData}
+                    columns={caseCol({handleDelete, limit, page})}
+                    dataSource={caseData?.cases}
                     rowKey={record => record.id}
-                    pagination={true}
+                    pagination={{
+                        total: caseData?.paginator?.totalDocs,
+                        // showSizeChanger: true,
+                        onChange:((page, pageSize) => {setPage(page);setLimit(pageSize)} )
+                    }}
                     scroll={{ x: 1500 }} 
                     sticky 
                 />

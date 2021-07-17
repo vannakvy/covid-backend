@@ -5,9 +5,11 @@ import {
     DeleteOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom'
+import { getFullNamePersonInCharge, getRoles } from '../../../function/fn';
 
+export const quarantineCol = ({handleDelete,limit,page}) => {
 
-export const quarantineCol = ({handleDelete}) => {
+    let no = ((page-1) * limit)
    
     var array = [
         {
@@ -17,23 +19,17 @@ export const quarantineCol = ({handleDelete}) => {
             width: 50,
             render: (text, record, i) => (
                 <Space size="middle">
-                    {i += 1}
+                    {no += 1}
                 </Space>
             ),
         },
         {
             title: 'ឈ្មោះមណ្ឌល',
-            dataIndex: 'quarantineName',
-            key: 'quarantine',
+            dataIndex: 'locationName',
+            key: 'locationName',
             width: 150,
         },
-        {
-            title: 'ទីតាំង ',
-            dataIndex: 'place',
-            key: 'place',
-            width: 100,
-            
-        },
+       
         {
             title: 'អាសយដ្ឋាន  ',
             dataIndex: 'address',
@@ -50,21 +46,39 @@ export const quarantineCol = ({handleDelete}) => {
         },
         {
             title: 'អ្នកទទួលខុសត្រូវ',
-            dataIndex: 'inCharge',
-            key: 'inCharge',
+            dataIndex: 'personInCharge',
+            key: 'personInCharge',
             width: 100,
+            render: (text, record) => (
+                <span size="middle">
+                    {
+                        // getFullNamePersonInCharge(record.personInCharge)
+                        record.personInCharge.lastName+" "+record.personInCharge.firstName
+                        // console.log(record.personInCharge)
+                    }
+                </span>
+            ),
             
         },
         {
             title: 'លេខទូរស័ព្ទ',
-            dataIndex: 'tel',
-            key: 'tel',
+            dataIndex: 'personInCharge',
+            key: 'personInCharge',
             width: 100,
+            render: (text, record) => (
+                <span size="middle">
+                    {
+                        // getFullNamePersonInCharge(record.personInCharge)
+                        record.personInCharge.tel
+                        // console.log(record.personInCharge)
+                    }
+                </span>
+            ),
         },
         {
             title: 'ចំណាំ',
-            dataIndex: 'note',
-            key: 'note',
+            dataIndex: 'other',
+            key: 'other',
             width: 100,
         },
     

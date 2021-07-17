@@ -1,17 +1,28 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect,useState} from 'react'
 import { Modal, Form, Input, DatePicker, Row, Col, Button } from 'antd'
 import {CaseController} from '../../../context/caseContext'
 import {setEditCase} from '../../../function/set'
+import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
+import { ListSelect } from '../../../static/own-comp'
+import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
 
 export default function EditCase({ open, setOpen, data, setData }) {
     const {caseDataDispatch} = useContext(CaseController)
+
+    const [province, setProvince] = useState("")
+    const [district, setDistrict] = useState("")
+    const [commune, setCommune] = useState("")
 
     let [form] = Form.useForm()
 
     useEffect(() => {
         if (data !== undefined){
             form.setFieldsValue(setEditCase(data))
+            setProvince(data.province)
+            setDistrict(data.district)
+            setCommune(data.commune)
         }
+
     }, [data])
 
     const onFinish = (values) => {
@@ -26,6 +37,46 @@ export default function EditCase({ open, setOpen, data, setData }) {
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
+    };
+
+    const setToProviceFn = (e) => {
+        form.setFieldsValue({
+            province: e,
+            district: null,
+            commune: null,
+            village: null,
+        });
+
+        setProvince(e)
+        setDistrict("")
+        setCommune("")
+    };
+
+
+    const setToDistrictFn = (e) => {
+        form.setFieldsValue({
+            district: e,
+            commune: null,
+            village: null,
+        });
+
+        setDistrict(e)
+        setCommune("")
+    };
+
+    const setToCommuneFn = (e) => {
+        form.setFieldsValue({
+            commune: e,
+            village: null,
+        });
+
+        setCommune(e)
+    };
+
+    const setToVillageFn = (e) => {
+        form.setFieldsValue({
+            village: e
+        });
     };
 
     return (
@@ -74,23 +125,43 @@ export default function EditCase({ open, setOpen, data, setData }) {
                         </Form.Item>
                     </Col>
 
-                    {/* <Col xs={24} md={{span:11}}>
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="related"
+                            name="province"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input type="number" placeholder="ចំនួនអ្នកពាក់ព័ន្ធផ្ទាល់" />
+                            <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{span:11, offset: 2}}>
-                        <Form.Item
-                            name="username"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input type="number" placeholder="ចំនួនអ្នកពាក់ព័ន្ធប្រយោល" />
-                        </Form.Item>
-                    </Col> */}
+                    {province === "សៀមរាប" ? (
+                        <>
+                            <Col xs={24} md={{ span: 11, offset: 2 }}>
+                                <Form.Item
+                                    name="district"
+                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                >
+                                    <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={24} md={{ span: 11 }}>
+                                <Form.Item
+                                    name="commune"
+                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                >
+                                    <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={24} md={{ span: 11, offset: 2 }}>
+                                <Form.Item
+                                    name="village"
+                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                >
+                                    <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
+                                </Form.Item>
+                            </Col>
+                        </>
+                    ) : null}
 
                     <Col xs={24}>
                         <Form.Item
@@ -98,6 +169,24 @@ export default function EditCase({ open, setOpen, data, setData }) {
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="ចំណាំ" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="long"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input type={1} placeholder="longtitude" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 , offset:2}}>
+                        <Form.Item
+                            name="lat"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input type={1} placeholder="latitude" />
                         </Form.Item>
                     </Col>
 

@@ -4,17 +4,21 @@ import {
     EditOutlined,
     DeleteOutlined
 } from '@ant-design/icons';
+import { getRoles } from '../../../function/fn';
 
-export const userCol = ({ handleDelete, handleUserEdit }) => {
+export const userCol = ({ handleDelete, handleUserEdit,handleUserRole, setRoleUserID , limit, page }) => {
+    let l = limit >= 20 ? limit/page : limit
+    let no = ((page-1) * l)
+
     var array = [
         {
             title: 'ល.រ',
             dataIndex: 'id',
             key: 'id',
-            width: 20,
-            render: (text, record, i) => (
+            width: 50,
+            render: (text, record) => (
                 <Space size="middle">
-                    {i += 1}
+                    {no+=1}
                 </Space>
             ),
         },
@@ -25,11 +29,29 @@ export const userCol = ({ handleDelete, handleUserEdit }) => {
             width: 100,
         },
         {
+            title: 'គោត្តនាម',
+            dataIndex: 'firstName',
+            key: 'firstName',
+            width: 100,
+        },
+        {
+            title: 'នាម',
+            dataIndex: 'lastName',
+            key: 'lastName',
+            width: 100,
+        },
+        {
             title: 'តួនាទី',
-            dataIndex: 'role',
-            key: 'role',
+            dataIndex: 'roles',
+            key: 'roles',
             width: 50,
-
+            render: (text, record) => (
+                <span onClick={()=> {handleUserRole(record.roles);setRoleUserID(record.id)}} className="link" size="middle">
+                    {
+                        getRoles(record.roles)
+                    }
+                </span>
+            ),
         },
         {
             title: 'លេខទូរស័ព្ទ',
@@ -38,9 +60,9 @@ export const userCol = ({ handleDelete, handleUserEdit }) => {
             width: 80,
         },
         {
-            title: 'ចំណាំ',
-            dataIndex: 'note',
-            key: 'note',
+            title: 'អ៊ីម៉ែល',
+            dataIndex: 'email',
+            key: 'email',
             width: 100,
         },
 

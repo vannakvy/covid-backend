@@ -1,22 +1,43 @@
 import React, { useContext } from 'react'
 import { Modal, Form, Input, Row, Col, Button,Select, message} from 'antd';
 import { UserController } from '../../../context/userContext'
-
+import { useMutation } from '@apollo/client';
+import { REGISTER_USER } from '../../../graphql/auth';
 
 const { Option } = Select;
 
 export default function AddUser({ open, setOpen }) {
-    const { userDataDispatch } = useContext(UserController)
+
+    const [registerUser,{loading,error}] = useMutation(REGISTER_USER,{
+        onCompleted:({registerUser})=>{
+            console.log(registerUser)
+            message.success("បញ្ចូលបានជោគជ័យ")
+            setOpen(false)
+        },
+        onError:(error)=>{
+            console.log(error.message)
+        }
+    })
 
     let [form] = Form.useForm()
 
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        userDataDispatch({ type: 'ADD_USER', payload: values })
-        message.success("បញ្ចូលបានជោគជ័យ")
+        registerUser({
+            variables:{
 
-        setOpen(false)
+                username:values.username,
+                password:values.password,
+                firstname:values.firstname,
+                lastname:values.lastname,
+                email:values.email,
+                role:values.role,
+                tel:values.tel
+
+            }
+        })
+
         form.resetFields()
     };
 
@@ -59,14 +80,32 @@ export default function AddUser({ open, setOpen }) {
 
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
+                            name="firstname"
+                            rules={[{ required: true, message: 'Field is required!' }]}
+                        >
+                            <Input placeholder="នាម" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
+                        <Form.Item
+                            name="lastname"
+                            rules={[{ required: true, message: 'Field is required!' }]}
+                        >
+                            <Input placeholder="គោត្តនាម" style={{ width: "100%" }} />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
                             name="role"
                             rules={[{ required: true, message: 'Field is required!' }]}
                         >
                             {/* <Input placeholder="តួនាទី" /> */}
                             <Select placeholder="តួនាទី" style={{ width: "100%" }}>
+                            <Option value="BASIC">BASIC</Option>
                                 <Option value="ADMIN">ADMIN</Option>
-                                <Option value="USER">USER</Option>
-                               
+                                <Option value="SUPPER">SUPPER</Option>
                             </Select>
                         </Form.Item>
                     </Col>
@@ -81,10 +120,10 @@ export default function AddUser({ open, setOpen }) {
 
                     <Col xs={24}>
                         <Form.Item
-                            name="note"
+                            name="email"
                         // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="ចំណាំ" />
+                            <Input type="email" placeholder="អ៊ីម៉ែល" />
                         </Form.Item>
                     </Col>
 
@@ -93,6 +132,7 @@ export default function AddUser({ open, setOpen }) {
                             htmlType="submit"
                             type="primary"
                             style={{ width: "100%" }}
+                            // onClick={()=> }
                         >
                             បញ្ចូលទិន្នន័យ
                         </Button>

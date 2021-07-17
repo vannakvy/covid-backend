@@ -16,6 +16,8 @@ export default function CaseContext(props) {
             commune: "ស្វាយដង្គំ",
             village: "ល្វា",
             remark: "ដេកពេទ្យ",
+            lat:12.23434,
+            long:34.3344,
         },
         {
             id: "2",
@@ -28,6 +30,8 @@ export default function CaseContext(props) {
             commune: "ស្វាយដង្គំ",
             village: "ល្វា",
             remark: "ដេកពេទ្យ",
+            lat:12.23434,
+            long:34.3344,
         },
     ])
 

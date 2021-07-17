@@ -6,7 +6,8 @@ import {
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
-export const caseCol = ({handleDelete}) => {
+export const caseCol = ({handleDelete, limit,page}) => {
+    let no = ((page-1) * limit)
     var array = [
         {
             title: 'ល.រ',
@@ -15,14 +16,14 @@ export const caseCol = ({handleDelete}) => {
             width: 50,
             render: (text, record, i) => (
                 <Space size="middle">
-                    {i += 1}
+                    {no+=1}
                 </Space>
             ),
         },
         {
             title: 'ឈ្មោះករណី',
-            dataIndex: 'caseTitle',
-            key: 'caseTitle',
+            dataIndex: 'caseName',
+            key: 'caseName',
             width: 150,
         },
         {
@@ -32,16 +33,12 @@ export const caseCol = ({handleDelete}) => {
             width: 100,
             render: (text, record) => (
                 <Space size="middle">
+                    {/* {record.date} */}
                     {moment(record.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
                 </Space>
             ),
         },
-        {
-            title: 'ទីតាំង',
-            dataIndex: 'place',
-            key: 'place',
-            width: 100,
-        },
+      
         {
             title: 'ចំនួនអ្នកពាក់ព័ន្ធ',
             dataIndex: 'related',
@@ -52,19 +49,20 @@ export const caseCol = ({handleDelete}) => {
             title: 'អាសយដ្ឋាន',
             dataIndex: 'address',
             key: 'address',
-            width: 100,
+            width: 150,
             render: (text, record) => (
-                <Tooltip placement="top" title={record.village + "," + record.commune + "," + record.district + "," + record.province}>
-                    <Space size="middle">
-                        {record.village}
+                <Space size="middle">
+                        {record.village&& record.village}
+                        {record.commune&& record.commune}
+                        {record.district&& record.district}
+                        {record.province&& record.province}
                     </Space>
-                </Tooltip>
             ),
         },
         {
             title: 'ចំណាំ',
-            dataIndex: 'remark',
-            key: 'remark',
+            dataIndex: 'other',
+            key: 'other',
             width: 150,
         },
         {

@@ -25,7 +25,7 @@ export default function People() {
                     type="primary"
                     onClick={() => setOpenAdd(true)}
                 >
-                    បញ្ចូលករណី
+                    បញ្ចូលប្រជាជន
                     <PlusOutlined />
                 </Button>
             </Col>

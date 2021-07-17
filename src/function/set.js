@@ -29,6 +29,8 @@ export function setEditCase(values) {
         commune: values.commune === undefined ? "" : values.commune,
         village: values.village === undefined ? "" : values.village,
         remark: values.remark,
+        long: values.long === undefined ? "" : values.long,
+        lat: values.lat === undefined ? "" : values.lat,
     }
 
     return array
@@ -92,21 +94,29 @@ export function setUser(values, length) {
     var array = {
         id: values.id === undefined ? length += 1 + "" : values.id,
         username: values.username,
-        role: values.role,
+        firstName: values.firstName === undefined ? "" : values.firstName,
+        lastName: values.lastName === undefined ? "" : values.lastName,
+        role: values.roles.role,
         tel: values.tel,
-        note: values.note,
+        email: values.email,
     }
 
     return array
 }
 
 export function setEditUser(values) {
+    const data = values.roles
+
+    console.log(data)
+  
     var array = {
         id: values.id + "",
         username: values.username === undefined ? "" : values.username,
+        firstName: values.firstName === undefined ? "" : values.firstName,
+        lastName: values.lastName === undefined ? "" : values.lastName,
         role: values.role === undefined ? "" : values.role,
         tel: values.tel === undefined ? "" : values.tel,
-        note: values.note === undefined ? "" : values.note,
+        email: values.email === undefined ? "" : values.email,
     }
     return array
 }
@@ -244,5 +254,24 @@ export function setEditHospital(values, length) {
         note: values.note === undefined ? "" : values.note,
     }
 
+    return array
+}
+
+export function setAddQuarantine(values){
+    var array ={
+        locationName:values.locationName,
+        village:values.village,
+        commune:values.commune,
+        district:values.district,
+        province:values.province,
+        long: parseFloat(values.long),
+        lat:parseFloat(values.lat),
+        other:values.other,
+        firstName:values.firstName,
+        lastName:values.lastName,
+        position:values.position,
+        tel:values.tel,
+        others:values.others,
+    }
     return array
 }

@@ -42,3 +42,19 @@ export function getRelated(e, condition){
 
     return i
 }
+
+export function getRoles(e){
+    var txt = ""
+    e.map(load => {
+        txt+=load.role+", "
+    })
+    return txt
+}
+
+export function getFullNamePersonInCharge(e){
+    var txt = ""
+    e.map(load => {
+        txt+=load.firstName+" "+load.lastName
+    })
+    return txt
+}
