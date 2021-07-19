@@ -88,7 +88,7 @@ export default function EditSubCase({ open, setOpen, data, setData }) {
 
     return (
         <Modal
-            title="បញ្ចូលករណីថ្មី"
+            title="កែប្រែអ្នកពាក់ព័ន្ធ"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}

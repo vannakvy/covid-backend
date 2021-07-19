@@ -1,23 +1,46 @@
 import React, { useContext, useState } from 'react'
-import { Modal, Form, Input, Row, Col, Button, Select } from 'antd'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
+import { Modal, Form, Input, Row, Col, Button, Select, Divider,DatePicker, message  } from 'antd'
+import { provinceData, districtData, communeData, villageData, genderData} from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
 import { PeopleController } from '../../../context/peopleContext'
+import { useQuery, useMutation } from '@apollo/client'
+import { GET_ALL_CASES_NO_LIMIT } from '../../../graphql/case'
+import { CREATE_NEW_PERSON } from '../../../graphql/people'
+import { setAddPeople } from '../../../function/set'
+
+const { Option } = Select
 
 export default function AddPeople({ open, setOpen }) {
-    const { peopleDataDispatch } = useContext(PeopleController)
+    
 
     let [form] = Form.useForm()
 
     const [province, setProvince] = useState("")
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
+    const [allCases, setAllCases] = useState([])
+
+    const [createPersonalInfo,{loading:loadingCreate,error:errorCreate}] = useMutation(CREATE_NEW_PERSON,{
+        onCompleted:({createPersonalInfo})=>{
+            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+        },
+        onError:(error)=>{
+            console.log(error.message)
+        }
+    })
+
+    const {data,loading,error} = useQuery(GET_ALL_CASES_NO_LIMIT,{
+        onCompleted:({allCases})=>{
+            // console.log(allCases)
+            setAllCases(allCases)
+        }
+    })
 
     const onFinish = (values) => {
-        console.log('Success:', values);
+        console.log('Success:', setAddPeople(values));
 
-        peopleDataDispatch({ type: 'ADD_PEOPLE', payload: values })
+        createPersonalInfo({variables:setAddPeople(values)})
 
         setOpen(false)
         form.resetFields()
@@ -75,7 +98,7 @@ export default function AddPeople({ open, setOpen }) {
 
     return (
         <Modal
-            title="បញ្ចូលករណីថ្មី"
+            title="បញ្ចូលប្រជាជនថ្មី"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
@@ -98,14 +121,23 @@ export default function AddPeople({ open, setOpen }) {
                     </Col>
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="name"
+                            name="lastName"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="ឈ្មោះ" />
+                            <Input placeholder="គោត្តនាម" />
                         </Form.Item>
                     </Col>
 
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
+                        <Form.Item
+                            name="firstName"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="នាម" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="gender"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -115,7 +147,7 @@ export default function AddPeople({ open, setOpen }) {
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11 }}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="age"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -124,15 +156,15 @@ export default function AddPeople({ open, setOpen }) {
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11, offset: 2 }}>
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="job"
+                            name="occupation"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="មុខរបរ" />
                         </Form.Item>
                     </Col>
-                    <Col xs={24} md={{ span: 11 }}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="tel"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -141,7 +173,7 @@ export default function AddPeople({ open, setOpen }) {
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11, offset: 2 }}>
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="nationality"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -150,16 +182,9 @@ export default function AddPeople({ open, setOpen }) {
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11 }}>
-                        <Form.Item
-                            name="remark"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="ចំណាំ" />
-                        </Form.Item>
-                    </Col>
 
-                    <Col xs={24} md={{ span: 11 , offset: 2}}>
+
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="province"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -197,8 +222,103 @@ export default function AddPeople({ open, setOpen }) {
                         </>
                     ) : null}
 
+                    <Col xs={24} md={{ span:24}}>
+                        <Form.Item
+                            name="vaccinated"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input type="number" placeholder="ចំនួនចាក់វ៉ាក់សាំង" />
+                        </Form.Item>
+                    </Col>
+
+                    <Divider>ពាក់ព័ន្ធករណី</Divider>
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="case"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            {/* <Input type="number" placeholder="ចំនួនចាក់វ៉ាក់សាំង" /> */}
+                            <Select placeholder="ករណី" style={{ width: "100%" }} onChange={(e)=> console.log(e)}>
+                                {
+                                    allCases.map((c)=>(
+                                        <Option value={c.id}>{c.caseName}</Option>
+                                    ))
+                                }
+                                {/* <Option value={true}>ផ្ទាល់</Option>
+                                <Option value={false}>ប្រយោល</Option> */}
+
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset:2 }}>
+                        <Form.Item
+                            name="direct"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Select placeholder="លក្ខណៈពាក់ព័ន្ធ" style={{ width: "100%" }}>
+                                <Option value={true}>ផ្ទាល់</Option>
+                                <Option value={false}>ប្រយោល</Option>
+
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    {/* <Divider>ស្ថានភាពបច្ចុប្បន្ន</Divider>
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="status"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Select placeholder="ស្ថានភាព" style={{ width: "100%" }}>
+                                <Option value="អវិជ្ជមាន">អវិជ្ជមាន</Option>
+                                <Option value="វិជ្ជមាន">វិជ្ជមាន</Option>
+
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11,offset:2 }}>
+                        <Form.Item
+                            name="date"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <DatePicker placeholder="កាលបរិច្ឆេទ" style={{ width: "100%" }} />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="direct"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Select placeholder="លក្ខណៈពាក់ព័ន្ធ" style={{ width: "100%" }}>
+                                <Option value={true}>ផ្ទាល់</Option>
+                                <Option value={false}>ប្រយោល</Option>
+
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span:11, offset:2 }}>
+                        <Form.Item
+                            name="otherOfStatus"
+                            
+                        >
+                            <Input placeholder="ផ្សេងៗ" />
+                        </Form.Item>
+                    </Col> */}
 
                     
+
+                    <Col xs={24} md={{ span:24}}>
+                        <Form.Item
+                            name="other"
+                            
+                        >
+                            <Input placeholder="ចំណាំ" />
+                        </Form.Item>
+                    </Col>
 
                     <Col xs={24}>
                         <Button

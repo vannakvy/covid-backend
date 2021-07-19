@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <div>Vichet</div>,
+    <App />,
   document.getElementById('root')
 );
 

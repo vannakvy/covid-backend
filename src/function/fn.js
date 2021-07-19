@@ -33,12 +33,14 @@ export function convertToVillage(commune, data) {
 
 export function getRelated(e, condition){
     var i = 0
-    e.map(load => {
-        if(load.relatedInfo === condition){
-            i+=1
-        }
-        return null
-    })
+    if(e){
+        e.map(load => {
+            if(load.direct === condition){
+                i+=1
+            }
+            return null
+        })
+    }
 
     return i
 }

@@ -7,8 +7,8 @@ import {
 import { Link } from 'react-router-dom'
 
 
-export const hospitalCol = ({handleDelete}) => {
-   
+export const hospitalCol = ({handleDelete,limit,page}) => {
+    let no = ((page-1) * limit)
     var array = [
         {
             title: 'ល.រ',
@@ -17,22 +17,15 @@ export const hospitalCol = ({handleDelete}) => {
             width: 50,
             render: (text, record, i) => (
                 <Space size="middle">
-                    {i += 1}
+                    {no += 1}
                 </Space>
             ),
         },
         {
             title: 'ឈ្មោះមណ្ឌល',
             dataIndex: 'hospitalName',
-            key: 'hospital',
+            key: 'hospitalName',
             width: 150,
-        },
-        {
-            title: 'ទីតាំង ',
-            dataIndex: 'place',
-            key: 'place',
-            width: 100,
-            
         },
         {
             title: 'អាសយដ្ឋាន  ',
@@ -50,21 +43,38 @@ export const hospitalCol = ({handleDelete}) => {
         },
         {
             title: 'អ្នកទទួលខុសត្រូវ',
-            dataIndex: 'inCharge',
-            key: 'inCharge',
+            dataIndex: 'PersonInCharge',
+            key: 'PersonInCharge',
             width: 100,
-            
+            render: (text, record) => (
+                <span size="middle">
+                    {
+                        // getFullNamePersonInCharge(record.personInCharge)
+                        record.personInCharge.lastName+" "+record.personInCharge.firstName
+                        // console.log(record.personInCharge)
+                    }
+                </span>
+            ),
         },
         {
             title: 'លេខទូរស័ព្ទ',
             dataIndex: 'tel',
             key: 'tel',
             width: 100,
+            render: (text, record) => (
+                <span size="middle">
+                    {
+                        // getFullNamePersonInCharge(record.personInCharge)
+                        record.personInCharge.tel
+                        // console.log(record.personInCharge)
+                    }
+                </span>
+            ),
         },
         {
             title: 'ចំណាំ',
-            dataIndex: 'note',
-            key: 'note',
+            dataIndex: 'other',
+            key: 'other',
             width: 100,
         },
     

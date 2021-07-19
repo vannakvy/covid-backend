@@ -24,7 +24,7 @@ import NavigationRoute from './NavigationRoute'
 import { Nav } from "react-bootstrap";
 
  const upLoadLink = createUploadLink({
-    uri: "http://192.168.1.152:7000/graphql",
+    uri: "http://192.168.1.152:4000/graphql",
     // headers:{
     //   Authorization: localStorage.getItem('token')
     // }
@@ -37,7 +37,7 @@ import { Nav } from "react-bootstrap";
 // });
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://192.168.1.152:7000/graphql',
+  uri: 'ws://192.168.1.152:4000/graphql',
   options: {
     reconnect: true
   }

@@ -20,15 +20,14 @@ export function setCase(values, length) {
 export function setEditCase(values) {
     var array = {
         id: values.id + "",
-        caseTitle: values.caseTitle,
+        caseName: values.caseName,
         date: moment(values.date),
-        place: values.place,
         related: values.related === undefined ? 0 : values.related,
         province: values.province === undefined ? "" : values.province,
         district: values.district === undefined ? "" : values.district,
         commune: values.commune === undefined ? "" : values.commune,
         village: values.village === undefined ? "" : values.village,
-        remark: values.remark,
+        other: values.other,
         long: values.long === undefined ? "" : values.long,
         lat: values.lat === undefined ? "" : values.lat,
     }
@@ -73,7 +72,7 @@ export function setEditSubCase(values) {
 export function setPeople(values, length) {
     var array = {
         id: values.id === undefined ? length += 1 + "" : values.id,
-        idCard: values.idCard === undefined ? "": values.idCard,
+        idCard: values.idCard === undefined ? "" : values.idCard,
         name: values.name === undefined ? "" : values.name,
         gender: values.gender === undefined ? "" : values.gender,
         age: values.age === undefined ? "" : values.age,
@@ -108,7 +107,7 @@ export function setEditUser(values) {
     const data = values.roles
 
     console.log(data)
-  
+
     var array = {
         id: values.id + "",
         username: values.username === undefined ? "" : values.username,
@@ -257,21 +256,63 @@ export function setEditHospital(values, length) {
     return array
 }
 
-export function setAddQuarantine(values){
-    var array ={
-        locationName:values.locationName,
-        village:values.village,
-        commune:values.commune,
-        district:values.district,
-        province:values.province,
+export function setAddQuarantine(values) {
+    var array = {
+        locationName: values.locationName,
+        village: values.village,
+        commune: values.commune,
+        district: values.district,
+        province: values.province,
         long: parseFloat(values.long),
-        lat:parseFloat(values.lat),
-        other:values.other,
+        lat: parseFloat(values.lat),
+        other: values.other,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        position: values.position,
+        tel: values.tel,
+        others: values.others,
+    }
+    return array
+}
+
+export function setAddHospital(values) {
+    var array = {
+        hospitalName: values.hospitalName,
+        village: values.village,
+        commune: values.commune,
+        district: values.district,
+        province: values.province,
+        long: parseFloat(values.long),
+        lat: parseFloat(values.lat),
+        other: values.other,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        position: values.position,
+        others: values.otehrs,
+        tel: values.tel,
+
+    }
+    return array
+}
+
+export function setAddPeople(values) {
+    var array = {
         firstName:values.firstName,
         lastName:values.lastName,
-        position:values.position,
+        age:parseInt(values.age),
+        gender:values.gender,
         tel:values.tel,
-        others:values.others,
+        nationality:values.nationality,
+        occupation:values.occupation,
+        idCard:values.idCard,
+        village: values.village === undefined ? "" : values.village,
+        commune: values.commune === undefined ? "" : values.commune,
+        district: values.district === undefined ? "" : values.district,
+        province: values.province === undefined ? "" : values.province,
+        case:values.case,
+        direct:values.direct,
+        other:values.other,
+        vaccinated:parseInt(values.vaccinated),
     }
     return array
 }

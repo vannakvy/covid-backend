@@ -19,9 +19,16 @@ export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
         },
         {
             title: 'ឈ្មោះ',
-            dataIndex: 'name',
-            key: 'name',
+            dataIndex: 'personalInfos',
+            key: 'personalInfos',
             width: 50,
+            render: (text, record) => (
+                <span size="middle">
+                    {
+                        record.lastName+" "+record.firstName
+                    }
+                </span>
+            ),
         },
         {
             title: 'ភេទ',
@@ -48,15 +55,31 @@ export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
         },
         {
             title: 'ស្ថានភាព',
-            dataIndex: 'status',
-            key: 'status',
+            dataIndex: 'personalInfos',
+            key: 'personalInfos',
             width: 50,
+            render: (text, record) => (
+                <span size="middle">
+                    {
+                        // console.log(record.currentState.confirm)
+                        record.currentState.confirm ? "វិជ្ជមាន" : "អវិជ្ជមាន"
+                    }
+                </span>
+            ),
         },
         {
             title: 'លក្ខណៈពាក់ព័ន្ធ',
-            dataIndex: 'relatedInfo',
-            key: 'relatedInfo',
+            dataIndex: 'direct',
+            key: 'direct',
             width: 50,
+            render: (text, record) => (
+                <span size="middle">
+                    {
+                        // console.log(record.currentState.confirm)
+                        record ? "ផ្ទាល់" : "ប្រយោល"
+                    }
+                </span>
+            ),
         },
         {
             key: 'action',

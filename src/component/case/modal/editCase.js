@@ -6,7 +6,7 @@ import { provinceData, districtData, communeData, villageData, genderData } from
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
 
-export default function EditCase({ open, setOpen, data, setData }) {
+export default function EditCase({ open, setOpen, data}) {
     const {caseDataDispatch} = useContext(CaseController)
 
     const [province, setProvince] = useState("")
@@ -14,6 +14,8 @@ export default function EditCase({ open, setOpen, data, setData }) {
     const [commune, setCommune] = useState("")
 
     let [form] = Form.useForm()
+
+    console.log(data)
 
     useEffect(() => {
         if (data !== undefined){
@@ -28,8 +30,8 @@ export default function EditCase({ open, setOpen, data, setData }) {
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        caseDataDispatch({type: 'EDIT_CASE', payload: {...values, id: data.id}})
-        setData({...values, id: data.id})
+        // caseDataDispatch({type: 'EDIT_CASE', payload: {...values, id: data.id}})
+        // setData({...values, id: data.id})
 
         setOpen(false)
         form.resetFields()
@@ -81,7 +83,7 @@ export default function EditCase({ open, setOpen, data, setData }) {
 
     return (
         <Modal
-            title="បញ្ចូលករណីថ្មី"
+            title="កែប្រែករណី"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
@@ -93,14 +95,14 @@ export default function EditCase({ open, setOpen, data, setData }) {
             <Form
                 form={form}
                 name="editCase"
-                // initialValues={setEditCase(data)}
+                initialValues={setEditCase(data)}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
                     <Col xs={24} md={{span:11}}>
                         <Form.Item
-                            name="caseTitle"
+                            name="caseName"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="ឈ្មោះករណី" />
@@ -113,15 +115,6 @@ export default function EditCase({ open, setOpen, data, setData }) {
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទ" style={{width: "100%"}} />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24}>
-                        <Form.Item
-                            name="place"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="ទីកន្លែង" />
                         </Form.Item>
                     </Col>
 
@@ -165,7 +158,7 @@ export default function EditCase({ open, setOpen, data, setData }) {
 
                     <Col xs={24}>
                         <Form.Item
-                            name="remark"
+                            name="other"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="ចំណាំ" />
