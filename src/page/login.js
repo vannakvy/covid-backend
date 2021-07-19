@@ -20,6 +20,7 @@ export default function Login() {
     },
   });
   const onFinish = (values) => {
+      console.log(values)
     loginUser({
       variables: {
         username: values.username,

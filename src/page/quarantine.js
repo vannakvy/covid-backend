@@ -27,7 +27,7 @@ export default function Quarantine() {
             keyword: keyword,
         },
         onCompleted: ({ getQuarantineInfoWithPagination }) => {
-            console.log(getQuarantineInfoWithPagination?.quarantineInfos)
+            console.log("test",getQuarantineInfoWithPagination?.quarantineInfos)
             setQuarantineData(getQuarantineInfoWithPagination)
             
         },

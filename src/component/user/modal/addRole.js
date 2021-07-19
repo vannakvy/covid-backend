@@ -11,7 +11,7 @@ export default function AddRole({ open, setOpen,userID, dataRoles }) {
    
     const [addRole, { loading, error }] = useMutation(ADD_USER_ROLE, {
         onCompleted: ({ addRole }) => {
-            message.message("បញ្ចូលបានជោគជ័យ")
+            message.success("បញ្ចូលបានជោគជ័យ")
         },
         onError: (error) => {
             console.log(error.message)

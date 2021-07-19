@@ -9,28 +9,60 @@ import EditCase from './modal/editCase'
 import AddSubCase from './modal/addSubCase'
 import EditSubCase from './modal/editSubCase'
 import { getRelated } from '../../function/fn'
+import { useMutation,useQuery } from '@apollo/client'
+import { GET_PERSON_BY_CASE } from '../../graphql/case'
+import { GET_CASE_BY_ID } from '../../graphql/case'
 
 const { Title } = Typography
 
 export default function SubCase() {
-    const { caseData, subCaseData, subCaseDataDispatch } = useContext(CaseController)
+    // const { subCaseData, subCaseDataDispatch } = useContext(CaseController)
 
     let { id } = useParams();
 
     const [headerData, setHeaderData] = useState()
     const [updateSubData, setUpdateSubData] = useState({})
 
+    const [subCaseData, setSubCaseData] = useState([])
     const [openEdit, setOpenEdit] = useState(false)
     const [openAddSub, setOpenAddSub] = useState(false)
     const [openEditSub, setOpenEditSub] = useState(false)
+    const [caseData, setCaseData] = useState({})
+
+    const [page, setPage] = useState(1)
+    const [limit, setLimit] = useState(10)
+    const [keyword, setKeyword] = useState("")
+
+    const {data,refetch} = useQuery(GET_PERSON_BY_CASE,{
+        variables:{
+            page:page,
+            limit:limit,
+            keyword:keyword,
+            caseId:id
+        },
+        onCompleted:({getPersonalInfoByCaseWithPagination})=>{
+            console.log(getPersonalInfoByCaseWithPagination)
+            setSubCaseData(getPersonalInfoByCaseWithPagination)
+        }
+    })
+
+    const {data:dataCase } = useQuery(GET_CASE_BY_ID,{
+        variables:{
+            id:id
+        },
+        onCompleted:({getCaseById})=>{
+            console.log(getCaseById)
+            setCaseData(getCaseById)
+        }
+    })
 
     useEffect(() => {
-        setHeaderData(caseData[caseData.findIndex(e => e.id === id)])
-    }, [])
+        refetch()
+    }, [page,limit,keyword])
 
     // console.log(headerData)
     const handleDelete = (e) => {
-        subCaseDataDispatch({type: "DELETE_SUB_CASE", payload: e})
+        // subCaseDataDispatch({type: "DELETE_SUB_CASE", payload: e})
     }
 
     const handleEditSubCase = (e) => {
@@ -40,13 +72,13 @@ export default function SubCase() {
 
     return (
         <Row>
-            <EditCase open={openEdit} setOpen={setOpenEdit} data={headerData} setData={setHeaderData} />
+            <EditCase open={openEdit} setOpen={setOpenEdit} data={caseData}/>
             <AddSubCase open={openAddSub} setOpen={setOpenAddSub} caseId={id} />
             <EditSubCase open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData}  />
             <Col
                 xs={24}
             >
-                <Title level={5}>ឈ្មោះករណី៖ {headerData?.caseTitle} 
+                <Title level={5}>ឈ្មោះករណី៖ {caseData?.caseName+" "} 
                     <EditOutlined className="link" onClick={() => setOpenEdit(true)}/>
                 </Title>
             </Col>
@@ -55,20 +87,21 @@ export default function SubCase() {
                 md={11}
                 className="subCase-card"
             >
-                <p>កាលបរិច្ឆេទ៖ {moment(headerData?.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}</p>
-                <p>ទីតាំង៖ {headerData?.place}</p>
-                <p>អាសយដ្ឋាន៖ {headerData?.village},{headerData?.commune},{headerData?.district},{headerData?.province}</p>
-                <p>ចំនួនអ្នកពាក់ព័ន្ធករណី៖</p>
+                <p>កាលបរិច្ឆេទ៖ {moment(caseData?.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}</p>
+
+                <p>អាសយដ្ឋាន៖ {caseData?.village},{caseData?.commune},{caseData?.district},{caseData?.province}</p>
+                <p>ចំនួនអ្នកពាក់ព័ន្ធករណី៖ {subCaseData?.personalInfos?.length}</p>
+                <p>ផ្សេងៗ៖ {caseData?.other}</p>
             </Col>
             <Col
                 xs={24}
                 md={{ span: 11, offset: 2 }}
                 className="subCase-card"
             >
-                <p>ចំនួនអ្នកពាក់ព័ន្ធផ្ទាល់៖ {getRelated(subCaseData, "ផ្ទាល់")}នាក់</p>
-                <p>ចំនួនអ្នកពាក់ព័ន្ធប្រយោល៖ {getRelated(subCaseData, "ប្រយោល")}នាក់</p>
-                <p>ចំនួនអ្នកជាសះស្បើយ៖ {getRelated(subCaseData, "សះស្បើយ")}នាក់</p>
-                <p>ចំនួនអ្នកស្លាប់៖ {getRelated(subCaseData, "ស្លាប់")}នាក់</p>
+                <p>ចំនួនអ្នកពាក់ព័ន្ធផ្ទាល់៖ {getRelated(subCaseData?.personalInfos, true)}នាក់</p>
+                <p>ចំនួនអ្នកពាក់ព័ន្ធប្រយោល៖ {getRelated(subCaseData?.personalInfos, false)}នាក់</p>
+                {/* <p>ចំនួនអ្នកជាសះស្បើយ៖ {getRelated(subCaseData, "សះស្បើយ")}នាក់</p>
+                <p>ចំនួនអ្នកស្លាប់៖ {getRelated(subCaseData, "ស្លាប់")}នាក់</p> */}
             </Col>
 
 
@@ -79,7 +112,7 @@ export default function SubCase() {
                 <Title level={5}>
                     អ្នកពាក់ព័ន្ធ៖ 
 
-                    <PlusCircleOutlined className="link" onClick={() => setOpenAddSub(true)}/>
+                    {/* <PlusCircleOutlined className="link" onClick={() => setOpenAddSub(true)}/> */}
                 </Title>
 
             </Col>
@@ -89,9 +122,13 @@ export default function SubCase() {
             >
                 <Table
                     columns={subCaseCol({handleDelete, handleEditSubCase})}
-                    dataSource={subCaseData}
+                    dataSource={subCaseData?.personalInfos}
                     rowKey={record => record.id}
-                    pagination={true}
+                    pagination={{
+                        total: subCaseData?.paginator?.totalDocs,
+                        // showSizeChanger: true,
+                        onChange:((page, pageSize) => {setPage(page);setLimit(pageSize)} )
+                    }}
                     scroll={{ x: 240 }}
                     sticky
                 />

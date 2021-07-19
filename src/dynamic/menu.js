@@ -23,7 +23,7 @@ const { SubMenu } = Menu;
 export default function MenuHeader() {
     const { urlPath, user } = useContext(HeaderData)
 
-    const [collapsed, setCollapsed] = useState(true)
+    const [collapsed, setCollapsed] = useState(false)
 
     const handleLoggout = ()=>{
         localStorage.removeItem("user")

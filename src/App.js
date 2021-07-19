@@ -29,7 +29,7 @@ const tokens = token()
   })
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://192.168.1.152:4000/graphql',
+  uri: "ws://192.168.1.152:4000/graphql",
   options: {
     reconnect: true
   }
@@ -61,7 +61,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Routes/>
-    
+      {/* <h3>dddd</h3> */}
     </ApolloProvider>
   );
 }

@@ -6,7 +6,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
+<<<<<<< HEAD
    <App/>,
+=======
+    <App />,
+>>>>>>> f51af87dc334cb72bf8e5e1ebdde89268f64d8f8
   document.getElementById('root')
 );
 

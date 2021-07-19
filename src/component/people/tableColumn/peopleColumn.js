@@ -5,7 +5,8 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-export const peopleCol = ({handleDelete}) => {
+export const peopleCol = ({handleDelete,limit,page}) => {
+    let no = ((page-1) * limit)
     var array = [
         {
             title: 'ល.រ',
@@ -14,7 +15,7 @@ export const peopleCol = ({handleDelete}) => {
             width: 60,
             render: (text, record, i) => (
                 <Space size="middle">
-                    {i += 1}
+                    {no+= 1}
                 </Space>
             ),
         },
@@ -26,9 +27,16 @@ export const peopleCol = ({handleDelete}) => {
         },
         {
             title: 'ឈ្មោះ',
-            dataIndex: 'name',
-            key: 'name',
+            dataIndex: 'personalInfos',
+            key: 'personalInfos',
             width: 150,
+            render: (text, record) => (
+                <span size="middle">
+                    {
+                        record.lastName+" "+record.firstName
+                    }
+                </span>
+            ),
         },
         {
             title: 'ភេទ',
@@ -61,8 +69,8 @@ export const peopleCol = ({handleDelete}) => {
         },
         {
             title: 'មុខរបរ',
-            dataIndex: 'job',
-            key: 'job',
+            dataIndex: 'occupation',
+            key: 'occupation',
             width: 150,
         },
         {
@@ -73,8 +81,8 @@ export const peopleCol = ({handleDelete}) => {
         },
         {
             title: 'ចំណាំ',
-            dataIndex: 'remark',
-            key: 'remark',
+            dataIndex: 'other',
+            key: 'other',
             width: 150,
         },
         {

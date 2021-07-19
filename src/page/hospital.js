@@ -1,18 +1,54 @@
-import React, {useContext, useState} from 'react'
-import { Row, Col, Button, Input, Table } from 'antd'
+import React, {useContext, useState, useEffect} from 'react'
+import { Row, Col, Button, Input, Table,message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { hospitalCol } from '../component/hospital/tableColumn/hospitalColumn'
 import { HospitalController } from '../context/hospitalContext'
 import AddHospital from '../component/hospital/modal/addHospital';
+import { useQuery,useMutation } from '@apollo/client';
+import { GET_ALL_HOSPITAL } from '../graphql/hospital';
+import { DELETE_HOSPITALINFO_BY_ID } from '../graphql/hospital';
 
 export default function Hospital() {
 
-    const {hospitalData, hospitalDataDispatch} = useContext(HospitalController)
+    // const {hospitalData, hospitalDataDispatch} = useContext(HospitalController)
+    const [hospitalData, setHospitalData] = useState([])
 
     const [openAdd, setOpenAdd] = useState(false)
+    const [page, setPage] = useState(1)
+    const [limit, setLimit] = useState(10)
+    const [keyword, setKeyword] = useState("")
+
+    const {data,loading,error,refetch} = useQuery(GET_ALL_HOSPITAL,{
+        variables:{
+            page: page,
+            limit: limit,
+            keyword: keyword,
+        },
+        onCompleted:({getHospitalInfoWithPagination})=>{
+            console.log(getHospitalInfoWithPagination)
+            setHospitalData(getHospitalInfoWithPagination)
+        }
+    })
+
+    const [deleteHospitalInfo, { loading: deleteLoading, error: deleteError }] = useMutation(DELETE_HOSPITALINFO_BY_ID, {     
+        onCompleted: () => {
+            refetch()
+            message.success("ទិន្នន័យត្រូវបានលុប")
+        },
+        // refetchQueries: [{ query: GET_ALL_QUARANTINEINFO, variables: { keyword: keyword, limit: limit, page: page } }],
+        // awaitRefetchQueries: true,
+    })
+
+    useEffect(() => {
+        refetch()
+    }, [page, limit, keyword])
+
 
     const handleDelete = (e) => {
-        hospitalDataDispatch({type: "DELETE_HOSPITAL", payload: e})
+        //hospitalDataDispatch({type: "DELETE_HOSPITAL", payload: e})
+        deleteHospitalInfo({variables:{
+            id:e
+        }})
     }
 
     return (
@@ -36,6 +72,7 @@ export default function Hospital() {
                 md={6}
             >
                 <Input.Search
+                    onChange={(e)=>setKeyword(e.target.value)}
                     placeholder="ស្វែងរក..."
                 />
             </Col>
@@ -45,10 +82,16 @@ export default function Hospital() {
             >
                 <Table
                 // caseCol({handleDelete})
-                    columns={hospitalCol({handleDelete})}
-                    dataSource={hospitalData}
+                    columns={hospitalCol({handleDelete,limit,page})}
+                    dataSource={hospitalData?.hospitalInfos}
                     rowKey={record => record.id}
-                    pagination={true}
+                    pagination={{
+                        total: hospitalData?.paginator?.totalDocs,
+                        //pageSizeOptions:["10", "20"],
+                        // showSizeChanger: true,
+                        current: hospitalData?.paginator?.currentPage,
+                        onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
+                    }}
                     scroll={{ x: 1500 }} 
                     sticky 
                 />
