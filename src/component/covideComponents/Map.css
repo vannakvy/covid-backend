@@ -1,12 +1,18 @@
 .map {
- height: 600px;
+ height: 700px;
  background-color: white;
  padding: 0.5rem;
- border-radius: 20px;
+ border-radius: 4px;
  margin-top: 5px;
  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+ position: relative;
 }
-
+.layerSwitcher{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
 .map .leaflet-container {
  height: 100%;
  border-radius: 12px;

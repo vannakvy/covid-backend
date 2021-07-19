@@ -60,8 +60,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      {/* <Routes/> */}
-      <h3>dddd</h3>
+      <Routes/>
+    
     </ApolloProvider>
   );
 }

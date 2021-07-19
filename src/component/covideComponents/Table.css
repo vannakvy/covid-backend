@@ -17,10 +17,10 @@
 }
 
 .covid_tables tr:nth-of-type(odd) {
-  background-color: #0b4668cc;
+  background-color: #c5c1c5cc;
   color: white;
 }
 .covid_tables tr:nth-of-type(even) {
-  background-color: #9c0d50cc;
+  background-color: #a313c0cc;
   color: white;
 }

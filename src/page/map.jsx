@@ -128,7 +128,6 @@ const MapScreen = () => {
         <div className="app__header">
           <h1 className="ti">តារាងតាមដាន កូវិត ១៩ </h1>
           <FormControl className="app__dropdown">
-   
             <Form.Item 
               name="district"
               rules={[

@@ -4,7 +4,7 @@ import "./InfoBox.css";
 
 function InfoBox({ title, cases, total, active, isRed, ...props }) {
   return (
-    <Card
+    <Card 
       onClick={props.onClick}
       className={`infoBox ${active && "infoBox--selected"} ${
         isRed && "infoBox--red"
@@ -16,13 +16,14 @@ function InfoBox({ title, cases, total, active, isRed, ...props }) {
           {title}
         </Typography> */}
         <h4 className="infoBox_font">{title}</h4>
-        <h2 className={`infoBox__cases ${!isRed && "infoBox__cases--green"}`}>
+        <h3 className={`infoBox__cases ${!isRed && "infoBox__cases--green"}`}>
           {cases}
-        </h2>
+        </h3>
 
-        <Typography className="infoBox__total​​​ infoBox_font" color="textSecondary">
+        <Typography as="" className=" infoBox_font" color="textSecondary">
         សរុប {total} 
         </Typography>
+     
       </CardContent>
     </Card>
   );
