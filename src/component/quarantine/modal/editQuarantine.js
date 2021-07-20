@@ -54,9 +54,9 @@ export default function EditQuarantine({ open, setOpen, data, quarantineId }) {
                 lastName: values.lastName,
                 position: values.position,
                 others: values.others,
-                village: values.village === undefined ? "" : values.village,
-                commune: values.commune === undefined ? "" : values.commune,
-                district: values.district === undefined ? "" : values.district,
+                village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
+                commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
+                district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
                 province: values.province === undefined ? "" : values.province,
                 id:quarantineId
             }

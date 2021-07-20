@@ -6,8 +6,8 @@ import {
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
-export const caseCol = ({handleDelete, limit,page}) => {
-    let no = ((page-1) * limit)
+export const caseCol = ({ handleDelete, limit, page }) => {
+    let no = ((page - 1) * limit)
     var array = [
         {
             title: 'ល.រ',
@@ -16,7 +16,7 @@ export const caseCol = ({handleDelete, limit,page}) => {
             width: 50,
             render: (text, record, i) => (
                 <Space size="middle">
-                    {no+=1}
+                    {no += 1}
                 </Space>
             ),
         },
@@ -38,7 +38,7 @@ export const caseCol = ({handleDelete, limit,page}) => {
                 </Space>
             ),
         },
-      
+
         {
             title: 'ចំនួនអ្នកពាក់ព័ន្ធ',
             dataIndex: 'related',
@@ -52,11 +52,11 @@ export const caseCol = ({handleDelete, limit,page}) => {
             width: 150,
             render: (text, record) => (
                 <Space size="middle">
-                        {record.village&& record.village}
-                        {record.commune&& record.commune}
-                        {record.district&& record.district}
-                        {record.province&& record.province}
-                    </Space>
+                    {(record.village !== "ក្រៅសៀមរាប") && record.village}
+                    {record.commune !== "ក្រៅសៀមរាប" && record.commune}
+                    {record.district !== "ក្រៅសៀមរាប" && record.district}
+                    {record.province && record.province}
+                </Space>
             ),
         },
         {

@@ -6,10 +6,15 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom'
 import { getFullNamePersonInCharge, getRoles } from '../../../function/fn';
+import moment from 'moment';
 
 export const quarantineCol = ({handleDelete,limit,page}) => {
 
     let no = ((page-1) * limit)
+
+    let d = new Date().setHours(0,0,0,0)
+    let m = moment(d).format("DD-MM-yyyy hh:mm:ss")
+
    
     var array = [
         {
@@ -27,7 +32,7 @@ export const quarantineCol = ({handleDelete,limit,page}) => {
             title: 'ឈ្មោះមណ្ឌល',
             dataIndex: 'locationName',
             key: 'locationName',
-            width: 150,
+            width: 100,
         },
        
         {
@@ -36,11 +41,15 @@ export const quarantineCol = ({handleDelete,limit,page}) => {
             key: 'address',
             width: 100,
             render: (text, record) => (
-                <Tooltip placement="top" title={record.village + "," + record.commune + "," + record.district + "," + record.province}>
+                // <Tooltip placement="top" title={record.village + "," + record.commune + "," + record.district + "," + record.province}>
                     <Space size="middle">
-                        {record.village}
+                        {(record.village !== "ក្រៅសៀមរាប") && record.village}
+                        {record.commune !== "ក្រៅសៀមរាប" && record.commune}
+                        {record.district !== "ក្រៅសៀមរាប" && record.district}
+                        {record.province && record.province}
+                        
                     </Space>
-                </Tooltip>
+                // </Tooltip>
             ),
             
         },

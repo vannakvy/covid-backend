@@ -25,19 +25,22 @@ export const hospitalCol = ({handleDelete,limit,page}) => {
             title: 'ឈ្មោះមណ្ឌល',
             dataIndex: 'hospitalName',
             key: 'hospitalName',
-            width: 150,
+            width: 100,
         },
         {
             title: 'អាសយដ្ឋាន  ',
             dataIndex: 'address',
             key: 'address',
-            width: 100,
+            width: 120,
             render: (text, record) => (
-                <Tooltip placement="top" title={record.village + "," + record.commune + "," + record.district + "," + record.province}>
+                // <Tooltip placement="top" title={record.village + "," + record.commune + "," + record.district + "," + record.province}>
                     <Space size="middle">
-                        {record.village}
+                        {(record.village !== "ក្រៅសៀមរាប") && record.village}
+                        {record.commune !== "ក្រៅសៀមរាប" && record.commune}
+                        {record.district !== "ក្រៅសៀមរាប" && record.district}
+                        {record.province && record.province}
                     </Space>
-                </Tooltip>
+                // </Tooltip>
             ),
             
         },
@@ -86,7 +89,7 @@ export const hospitalCol = ({handleDelete,limit,page}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <Link to={"/subHospital/"+record.id}><EditOutlined /></Link>
+                    <Link className="link" to={"/subHospital/"+record.id}><EditOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}

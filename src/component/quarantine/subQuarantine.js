@@ -19,6 +19,70 @@ export default function SubQuarantine() {
 
     //const { quarantineData, subQuarantineData, subQuarantineDataDispatch } = useContext(QuarantineController)
 
+    const districtLatLong = [
+        {
+            district:"ស្រុកក្រឡាញ់",
+            lat:13.60472222544493,
+            long:103.45245485053685,
+        },
+        {
+            district:"ស្រុកវ៉ារិន",
+            lat:13.867238663711532,
+            long:103.87715707241854,
+        },
+        {
+            district:"ស្រុកស្រិស្នំ",
+            lat:13.852238272312373,
+            long: 103.53639730433542,
+        },
+        {
+            district:"ស្រុកអង្គរជុំ",
+            lat:13.713723851088394,
+            long:103.67219336284299,
+        },
+        {
+            district:"ស្រុកបន្ទាយស្រី",
+            lat:13.605041870228655,
+            long:103.97859822744759,
+        },
+        {
+            district:"ស្រុកសូទ្រនិគម",
+            lat:13.414442053292065,
+            long:104.10460200711728,
+        },
+        {
+            district:"ស្រុកបាគង",
+            lat:13.303005227138778,
+            long:103.9796463766434,
+        },
+        {
+            district:"ស្រុកពួក",
+            lat:13.440442720250852,
+            long:103.71973510206098,
+        },
+        {
+            district:"ស្រុកជីក្រែង",
+            lat:13.232399982258997,
+            long:104.33684532302983,
+        },
+        {
+            district:"ស្រុកស្វាយលើ",
+            lat:13.698615549661712,
+            long:104.21744370698126,
+        },
+        {
+            district:"ស្រុកអង្គរធំ",
+            lat:13.483410469370508,
+            long:103.87412317588966,
+        },
+        {
+            district:"ស្រុកសៀមរាប",
+            lat:13.332155324410378,
+            long:103.81891026025993,
+        },
+        
+    ]
+
     let { id } = useParams();
 
     const [peopleData, setPeopleData] = useState([])
@@ -113,7 +177,12 @@ export default function SubQuarantine() {
                 <p>ឈ្មោះមណ្ឌល៖ {quarantineData?.locationName} <EditOutlined className="link" onClick={() => setOpenEdit(true)}/></p>
                 {/* <p>ទីតាំង៖ {quarantineData?.place}</p> */}
                 <p>អាចផ្ទុក៖ {quarantineData?.capacity}</p>
-                <p>អាសយដ្ឋាន៖ {quarantineData?.village},{quarantineData?.commune},{quarantineData?.district},{quarantineData?.province}</p>
+                <p>អាសយដ្ឋាន៖ 
+                    {quarantineData?.village !== "ក្រៅសៀមរាប" && quarantineData?.village + ","}
+                    {quarantineData?.commune !== "ក្រៅសៀមរាប" && quarantineData?.commune + ","}
+                    {quarantineData?.district !== "ក្រៅសៀមរាប" && quarantineData?.district + ","}
+                    {quarantineData?.province}
+                </p>
                 <p>អ្នកទទួលខុសត្រូវ៖ {quarantineData?.personInCharge?.lastName} {quarantineData?.personInCharge?.firstName}</p>
                 <p>លេខទូរស័ព្ទ៖ {quarantineData?.personInCharge?.tel}</p>
                 <p>ចំណាំ៖ {quarantineData?.other}</p>

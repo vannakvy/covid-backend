@@ -31,10 +31,10 @@ export default function AddCase({ open, setOpen, refetch }) {
 
         createCase({variables:{
             caseName:values.caseName,
-            village:values.village,
-            commune:values.commune,
-            district:values.district,
-            province:values.province,
+            village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
+            commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
+            district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
+            province: values.province === undefined ? "ក្រៅសៀមរាប" : values.province,
             date:moment(values.date).format(),
             lat:parseFloat(values.lat),
             long:parseFloat(values.long),
@@ -166,7 +166,6 @@ export default function AddCase({ open, setOpen, refetch }) {
                     <Col xs={24}>
                         <Form.Item
                             name="other"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="ចំណាំ" />
                         </Form.Item>

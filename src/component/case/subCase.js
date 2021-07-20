@@ -9,7 +9,7 @@ import EditCase from './modal/editCase'
 import AddSubCase from './modal/addSubCase'
 import EditSubCase from './modal/editSubCase'
 import { getRelated } from '../../function/fn'
-import { useMutation,useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { GET_PERSON_BY_CASE } from '../../graphql/case'
 import { GET_CASE_BY_ID } from '../../graphql/case'
 
@@ -33,24 +33,24 @@ export default function SubCase() {
     const [limit, setLimit] = useState(10)
     const [keyword, setKeyword] = useState("")
 
-    const {data,refetch} = useQuery(GET_PERSON_BY_CASE,{
-        variables:{
-            page:page,
-            limit:limit,
-            keyword:keyword,
-            caseId:id
+    const { data, refetch } = useQuery(GET_PERSON_BY_CASE, {
+        variables: {
+            page: page,
+            limit: limit,
+            keyword: keyword,
+            caseId: id
         },
-        onCompleted:({getPersonalInfoByCaseWithPagination})=>{
+        onCompleted: ({ getPersonalInfoByCaseWithPagination }) => {
             console.log(getPersonalInfoByCaseWithPagination)
             setSubCaseData(getPersonalInfoByCaseWithPagination)
         }
     })
 
-    const {data:dataCase } = useQuery(GET_CASE_BY_ID,{
-        variables:{
-            id:id
+    const { data: dataCase } = useQuery(GET_CASE_BY_ID, {
+        variables: {
+            id: id
         },
-        onCompleted:({getCaseById})=>{
+        onCompleted: ({ getCaseById }) => {
             console.log(getCaseById)
             setCaseData(getCaseById)
         }
@@ -58,7 +58,7 @@ export default function SubCase() {
 
     useEffect(() => {
         refetch()
-    }, [page,limit,keyword])
+    }, [page, limit, keyword])
 
     // console.log(headerData)
     const handleDelete = (e) => {
@@ -72,14 +72,14 @@ export default function SubCase() {
 
     return (
         <Row>
-            <EditCase open={openEdit} setOpen={setOpenEdit} data={caseData} caseId={id}/>
+            <EditCase open={openEdit} setOpen={setOpenEdit} data={caseData} caseId={id} />
             <AddSubCase open={openAddSub} setOpen={setOpenAddSub} caseId={id} />
-            <EditSubCase open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData}  />
+            <EditSubCase open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData} />
             <Col
                 xs={24}
             >
-                <Title level={5}>ឈ្មោះករណី៖ {caseData?.caseName+" "} 
-                    <EditOutlined className="link" onClick={() => setOpenEdit(true)}/>
+                <Title level={5}>ឈ្មោះករណី៖ {caseData?.caseName + " "}
+                    <EditOutlined className="link" onClick={() => setOpenEdit(true)} />
                 </Title>
             </Col>
             <Col
@@ -89,7 +89,11 @@ export default function SubCase() {
             >
                 <p>កាលបរិច្ឆេទ៖ {moment(caseData?.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}</p>
 
-                <p>អាសយដ្ឋាន៖ {caseData?.village},{caseData?.commune},{caseData?.district},{caseData?.province}</p>
+                <p>អាសយដ្ឋាន៖ {" "}
+                    {caseData?.village !== "ក្រៅសៀមរាប" && caseData?.village + ","}
+                    {caseData?.commune !== "ក្រៅសៀមរាប" && caseData?.commune + ","}
+                    {caseData?.district !== "ក្រៅសៀមរាប" && caseData?.district + ","}
+                    {caseData?.province}</p>
                 <p>ចំនួនអ្នកពាក់ព័ន្ធករណី៖ {subCaseData?.personalInfos?.length}</p>
                 <p>ផ្សេងៗ៖ {caseData?.other}</p>
             </Col>
@@ -110,8 +114,7 @@ export default function SubCase() {
                 style={{ marginTop: 20 }}
             >
                 <Title level={5}>
-                    អ្នកពាក់ព័ន្ធ៖ 
-
+                    អ្នកពាក់ព័ន្ធ៖
                     {/* <PlusCircleOutlined className="link" onClick={() => setOpenAddSub(true)}/> */}
                 </Title>
 
@@ -121,13 +124,13 @@ export default function SubCase() {
                 md={24}
             >
                 <Table
-                    columns={subCaseCol({handleDelete, handleEditSubCase})}
+                    columns={subCaseCol({ handleDelete, handleEditSubCase })}
                     dataSource={subCaseData?.personalInfos}
                     rowKey={record => record.id}
                     pagination={{
                         total: subCaseData?.paginator?.totalDocs,
                         // showSizeChanger: true,
-                        onChange:((page, pageSize) => {setPage(page);setLimit(pageSize)} )
+                        onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
                     }}
                     scroll={{ x: 240 }}
                     sticky
