@@ -30,6 +30,9 @@ import numeral from "numeral";
 import Map from "../component/covideComponents/Map";
 import "leaflet/dist/leaflet.css";
 import { Form } from "antd";
+import {GET_ALL_PROVINCE} from '../graphql/dashboardAndReport'
+import {useQuery} from '@apollo/client'
+
 
 const MapScreen = () => {
   const [country, setInputCountry] = useState("worldwide");
@@ -38,10 +41,28 @@ const MapScreen = () => {
   const [mapCountries, setMapCountries] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [casesType, setCasesType] = useState("cases");
-  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
-  const [mapZoom, setMapZoom] = useState(3);
+  const [mapCenter, setMapCenter] = useState({ lat: 13.3633, lng: 103.8564 });
+  const [mapZoom, setMapZoom] = useState(9);
+  
+  //update the data 
   const [district, setDistrict] = useState("");
+  const [districtDatas, setDistrictDatas] = useState({});
   let [form] = Form.useForm();
+
+
+const {loading, error, refetch} = useQuery(GET_ALL_PROVINCE,{
+  variables:{
+    district:district
+  },
+  onCompleted:({getAllProvince})=>{
+    setDistrictDatas(getAllProvince);
+  }
+});
+
+console.log(mapCountries)
+React.useEffect(()=>{
+  refetch()
+},[district])
 
   const setToDistrictFn = (e) => {
     form.setFieldsValue({
@@ -57,7 +78,6 @@ const MapScreen = () => {
     fetch("https://disease.sh/v3/covid-19/all")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data,"ddd");
         setCountryInfo(data);
       });
   }, []);
@@ -67,7 +87,7 @@ const MapScreen = () => {
       fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
-          console.log(data,"ddddd")
+        
           const countries = data.map((country) => ({
             name: country.country,
             value: country.countryInfo.iso2,
@@ -126,7 +146,6 @@ const MapScreen = () => {
     <div className="app">
       <div className="app__left">
         <div className="app__header">
-          <h1 className="ti">តារាងតាមដាន កូវិត ១៩ </h1>
           <FormControl className="app__dropdown">
             <Form.Item 
               name="district"
@@ -149,42 +168,29 @@ const MapScreen = () => {
             title="ករណីឆ្លង "
             isRed
             active={casesType === "cases"}
-            cases={prettyPrintStat(countryInfo.todayCases)}
-            total={numeral(countryInfo.cases).format("0.0a")}
+            cases={prettyPrintStat(districtDatas.confirmedCaseToday)}
+            total={numeral(districtDatas.confirmedCase).format("0.0a")}
           />
           <InfoBox
             onClick={(e) => setCasesType("recovered")}
             title="ចំនួនជាសះស្បើយ"
             active={casesType === "recovered"}
-            cases={prettyPrintStat(countryInfo.todayRecovered)}
-            total={numeral(countryInfo.recovered).format("0.0a")}
+            cases={prettyPrintStat(districtDatas.recoveredToday)}
+            total={numeral(districtDatas.recovered).format("0.0a")}
           />
           <InfoBox
             onClick={(e) => setCasesType("deaths")}
             title="ចំនួនអ្នកស្លាប់"
             isRed
             active={casesType === "deaths"}
-            cases={prettyPrintStat(countryInfo.todayDeaths)}
-            total={numeral(countryInfo.deaths).format("0.0a")}
+            cases={prettyPrintStat(districtDatas.deathToday)}
+            total={numeral(districtDatas.death).format("0.0a")}
           />
-          <InfoBox
-            onClick={(e) => setCasesType("cases")}
-            title="ករណីឆ្លង "
-            isRed
-            active={casesType === "cases"}
-            cases={prettyPrintStat(countryInfo.todayCases)}
-            total={numeral(countryInfo.cases).format("0.0a")}
-          />
-          <InfoBox
-            onClick={(e) => setCasesType("recovered")}
-            title="ចំនួនជាសះស្បើយ"
-            active={casesType === "recovered"}
-            cases={prettyPrintStat(countryInfo.todayRecovered)}
-            total={numeral(countryInfo.recovered).format("0.0a")}
-          />
+     
+     
         </div>
         <Map
-          countries={mapCountries}
+          district={mapCountries}
           casesType={casesType}
           center={mapCenter}
           zoom={mapZoom}
@@ -193,13 +199,13 @@ const MapScreen = () => {
       <Card className="app__right">
         <CardContent>
           <div className="app__information">
-            <h3 className="covid_table">ករណីឆ្លងតាមប្រទេស</h3>
+            <h3 className="covid_table">ករណីឆ្លងតាមស្រុក</h3>
             <Table countries={tableData} />
             {casesType === "recovered" ? (
-              <h3>ករណីជាសះស្បើយ ទូទាំងពិភពលោក</h3>
+              <h3>ករណីជាសះស្បើយ ទូទាំងស្រុក</h3>
             ) : null}
-            {casesType === "deaths" ? <h3>ករណីស្លាប់ ទូទាំងពិភពលោក</h3> : null}
-            {casesType === "cases" ? <h3>ករណីឆ្លង ទូទាំងពិភពលោក</h3> : null}
+            {casesType === "deaths" ? <h3>ករណីស្លាប់ ទូទាំងស្រុក</h3> : null}
+            {casesType === "cases" ? <h3>ករណីឆ្លង ទូទាំងស្រុក</h3> : null}
             <LineGraph casesType={casesType} />
           </div>
         </CardContent>

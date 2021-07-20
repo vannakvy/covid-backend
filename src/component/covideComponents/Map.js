@@ -4,7 +4,7 @@ import "./Map.css";
 import ReactLeafletGoogleLayer from 'react-leaflet-google-layer';
 import { showDataOnMap } from "./util";
 import { FaMapMarkedAlt } from 'react-icons/fa';
-function Map({ countries, casesType, center, zoom }) {
+function Map({ district, casesType, center, zoom }) {
   const [satellite, setSatellite] = React.useState(false);
   return (
     <div className="map ">
@@ -21,8 +21,7 @@ function Map({ countries, casesType, center, zoom }) {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-         {showDataOnMap(countries, casesType)}
-
+         {showDataOnMap(district, casesType)}
          {satellite ? (
        <ReactLeafletGoogleLayer
         googleMapsLoaderConf={{
