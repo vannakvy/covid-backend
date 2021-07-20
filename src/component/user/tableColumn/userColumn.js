@@ -2,11 +2,12 @@ import React from 'react'
 import { Space, Popconfirm } from 'antd'
 import {
     EditOutlined,
-    DeleteOutlined
+    DeleteOutlined,
+    KeyOutlined
 } from '@ant-design/icons';
 import { getRoles } from '../../../function/fn';
 
-export const userCol = ({ handleDelete, handleUserEdit,handleUserRole, setRoleUserID , limit, page }) => {
+export const userCol = ({ handleDelete, handleUserEdit,handleAccountEdit,handleUserRole, setRoleUserID , limit, page }) => {
     let l = limit >= 20 ? limit/page : limit
     let no = ((page-1) * l)
 
@@ -74,6 +75,8 @@ export const userCol = ({ handleDelete, handleUserEdit,handleUserRole, setRoleUs
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
+                    
+                    <span className="link" onClick={() => handleAccountEdit(record)}><KeyOutlined /></span>
                     <span className="link" onClick={() => handleUserEdit(record)}><EditOutlined /></span>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"

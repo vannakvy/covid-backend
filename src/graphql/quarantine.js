@@ -20,7 +20,7 @@ query getQuarantineInfoWithPagination($page:Int!,$limit:Int!,$keyword:String){
             others
         }
         long
-        Lat
+        lat
         createdAt
         updatedAt
        
@@ -163,7 +163,7 @@ query getQuarantineByQurantineIdWithPagination(
 }
 `;
 
-export const GETE_QUARANTINE_BY_ID = gql`
+export const GET_QUARANTINE_BY_ID = gql`
 query getQuarantineInfoById($id:ID!){
   getQuarantineInfoById(id:$id){
     capacity
@@ -175,7 +175,7 @@ query getQuarantineInfoById($id:ID!){
     province
     personInchage
     long
-    Lat
+    lat
     createdAt
     updatedAt
     personInCharge{
@@ -186,6 +186,48 @@ query getQuarantineInfoById($id:ID!){
       tel
     }
     other
+  }
+}
+`;
+
+export const UPDATE_QUARANTINE_BY_ID = gql`
+mutation updateQuarantineInfo(
+    $locationName:String,
+    $village:String,
+    $commune:String,
+    $district:String,
+    $province:String,
+    $long:Float,
+    $lat:Float,
+    $other:String,
+    $capacity:Int,
+    $firstName:String,
+    $lastName:String,
+    $tel:String,
+    $position:String,
+    $others:String,
+    $id:ID!
+){
+  updateQuarantineInfo(updatedQuarantineInfo:{
+    locationName:$locationName
+    village:$village
+    commune:$commune
+    district:$district
+    province:$province
+    long:$long
+    lat:$lat
+    other:$other
+    capacity:$capacity
+    personInCharge:{
+      firstName:$firstName
+      lastName:$lastName
+      tel:$tel
+      position:$position
+      others:$others
+    }
+  },id:$id){
+    message
+    success
   }
 }
 `;

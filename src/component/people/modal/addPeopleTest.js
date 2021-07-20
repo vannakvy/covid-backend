@@ -40,8 +40,8 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
             }
         })
 
-        // setOpen(false)
-        // form.resetFields()
+        setOpen(false)
+        form.resetFields()
     };
 
     const onFinishFailed = (errorInfo) => {

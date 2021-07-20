@@ -73,7 +73,7 @@ export const caseCol = ({handleDelete, limit,page}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <Link to={"/subCase/" + record.id}><EditOutlined /></Link>
+                    <Link className="link" to={"/subCase/" + record.id}><EditOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}

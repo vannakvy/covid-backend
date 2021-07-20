@@ -93,7 +93,7 @@ export const peopleCol = ({handleDelete,limit,page}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <Link to={"/subPeople/" + record.id}><EyeOutlined /></Link>
+                    <Link className="link" to={"/subPeople/" + record.id}><EyeOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}

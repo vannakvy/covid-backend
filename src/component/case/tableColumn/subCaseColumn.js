@@ -1,8 +1,10 @@
 import { Space, Popconfirm } from 'antd'
 import {
     EditOutlined,
-    DeleteOutlined
+    DeleteOutlined,
+    EyeOutlined
 } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
     var array = [
@@ -89,7 +91,8 @@ export const subCaseCol = ({handleDelete, handleEditSubCase}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <span className="link" onClick={() => handleEditSubCase(record)}><EditOutlined /></span>
+                    {/* <span className="link" onClick={() => handleEditSubCase(record)}><EditOutlined /></span> */}
+                    <Link className="link" to={"/subPeople/" + record.id}><EyeOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => {handleDelete(record.id) }}

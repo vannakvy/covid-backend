@@ -1,4 +1,4 @@
-import { Col, Row, Typography, Table } from 'antd'
+import { Col, Row, Typography, Table, message } from 'antd'
 import React, { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { QuarantineController } from '../../context/quarantineContext'
@@ -11,7 +11,7 @@ import EditSubQuarantine from './modal/editSubQuarantine'
 import { useQuery } from '@apollo/client'
 import { GET_ALL_PERSONINFO_NO_LIMIT} from '../../graphql/people'
 import { GET_PERSON_BY_QUARANTINE } from '../../graphql/quarantine'
-import { GETE_QUARANTINE_BY_ID } from '../../graphql/quarantine'
+import { GET_QUARANTINE_BY_ID } from '../../graphql/quarantine'
 
 const {Title} = Typography
 
@@ -41,7 +41,7 @@ export default function SubQuarantine() {
         }
     })
 
-    const {data:quarantine} = useQuery(GETE_QUARANTINE_BY_ID,{
+    const {data:quarantine,loading} = useQuery(GET_QUARANTINE_BY_ID,{
         variables:{
             id:id
         },
@@ -82,9 +82,20 @@ export default function SubQuarantine() {
         
         setOpenEditSub(true)
     }
+
+    const key = 'updatable';
+    const openMessage = () => {
+        message.loading({ content: 'Loading...', key });
+        setTimeout(() => {
+          message.success({ content: 'Loaded!', key, duration: 2 });
+        }, 1000);
+      };
+
     return (
+        <>
+        {/* { loading ? message.loading("test"): */}
         <Row>
-            <EditQuarantine open={openEdit} setOpen={setOpenEdit} data={headerData} setData={setHeaderData} />
+            <EditQuarantine open={openEdit} setOpen={setOpenEdit} data={quarantineData} quarantineId={id}/>
             <AddSubQuarantine open={openAddSub} setOpen={setOpenAddSub} quarantineId={id} peopleData={peopleData} />
             <EditSubQuarantine open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} quarantineId={id} peopleData={peopleData} />
             <Col
@@ -150,5 +161,7 @@ export default function SubQuarantine() {
                 />
             </Col>
         </Row>
+        {/* } */}
+        </>
     )
 }

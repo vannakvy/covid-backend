@@ -75,9 +75,18 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   /* margin: 5px; */
   padding: 15px 15px 0 15px;
   background-color: #FFF;
-  border: 1px solid rgb(197, 197, 197);
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgb(187, 187, 187);
+  border: none;
+  /* border-radius: 5px; */
+  box-shadow: 2px 2px 30px rgb(187, 187, 187);
+  /* border-radius: 8px; */
+}
+
+.subPeople-card{
+  /* margin: 5px; */
+  /* padding: 15px 15px 0 15px; */
+  background-color: #FFF;
+  border: none;
+  box-shadow: 2px 2px 30px rgb(187, 187, 187);
   /* border-radius: 8px; */
 }
 

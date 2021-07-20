@@ -4,10 +4,11 @@ import { UserController } from '../../../context/userContext'
 import { setEditUser } from '../../../function/set';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER_DETAIL } from '../../../graphql/auth';
+import { EyeTwoTone,EyeInvisibleOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
-export default function EditUser({ open, setOpen, data }) {
+export default function EditAccount({ open, setOpen, data }) {
     //const { userDataDispatch } = useContext(UserController)
 
     const [updateUserDetail, { loading, error }] = useMutation(UPDATE_USER_DETAIL,{
@@ -23,8 +24,6 @@ export default function EditUser({ open, setOpen, data }) {
 
     let [form] = Form.useForm()
 
-    
-
     const onFinish = (values) => {
 
         console.log(values)
@@ -36,7 +35,6 @@ export default function EditUser({ open, setOpen, data }) {
             tel:values.tel,
         }})
 
-        
         setOpen(false)
         form.resetFields()
     };
@@ -47,7 +45,7 @@ export default function EditUser({ open, setOpen, data }) {
 
     return (
         <Modal
-            title="កែប្រេអ្នកប្រើប្រាស់"
+            title="កែប្រែលេខសម្ងាត់"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
@@ -57,23 +55,26 @@ export default function EditUser({ open, setOpen, data }) {
                 form={form}
                 name="editUser"
                 fields={[
-                    
                     {
-                        name: ['firstName'],
-                        value: data.firstName,
+                        name: ['username'],
+                        value: data.username,
                     },
-                    {
-                        name: ['lastName'],
-                        value: data.lastName,
-                    },
-                    {
-                        name: ['tel'],
-                        value: data.tel,
-                    },
-                    {
-                        name: ['email'],
-                        value: data.email,
-                    },
+                    // {
+                    //     name: ['firstName'],
+                    //     value: data.firstName,
+                    // },
+                    // {
+                    //     name: ['lastName'],
+                    //     value: data.lastName,
+                    // },
+                    // {
+                    //     name: ['tel'],
+                    //     value: data.tel,
+                    // },
+                    // {
+                    //     name: ['email'],
+                    //     value: data.email,
+                    // },
                     
 
                 ]}
@@ -81,7 +82,7 @@ export default function EditUser({ open, setOpen, data }) {
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
-                    {/* <Col xs={24} md={{ span: 11 }}>
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="username"
                             rules={[{ required: true, message: 'Field is required!' }]}
@@ -95,46 +96,19 @@ export default function EditUser({ open, setOpen, data }) {
                             name="password"
                             rules={[{ required: true, message: 'Field is required!' }]}
                         >
-                            <Input placeholder="លេខកូដសម្ងាត់" style={{ width: "100%" }} />
+                            <Input.Password placeholder="លេខកូដសម្ងាត់" style={{ width: "100%" }} iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
                         </Form.Item>
-                    </Col> */}
+                    </Col>
 
-                    <Col xs={24} md={{ span: 11 }}>
+                    <Col xs={24} md={{ span: 11}}>
                         <Form.Item
-                            name="firstName"
+                            name="cfpassword"
                             rules={[{ required: true, message: 'Field is required!' }]}
                         >
-                            <Input placeholder="នាម" />
+                            <Input.Password placeholder="បញ្ជាក់លេខកូដសម្ងាត់" style={{ width: "100%" }} iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
                         </Form.Item>
                     </Col>
-
-                    <Col xs={24} md={{ span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="lastName"
-                            rules={[{ required: true, message: 'Field is required!' }]}
-                        >
-                            <Input placeholder="គោត្តនាម" style={{ width: "100%" }} />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11 }}>
-                        <Form.Item
-                            name="tel"
-                        // rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="លេខទូរស័ព្ទ" />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="email"
-                        // rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input type="email" placeholder="អ៊ីម៉ែល" />
-                        </Form.Item>
-                    </Col>
-
+                    
                     <Col xs={24}>
                         <Button
                             htmlType="submit"

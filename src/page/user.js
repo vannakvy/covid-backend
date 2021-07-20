@@ -9,6 +9,7 @@ import { useQuery, useMutation } from '@apollo/client'
 import { GET_ALL_USERS } from '../graphql/auth'
 import { DELETE_USER } from '../graphql/auth';
 import AddRole from '../component/user/modal/addRole';
+import EditAccount from '../component/user/modal/editAccount';
 
 export default function User() {
 
@@ -24,6 +25,7 @@ export default function User() {
     const [userEdit, setUserEdit] = useState({});
     const [openRole, setOpenRole] = useState(false)
     const [roleUserID, setRoleUserID] = useState("")
+    const [openEditAccount, setOpenEditAccount] = useState(false)
 
     //query all user
     const { data, loading, error,refetch } = useQuery(GET_ALL_USERS, {
@@ -59,6 +61,11 @@ export default function User() {
         setOpenEdit(true)
     }
 
+    const handleAccountEdit = (e) => {
+        setUserEdit(e)
+        setOpenEditAccount(true)
+    }
+
     const handleDelete = (e) => {
         //userDataDispatch({ type: "DELETE_USER", payload: e })
         console.log(e)
@@ -72,6 +79,7 @@ export default function User() {
             <AddUser open={openAdd} setOpen={setOpenAdd} />
             <EditUser open={openEdit} setOpen={setOpenEdit} data={userEdit} />
             <AddRole open={openRole} setOpen={setOpenRole} userID={roleUserID} dataRoles={dataRoles} />
+            <EditAccount open={openEditAccount} setOpen={setOpenEditAccount} data={userEdit} />
             <Col
                 xs={8}
                 md={18}
@@ -99,7 +107,7 @@ export default function User() {
             >
                 <Table
                     // caseCol({handleDelete})
-                    columns={userCol({ handleDelete, handleUserEdit, handleUserRole,setRoleUserID,limit, page })}
+                    columns={userCol({ handleDelete, handleUserEdit,handleAccountEdit, handleUserRole,setRoleUserID,limit, page })}
                     dataSource={userData.users}
                     rowKey={record => record.id}
                     pagination={{

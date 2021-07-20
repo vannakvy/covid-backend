@@ -61,6 +61,7 @@ export default function SubPeople() {
             <UploadPic open={openUploadPic} setOpen={setOpenUploadPic} />
             <Col
                 xs={24} md={15}
+                className="subPeople-card"
             >
                 <Row
                     style={{
@@ -73,6 +74,7 @@ export default function SubPeople() {
                             position: "relative",
                             padding: 20,
                         }}
+                        
                     >
                         <Image
                             width={"100%"}
@@ -103,6 +105,7 @@ export default function SubPeople() {
                     border: "1px solid #d9d9d9",
                     padding: "20px 20px 20px 0",
                 }}
+                className="subPeople-card"
             >
                 <ul className="list">
                     <li><Title level={5}>ការធ្វើចត្តាឡីស័ក <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}><PlusCircleOutlined /></span></Title></li>
@@ -128,8 +131,8 @@ export default function SubPeople() {
                 <ul className="list">
                     <li> { personalData?.currentState?.confirm ?  <CloseOutlined style={{color:"red"}} />  : <CheckOutlined style={{color:"green"}} /> } អវិជ្ជមាន</li>
                     <li> { personalData?.currentState?.confirm ? <CheckOutlined style={{color:"green"}} /> : <CloseOutlined style={{color:"red"}} /> } វិជ្ជមាន</li>
-                    <li> { personalData?.currentState?.recovered ? <CheckOutlined  style={{color:"green"}} /> : <CloseOutlined style={{color:"red"}} /> } វិជ្ជមាន</li>
-                    <li> { personalData?.currentState?.death ? <CheckOutlined style={{color:"green"}} /> : <CloseOutlined style={{color:"red"}} /> } វិជ្ជមាន</li>
+                    <li> { personalData?.currentState?.recovered ? <CheckOutlined  style={{color:"green"}} /> : <CloseOutlined style={{color:"red"}} /> } ជាសះស្បើយ</li>
+                    <li> { personalData?.currentState?.death ? <CheckOutlined style={{color:"green"}} /> : <CloseOutlined style={{color:"red"}} /> } ស្លាប់​</li>
                 </ul>
             </Col>
             <Col

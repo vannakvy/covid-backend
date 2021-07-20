@@ -72,7 +72,7 @@ export default function SubCase() {
 
     return (
         <Row>
-            <EditCase open={openEdit} setOpen={setOpenEdit} data={caseData}/>
+            <EditCase open={openEdit} setOpen={setOpenEdit} data={caseData} caseId={id}/>
             <AddSubCase open={openAddSub} setOpen={setOpenAddSub} caseId={id} />
             <EditSubCase open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData}  />
             <Col

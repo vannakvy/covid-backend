@@ -137,22 +137,22 @@ export function setQuarantine(values, length) {
     return array
 }
 
-export function setEditQuarantine(values, length) {
-    var array = {
-        id: values.id + "",
-        quarantineName: values.quarantineName === undefined ? "" : values.quarantineName,
-        place: values.place === undefined ? "" : values.place,
-        village: values.village === undefined ? "" : values.village,
-        commune: values.commune === undefined ? "" : values.commune,
-        district: values.district === undefined ? "" : values.district,
-        province: values.province === undefined ? "" : values.province,
-        inCharge: values.inCharge === undefined ? "" : values.inCharge,
-        tel: values.tel === undefined ? "" : values.tel,
-        note: values.note === undefined ? "" : values.note,
-    }
+// export function setEditQuarantine(values, length) {
+//     var array = {
+//         id: values.id + "",
+//         quarantineName: values.quarantineName === undefined ? "" : values.quarantineName,
+//         place: values.place === undefined ? "" : values.place,
+//         village: values.village === undefined ? "" : values.village,
+//         commune: values.commune === undefined ? "" : values.commune,
+//         district: values.district === undefined ? "" : values.district,
+//         province: values.province === undefined ? "" : values.province,
+//         inCharge: values.inCharge === undefined ? "" : values.inCharge,
+//         tel: values.tel === undefined ? "" : values.tel,
+//         note: values.note === undefined ? "" : values.note,
+//     }
 
-    return array
-}
+//     return array
+// }
 
 export function setSubQuarantine(values, length) {
     var array = {
@@ -323,5 +323,27 @@ export function setAddSubQuarantine(values){
         personalInfo: values.personalInfo,
         personalType:values.personalType
     }
+    return array;
+}
+
+export function setEditQuarantine(values){
+    var array ={
+        lat: values.lat,
+        capacity: values.capacity,
+        createdAt: values.createdAt,
+        locationName:values.locationName,
+        long:values.long,
+        other:values.other,
+        tel:values?.personInCharge?.tel,
+        firstName:values?.personInCharge?.firstName, 
+        lastName:values?.personInCharge?.lastName, 
+        position:values?.personInCharge?.position, 
+        others:values?.personInCharge?.others,
+        village: values.village === undefined ? "" : values.village,
+        commune: values.commune === undefined ? "" : values.commune,
+        district: values.district === undefined ? "" : values.district,
+        province: values.province === undefined ? "" : values.province,
+    }
+
     return array;
 }

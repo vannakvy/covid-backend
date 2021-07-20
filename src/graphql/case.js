@@ -117,3 +117,33 @@ query getCaseById($id:ID!){
   }
 }
 `;
+
+export const UPDATE_CASE_BY_ID = gql`
+mutation updateCase(
+  $caseName:String,
+  $village:String,
+  $commune:String,
+  $district:String,
+  $province:String,
+  $date:DateTime,
+  $long:Float,
+  $lat:Float,
+  $other:String,
+  $id:ID!
+){
+  updateCase(updatedCase:{
+    caseName:$caseName
+    village:$village
+    commune:$commune
+    district:$district
+    province:$province
+    date:$date
+    long:$long
+    lat:$lat
+    other:$other
+  },id:$id){
+    success
+    message
+  }
+}
+`;

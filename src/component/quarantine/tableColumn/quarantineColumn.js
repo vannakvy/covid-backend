@@ -90,7 +90,7 @@ export const quarantineCol = ({handleDelete,limit,page}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <Link to={"/subQuarantine/"+record.id}><EditOutlined /></Link>
+                    <Link className="link" to={"/subQuarantine/"+record.id}><EditOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}

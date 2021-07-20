@@ -1,12 +1,14 @@
 import React, {useContext, useEffect,useState} from 'react'
-import { Modal, Form, Input, DatePicker, Row, Col, Button } from 'antd'
+import { Modal, Form, Input, DatePicker, Row, Col, Button, message } from 'antd'
 import {CaseController} from '../../../context/caseContext'
 import {setEditCase} from '../../../function/set'
 import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
+import { useMutation } from '@apollo/client'
+import { UPDATE_CASE_BY_ID } from '../../../graphql/case'
 
-export default function EditCase({ open, setOpen, data}) {
+export default function EditCase({ open, setOpen, data, caseId}) {
     const {caseDataDispatch} = useContext(CaseController)
 
     const [province, setProvince] = useState("")
@@ -14,6 +16,12 @@ export default function EditCase({ open, setOpen, data}) {
     const [commune, setCommune] = useState("")
 
     let [form] = Form.useForm()
+
+    const [updateCase,{loading}] = useMutation(UPDATE_CASE_BY_ID,{
+        onCompleted:()=>{
+            message.success("កែប្រែទិន្នន័យជោគជ័យ")
+        }
+    })
 
     console.log(data)
 
@@ -29,6 +37,21 @@ export default function EditCase({ open, setOpen, data}) {
 
     const onFinish = (values) => {
         console.log('Success:', values);
+
+        updateCase({
+            variables:{
+                caseName:values.caseName,
+                village:values.village,
+                commune:values.commune,
+                district:values.district,
+                province:values.province,
+                date:values.date,
+                long:values.long,
+                lat:values.lat,
+                other:values.other,
+                id:caseId
+            }
+        })
 
         // caseDataDispatch({type: 'EDIT_CASE', payload: {...values, id: data.id}})
         // setData({...values, id: data.id})
@@ -159,7 +182,7 @@ export default function EditCase({ open, setOpen, data}) {
                     <Col xs={24}>
                         <Form.Item
                             name="other"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            
                         >
                             <Input placeholder="ចំណាំ" />
                         </Form.Item>
