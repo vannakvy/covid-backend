@@ -29,8 +29,8 @@ export default function EditSubHospital({ open, setOpen, data, setData }) {
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        subHospitalDataDispatch({type: 'EDIT_SUB_HOSPITAL', payload: {...values, id: data.id}})
-        setData({...values, id: data.id})
+        // subHospitalDataDispatch({type: 'EDIT_SUB_HOSPITAL', payload: {...values, id: data.id}})
+        // setData({...values, id: data.id})
 
         setOpen(false)
         form.resetFields()

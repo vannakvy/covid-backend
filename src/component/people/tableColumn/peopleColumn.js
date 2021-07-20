@@ -63,7 +63,10 @@ export const peopleCol = ({handleDelete,limit,page}) => {
             width: 250,
             render: (text, record) => (
                 <Space size="middle">
-                    {record.village + "," + record.commune + "," + record.district + "," + record.province}
+                    {(record.village !== "ក្រៅសៀមរាប") && record.village}
+                    {record.commune !== "ក្រៅសៀមរាប" && record.commune}
+                    {record.district !== "ក្រៅសៀមរាប" && record.district}
+                    {record.province && record.province}
                 </Space>
             ),
         },

@@ -41,10 +41,10 @@ export default function EditCase({ open, setOpen, data, caseId}) {
         updateCase({
             variables:{
                 caseName:values.caseName,
-                village:values.village,
-                commune:values.commune,
-                district:values.district,
-                province:values.province,
+                village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
+                commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
+                district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
+                province: values.province === undefined ? "" : values.province,
                 date:values.date,
                 long:values.long,
                 lat:values.lat,

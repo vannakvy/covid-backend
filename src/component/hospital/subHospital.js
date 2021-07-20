@@ -79,7 +79,7 @@ export default function SubHospital() {
     }
     return (
         <Row>
-            <EditHospital open={openEdit} setOpen={setOpenEdit} data={headerData} setData={setHeaderData} />
+            <EditHospital open={openEdit} setOpen={setOpenEdit} data={hospitalData} setData={setHospitalData} />
             <AddSubHospital open={openAddSub} setOpen={setOpenAddSub} hospitalId={id} peopleData={peopleData}/>
             <EditSubHospital open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData}  />
             <Col
@@ -95,9 +95,13 @@ export default function SubHospital() {
                 className="subCase-card"
             >
                 <p>ឈ្មោះមណ្ឌល៖ {hospitalData?.hospitalName} <EditOutlined className="link" onClick={() => setOpenEdit(true)}/></p>
-                {/* <p>ទីតាំង៖ {headerData?.place}</p> */}
                 {/* <p>អាចផ្ទុក៖ {headerData?.capacity}</p> */}
-                <p>អាសយដ្ឋាន៖ {hospitalData?.village},{hospitalData?.commune},{hospitalData?.district},{hospitalData?.province}</p>
+                <p>អាសយដ្ឋាន៖ {" "}
+                {hospitalData?.village !== "ក្រៅសៀមរាប" && hospitalData?.village + ","}
+                    {hospitalData?.commune !== "ក្រៅសៀមរាប" && hospitalData?.commune + ","}
+                    {hospitalData?.district !== "ក្រៅសៀមរាប" && hospitalData?.district + ","}
+                    {hospitalData?.province}
+                </p>
                 <p>អ្នកទទួលខុសត្រូវ៖ {hospitalData?.personInCharge?.lastName} {hospitalData?.personInCharge?.firstName}</p>
                 <p>លេខទូរស័ព្ទ៖ {hospitalData?.personInCharge?.tel}</p>
                 <p>ចំណាំ៖ {hospitalData?.other}</p>

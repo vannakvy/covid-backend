@@ -63,7 +63,10 @@ export const subQuarantineCol = ({handleDelete, handleEditSubQuarantine,limit,pa
             width: 90,
             render: (text, record) => (
                 <Space size="middle">
-                    {record?.personalInfo?.village + "," + record?.personalInfo?.commune + "," + record?.personalInfo?.district + "," + record?.personalInfo?.province}
+                    {(record?.personalInfo?.village !== "ក្រៅសៀមរាប") && record?.personalInfo?.village}
+                    {record?.personalInfo?.commune !== "ក្រៅសៀមរាប" && record?.personalInfo?.commune}
+                    {record?.personalInfo?.district !== "ក្រៅសៀមរាប" && record?.personalInfo?.district}
+                    {record?.personalInfo?.province && record?.personalInfo?.province}
                 </Space>
             ),
         },

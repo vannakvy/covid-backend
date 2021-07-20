@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
-import { Modal, Form, Input, DatePicker, Row, Col, Button ,Select} from 'antd'
+import { Modal, Form, Input, DatePicker, Row, Col, Button ,Select,Divider} from 'antd'
 import {HospitalController} from '../../../context/hospitalContext'
 import {setEditHospital} from '../../../function/set'
 
@@ -18,6 +18,7 @@ export default function EditHospital({ open, setOpen, data, setData }) {
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
 
+    console.log(data)
 
     useEffect(() => {
         
@@ -34,8 +35,8 @@ export default function EditHospital({ open, setOpen, data, setData }) {
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        hospitalDataDispatch({type: 'EDIT_HOSPITAL', payload: {...values, id: data.id}})
-        setData({...values, id: data.id})
+        // hospitalDataDispatch({type: 'EDIT_HOSPITAL', payload: {...values, id: data.id}})
+        // setData({...values, id: data.id})
 
         setOpen(false)
         form.resetFields()
@@ -105,49 +106,22 @@ export default function EditHospital({ open, setOpen, data, setData }) {
             <Form
                 form={form}
                 name="editHospital"
-                // initialValues={setEditCase(data)}
+                initialValues={setEditHospital(data)}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
-                    <Col xs={24} md={{span:11}}>
+                <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="hospitalName"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'Field is required!' }]}
                         >
                             <Input placeholder="ឈ្មោះមណ្ឌល" />
                         </Form.Item>
                     </Col>
 
+
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="inCharge"
-                            rules={[{ required: true, message: 'Field is required!' }]}
-                        >
-                            <Input placeholder="អ្នកទទួលខុសត្រូវ" style={{ width: "100%" }} />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11}}>
-                        <Form.Item
-                            name="place"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="ទីកន្លែង" />
-                        </Form.Item>
-                    </Col>
-
-                 
-                    <Col xs={24} md={{ span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="tel"
-                        // rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Input placeholder="លេខទូរស័ព្ទ" />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="province"
                             rules={[{ required: true, message: 'Field is required!' }]}
@@ -158,7 +132,7 @@ export default function EditHospital({ open, setOpen, data, setData }) {
 
                     {province === "សៀមរាប" ? (
                         <>
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
+                            <Col xs={24} md={{ span: 11, offset: 0 }}>
                                 <Form.Item
                                     name="district"
                                     rules={[{ required: true, message: 'Field is required!' }]}
@@ -166,7 +140,7 @@ export default function EditHospital({ open, setOpen, data, setData }) {
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} md={{ span: 11 }}>
+                            <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="commune"
                                     rules={[{ required: true, message: 'Field is required!' }]}
@@ -174,7 +148,7 @@ export default function EditHospital({ open, setOpen, data, setData }) {
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
+                            <Col xs={24} md={{ span: 24, offset: 0 }}>
                                 <Form.Item
                                     name="village"
                                     rules={[{ required: true, message: 'Field is required!' }]}
@@ -185,12 +159,84 @@ export default function EditHospital({ open, setOpen, data, setData }) {
                         </>
                     ) : null}
 
+                    {/* <Col xs={24} md={{ span: 24, offset: 0 }}>
+                        <Form.Item
+                            name="capacity"
+                        >
+                            <Input type="number" placeholder="អាចផ្ទុកបាន" />
+                        </Form.Item>
+                    </Col> */}
+
                     <Col xs={24}>
                         <Form.Item
-                            name="note"
+                            name="other"
                         // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="ចំណាំ" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="long"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input type="number" placeholder="longtitude" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
+                        <Form.Item
+                            name="lat"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input type="number" placeholder="latitude" />
+                        </Form.Item>
+                    </Col>
+
+                    <Divider>អ្នកទទួលខុសត្រូវ</Divider>
+                    <Col xs={24} md={{ span: 11, offset: 0 }}>
+                        <Form.Item
+                            name="firstName"
+                            rules={[{ required: true, message: 'Field is required!' }]}
+                        >
+                            <Input placeholder="នាម" style={{ width: "100%" }} />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
+                        <Form.Item
+                            name="lastName"
+                            rules={[{ required: true, message: 'Field is required!' }]}
+                        >
+                            <Input placeholder="គោត្តនាម" style={{ width: "100%" }} />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset: 0 }}>
+                        <Form.Item
+                            name="position"
+                            rules={[{ required: true, message: 'Field is required!' }]}
+                        >
+                            <Input placeholder="តួនាទីការងារ" style={{ width: "100%" }} />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
+                        <Form.Item
+                            name="tel"
+                            rules={[{ required: true, message: 'Field is required!' }]}
+                        >
+                            <Input placeholder="លេខទូរស័ព្ទ" style={{ width: "100%" }} />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset: 0 }}>
+                        <Form.Item
+                            name="others"
+                        //rules={[{ required: true, message: 'Field is required!' }]}
+                        >
+                            <Input placeholder="ផ្សេងៗ" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
 
