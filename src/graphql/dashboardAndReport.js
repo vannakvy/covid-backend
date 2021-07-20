@@ -16,16 +16,19 @@ query getAllProvince($district:String){
 
 `
 
-// export const GET_ALL_PROVINCE_BY_PROVINCE =gql`
-// query getAllProvince{
-//     getAllProvince{
-//             death
-//         recovered
-//         confirmedCase
-//         deathToday
-//         recoveredToday
-//         confirmedCaseToday
-//     }
-// }
+export const GET_DATA_FOR_MAP =gql`
+query  getAllDistrictForMap{
+    getAllDistrictForMap{
+            death
+        confirmedCase
+        confirmedCaseToday
+        deathToday
+        recovered
+        recoveredToday
+        _id
+    }
 
-// `
+  } 
+
+
+`
