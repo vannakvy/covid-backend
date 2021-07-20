@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react'
-import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
+import { Form, Modal, Input, Row, Col, Button, Select,DatePicker, message } from 'antd'
 import { QuarantineController } from '../../../context/quarantineContext'
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
+import { useMutation, useQuery } from '@apollo/client'
+import { CREATE_PERSON_QUARANTINE } from '../../../graphql/quarantine'
+import { setAddSubQuarantine } from '../../../function/set'
+import moment from 'moment'
 
 const { Option } = Select
 
-export default function AddSubQuarantine({ open, setOpen, quarantineId }) {
+export default function AddSubQuarantine({ open, setOpen, quarantineId, peopleData }) {
     const { subQuarantineDataDispatch } = useContext(QuarantineController)
 
     let [form] = Form.useForm()
@@ -16,10 +20,24 @@ export default function AddSubQuarantine({ open, setOpen, quarantineId }) {
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    const [createQuarantine,{data}]=useMutation(CREATE_PERSON_QUARANTINE,{
+        onCompleted:({createQuarantine})=>{
+            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+        }
+    })
 
-        subQuarantineDataDispatch({ type: 'ADD_SUB_QUARANTINE', payload: {...values, quarantineId: quarantineId} })
+    const onFinish = (values) => {
+        console.log('Success:', setAddSubQuarantine(values));
+
+        createQuarantine({variables:{
+            in:values.in,
+            date_in:moment(values.date_in).format(),
+            date_out:moment(values.date_out).format(),
+            personalType:values.personalType,
+            personalInfo:values.personalInfo,
+            quarantineInfo:quarantineId,
+            others:values.others,
+        }})
 
         setOpen(false)
         form.resetFields()
@@ -92,99 +110,71 @@ export default function AddSubQuarantine({ open, setOpen, quarantineId }) {
                 <Row>
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="name"
+                            name="personalInfo"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="ឈ្មោះ" />
+                            {/* <Input placeholder="ឈ្មោះ" /> */}
+                            <Select placeholder="អ្នកចត្តាឡីស័ក" style={{ width: "100%" }} onChange={(e)=>console.log(e)}>
+                                {peopleData.map((people)=>(
+                                     <Option key={people?.id} value={people?.id}>{people?.lastName} {people?.firstName}</Option>
+                                ))}
+                               
+                            </Select>
                         </Form.Item>
                     </Col>
 
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
-                            name="gender"
+                            name="personalType"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
 
-                            <ListSelect type={0} data={genderData} title="ភេទ" setValue={setToGenderFn} />
+                            <Select placeholder="ប្រភេទ" style={{ width: "100%" }}>
+                                <Option value="សហគមន៍">សហគមន៍</Option>
+                                <Option value="តាមផ្លូងអាកាស">តាមផ្លូងអាកាស</Option>
+                                <Option value="ពលករ">ពលករ</Option>
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 24}}>
+                        <Form.Item
+                            name="in"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+
+                            <Select placeholder="ចត្តាឡីស័ក" style={{ width: "100%" }}>
+                                <Option value={true}>ចូល</Option>
+                                <Option value={false}>ចេញ</Option>
+                            </Select>
                         </Form.Item>
                     </Col>
 
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="province"
+                            name="date_in"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
+                            <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
 
-                    {province === "សៀមរាប" ? (
-                        <>
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
-                                <Form.Item
-                                    name="district"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
-                                >
-                                    <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
-                                </Form.Item>
-                            </Col>
-                            <Col xs={24} md={{ span: 11 }}>
-                                <Form.Item
-                                    name="commune"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
-                                >
-                                    <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
-                                </Form.Item>
-                            </Col>
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
-                                <Form.Item
-                                    name="village"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
-                                >
-                                    <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
-                                </Form.Item>
-                            </Col>
-                        </>
-                    ) : null}
-
-
-                    <Col xs={24} md={province === "សៀមរាប" ? { span: 11 } : {span: 11, offset: 2}}>
+                    <Col xs={24} md={{ span: 11, offset:2 }}>
                         <Form.Item
-                            name="status"
+                            name="date_out"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                placeholder="ស្ថានភាព"
-                                optionFilterProp="children"
-                                filterOption={(input, option) =>
-                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                }
-                            >
-                                <Option value="វិជ្ជមាន">វិជ្ជមាន</Option>
-                                <Option value="អវិជ្ជមាន">អវិជ្ជមាន</Option>
-                            </Select>
+                            <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={province === "សៀមរាប" ? {span: 11, offset: 2} : { span: 24 }}>
+                    <Col xs={24} md={{ span: 24}}>
                         <Form.Item
-                            name="relatedInfo"
+                            name="others"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                placeholder="លក្ខណៈពាក់ព័ន្ធ"
-                                optionFilterProp="children"
-                                filterOption={(input, option) =>
-                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                }
-                            >
-                                <Option value="ផ្ទាល់">ផ្ទាល់</Option>
-                                <Option value="ប្រយោល">ប្រយោល</Option>
-                            </Select>
+
+                            <Input placeholder="ផ្សេងៗ" />
                         </Form.Item>
                     </Col>
 

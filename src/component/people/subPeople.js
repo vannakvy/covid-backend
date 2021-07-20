@@ -1,7 +1,7 @@
-import { Col, Image, Row, Table, Typography } from 'antd'
+import { Col, Image, message, Row, Table, Typography } from 'antd'
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { CameraOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { CameraOutlined, PlusCircleOutlined,CheckOutlined,CloseOutlined} from '@ant-design/icons';
 import { PeopleController } from '../../context/peopleContext'
 import { statusCol } from './tableColumn/statusColumn'
 import { testCol } from './tableColumn/testColumn'
@@ -13,11 +13,13 @@ import AddPeopleStatus from './modal/addPeopleStatus'
 import AddPeopleQuarantine from './modal/addPeopleQuarantine'
 import AddPeopleHistory from './modal/addPeopleHistory'
 import UploadPic from './modal/uploadPic'
+import { useMutation,useQuery } from '@apollo/client';
+import { GET_PERSONALINFO_BY_ID } from '../../graphql/people';
 
 const { Title } = Typography
 
 export default function SubPeople() {
-    const { peopleData } = useContext(PeopleController)
+    //const { peopleData } = useContext(PeopleController)
     const { id } = useParams()
 
     const [personalData, setPersonalData] = useState({})
@@ -29,10 +31,20 @@ export default function SubPeople() {
     const [openAddPeopleHistory, setOpenAddPeopleHistory]= useState(false)
     const [openUploadPic, setOpenUploadPic] = useState(false)
 
+    const {data}=useQuery(GET_PERSONALINFO_BY_ID,{
+        variables:{
+            id:id
+        },
+        onCompleted:({getPersonalInfoById})=>{
+            console.log(getPersonalInfoById)
+            setPersonalData(getPersonalInfoById)
+        }
+    })
+
     useEffect(() => {
-        setPersonalData(peopleData[peopleData.findIndex(e => e.id === id)])
-        console.log(peopleData)
-    }, [peopleData])
+        //setPersonalData(peopleData[peopleData.findIndex(e => e.id === id)])
+        //console.log(peopleData)
+    }, [])
 
     const handleDelete = () => {
 
@@ -41,7 +53,7 @@ export default function SubPeople() {
     return (
         <Row>
             <AddSubCase open={openAddSubCase} setOpen={setOpenAddSubCase} caseId={"1"} />
-            <AddPeopleTest open={openAddPeopleTest} setOpen={setOpenAddPeopleTest} />
+            <AddPeopleTest open={openAddPeopleTest} setOpen={setOpenAddPeopleTest} peopleID={id} />
             <AddPeopleHospital open={openAddPeopleHospital} setOpen={setOpenAddPeopleHospital} />
             <AddPeopleStatus open={openAddPeopleStatus} setOpen={setOpenAddPeopleStatus} />
             <AddPeopleQuarantine open={openAddPeopleQuarantine} setOpen={setOpenAddPeopleQuarantine} />
@@ -74,12 +86,12 @@ export default function SubPeople() {
                         xs={24} md={10}
                     >
                         <ul className="list">
-                            <li>ឈ្មោះ៖ {personalData?.name}</li>
+                            <li>ឈ្មោះ៖ {personalData?.lastName} {personalData?.firstName}</li>
                             <li>ភេទ៖ {personalData?.gender}</li>
                             <li>សញ្ជាតិ៖ {personalData?.nationality}</li>
                             <li>លេខអត្តសញ្ញាណប័ណ្ឌ៖ {personalData?.idCard}</li>
                             <li>លេខទូរស័ព្ទ៖ {personalData?.tel}</li>
-                            <li>មុខរបរ៖ {personalData?.job}</li>
+                            <li>មុខរបរ៖ {personalData?.occupation}</li>
                             <li>អាស័យដ្ឋាន៖ ភូមិ{personalData?.village}  ឃុំ{personalData?.commune}  ស្រុក{personalData?.district}  ខេត្ត{personalData?.province} </li>
                         </ul>
                     </Col>
@@ -105,14 +117,20 @@ export default function SubPeople() {
                 style={{ paddingTop: 14 }}
             >
                 <Title level={5}>ស្ថានភាពបច្ចុប្បន្ន <span className="link" onClick={() => setOpenAddPeopleStatus(true)}><PlusCircleOutlined /></span></Title>
-                <Table
+                {/* <Table
                     columns={statusCol({ handleDelete })}
                     dataSource={[{ id: "1", date: "alsdjas", status: "laskldfj", remark: "laksdjald" }]}
                     rowKey={record => record.id}
                     pagination={true}
                     scroll={{ x: 500, y: 300 }}
                     sticky
-                />
+                /> */}
+                <ul className="list">
+                    <li> { personalData?.currentState?.confirm ?  <CloseOutlined style={{color:"red"}} />  : <CheckOutlined style={{color:"green"}} /> } អវិជ្ជមាន</li>
+                    <li> { personalData?.currentState?.confirm ? <CheckOutlined style={{color:"green"}} /> : <CloseOutlined style={{color:"red"}} /> } វិជ្ជមាន</li>
+                    <li> { personalData?.currentState?.recovered ? <CheckOutlined  style={{color:"green"}} /> : <CloseOutlined style={{color:"red"}} /> } វិជ្ជមាន</li>
+                    <li> { personalData?.currentState?.death ? <CheckOutlined style={{color:"green"}} /> : <CloseOutlined style={{color:"red"}} /> } វិជ្ជមាន</li>
+                </ul>
             </Col>
             <Col
                 xs={24} md={{ span: 12, offset: 1 }}
@@ -152,7 +170,7 @@ export default function SubPeople() {
                 <Title level={5}>ការធ្វើតេស្ត <span className="link" onClick={() => setOpenAddPeopleTest(true)} ><PlusCircleOutlined /></span></Title>
                 <Table
                     columns={testCol({ handleDelete })}
-                    dataSource={[{ id: "1", date: "alsdjas", status: "laskldfj", remark: "laksdjald" }]}
+                    dataSource={personalData?.sampleTest}
                     rowKey={record => record.id}
                     pagination={true}
                     scroll={{ x: 800, y: 300 }}

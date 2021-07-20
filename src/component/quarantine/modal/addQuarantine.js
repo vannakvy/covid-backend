@@ -23,8 +23,11 @@ export default function AddQuarantine({ open, setOpen }) {
         onCompleted:({createQuarantineInfo})=>{
             message.success("បញ្ចូលបានជោគជ័យ")
         },
-        onError:()=>{
+        onError:({error})=>{
             message.error("បញ្ចូលបរាជ័យ")
+
+                console.log(error)
+            
         }
     })
 

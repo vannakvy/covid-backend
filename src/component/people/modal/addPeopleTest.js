@@ -1,22 +1,47 @@
 import React, { useContext, useState } from 'react'
-import { Modal, Form, Input, Row, Col, Button, Select, DatePicker } from 'antd'
+import { Modal, Form, Input, Row, Col, Button, Select, DatePicker,message } from 'antd'
 import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
 import { PeopleController } from '../../../context/peopleContext'
+import { useMutation,useQuery } from '@apollo/client';
+import { RECORD_SAMPLETEST } from '../../../graphql/people';
+import moment from 'moment'
 
-export default function AddPeopleTest({ open, setOpen }) {
-    const { peopleDataDispatch } = useContext(PeopleController)
+const {Option} = Select
+
+export default function AddPeopleTest({ open, setOpen, peopleID }) {
+    //const { peopleDataDispatch } = useContext(PeopleController)
 
     let [form] = Form.useForm()
+
+    const [recordSampleTest,{loading}] = useMutation(RECORD_SAMPLETEST,{
+        onCompleted:()=>{
+            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+        }
+    })
+
+    console.log(peopleID)
 
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        peopleDataDispatch({ type: 'ADD_PEOPLE', payload: values })
+        //peopleDataDispatch({ type: 'ADD_PEOPLE', payload: values })
 
-        setOpen(false)
-        form.resetFields()
+        recordSampleTest({
+            variables:{
+                date:moment(values.date).format(),
+                times: parseInt(values.times),
+                location:values.location,
+                result:values.result,
+                symptom:values.symptom,
+                other:values.other,
+                personalInfoId:peopleID,
+            }
+        })
+
+        // setOpen(false)
+        // form.resetFields()
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -43,12 +68,12 @@ export default function AddPeopleTest({ open, setOpen }) {
                             name="date"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <DatePicker placeholder="កាលបវិច្ឆេទចាប់ផ្តើមចត្តាឡីស័ក" style={{width:"100%"}}/>
+                            <DatePicker placeholder="កាលបវិច្ឆេទការធ្វើតេស្ត" style={{width:"100%"}}/>
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
-                            name="place"
+                            name="location"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="ទីតាំង" />
@@ -60,14 +85,27 @@ export default function AddPeopleTest({ open, setOpen }) {
                             name="result"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="លទ្ធផល" />
+                            {/* <Input placeholder="លទ្ធផល" /> */}
+                            <Select placeholder="លទ្ធផល" style={{ width: "100%" }}>
+                                <Option value={true}>វិជ្ជមាន</Option>
+                                <Option value={false}>អវិជ្ជមាន</Option>
+                            </Select>
                         </Form.Item>
                     </Col>
 
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
-                            name="symptoms"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            name="times"
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input type="number" placeholder="លើក" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 24}}>
+                        <Form.Item
+                            name="symptom"
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="អាការ" />
                         </Form.Item>
@@ -75,8 +113,8 @@ export default function AddPeopleTest({ open, setOpen }) {
 
                     <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
-                            name="remark"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            name="other"
+                        
                         >
                             <Input placeholder="ចំណាំ" />
                         </Form.Item>

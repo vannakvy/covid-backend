@@ -4,6 +4,7 @@ import {
     DeleteOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export const testCol = ({handleDelete}) => {
     var array = [
@@ -23,35 +24,46 @@ export const testCol = ({handleDelete}) => {
             dataIndex: 'date',
             key: 'date',
             width: 80,
+            render: (text, record) => (
+                <Space size="middle">
+                    {moment(record.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
+                </Space>
+            ),
         },
         {
             title: 'លើកទី',
-            dataIndex: 'status',
-            key: 'status',
+            dataIndex: 'times',
+            key: 'times',
             width: 50,
         },
         {
             title: 'ទីតាំង',
-            dataIndex: 'status',
-            key: 'status',
+            dataIndex: 'location',
+            key: 'location',
             width: 50,
         },
         {
             title: 'លទ្ធផល',
-            dataIndex: 'status',
-            key: 'status',
-            width: 50,
+            dataIndex: 'sampleTest',
+            key: 'sampleTest',
+            width: 60,
+            render:(text,record)=>(
+                <Space size="middle">
+                    { record?.result ? "វិជ្ជមាន":"អវិជ្ជមាន" }
+                    {/* {console.log(record?.result )} */}
+                </Space>
+            )
         },
         {
             title: 'អាការ',
-            dataIndex: 'status',
-            key: 'status',
+            dataIndex: 'symptom',
+            key: 'symptom',
             width: 50,
         },
         {
             title: 'ផ្សេងៗ',
-            dataIndex: 'remark',
-            key: 'remark',
+            dataIndex: 'other',
+            key: 'other',
             width: 100,
         },
         {

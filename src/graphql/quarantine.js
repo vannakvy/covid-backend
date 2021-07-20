@@ -88,3 +88,104 @@ mutation deleteQuarantineInfo($id:ID!){
     }
   }
 `;
+
+export const CREATE_PERSON_QUARANTINE = gql`
+mutation createQuarantine(
+  $in:Boolean,
+  $date_in:DateTime,
+  $date_out:DateTime,
+  $personalInfo:ID!,
+  $quarantineInfo:ID!,
+  $others:String,
+  $personalType:String
+){
+  createQuarantine(newQuarantine:{
+    in:$in
+    date_in:$date_in
+    date_out:$date_out
+    personalInfo:$personalInfo
+    quarantineInfo:$quarantineInfo
+    others:$others
+    personalType:$personalType
+  }){
+    success
+    message
+  }
+}
+`;
+
+export const GET_PERSON_BY_QUARANTINE = gql`
+query getQuarantineByQurantineIdWithPagination(
+  $page:Int!,
+  $limit:Int!,
+  $keyword:String,
+  $quarantineInfoId:ID!
+){
+  getQuarantineByQurantineIdWithPagination(page:$page,limit:$limit,keyword:$keyword,quarantineInfoId:$quarantineInfoId){
+    quarantines{
+      in
+      date_in
+      date_out
+      out_status
+      personalInfo{
+      	id
+        firstName
+        lastName
+        village
+        gender
+        district
+        commune
+        province
+        direct
+        currentState{
+          confirm
+          death
+          recovered
+        }
+    	}
+      
+      personalType
+      others
+    }
+    paginator{
+      slNo
+      prev
+      next
+      perPage
+      totalPosts
+      totalPages
+      currentPage
+      hasPrevPage
+      hasNextPage
+      totalDocs
+    }
+  }
+}
+`;
+
+export const GETE_QUARANTINE_BY_ID = gql`
+query getQuarantineInfoById($id:ID!){
+  getQuarantineInfoById(id:$id){
+    capacity
+    id
+    locationName
+    village
+    commune
+    district
+    province
+    personInchage
+    long
+    Lat
+    createdAt
+    updatedAt
+    personInCharge{
+      firstName
+      lastName
+      position
+      others
+      tel
+    }
+    other
+  }
+}
+`;

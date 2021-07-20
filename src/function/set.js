@@ -172,17 +172,14 @@ export function setSubQuarantine(values, length) {
 }
 
 export function setEditSubQuarantine(values) {
+    console.log(values)
     var array = {
-        id: values.id + "",
-        caseId: values.caseId === undefined ? "" : values.caseId,
-        name: values.name === undefined ? "" : values.name,
-        gender: values.gender === undefined ? "" : values.gender,
-        province: values.province === undefined ? "" : values.province,
-        district: values.district === undefined ? "" : values.district,
-        commune: values.commune === undefined ? "" : values.commune,
-        village: values.village === undefined ? "" : values.village,
-        status: values.status === undefined ? "" : values.status,
-        relatedInfo: values.relatedInfo === undefined ? "" : values.relatedInfo,
+        date_in: moment(values.date_in),
+        date_out: moment(values.date_out),
+        in: values.in,
+        others: values.others,
+        personalInfo: values?.personalInfo?.id,
+        personalType:values.personalType
     }
 
     return array
@@ -315,4 +312,16 @@ export function setAddPeople(values) {
         vaccinated:parseInt(values.vaccinated),
     }
     return array
+}
+
+export function setAddSubQuarantine(values){
+    var array= {
+        date_in: moment(values.date_in).format(),
+        date_out: moment(values.date_out).format(),
+        in: values.in,
+        others: values.others,
+        personalInfo: values.personalInfo,
+        personalType:values.personalType
+    }
+    return array;
 }

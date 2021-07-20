@@ -95,3 +95,109 @@ mutation createPersonalInfo(
     }
   }
 `
+
+export const GET_ALL_PERSONINFO_NO_LIMIT = gql`
+query allPersonalInfos{
+  allPersonalInfos{
+    id
+    firstName
+    lastName
+    gender
+    nationality
+    occupation
+    village
+    commune
+    district
+    province
+    direct
+    currentState{
+      confirm
+      confirmedAt
+      recovered
+      recoveredAt
+      death
+      deathAt
+    }
+  }
+}
+`;
+
+export const RECORD_SAMPLETEST = gql`
+mutation recordSampleTest(
+  $date:DateTime,
+  $times:Int,
+  $location:String,
+  $result:Boolean,
+  $symptom:String,
+  $other:String,
+  $personalInfoId:ID!,
+){
+  recordSampleTest(sampleTest:{
+    date:$date
+    times:$times
+    location:$location
+    result:$result
+    symptom:$symptom
+    other:$other
+  },personalInfoId:$personalInfoId){
+    message
+    success
+  }
+}
+`;
+
+export const GET_PERSONALINFO_BY_ID = gql`
+query getPersonalInfoById($id:ID!){
+  getPersonalInfoById(id:$id){
+    id
+		firstName
+    lastName
+    age
+    gender
+    tel
+    nationality
+    occupation
+    idCard
+    profileImg
+    village
+    commune
+    district
+    province
+    case{
+      id
+      caseName
+      village
+      commune
+      district
+      province
+      other
+      date
+      long
+      lat
+    }
+    direct
+    other
+    relapse
+    relapseAt
+    vaccinated
+    currentState{
+      confirm
+      confirmedAt
+      death
+      deathAt
+      recovered
+      recoveredAt
+    }
+    sampleTest{
+      id
+      date
+      times
+      location
+      result
+      symptom
+      other
+    }
+  }
+}
+
+`;
