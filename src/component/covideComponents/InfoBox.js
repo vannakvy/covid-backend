@@ -8,7 +8,7 @@ function InfoBox({ title, cases, total, active, isRed, ...props }) {
       onClick={props.onClick}
       className={`infoBox ${active && "infoBox--selected"} ${
         isRed && "infoBox--red"
-      }`}
+      } `}
     >
       <CardContent>
         {/* <Typography  variant="h5" color="textSecondary" gutterBottom >
@@ -17,7 +17,7 @@ function InfoBox({ title, cases, total, active, isRed, ...props }) {
         </Typography> */}
         <h4 className="infoBox_font">{title}</h4>
         <h3 className={`infoBox__cases ${!isRed && "infoBox__cases--green"}`}>
-          {cases}
+         ថ្ងៃនេះ {cases}
         </h3>
 
         <Typography as="" className=" infoBox_font" color="textSecondary">
