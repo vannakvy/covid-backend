@@ -151,3 +151,11 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   width: 80px;
   margin:20px 0px;
 }
+
+.ant-menu-item-selected{
+  background-color:#06385f!important ;
+}
+
+.ant-menu-item-active{
+  background-color:#4eb2ff!important ;
+}

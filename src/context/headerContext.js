@@ -11,11 +11,9 @@ export const communeData = require('../asset/data/commune.json')
 export const villageData = require('../asset/data/village.json')
 
 export default function HeaderContext(props) {
+    let userData = JSON.parse(localStorage.getItem('user'))
     const urlPath = useLocation().pathname
-    const [user, userDispatch] = useReducer(headerReducer, {
-        displayName: "Sambath",
-        role: "Admin"
-    })
+    const [user, userDispatch] = useReducer(headerReducer,userData)
 
     return (
         <HeaderData.Provider
