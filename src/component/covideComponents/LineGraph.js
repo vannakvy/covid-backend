@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
-
+import {GET_DATA_FOR_GRAP} from '../../graphql/dashboardAndReport'
+import { useQuery } from "@apollo/client";
 const options = {
   legend: {
     display: false,
@@ -48,11 +49,12 @@ const options = {
 };
 
 const buildChartData = (data, casesType) => {
-  console.log(data)
+  console.log(casesType)
   let chartData = [];
   let lastDataPoint;
   for (let date in data.cases) {
     if (lastDataPoint) {
+      console.log(lastDataPoint)
       let newDataPoint = {
         x: date,
         y: data[casesType][date] - lastDataPoint,
@@ -60,6 +62,7 @@ const buildChartData = (data, casesType) => {
       chartData.push(newDataPoint);
     }
     lastDataPoint = data[casesType][date];
+    console.log()
   }
   return chartData;
 };
@@ -67,23 +70,16 @@ const buildChartData = (data, casesType) => {
 function LineGraph({ casesType }) {
   const [data, setData] = useState({});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data)
-          let chartData = buildChartData(data, casesType);
-          
-          setData(chartData);
-          
-          // buildChart(chartData);
-        });
-    };
+  const {dat,refetch} = useQuery(GET_DATA_FOR_GRAP,{
+    onCompleted:({getDataForGrap})=>{
+      let chartData = buildChartData(getDataForGrap, casesType);  
+      console.log(chartData)
+      setData(chartData);
+    }
+  });
 
-    fetchData();
+  useEffect(() => {
+refetch()
   }, [casesType]);
 
   return (
