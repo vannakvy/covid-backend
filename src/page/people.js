@@ -1,14 +1,14 @@
 import React, {useContext, useState} from 'react'
-import { Row, Col, Button, Input, Table } from 'antd'
+import { Row, Col, Button, Input, Table, message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { PeopleController } from '../context/peopleContext';
 import { peopleCol } from '../component/people/tableColumn/peopleColumn';
 import AddPeople from '../component/people/modal/addPeople';
-import { useQuery } from '@apollo/client';
-import { GET_ALL_PERSONINFO } from '../graphql/people';
+import { useQuery,useMutation } from '@apollo/client';
+import { DELETE_PERSONALINFO_BY_ID, GET_ALL_PERSONINFO } from '../graphql/people';
+import { DELETE_HOSPITALINFO_BY_ID } from '../graphql/hospital';
 
 export default function People() {
-    // const {peopleData, peopleDataDispatch} = useContext(PeopleController)
 
     const [openAdd, setOpenAdd] = useState(false)
     const [page, setPage] = useState(1)
@@ -23,13 +23,23 @@ export default function People() {
             keyword:keyword,
         },
         onCompleted:({getPersonalInfoWithPagination})=>{
-            console.log(getPersonalInfoWithPagination)
+            //console.log(getPersonalInfoWithPagination)
             setPeopleData(getPersonalInfoWithPagination)
         }
     })
 
+    const [deletePersonalInfo,{loading:deleteLoading}] = useMutation(DELETE_PERSONALINFO_BY_ID,{
+        onCompleted:()=>{
+            message.success("លុបទិន្នន័យជោគជ័យ")
+        }
+    })
+
     const handleDelete = (e) => {
-        //peopleDataDispatch({type: "DELETE_PEOPLE", payload: e})
+        deletePersonalInfo({
+            variables:{
+                id:e
+            }
+        })
     }
 
     return (

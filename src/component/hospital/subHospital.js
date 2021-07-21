@@ -39,14 +39,14 @@ export default function SubHospital() {
             id:id
         },
         onCompleted:({getHospitalInfoById})=>{
-            console.log(getHospitalInfoById)
+            // console.log(getHospitalInfoById)
             setHospitalData(getHospitalInfoById)
         }
     })
 
     const {data} = useQuery(GET_ALL_PERSONINFO_NO_LIMIT,{
         onCompleted:({allPersonalInfos})=>{
-            console.log(allPersonalInfos)
+            // console.log(allPersonalInfos)
             setPeopleData(allPersonalInfos)
         }
     })
@@ -71,6 +71,7 @@ export default function SubHospital() {
     // console.log(headerData)
     const handleDelete = (e) => {
         //subHospitalDataDispatch({type: "DELETE_SUB_HOSPITAL", payload: e})
+        console.log(e)
     }
 
     const handleEditSubHospital = (e) => {
@@ -79,9 +80,9 @@ export default function SubHospital() {
     }
     return (
         <Row>
-            <EditHospital open={openEdit} setOpen={setOpenEdit} data={hospitalData} setData={setHospitalData} />
+            <EditHospital open={openEdit} setOpen={setOpenEdit} data={hospitalData} hospitalId={id}  />
             <AddSubHospital open={openAddSub} setOpen={setOpenAddSub} hospitalId={id} peopleData={peopleData}/>
-            <EditSubHospital open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} setData={setUpdateSubData}  />
+            <EditSubHospital open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} hospitalId={id} peopleData={peopleData} />
             <Col
                 xs={24}
             >

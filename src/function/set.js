@@ -172,7 +172,6 @@ export function setSubQuarantine(values, length) {
 }
 
 export function setEditSubQuarantine(values) {
-    console.log(values)
     var array = {
         date_in: moment(values.date_in),
         date_out: moment(values.date_out),
@@ -204,16 +203,14 @@ export function setSubHospital(values, length) {
 
 export function setEditSubHospital(values) {
     var array = {
-        id: values.id + "",
-        caseId: values.caseId === undefined ? "" : values.caseId,
-        name: values.name === undefined ? "" : values.name,
-        gender: values.gender === undefined ? "" : values.gender,
-        province: values.province === undefined ? "" : values.province,
-        district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
-        commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
-        village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
-        status: values.status === undefined ? "" : values.status,
-        relatedInfo: values.relatedInfo === undefined ? "" : values.relatedInfo,
+        // id: values.id + "",
+        date_in: moment(values.date_in),
+        date_out: moment(values.date_out),
+        in: values.in,
+        others: values.others,
+        personalInfo: values?.personalInfo?.id,
+        personalType:values.personalType
+       
     }
 
     return array
@@ -352,3 +349,4 @@ export function setEditQuarantine(values){
 
     return array;
 }
+

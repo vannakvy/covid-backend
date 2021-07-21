@@ -123,6 +123,7 @@ query getQuarantineByQurantineIdWithPagination(
 ){
   getQuarantineByQurantineIdWithPagination(page:$page,limit:$limit,keyword:$keyword,quarantineInfoId:$quarantineInfoId){
     quarantines{
+      id
       in
       date_in
       date_out
@@ -228,6 +229,15 @@ mutation updateQuarantineInfo(
   },id:$id){
     message
     success
+  }
+}
+`;
+
+export const DELETE_PERSON_BY_QUARANTINE = gql`
+mutation deleteQuarantine($id:ID!){
+  deleteQuarantine(id:$id){
+    success
+    message
   }
 }
 `;
