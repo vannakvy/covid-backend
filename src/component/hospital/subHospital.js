@@ -1,4 +1,4 @@
-import { Col, Row, Typography, Table } from 'antd'
+import { Col, Row, Typography, Table, message } from 'antd'
 import React, { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { HospitalController } from '../../context/hospitalContext'
@@ -8,10 +8,11 @@ import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
 import EditHospital from './modal/editHospital'
 import AddSubHospital from './modal/addSubHospital'
 import EditSubHospital from './modal/editSubHospital'
-import { useQuery} from '@apollo/client'
+import { useMutation, useQuery} from '@apollo/client'
 import { GET_ALL_PERSONINFO_NO_LIMIT } from '../../graphql/people'
 import { GET_PERSON_BY_HOSPITALINFO } from '../../graphql/hospital'
 import { GET_HOSPITALINFO_BY_ID } from '../../graphql/hospital'
+import { DELETE_PERSON_BY_HOSPITAL } from '../../graphql/hospital'
 
 const {Title} = Typography
 
@@ -64,6 +65,12 @@ export default function SubHospital() {
         }
     })
 
+    const [deleteHospitalization,{loading}]= useMutation(DELETE_PERSON_BY_HOSPITAL,{
+        onCompleted:()=>{
+            message.success("លុបទិន្នន័យជោគជ័យ")
+        }
+    })
+
     useEffect(() => {
         //setHeaderData(hospitalData[hospitalData.findIndex(e => e.id === id)])
     }, [])
@@ -71,7 +78,9 @@ export default function SubHospital() {
     // console.log(headerData)
     const handleDelete = (e) => {
         //subHospitalDataDispatch({type: "DELETE_SUB_HOSPITAL", payload: e})
-        console.log(e)
+        deleteHospitalization({variables:{
+            id:e
+        }})
     }
 
     const handleEditSubHospital = (e) => {

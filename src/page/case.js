@@ -1,11 +1,11 @@
 import React, {useContext, useState,useEffect} from 'react'
-import { Row, Col, Button, Input, Table } from 'antd'
+import { Row, Col, Button, Input, Table, message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { caseCol } from '../component/case/tableColumn/caseColumn'
 import { CaseController } from '../context/caseContext'
 import AddCase from '../component/case/modal/addCase';
-import { useQuery } from '@apollo/client';
-import {GET_ALL_CASES} from '../graphql/case'
+import { useQuery ,useMutation} from '@apollo/client';
+import {GET_ALL_CASES,DELETE_CASE_BY_ID} from '../graphql/case'
 
 export default function Case() {
     //const {caseData, caseDataDispatch} = useContext(CaseController)
@@ -25,12 +25,21 @@ export default function Case() {
         setCaseData(getCaseWithPagination)
     }})
 
+    const [deleteCase,{loading:deleteLoading}]=useMutation(DELETE_CASE_BY_ID,{
+        onCompleted:()=>{
+            message.success("លុបទិន្នន័យជោគជ័យ")
+        }
+    })
+
     useEffect(() => {
         refetch()
     }, [page,limit,keyword])
 
     const handleDelete = (e) => {
         //caseDataDispatch({type: "DELETE_CASE", payload: e})
+        deleteCase({variables:{
+            id:e
+        }})
     }
 
     return (

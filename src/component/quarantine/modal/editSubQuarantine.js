@@ -1,26 +1,45 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Form, Modal, Input, Row, Col, Button, Select, DatePicker} from 'antd'
+import { Form, Modal, Input, Row, Col, Button, Select, DatePicker, message } from 'antd'
 import { QuarantineController } from '../../../context/quarantineContext'
-import {setEditSubQuarantine} from '../../../function/set'
-
+import { setEditSubQuarantine } from '../../../function/set'
+import { useMutation } from '@apollo/client'
+import { UPDATE_PEOPLE_BY_QUARANTINE } from '../../../graphql/quarantine'
+import moment from 'moment'
 const { Option } = Select
 
 export default function EditSubQuarantine({ open, setOpen, data, quarantineId, peopleData }) {
-    
+
     let [form] = Form.useForm()
 
-    const [editData, setEditData] = useState([])
+    const [updateQuarantine,{loading}]=useMutation(UPDATE_PEOPLE_BY_QUARANTINE,{
+        onCompleted:()=>{
+            message.success("កែប្រែទិន្នន័យជោគជ័យ")
+        }
+    })
 
     useEffect(() => {
         form.resetFields()
         // setEditData(data)
-    }, [data,open])
+    }, [data, open])
 
     const onFinish = (values) => {
         console.log('Success:', values);
 
         // subQuarantineDataDispatch({type: 'EDIT_SUB_QUARANTINE', payload: {...values, id: data.id}})
         // setData({...values, id: data.id})
+        updateQuarantine({
+            variables:{
+                in:values.in,
+                date_in:moment(values.date_in).format(),
+                date_out:moment(values.date_out).format(),
+                personalType:values.personalType,
+                // out_status: String,
+                personalInfo:values.personalInfo,
+                quarantineInfo:quarantineId,
+                others: values.others,
+                id:data.id
+            }
+        })
 
         setOpen(false)
         form.resetFields()
@@ -37,7 +56,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
             footer={null}
-            
+
         >
             <Form
                 form={form}
@@ -47,17 +66,17 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
-                <Col xs={24} md={{ span: 11 }}>
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="personalInfo"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             {/* <Input placeholder="ឈ្មោះ" /> */}
-                            <Select placeholder="អ្នកចត្តាឡីស័ក" style={{ width: "100%" }} onChange={(e)=>console.log(e)}>
-                                {peopleData.map((people)=>(
-                                     <Option key={people?.id} value={people?.id}>{people?.lastName} {people?.firstName}</Option>
+                            <Select placeholder="អ្នកចត្តាឡីស័ក" style={{ width: "100%" }} onChange={(e) => console.log(e)}>
+                                {peopleData.map((people) => (
+                                    <Option key={people?.id} value={people?.id}>{people?.lastName} {people?.firstName}</Option>
                                 ))}
-                               
+
                             </Select>
                         </Form.Item>
                     </Col>
@@ -76,7 +95,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 24}}>
+                    <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
                             name="in"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -98,7 +117,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11, offset:2 }}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="date_out"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -107,7 +126,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 24}}>
+                    <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
                             name="others"
                             rules={[{ required: true, message: 'Please input your username!' }]}

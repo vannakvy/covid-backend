@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Modal, Form, Input, DatePicker, Row, Col, Button } from 'antd'
+import { Modal, Form, Input, DatePicker, Row, Col, Button, message } from 'antd'
 import { CaseController } from '../../../context/caseContext'
 import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
@@ -13,6 +13,7 @@ export default function AddCase({ open, setOpen, refetch }) {
     const [createCase,{loading,error}] = useMutation(CREATE_NEW_CASE,{
         onCompleted:({createCase})=>{
             refetch();
+            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
         },
         onError:(error)=>{
             console.log(error.message)

@@ -210,3 +210,45 @@ mutation deletePersonalInfo($id:ID!){
   }
 }
 `;
+
+export const GET_HOSPITAL_QUARANTINE_BY_PERSON = gql`
+query getHospitalizationByPersonalInfo($personalId:ID!){
+  getHospitalizationByPersonalInfo(personalId:$personalId){
+    hospitalInfo{
+      id
+      in
+      date_in
+      date_out
+      out_status
+      others
+      hospitalInfo{
+        id
+        hospitalName
+        village
+        commune
+        district
+        province
+      }
+    }
+    quarantineInfo{
+      id
+      in
+      date_in
+      date_out
+      out_status
+      quarantineInfo{
+        id
+        locationName
+        village
+        commune
+        district
+        province
+      }
+      personalType
+      others
+
+    }
+  }
+}
+
+`;

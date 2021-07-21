@@ -244,3 +244,12 @@ mutation updateHospitalization(
   }
 }
 `;
+
+export const DELETE_PERSON_BY_HOSPITAL = gql`
+mutation deleteHospitalization($id:ID!){
+  deleteHospitalization(id:$id){
+    success
+    message
+  }
+}
+`;

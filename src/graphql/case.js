@@ -147,3 +147,12 @@ mutation updateCase(
   }
 }
 `;
+
+export const DELETE_CASE_BY_ID = gql`
+mutation deleteCase($id:ID!){
+  deleteCase(id:$id){
+    success
+    message
+  }
+}
+`;
