@@ -32,6 +32,7 @@ import { Layout } from 'antd'
 import { useQuery } from '@apollo/client'
 import { IS_LOGGED_IN } from './graphql/auth'
 import MapScreen from './page/map';
+import Report from './page/report';
 const { Footer, Content } = Layout
 const Routes = () => {
   const { data: isLogin } = useQuery(IS_LOGGED_IN);
@@ -86,6 +87,9 @@ const Routes = () => {
                               </Route>
                               <Route path="/subHospital/:id">
                                 <SubHospital />
+                              </Route>
+                              <Route path="/reportdaily">
+                                <Report />
                               </Route>
                             </Switch>
                           </HospitalContext>
