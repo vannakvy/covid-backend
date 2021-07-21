@@ -1,15 +1,17 @@
 import React, {useContext, useEffect, useState} from 'react'
-import { Modal, Form, Input, DatePicker, Row, Col, Button ,Select,Divider} from 'antd'
+import { Modal, Form, Input, DatePicker, Row, Col, Button ,Select,Divider,message} from 'antd'
 import {HospitalController} from '../../../context/hospitalContext'
 import {setEditHospital} from '../../../function/set'
 
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
 import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
+import { useMutation } from '@apollo/client'
+import { UPDATE_HOSPITALINFO_BY_ID } from '../../../graphql/hospital'
 
 const { Option } = Select
 
-export default function EditHospital({ open, setOpen, data, setData }) {
+export default function EditHospital({ open, setOpen, data, hospitalId }) {
     const {hospitalDataDispatch} = useContext(HospitalController)
 
     let [form] = Form.useForm()
@@ -18,7 +20,11 @@ export default function EditHospital({ open, setOpen, data, setData }) {
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
 
-    console.log(data)
+    const [updateHospitalInfo,{loading}] = useMutation(UPDATE_HOSPITALINFO_BY_ID,{
+        onCompleted:()=>{
+            message.success("កែប្រែទិន្នន័យជោគជ័យ")
+        }
+    })
 
     useEffect(() => {
         
@@ -35,8 +41,24 @@ export default function EditHospital({ open, setOpen, data, setData }) {
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        // hospitalDataDispatch({type: 'EDIT_HOSPITAL', payload: {...values, id: data.id}})
-        // setData({...values, id: data.id})
+        updateHospitalInfo({
+            variables:{
+                lat: values.lat,
+                hospitalName: values.hospitalName,
+                long: values.long,
+                other: values.other,
+                tel: values.tel,
+                firstName: values.firstName,
+                lastName: values.lastName,
+                position: values.position,
+                others: values.others,
+                village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
+                commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
+                district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
+                province: values.province === undefined ? "" : values.province,
+                id:hospitalId
+            }
+        })
 
         setOpen(false)
         form.resetFields()
@@ -246,7 +268,7 @@ export default function EditHospital({ open, setOpen, data, setData }) {
                             type="primary"
                             style={{ width: "100%" }}
                         >
-                            បញ្ចូលទិន្នន័យ
+                            កែប្រែទិន្នន័យ
                         </Button>
                     </Col>
                 </Row>

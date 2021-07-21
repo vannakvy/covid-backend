@@ -11,7 +11,6 @@ import moment from 'moment'
 const { Option } = Select
 
 export default function AddSubHospital({ open, setOpen, hospitalId,peopleData }) {
-    const { subHospitalDataDispatch } = useContext(HospitalController)
 
     let [form] = Form.useForm()
 
@@ -48,9 +47,9 @@ export default function AddSubHospital({ open, setOpen, hospitalId,peopleData })
         console.log('Failed:', errorInfo);
     };
 
-    const setToGenderFn = (e) => {
+    const setToPeopleFn = (e) => {
         form.setFieldsValue({
-            gender: e
+            personalInfo: e
         });
     };
 
@@ -74,13 +73,13 @@ export default function AddSubHospital({ open, setOpen, hospitalId,peopleData })
                             name="personalInfo"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            {/* <Input placeholder="ឈ្មោះ" /> */}
-                            <Select placeholder="អ្នកធ្វើតេស្ត" style={{ width: "100%" }} onChange={(e)=>console.log(e)}>
+                            <ListSelect type={2} data={peopleData} title="អ្នកធ្វើតេស្ត" setValue={setToPeopleFn}/>
+                            {/* <Select placeholder="អ្នកធ្វើតេស្ត" style={{ width: "100%" }} onChange={(e)=>console.log(e)}>
                                 {peopleData.map((people)=>(
                                      <Option key={people?.id} value={people?.id}>{people?.lastName} {people?.firstName}</Option>
                                 ))}
                                
-                            </Select>
+                            </Select> */}
                         </Form.Item>
                     </Col>
 

@@ -1,36 +1,41 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
-import { HospitalController } from '../../../context/hospitalContext'
+import { Form, Modal, Input, Row, Col, Button, Select, DatePicker, message } from 'antd'
 import { ListSelect } from '../../../static/own-comp'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
-import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
-import {setEditSubHospital} from '../../../function/set'
+import { setEditSubHospital } from '../../../function/set'
+import { useMutation } from '@apollo/client'
+import { UPDATE_PERSON_BY_HOSPITALINFO } from '../../../graphql/hospital'
+import moment from 'moment'
 
 const { Option } = Select
 
-export default function EditSubHospital({ open, setOpen, data, setData }) {
-    const {subHospitalDataDispatch} = useContext(HospitalController)
-    
+export default function EditSubHospital({ open, setOpen, data, hospitalId, peopleData }) {
+
     let [form] = Form.useForm()
 
-    const [province, setProvince] = useState("")
-    const [district, setDistrict] = useState("")
-    const [commune, setCommune] = useState("")
+    const [updateHospitalization,{loading}]=useMutation(UPDATE_PERSON_BY_HOSPITALINFO,{
+        onCompleted:()=>{
+            message.success("កែប្រែទិន្នន័យជោគជ័យ")
+        }
+    })
 
     useEffect(() => {
-        // form.setFieldsValue(
-        //     setEditSubCase(data)
-        // )
-        setProvince(data.province)
-        setDistrict(data.district)
-        setCommune(data.commune)
-    }, [data])
+        form.resetFields()
+    }, [data,open])
 
     const onFinish = (values) => {
-        console.log('Success:', values);
-
-        // subHospitalDataDispatch({type: 'EDIT_SUB_HOSPITAL', payload: {...values, id: data.id}})
-        // setData({...values, id: data.id})
+        // console.log('Success:', values,data.id);
+        updateHospitalization({
+            variables:{
+                in:values.in,
+                date_in:moment(values.date_in).format(),
+                date_out:moment(values.date_out).format(),
+                // out_status:String,
+                personalInfo:values.personalInfo,
+                hospitalInfo:hospitalId,
+                others:values.others,
+                id:data.id
+            }
+        })
 
         setOpen(false)
         form.resetFields()
@@ -40,51 +45,12 @@ export default function EditSubHospital({ open, setOpen, data, setData }) {
         console.log('Failed:', errorInfo);
     };
 
-    const setToGenderFn = (e) => {
+    const setToPeopleFn = (e) => {
         form.setFieldsValue({
-            gender: e
+            personalInfo: e
         });
     };
 
-    const setToProviceFn = (e) => {
-        form.setFieldsValue({
-            province: e,
-            district: null,
-            commune: null,
-            village: null,
-        });
-
-        setProvince(e)
-        setDistrict("")
-        setCommune("")
-    };
-
-
-    const setToDistrictFn = (e) => {
-        form.setFieldsValue({
-            district: e,
-            commune: null,
-            village: null,
-        });
-
-        setDistrict(e)
-        setCommune("")
-    };
-
-    const setToCommuneFn = (e) => {
-        form.setFieldsValue({
-            commune: e,
-            village: null,
-        });
-
-        setCommune(e)
-    };
-
-    const setToVillageFn = (e) => {
-        form.setFieldsValue({
-            village: e
-        });
-    };
 
     return (
         <Modal
@@ -104,99 +70,57 @@ export default function EditSubHospital({ open, setOpen, data, setData }) {
                 <Row>
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="name"
+                            name="personalInfo"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="ឈ្មោះ" />
+                            <ListSelect type={2} data={peopleData} title="អ្នកធ្វើតេស្ត" setValue={setToPeopleFn} />
+                            {/* <Select placeholder="អ្នកចត្តាឡីស័ក" style={{ width: "100%" }} onChange={(e) => console.log(e)}>
+                                {peopleData.map((people) => (
+                                    <Option key={people?.id} value={people?.id}>{people?.lastName} {people?.firstName}</Option>
+                                ))}
+
+                            </Select> */}
                         </Form.Item>
                     </Col>
 
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
-                            name="gender"
+                            name="in"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
 
-                            <ListSelect type={0} data={genderData} title="ភេទ" setValue={setToGenderFn} />
+                            <Select placeholder="តេស្ត" style={{ width: "100%" }}>
+                                <Option value={true}>ចូល</Option>
+                                <Option value={false}>ចេញ</Option>
+                            </Select>
                         </Form.Item>
                     </Col>
 
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="province"
+                            name="date_in"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
+                            <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
 
-                    {province === "សៀមរាប" ? (
-                        <>
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
-                                <Form.Item
-                                    name="district"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
-                                >
-                                    <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
-                                </Form.Item>
-                            </Col>
-                            <Col xs={24} md={{ span: 11 }}>
-                                <Form.Item
-                                    name="commune"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
-                                >
-                                    <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
-                                </Form.Item>
-                            </Col>
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
-                                <Form.Item
-                                    name="village"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
-                                >
-                                    <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
-                                </Form.Item>
-                            </Col>
-                        </>
-                    ) : null}
-
-
-                    <Col xs={24} md={province === "សៀមរាប" ? { span: 11 } : {span: 11, offset: 2}}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
-                            name="status"
+                            name="date_out"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                placeholder="ស្ថានភាព"
-                                optionFilterProp="children"
-                                filterOption={(input, option) =>
-                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                }
-                            >
-                                <Option value="វិជ្ជមាន">វិជ្ជមាន</Option>
-                                <Option value="អវិជ្ជមាន">អវិជ្ជមាន</Option>
-                            </Select>
+                            <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={province === "សៀមរាប" ? {span: 11, offset: 2} : { span: 24 }}>
+                    <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
-                            name="relatedInfo"
+                            name="others"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                placeholder="លក្ខណៈពាក់ព័ន្ធ"
-                                optionFilterProp="children"
-                                filterOption={(input, option) =>
-                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                }
-                            >
-                                <Option value="ផ្ទាល់">ផ្ទាល់</Option>
-                                <Option value="ប្រយោល">ប្រយោល</Option>
-                            </Select>
+
+                            <Input placeholder="ផ្សេងៗ" />
                         </Form.Item>
                     </Col>
 
@@ -206,7 +130,7 @@ export default function EditSubHospital({ open, setOpen, data, setData }) {
                             type="primary"
                             style={{ width: "100%" }}
                         >
-                            បញ្ចូលទិន្នន័យ
+                            កែប្រែទិន្នន័យ
                         </Button>
                     </Col>
                 </Row>

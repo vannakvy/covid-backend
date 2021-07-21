@@ -178,3 +178,69 @@ query getHospitalInfoById($id:ID!){
   }
 }
 `;
+
+export const UPDATE_HOSPITALINFO_BY_ID = gql`
+mutation updateHospitalInfo(
+    $hospitalName:String
+    $village:String
+    $commune:String
+    $district:String
+    $province:String
+    $long:Float
+    $lat:Float
+    $other:String
+    $firstName:String
+    $lastName:String
+    $position:String
+    $others:String
+    $tel:String
+    $id:ID!
+){
+  updateHospitalInfo(updatedHospitalInfo:{
+    hospitalName:$hospitalName
+    village:$village
+    commune:$commune
+    district:$district
+    province:$province
+    long:$long
+    lat:$lat
+    other:$other
+    personInCharge:{
+      firstName:$firstName
+      lastName:$lastName
+      position:$position
+      others:$others
+      tel:$tel
+    }
+  },id:$id){
+    success
+    message
+  }
+}
+`;
+
+export const UPDATE_PERSON_BY_HOSPITALINFO = gql`
+mutation updateHospitalization(
+    $in:Boolean,
+    $date_in:DateTime,
+    $date_out:DateTime,
+    $out_status:String,
+    $personalInfo:ID!,
+    $hospitalInfo:ID!,
+    $others:String,
+    $id:ID!
+){
+	updateHospitalization(updatedHospitalization:{
+    in:$in
+    date_in:$date_in
+    date_out:$date_out
+    out_status:$out_status
+    personalInfo:$personalInfo
+    hospitalInfo:$hospitalInfo
+    others:$others
+  },id:$id){
+    success
+    message
+  }
+}
+`;

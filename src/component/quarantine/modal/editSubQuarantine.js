@@ -16,8 +16,6 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
         // setEditData(data)
     }, [data,open])
 
-    console.log(editData)
-
     const onFinish = (values) => {
         console.log('Success:', values);
 

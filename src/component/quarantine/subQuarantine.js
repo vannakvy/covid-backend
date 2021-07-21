@@ -8,10 +8,11 @@ import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
 import EditQuarantine from './modal/editQuarantine'
 import AddSubQuarantine from './modal/addSubQuarantine'
 import EditSubQuarantine from './modal/editSubQuarantine'
-import { useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { GET_ALL_PERSONINFO_NO_LIMIT} from '../../graphql/people'
 import { GET_PERSON_BY_QUARANTINE } from '../../graphql/quarantine'
 import { GET_QUARANTINE_BY_ID } from '../../graphql/quarantine'
+import { DELETE_PERSON_BY_QUARANTINE } from '../../graphql/quarantine'
 
 const {Title} = Typography
 
@@ -110,7 +111,7 @@ export default function SubQuarantine() {
             id:id
         },
         onCompleted:({getQuarantineInfoById})=>{
-            console.log(getQuarantineInfoById)
+            // console.log(getQuarantineInfoById)
             setQuarantineData(getQuarantineInfoById)
         }
     })
@@ -123,7 +124,7 @@ export default function SubQuarantine() {
             quarantineInfoId:id
         },
         onCompleted:({getQuarantineByQurantineIdWithPagination})=>{
-            console.log(getQuarantineByQurantineIdWithPagination)
+            // console.log(getQuarantineByQurantineIdWithPagination)
             setSubQuarantineData(getQuarantineByQurantineIdWithPagination)
         },
         onError:({error})=>{
@@ -131,19 +132,29 @@ export default function SubQuarantine() {
         }
     })
 
+    const [deleteQuarantine,{loading:deleteLoading}] = useMutation(DELETE_PERSON_BY_QUARANTINE,{
+        onCompleted:()=>{
+            message.success("លុបទិន្នន័យជោគជ័យ")
+        }
+    })
+
     useEffect(() => {
-        console.log(updateSubData)
-    }, [updateSubData])
+        // console.log(updateSubData)
+    }, [])
 
     // console.log(headerData)
     const handleDelete = (e) => {
         //subQuarantineDataDispatch({type: "DELETE_SUB_QUARANTINE", payload: e})
+        deleteQuarantine({
+            variables:{
+                id:e
+            }
+        })
     }
 
     const handleEditSubQuarantine = (e) => {
         
         setUpdateSubData(e)
-        
         setOpenEditSub(true)
     }
 
@@ -219,7 +230,7 @@ export default function SubQuarantine() {
                 <Table
                     columns={subQuarantineCol({handleDelete, handleEditSubQuarantine,limit,page})}
                     dataSource={subQuarantineData?.quarantines}
-                    rowKey={id}
+                    rowKey={(record) => record.id}
                     pagination={{
                         total: subQuarantineData?.paginator?.totalDocs,
                         // showSizeChanger: true,

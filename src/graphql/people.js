@@ -201,3 +201,12 @@ query getPersonalInfoById($id:ID!){
 }
 
 `;
+
+export const DELETE_PERSONALINFO_BY_ID = gql`
+mutation deletePersonalInfo($id:ID!){
+  deletePersonalInfo(id:$id){
+    success
+    message
+  }
+}
+`;

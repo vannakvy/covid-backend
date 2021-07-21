@@ -44,7 +44,7 @@ export default function EditQuarantine({ open, setOpen, data, quarantineId }) {
         updateQuarantineInfo({
             variables: {
                 lat: values.lat,
-                capacity: values.capacity,
+                capacity: parseInt(values.capacity),
                 createdAt: values.createdAt,
                 locationName: values.locationName,
                 long: values.long,
@@ -274,7 +274,7 @@ export default function EditQuarantine({ open, setOpen, data, quarantineId }) {
                             type="primary"
                             style={{ width: "100%" }}
                         >
-                            បញ្ចូលទិន្នន័យ
+                            កែប្រែទិន្នន័យ
                         </Button>
                     </Col>
                 </Row>
