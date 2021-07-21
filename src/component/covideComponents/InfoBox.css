@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy&display=swap');
 .infoBox {
  flex: 1;
- /* padding: 1px !important */
 padding-bottom: 5px;
+margin-top: 10px;
+/* background-color: red !important; */
+min-width: 300px !important;
 }
 
 .infoBox:not(:last-child) {
@@ -24,7 +26,7 @@ padding-bottom: 5px;
 .infoBox__cases {
  color: #cc1034;
  font-weight: 600;
- font-size: 1.30rem;
+ font-size: 1rem;
  margin-bottom: 5px;
 
 }
@@ -38,4 +40,6 @@ padding-bottom: 5px;
 
 .infoBox_font {
  font-family: 'Kantumruy', sans-serif;
+ font-size: 1rem;
+ font-weight: 700;
 }

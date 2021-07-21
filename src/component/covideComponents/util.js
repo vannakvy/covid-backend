@@ -4,9 +4,9 @@ import { Circle, Popup } from "react-leaflet";
 
 const casesTypeColors = {
   cases: {
-    hex: "#F93910",
-    rgb: "rgb(204, 16, 52)",
-    half_op: "rgba(204, 16, 52, 0.5)",
+    hex: "#a70b99",
+    rgb: "rgb(167, 11, 153)",
+    half_op: "rgba(167, 11, 153, 0.5)",
     multiplier: 100,
   },
   recovered: {
@@ -16,29 +16,12 @@ const casesTypeColors = {
     multiplier: 100,
   },
   deaths: {
-    hex: "#A70B99",
-    rgb: "rgb(251, 68, 67)",
-    half_op: "rgba(251, 68, 67, 0.5)",
+    hex: "#de0d2d",
+    rgb: "rgb(222, 13, 45)",
+    half_op: "rgba(222, 13, 45, 0.5)",
     multiplier: 400,
   },
-  hospital: {
-    hex: "yellow",
-    rgb: "rgb(251, 68, 67)",
-    half_op: "rgba(251, 68, 67, 0.5)",
-    multiplier: 400,
-  },
-  quarantine: {
-    hex: "blue",
-    rgb: "rgb(251, 68, 67)",
-    half_op: "rgba(251, 68, 67, 0.5)",
-    multiplier: 400,
-  },
-  personal: {
-    hex: "#gray",
-    rgb: "rgb(251, 68, 67)",
-    half_op: "rgba(251, 68, 67, 0.5)",
-    multiplier: 400,
-  },
+
 };
 
 export const joinArray = (arr1, arr2) => {
@@ -56,7 +39,7 @@ return arr;
 export const sortData = (data) => {
   let sortedData = [...data];
   sortedData.sort((a, b) => {
-    if (a.cases > b.cases) {
+    if (a.confirmedCase > b.confirmedCase) {
       return -1;
     } else {
       return 1;

@@ -1,9 +1,9 @@
 .covid_tables {
   margin-top: 20px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   color: #6a5d5d;
   background-color: white;
-  height: 400px;
+  min-height: 250px;
 }
 
 .covid_tables .tr {
@@ -17,10 +17,10 @@
 }
 
 .covid_tables tr:nth-of-type(odd) {
-  background-color: #c5c1c5cc;
-  color: white;
+  background-color: #fff;
+  color: #000;
 }
 .covid_tables tr:nth-of-type(even) {
-  background-color: #a313c0cc;
-  color: white;
+  background-color: #f1f6fa;
+  color: #000;
 }

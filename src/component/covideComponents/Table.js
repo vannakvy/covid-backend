@@ -2,14 +2,14 @@ import React from "react";
 import "./Table.css";
 import numeral from "numeral";
 
-function Table({ countries }) {
+function Table({ district }) {
   return (
     <div className="covid_tables">
-      {countries.map((country) => (
+      {district?.map((dis) => (
         <tr className="tr">
-          <td className="td">{country.country}</td>
+          <td className="td">{dis.district}</td>
           <td className="td">
-            <strong>{numeral(country.cases).format("0,0")}</strong>
+            <strong>{numeral(dis.confirmedCase).format("0,0")}</strong>
           </td>
         </tr>
       ))}
