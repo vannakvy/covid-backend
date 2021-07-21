@@ -99,6 +99,11 @@ const MapScreen = () => {
       lat: 13.364307627357189,
       long: 103.85798154316932,
     },
+    {
+      district: "ក្រៅសៀមរាប",
+      lat: 12.67868906722332,
+      long: 105.08204096969567,
+    },
   ];
 
   const [countryInfo, setCountryInfo] = useState({});
