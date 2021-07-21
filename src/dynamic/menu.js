@@ -35,6 +35,7 @@ export default function MenuHeader() {
             style={{
                 // backgroundColor: '#06385f' 
                 // backgroundColor: '#22252A' 
+                backgroundColor:'#1e3b87'
             }}>
             <Link to="/">
                 <div className="logo">
@@ -47,6 +48,7 @@ export default function MenuHeader() {
                 mode="inline"
                 style={{
                     // backgroundColor: '#06385f'
+                    backgroundColor:'#1e3b87'
                     // backgroundColor: '#22252A' 
                 }}>
                 <Menu.Item key="/" icon={<HomeOutlined />}>
@@ -96,6 +98,7 @@ export default function MenuHeader() {
                     // onClick={() => auth.signOut()}
                     key="6"
                     icon={<ExportOutlined />}
+                    
                     onClick={() => handleLoggout()}
                 >
                     ចាកចេញ
