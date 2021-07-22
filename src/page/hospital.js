@@ -82,6 +82,7 @@ export default function Hospital() {
             >
                 <Table
                 // caseCol({handleDelete})
+                    className="table-go-list"
                     columns={hospitalCol({handleDelete,limit,page})}
                     dataSource={hospitalData?.hospitalInfos}
                     rowKey={record => record.id}

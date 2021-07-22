@@ -90,6 +90,7 @@ export default function Quarantine() {
             >
                 <Table
                     // caseCol({handleDelete})
+                    className="table-go-list"
                     columns={quarantineCol({ handleDelete, limit, page })}
                     dataSource={quarantineData?.quarantineInfos}
                     rowKey={record => record.id}

@@ -96,12 +96,12 @@ const Routes = () => {
                 </DashBoardContext>
               </Content>
               <Footer style={{ textAlign: 'center', color: 'red', fontSize: 17 }}>
-                <marquee behavior="alternate">
+                <marquee>
                   <span style={{}}>
                     <span  style={{ marginRight:15 }} >
-                      <Image height="50px" width="50px" src={GoGlobalLogo} preview={false}/>
+                      <Image height="25px" width="25px" src={GoGlobalLogo} preview={false}/>
                     </span>
-                    <span style={{position:'absolute', top:14}}>សាលាហ្គោគ្លូប៊ល | Go Global School &copy;2021</span>
+                    <span style={{position:'absolute', top:2}}>សាលាហ្គោគ្លូប៊ល | Go Global School &copy;2021</span>
                   </span>
                 </marquee>
 

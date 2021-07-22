@@ -152,10 +152,71 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   margin:20px 0px;
 }
 
-.ant-menu-item-selected{
+.ant-menu-inline .ant-menu-item-selected{
   background-color:#06385f!important ;
+  border-left: 8px solid #FFF;
+  padding:25px 30px!important;
+  /* animation: addPadding 2s alternate; */
+}
+
+.ant-menu-inline .ant-menu-item-selected .ant-menu-title-content{
+   animation: rotate 0.2s 1 normal forwards;
+}
+
+.ant-menu-inline-collapsed .ant-menu-item-selected{
+  background-color:#06385f!important ;
+  border-left: 8px solid #FFF;
+  /* animation: addPadding 2s alternate; */
+}
+
+.ant-menu-item{
+  /* border-top: 2px solid #FFF; */
+  /* border-bottom: 2px solid #FFF; */
 }
 
 .ant-menu-item-active{
-  background-color:#4eb2ff!important ;
+  background-color:#91ffda!important ;
+}
+
+.table-go-list tr:nth-child(odd){
+  background-color: #f1f6fa;
+}
+
+.ant-table-tbody tr td{
+  border: none;
+  transition: none;
+}
+
+.ant-table-thead tr th{
+  border: none;
+  transition: none;
+  background-color: #009966;
+  color:#FFFF;
+}
+
+.ant-table-tbody .ant-table-row:hover{
+  background: #000!important;
+}
+
+@keyframes addPadding {
+  0%{padding:20px 20px;}
+  100%{padding:30px 20px;}
+}
+
+.img-logo{
+  transition: transform 1s;
+  box-shadow: 0px 0px 20px #000;
+  border-radius: 150px;
+}
+
+.img-logo:hover{
+  transform: rotate(-20deg);
+  /* transform: rotate(20deg); */
+  /* animation: rotate 1s linear 0.5s 1 normal forwards; */
+}
+
+@keyframes rotate {
+  0% {transform: scale(1,1);}
+  50% {transform: scale(15,8);}
+  /* 100% {transform: scale(1,1);} */
 }

@@ -106,6 +106,7 @@ export default function User() {
                 style={{ marginTop: 20 }}
             >
                 <Table
+                    className="table-go-list"
                     // caseCol({handleDelete})
                     columns={userCol({ handleDelete, handleUserEdit,handleAccountEdit, handleUserRole,setRoleUserID,limit, page })}
                     dataSource={userData.users}
