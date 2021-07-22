@@ -71,6 +71,7 @@ export default function People() {
                 style={{ marginTop: 20 }}
             >
                 <Table
+                    className="table-go-list"
                     columns={peopleCol({handleDelete,limit,page})}
                     dataSource={peopleData?.personalInfos}
                     rowKey={record => record.id}

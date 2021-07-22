@@ -1,4 +1,4 @@
-import { Layout, Menu, Image } from 'antd';
+import { Layout, Menu, Image,Divider } from 'antd';
 import {
     SettingOutlined,
     ContainerOutlined,
@@ -35,22 +35,27 @@ export default function MenuHeader() {
             style={{
                 // backgroundColor: '#06385f' 
                 // backgroundColor: '#22252A' 
-                backgroundColor:'#1e3b87'
+                // backgroundColor:'#1e3b87'
+                backgroundColor:'#005438'
+
             }}>
             <Link to="/">
                 <div className="logo">
-                    <Image width={"100%"} src={Logo} preview={false} />
+                    <Image width={"100%"} className="img-logo" src={Logo} preview={false} />
                 </div>
             </Link>
+            <Divider style={{background:'#FFF',height:2}} />
             <Menu theme="dark"
                 // defaultSelectedKeys={[urlPath]} 
                 selectedKeys={[urlPath]}
                 mode="inline"
                 style={{
                     // backgroundColor: '#06385f'
-                    backgroundColor:'#1e3b87'
+                    // backgroundColor:'#1e3b87'
                     // backgroundColor: '#22252A' 
+                    backgroundColor:'#005438'
                 }}>
+               
                 <Menu.Item key="/" icon={<HomeOutlined />}>
                     ទំព័រដើម
                     <Link to="/" />

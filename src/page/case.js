@@ -71,6 +71,7 @@ export default function Case() {
                 style={{ marginTop: 20 }}
             >
                 <Table
+                    className="table-go-list"
                     columns={caseCol({handleDelete, limit, page})}
                     dataSource={caseData?.cases}
                     rowKey={record => record.id}
