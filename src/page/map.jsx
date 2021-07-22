@@ -10,11 +10,7 @@ import {
 } from "@material-ui/core";
 
 import {
-  provinceData,
-  districtData,
-  communeData,
-  villageData,
-  genderData,
+  districForMap
 } from "../context/headerContext";
 import { ListSelect } from "../static/own-comp";
 import {
@@ -36,6 +32,7 @@ import {
   GET_DATA_FOR_MAP,
 } from "../graphql/dashboardAndReport";
 import { useQuery } from "@apollo/client";
+import BarChart from "../component/covideComponents/BarChart";
 
 const MapScreen = () => {
   const districtLatLong = [
@@ -169,7 +166,7 @@ const MapScreen = () => {
     lower(c);
   });
 
-  return (
+  return <>
     <div className="app">
       <div className="app__left">
         <div className="app__header">
@@ -182,7 +179,7 @@ const MapScreen = () => {
             >
               <ListSelect
                 type={0}
-                data={convertToDistrict(districtData)}
+                data={convertToDistrict(districForMap)}
                 title="ស្រុក/ខណ្ឌ"
                 setValue={setToDistrictFn}
               />
@@ -243,8 +240,15 @@ const MapScreen = () => {
           </CardContent>
         </Card>
       </div>
+  
+   
     </div>
-  );
+    {/* graph three datasets  */}
+  <div className="graph ">
+  <BarChart casesType={casesType}/>
+
+  </div>
+  </>;
 };
 
 export default MapScreen;

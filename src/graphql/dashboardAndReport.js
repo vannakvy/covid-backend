@@ -30,9 +30,18 @@ export const GET_DATA_FOR_MAP = gql`
 export const GET_DATA_FOR_GRAP = gql`
      query getDataForGrap{
         getDataForGrap{
-            cases
-            deaths
-            recovered
+            cases{
+              x 
+              y
+            }
+            deaths{
+              x 
+              y
+            }
+            recovered{
+              x 
+              y
+            }
         }
   }
 `;

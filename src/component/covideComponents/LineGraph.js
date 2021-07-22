@@ -1,103 +1,56 @@
-import React, { useState, useEffect } from "react";
-import { Line } from "react-chartjs-2";
-import numeral from "numeral";
+
 import {GET_DATA_FOR_GRAP} from '../../graphql/dashboardAndReport'
 import { useQuery } from "@apollo/client";
-const options = {
-  legend: {
-    display: false,
-  },
-  elements: {
-    point: {
-      radius: 0,
-    },
-  },
-  maintainAspectRatio: false,
-  tooltips: {
-    mode: "index",
-    intersect: false,
-    callbacks: {
-      label: function (tooltipItem, data) {
-        return numeral(tooltipItem.value).format("+0,0");
-      },
-    },
-  },
-  scales: {
-    xAxes: [
-      {
-        type: "time",
-        time: {
-          format: "MM/DD/YY",
-          tooltipFormat: "ll",
-        },
-      },
-    ],
-    yAxes: [
-      {
-        gridLines: {
-          display: false,
-        },
-        ticks: {
-          // Include a dollar sign in the ticks
-          callback: function (value, index, values) {
-            return numeral(value).format("0a");
-          },
-        },
-      },
-    ],
-  },
-};
+import React, { useState, useEffect } from "react";
+import { Bar,Line } from "react-chartjs-2";
+import numeral from "numeral";
 
-const buildChartData = (data, casesType) => {
-  console.log(casesType)
-  let chartData = [];
-  let lastDataPoint;
-  for (let date in data.cases) {
-    if (lastDataPoint) {
-      console.log(lastDataPoint)
-      let newDataPoint = {
-        x: date,
-        y: data[casesType][date] - lastDataPoint,
-      };
-      chartData.push(newDataPoint);
-    }
-    lastDataPoint = data[casesType][date];
-    console.log()
-  }
-  return chartData;
-};
 
 function LineGraph({ casesType }) {
   const [data, setData] = useState({});
+ console.log(data)
+  const {dat,refetch} = useQuery(GET_DATA_FOR_GRAP,{onCompleted:({getDataForGrap})=>{
+    setData(getDataForGrap);
+  }})
+  console.log(casesType)
+let color = "rgb(167, 11, 153)";
+let caseData=data.cases;
+switch(casesType){
+  case "deaths": 
+    color = "rgb(222, 13, 45)"
+    caseData = data.deaths
+    break;
+      case "recovered":
+        color = "rgb(125, 215, 29)"
+        caseData = data.recovered
+    break;
+  default:
+    color = "rgb(167, 11, 153)"
+    caseData = data.cases
+    break;
+}
 
-  const {dat,refetch} = useQuery(GET_DATA_FOR_GRAP,{
-    onCompleted:({getDataForGrap})=>{
-      let chartData = buildChartData(getDataForGrap, casesType);  
-      console.log(chartData)
-      setData(chartData);
-    }
-  });
 
-  useEffect(() => {
-refetch()
-  }, [casesType]);
+const dd= caseData?.map(d=>d.x);
+const va= caseData?.map(d=>d.y);
 
+const datas = {
+  labels: dd,
+  datasets: [
+    {
+      label: casesType,
+      data: va,
+      fill: false,
+      backgroundColor: color,
+      borderColor: color
+    },
+  ]
+};
   return (
     <div>
-      {data?.length > 0 && (
         <Line
-          data={{
-            datasets: [
-              {
-                backgroundColor: "rgba(204, 16, 52, 0.5)",
-                borderColor: "#CC1034",
-                data: data,
-              },
-            ],
-          }}
-          options={options}
+        data={datas}
         />
-      )}
     </div>
   );
 }
