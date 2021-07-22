@@ -1,6 +1,6 @@
 import React from "react";
 import numeral from "numeral";
-import { Circle, Popup } from "react-leaflet";
+import { Circle, Popup,Marker,CircleMarker,Polygon} from "react-leaflet";
 
 const casesTypeColors = {
   cases: {
@@ -52,9 +52,9 @@ export const prettyPrintStat = (stat) =>
   stat ? `+${numeral(stat).format("0.0a")}` : "+0";
 
 export const showDataOnMap = (data, casesType = "cases") =>
-  data?.map((country) => (
+  data?.map((quarantineInfo) => (
     <Circle
-      center={[country.lat, country.long]}
+      center={[quarantineInfo.lat, quarantineInfo.long]}
       color={casesTypeColors[casesType].hex}
       pathOptions={{
         color: casesTypeColors[casesType].hex,
@@ -63,24 +63,110 @@ export const showDataOnMap = (data, casesType = "cases") =>
       fillOpacity={0.4}
       radius={
         5000
-        // Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
+        // Math.sqrt(quarantineInfo[casesType]) * casesTypeColors[casesType].multiplier
       }
     >
       <Popup>
         <div className="info-container">
           {/* <div
             className="info-flag"
-            style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
+            style={{ backgroundImage: `url(${quarantineInfo.quarantineInfoInfo.flag})` }}
           ></div> */}
-          <div className="info-name">{country.district}</div>
+          <div className="info-name">{quarantineInfo.district}</div>
           <div className="info-confirmed">
-            Cases: {numeral(country.confirmedCase).format("0,0")}
+            Cases: {numeral(quarantineInfo.confirmedCase).format("0,0")}
           </div>
           <div className="info-recovered">
-            Recovered: {numeral(country.recovered).format("0,0")}
+            Recovered: {numeral(quarantineInfo.recovered).format("0,0")}
           </div>
           <div className="info-deaths">
-            Deaths: {numeral(country.death).format("0,0")}
+            Deaths: {numeral(quarantineInfo.death).format("0,0")}
+          </div>
+        </div>
+      </Popup>
+    </Circle>
+  ));
+ 
+
+  export const showQuarantineInfoOnMap = (data) =>
+  data?.map((quarantineInfo) => (
+    <Circle
+      center={[quarantineInfo?.lat, quarantineInfo?.long]}
+      color="yellow"
+      pathOptions={{
+        color: "gray",
+        fillColor: "white",
+      }}
+      fillOpacity={0.8}
+      radius={
+        5000
+        // Math.sqrt(quarantineInfo[casesType]) * casesTypeColors[casesType].multiplier
+      }
+    >
+      <Popup>
+        <div className="info-container">
+          {/* <div
+            className="info-flag"
+            style={{ backgroundImage: `url(${quarantineInfo.quarantineInfoInfo.flag})` }}
+          ></div> */}
+          <div className="info-name">{quarantineInfo.locationName}</div>
+          
+          <div className="info-confirmed">
+            សមត្តភាពផ្ទុក: {numeral(quarantineInfo.capacity).format("0,0")}
+          </div>
+          <div className="info-recovered">
+            អាស័យដ្ធាន: {quarantineInfo.village } {quarantineInfo.commune } {quarantineInfo.district } {quarantineInfo.province }
+          </div>
+          <div className="info-deaths">
+            អ្នកទទួលខុសត្រូវ: {quarantineInfo.personInCharge.firstName}  {quarantineInfo.personInCharge.lastName}
+          </div>
+          <div className="info-deaths">
+            តួនាទី: {quarantineInfo.personInCharge.position}  
+          </div>
+          <div className="info-deaths">
+            ទូរស័ព្ទ: {quarantineInfo.personInCharge.tel}  
+          </div>
+        </div>
+      </Popup>
+    </Circle>
+  ));
+
+
+  //
+  export const  showHospitalInfoOnMap = (data) =>
+  data?.map((hospitalInfo) => (
+    <Circle
+      center={[hospitalInfo?.lat, hospitalInfo?.long]}
+      color="yellow"
+      pathOptions={{
+        color: "red",
+        fillColor: "white",
+      }}
+      fillOpacity={0.8}
+      radius={
+        5000
+        // Math.sqrt(hospitalInfo[casesType]) * casesTypeColors[casesType].multiplier
+      }
+    >
+      <Popup>
+        <div className="info-container">
+          {/* <div
+            className="info-flag"
+            style={{ backgroundImage: `url(${hospitalInfo.hospitalInfoInfo.flag})` }}
+          ></div> */}
+          <div className="info-name">{hospitalInfo.hospitalName}</div>
+          
+          <div className="info-recovered">
+            អាស័យដ្ធាន: {hospitalInfo.village } {hospitalInfo.commune } {hospitalInfo.district } {hospitalInfo.province }
+          </div>
+          <div className="info-deaths">
+            អ្នកទទួលខុសត្រូវ: {hospitalInfo.personInCharge.firstName}  {hospitalInfo.personInCharge.lastName}
+          </div>
+          <div className="info-deaths">
+            តួនាទី: {hospitalInfo.personInCharge.position}  
+          </div>
+          <div className="info-deaths">
+            ទូរស័ព្ទ: {hospitalInfo.personInCharge.tel}  
           </div>
         </div>
       </Popup>

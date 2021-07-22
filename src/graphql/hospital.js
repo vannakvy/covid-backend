@@ -114,6 +114,9 @@ mutation createHospitalization(
 }
 `;
 
+
+
+
 export const GET_PERSON_BY_HOSPITALINFO = gql`
 query getQuarantineByHospitalIdIdWithPagination($page:Int!,$limit:Int!,$keyword:String,$hospitalId:ID!){
   getQuarantineByHospitalIdIdWithPagination(page:$page,limit:$limit,keyword:$keyword,hospitalId:$hospitalId){
@@ -253,3 +256,27 @@ mutation deleteHospitalization($id:ID!){
   }
 }
 `;
+
+export const ALL_HOSPIAL_INFO = gql`
+  query  allHospitalInfos{
+    allHospitalInfos{
+id
+hospitalName
+village
+commune
+district
+province
+long
+lat
+other
+createdAt
+updatedAt
+personInCharge{
+  firstName
+  lastName
+  position
+  tel
+}
+    }
+  }
+`

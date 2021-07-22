@@ -269,3 +269,28 @@ mutation updateQuarantine(
   }
 }
 `;
+
+
+export const ALL_QUARANTINEINFO = gql`
+query allQuarantineInfos{
+  allQuarantineInfos{
+    capacity
+    locationName
+    id
+    village
+    commune
+    district
+    province
+    long 
+    lat
+    personInCharge{
+      firstName 
+      lastName 
+      position
+      others
+      tel
+    }
+  }}
+
+
+`
