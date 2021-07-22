@@ -77,7 +77,7 @@ export default function SubPeople() {
             <AddPeopleHistory open={openAddPeopleHistory} setOpen={setOpenAddPeopleHistory} />
             <UploadPic open={openUploadPic} setOpen={setOpenUploadPic} />
             <Col
-                xs={24} md={15}
+                xs={24} md={24}
                 className="subPeople-card"
             >
                 <Row
@@ -88,7 +88,7 @@ export default function SubPeople() {
                     }}
                 >
                     <Col
-                        xs={24} md={8}
+                        xs={24} md={4}
                         style={{
                             position: "relative",
                             // padding: 20,
@@ -120,29 +120,25 @@ export default function SubPeople() {
                                 {"ខេត្ត" + personalData?.province}</li>
                         </ul>
                     </Col>
+                    <Col
+                        xs={24} md={{ span: 6}}
+
+                    >
+                        <ul className="list">
+                            <li><Title level={5}>ការធ្វើចត្តាឡីស័ក <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}><PlusCircleOutlined /></span></Title></li>
+                            <li>កាលបរិច្ឆេទចាប់ផ្ដើម៖ {hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
+                            <li>កាលបរិច្ឆេទចេញ៖ {hospitalData?.date_out !== undefined && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
+                            <li>ទីតាំង៖ {quarantineData?.quarantineInfo?.locationName}</li>
+                            <li>អាស័យដ្ឋាន៖  {" "}
+                                {(quarantineData?.quarantineInfo?.village !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.village !== undefined) && "ភូមិ" + quarantineData?.quarantineInfo?.village + ","}
+                                {(quarantineData?.quarantineInfo?.commune !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.commune !== undefined) && "ឃុំ" + quarantineData?.quarantineInfo?.commune + ","}
+                                {(quarantineData?.quarantineInfo?.district !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.district !== undefined) && "ស្រុក" + quarantineData?.quarantineInfo?.district + ","}
+                                {quarantineData?.quarantineInfo?.province !== undefined && quarantineData?.quarantineInfo?.province}</li>
+                        </ul>
+                    </Col>
                 </Row>
             </Col>
-            <Col
-                xs={24} md={{ span: 8, offset: 1 }}
-                style={{
-                    border: "1px solid #d9d9d9",
-                    padding: "20px 20px 20px 0px",
 
-                }}
-                className="subPeople-card"
-            >
-                <ul className="list">
-                    <li><Title level={5}>ការធ្វើចត្តាឡីស័ក <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}><PlusCircleOutlined /></span></Title></li>
-                    <li>កាលបរិច្ឆេទចាប់ផ្ដើម៖ {hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
-                    <li>កាលបរិច្ឆេទចេញ៖ {hospitalData?.date_out !== undefined && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
-                    <li>ទីតាំង៖ {quarantineData?.quarantineInfo?.locationName}</li>
-                    <li>អាស័យដ្ឋាន៖  {" "}
-                        {(quarantineData?.quarantineInfo?.village !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.village !== undefined) && "ភូមិ" + quarantineData?.quarantineInfo?.village + ","}
-                        {(quarantineData?.quarantineInfo?.commune !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.commune !== undefined) && "ឃុំ" + quarantineData?.quarantineInfo?.commune + ","}
-                        {(quarantineData?.quarantineInfo?.district !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.district !== undefined) && "ស្រុក" + quarantineData?.quarantineInfo?.district + ","}
-                        {quarantineData?.quarantineInfo?.province !== undefined && quarantineData?.quarantineInfo?.province}</li>
-                </ul>
-            </Col>
             <Col
                 xs={24} md={{ span: 11 }}
                 style={{
@@ -198,7 +194,7 @@ export default function SubPeople() {
                         {(personalData?.case?.village !== "ក្រៅសៀមរាប" && personalData?.case?.village !== undefined) && "ភូមិ" + personalData?.case?.village + ","}
                         {(personalData?.case?.commune !== "ក្រៅសៀមរាប" && personalData?.case?.commune !== undefined) && "ឃុំ" + personalData?.case?.commune + ","}
                         {(personalData?.case?.district !== "ក្រៅសៀមរាប" && personalData?.case?.district !== undefined) && "ស្រុក" + personalData?.case?.district + ","}
-                        {personalData?.case?.province !== undefined && "ខេត្ត"+personalData?.case?.province}
+                        {personalData?.case?.province !== undefined && "ខេត្ត" + personalData?.case?.province}
                     </li>
                     <li>ទំនាក់ទំនង៖ {personalData?.direct ? "ផ្ទាល់" : "ប្រយោល"}</li>
                 </ul>
@@ -210,11 +206,11 @@ export default function SubPeople() {
                         <ul className="list">
                             <li>ឈ្មោះមណ្ឌល៖ {hospitalData?.hospitalInfo?.hospitalName}</li>
                             <li>អាសយដ្ឋាន៖  {" "}
-                                {(hospitalData?.hospitalInfo?.village !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.village!==undefined)  && "ភូមិ" + hospitalData?.hospitalInfo?.village + ","}
-                                {(hospitalData?.hospitalInfo?.commune !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.commune!==undefined) && "ឃុំ" + hospitalData?.hospitalInfo?.commune + ","}
-                                {(hospitalData?.hospitalInfo?.district !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.district!==undefined) && "ស្រុក" + hospitalData?.hospitalInfo?.district + ","}
+                                {(hospitalData?.hospitalInfo?.village !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.village !== undefined) && "ភូមិ" + hospitalData?.hospitalInfo?.village + ","}
+                                {(hospitalData?.hospitalInfo?.commune !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.commune !== undefined) && "ឃុំ" + hospitalData?.hospitalInfo?.commune + ","}
+                                {(hospitalData?.hospitalInfo?.district !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.district !== undefined) && "ស្រុក" + hospitalData?.hospitalInfo?.district + ","}
 
-                                {hospitalData?.hospitalInfo?.province !==undefined && "ខេត្ត" + hospitalData?.hospitalInfo?.province}</li>
+                                {hospitalData?.hospitalInfo?.province !== undefined && "ខេត្ត" + hospitalData?.hospitalInfo?.province}</li>
                             {/* <li>ទំនាក់ទំនង៖ {hospitalData?.hospitalInfo?.hospitalName}</li> */}
                         </ul>
                     </Col>
@@ -222,8 +218,8 @@ export default function SubPeople() {
                         xs={10}
                     >
                         <ul className="list">
-                            <li>កាលបរិច្ឆេទចូល៖ {hospitalData?.date_in!==undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
-                            <li>កាលបរិចេ្ឆទចេញ៖ {hospitalData?.date_out!==undefined && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
+                            <li>កាលបរិច្ឆេទចូល៖ {hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
+                            <li>កាលបរិចេ្ឆទចេញ៖ {hospitalData?.date_out !== undefined && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
                         </ul>
                     </Col>
                 </Row>

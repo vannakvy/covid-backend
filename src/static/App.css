@@ -255,6 +255,8 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
 
 .ant-table-tbody > tr.ant-table-row:hover > td {
   background-color: #c8ffed!important;
+  font-weight: bold;
+  /* font-size:15px; */
 }
 
 .ant-btn-primary{

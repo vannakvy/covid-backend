@@ -33,6 +33,9 @@ import {
 } from "../graphql/dashboardAndReport";
 import { useQuery } from "@apollo/client";
 import BarChart from "../component/covideComponents/BarChart";
+import ImageCovid from '../asset/covid19.png'
+import ImageRecover from '../asset/recover.png'
+import ImageDeath from '../asset/death.png'
 
 const MapScreen = () => {
   const districtLatLong = [
@@ -194,6 +197,7 @@ const MapScreen = () => {
             active={casesType === "cases"}
             cases={prettyPrintStat(districtDatas.confirmedCaseToday)}
             total={numeral(districtDatas.confirmedCase).format("0.0a")}
+            ImageShow={ImageCovid}
           />
           <InfoBox
             onClick={(e) => setCasesType("recovered")}
@@ -201,6 +205,7 @@ const MapScreen = () => {
             active={casesType === "recovered"}
             cases={prettyPrintStat(districtDatas.recoveredToday)}
             total={numeral(districtDatas.recovered).format("0.0a")}
+            ImageShow={ImageRecover}
           />
           <InfoBox
             onClick={(e) => setCasesType("deaths")}
@@ -209,6 +214,7 @@ const MapScreen = () => {
             active={casesType === "deaths"}
             cases={prettyPrintStat(districtDatas.deathToday)}
             total={numeral(districtDatas.death).format("0.0a")}
+            ImageShow={ImageDeath}
           />
         </div>
         <Map
