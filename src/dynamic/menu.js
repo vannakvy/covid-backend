@@ -36,7 +36,8 @@ export default function MenuHeader() {
                 // backgroundColor: '#06385f' 
                 // backgroundColor: '#22252A' 
                 // backgroundColor:'#1e3b87'
-                backgroundColor:'#005438'
+                // backgroundColor:'#005438'
+                background: 'repeating-linear-gradient(-55deg,#005b3d,#005b3d 30px,#005438 30px,#005438 40px)'
 
             }}>
             <Link to="/">
@@ -53,31 +54,40 @@ export default function MenuHeader() {
                     // backgroundColor: '#06385f'
                     // backgroundColor:'#1e3b87'
                     // backgroundColor: '#22252A' 
-                    backgroundColor:'#005438'
+                    // backgroundColor:'#005438'
+                    // background: 'repeating-linear-gradient(-55deg,#006745,#006745 10px,#005438 10px,#005438 20px)'
+                    // backgroundColor:"none"
+                    // background: repeating-linear-gradient(
+                    //     -55deg,
+                    //     #222,
+                    //     #222 10px,
+                    //     #333 10px,
+                    //     #333 20px
+                    //   );
                 }}>
                
-                <Menu.Item key="/" icon={<HomeOutlined />}>
+                <Menu.Item key="/" style={{fontSize:16}} icon={<HomeOutlined style={{fontSize:20}}  />}>
                     ទំព័រដើម
                     <Link to="/" />
                 </Menu.Item>
-                <Menu.Item key="/case" icon={<LoginOutlined />}>
+                <Menu.Item key="/case" style={{fontSize:16}} icon={<LoginOutlined style={{fontSize:20}}  />}>
                     កំណត់ត្រាករណី
                     <Link to="/case" />
                 </Menu.Item>
-                <Menu.Item key="/people" icon={<TeamOutlined />}>
+                <Menu.Item key="/people" style={{fontSize:16}} icon={<TeamOutlined style={{fontSize:20}}  />}>
                     ប្រវត្តិរូបប្រជាជន
                     <Link to="/people" />
                 </Menu.Item>
-                <Menu.Item key="/quarantine" icon={<BankOutlined />}>
+                <Menu.Item key="/quarantine" style={{fontSize:16}} icon={<BankOutlined style={{fontSize:20}}  />}>
                     ចត្តាឡីស័ក
                     <Link to="/quarantine" />
                 </Menu.Item>
-                <Menu.Item key="/hospital" icon={<ReconciliationOutlined />}>
+                <Menu.Item key="/hospital" style={{fontSize:16}} icon={<ReconciliationOutlined style={{fontSize:20}}  />}>
                     មន្ទីរពេទ្យ
                     <Link to="/hospital" />
                 </Menu.Item>
-                <SubMenu key="sub1" icon={<ContainerOutlined />} title="របាយការណ៍">
-                    <Menu.Item key="/reportdaily">
+                <SubMenu key="sub1" style={{fontSize:16}} icon={<ContainerOutlined style={{fontSize:20}}  />} title="របាយការណ៍">
+                    <Menu.Item style={{backgroundColor:'#009966'}} key="/reportdaily">
                         របាយការណ៍ប្រចាំថ្ងៃ
                         <Link to="/reportdaily" />
                     </Menu.Item>
@@ -91,7 +101,7 @@ export default function MenuHeader() {
                     <Link to="/setting" />
                 </Menu.Item> */}
                 {user.role === "Admin" ? (
-                    <Menu.Item key="/user" icon={<UserOutlined />}>
+                    <Menu.Item key="/user" style={{fontSize:16}} icon={<UserOutlined style={{fontSize:20}}  />}>
                         អ្នកប្រើប្រាស់
                         <Link to="/user" />
                     </Menu.Item>
@@ -101,8 +111,9 @@ export default function MenuHeader() {
 
                 <Menu.Item
                     // onClick={() => auth.signOut()}
+                    style={{fontSize:16}} 
                     key="6"
-                    icon={<ExportOutlined />}
+                    icon={<ExportOutlined style={{fontSize:20}}  />}
                     
                     onClick={() => handleLoggout()}
                 >

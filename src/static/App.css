@@ -2,6 +2,7 @@
   /* text-align: center; */
 }
 
+
 h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   font-family: khmerOsSiemReap;
 }
@@ -169,6 +170,10 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   /* animation: addPadding 2s alternate; */
 }
 
+.ant-menu-dark .ant-menu-inline.ant-menu-sub{
+  background: #005438!important;;
+}
+
 .ant-menu-item{
   /* border-top: 2px solid #FFF; */
   /* border-bottom: 2px solid #FFF; */
@@ -178,9 +183,32 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   background-color:#91ffda!important ;
 }
 
-.table-go-list tr:nth-child(odd){
-  background-color: #f1f6fa;
+.ant-menu{
+  background: none;
 }
+
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub{
+  background: none;
+}
+
+.table-go-list tr:nth-child(odd){
+  background-color: #f1f6fa!important;
+}
+
+/* .table-go-list .ant-table-tbody tr > td,  .table-go-list .ant-table-tbody tr > th{
+  padding: 10px 16px!important;
+} */
+
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
+  padding: 10px 16px;
+}
+
+/* .table-go-list tr:nth-child(odd) > .ant-table-cell-fix-right{
+  background-color: #f1f6fa!important;
+} */
+/* .table-go-list tr> .ant-table-cell-fix-right{
+  background-color: #FFFF!important;
+} */
 
 .ant-table-tbody tr td{
   border: none;
@@ -190,8 +218,12 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
 .ant-table-thead tr th{
   border: none;
   transition: none;
-  background-color: #009966;
+  background-color: #009966!important;
   color:#FFFF;
+}
+
+.ant-table-cell .ant-table-cell-fix-right .ant-table-cell-fix-right-first{
+  background-color: #009966!important;
 }
 
 .ant-table-tbody .ant-table-row:hover{
@@ -217,6 +249,14 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
 
 @keyframes rotate {
   0% {transform: scale(1,1);}
-  50% {transform: scale(15,8);}
+  50% {transform: scale(2,1.5);}
   /* 100% {transform: scale(1,1);} */
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background-color: #c8ffed!important;
+}
+
+.ant-btn-primary{
+  background: #009966!important;
 }

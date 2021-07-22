@@ -29,7 +29,7 @@ export const peopleCol = ({handleDelete,limit,page}) => {
             title: 'ឈ្មោះ',
             dataIndex: 'personalInfos',
             key: 'personalInfos',
-            width: 150,
+            width: 200,
             render: (text, record) => (
                 <span size="middle">
                     {
@@ -42,19 +42,19 @@ export const peopleCol = ({handleDelete,limit,page}) => {
             title: 'ភេទ',
             dataIndex: 'gender',
             key: 'gender',
-            width: 100,
+            width: 60,
         },
         {
             title: 'អាយុ',
             dataIndex: 'age',
             key: 'age',
-            width: 100,
+            width: 60,
         },
         {
             title: 'សញ្ជាតិ',
             dataIndex: 'nationality',
             key: 'nationality',
-            width: 100,
+            width: 70,
         },
         {
             title: 'អាស័យដ្ឋាន',
@@ -62,12 +62,12 @@ export const peopleCol = ({handleDelete,limit,page}) => {
             key: 'address',
             width: 250,
             render: (text, record) => (
-                <Space size="middle">
-                    {(record.village !== "ក្រៅសៀមរាប") && record.village}
-                    {record.commune !== "ក្រៅសៀមរាប" && record.commune}
-                    {record.district !== "ក្រៅសៀមរាប" && record.district}
+                <span>
+                    {(record.village !== "ក្រៅសៀមរាប") && record.village+", "}
+                    {record.commune !== "ក្រៅសៀមរាប" && record.commune+", "}
+                    {record.district !== "ក្រៅសៀមរាប" && record.district+", "}
                     {record.province && record.province}
-                </Space>
+                </span>
             ),
         },
         {
