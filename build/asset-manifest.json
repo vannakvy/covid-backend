@@ -1,28 +1,31 @@
 {
   "files": {
-    "main.css": "./static/css/main.3c1151d8.chunk.css",
-    "main.js": "./static/js/main.f873649d.chunk.js",
-    "main.js.map": "./static/js/main.f873649d.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.552e9b64.js",
-    "runtime-main.js.map": "./static/js/runtime-main.552e9b64.js.map",
+    "main.css": "./static/css/main.b2ad0143.chunk.css",
+    "main.js": "./static/js/main.66ff7d36.chunk.js",
+    "main.js.map": "./static/js/main.66ff7d36.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.02ac74f0.js",
+    "runtime-main.js.map": "./static/js/runtime-main.02ac74f0.js.map",
     "static/css/2.859a63d7.chunk.css": "./static/css/2.859a63d7.chunk.css",
-    "static/js/2.5cd0b94f.chunk.js": "./static/js/2.5cd0b94f.chunk.js",
-    "static/js/2.5cd0b94f.chunk.js.map": "./static/js/2.5cd0b94f.chunk.js.map",
-    "static/js/3.7f12153b.chunk.js": "./static/js/3.7f12153b.chunk.js",
-    "static/js/3.7f12153b.chunk.js.map": "./static/js/3.7f12153b.chunk.js.map",
+    "static/js/2.46d8f4e9.chunk.js": "./static/js/2.46d8f4e9.chunk.js",
+    "static/js/2.46d8f4e9.chunk.js.map": "./static/js/2.46d8f4e9.chunk.js.map",
+    "static/js/3.15132cbf.chunk.js": "./static/js/3.15132cbf.chunk.js",
+    "static/js/3.15132cbf.chunk.js.map": "./static/js/3.15132cbf.chunk.js.map",
     "index.html": "./index.html",
     "static/css/2.859a63d7.chunk.css.map": "./static/css/2.859a63d7.chunk.css.map",
-    "static/css/main.3c1151d8.chunk.css.map": "./static/css/main.3c1151d8.chunk.css.map",
-    "static/js/2.5cd0b94f.chunk.js.LICENSE.txt": "./static/js/2.5cd0b94f.chunk.js.LICENSE.txt",
+    "static/css/main.b2ad0143.chunk.css.map": "./static/css/main.b2ad0143.chunk.css.map",
+    "static/js/2.46d8f4e9.chunk.js.LICENSE.txt": "./static/js/2.46d8f4e9.chunk.js.LICENSE.txt",
     "static/media/index.css": "./static/media/TACTENG.89f59e5d.TTF",
+    "static/media/covid19.2861979f.png": "./static/media/covid19.2861979f.png",
+    "static/media/death.e0bbc2c9.png": "./static/media/death.e0bbc2c9.png",
     "static/media/goglobalschool.cd293cd0.png": "./static/media/goglobalschool.cd293cd0.png",
+    "static/media/recover.5d6bc409.png": "./static/media/recover.5d6bc409.png",
     "static/media/srLogo.85fb41d7.png": "./static/media/srLogo.85fb41d7.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.552e9b64.js",
+    "static/js/runtime-main.02ac74f0.js",
     "static/css/2.859a63d7.chunk.css",
-    "static/js/2.5cd0b94f.chunk.js",
-    "static/css/main.3c1151d8.chunk.css",
-    "static/js/main.f873649d.chunk.js"
+    "static/js/2.46d8f4e9.chunk.js",
+    "static/css/main.b2ad0143.chunk.css",
+    "static/js/main.66ff7d36.chunk.js"
   ]
 }
