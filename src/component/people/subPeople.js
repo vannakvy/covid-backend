@@ -16,6 +16,7 @@ import UploadPic from './modal/uploadPic'
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_PERSONALINFO_BY_ID } from '../../graphql/people';
 import { GET_HOSPITAL_QUARANTINE_BY_PERSON } from '../../graphql/people';
+import { GET_PERSON_BY_CASE } from '../../graphql/case';
 import moment from 'moment';
 
 const { Title } = Typography
@@ -33,16 +34,22 @@ export default function SubPeople() {
     const [openAddPeopleHistory, setOpenAddPeopleHistory] = useState(false)
     const [openUploadPic, setOpenUploadPic] = useState(false)
     const [openEdit, setOpenEdit] = useState(false)
+    const [subCaseData, setSubCaseData] = useState([])
+    const [subCasePagination, setSubCasePagination] = useState({})
 
     const [quarantineData, setQuarantineData] = useState({})
     const [hospitalData, setHospitalData] = useState({})
+
+    const [page, setPage] = useState(1)
+    const [limit, setLimit] = useState(10)
+    const [keyword, setKeyword] = useState("")
 
     const { data } = useQuery(GET_PERSONALINFO_BY_ID, {
         variables: {
             id: id
         },
         onCompleted: ({ getPersonalInfoById }) => {
-            console.log(getPersonalInfoById)
+            // console.log(getPersonalInfoById)
             setPersonalData(getPersonalInfoById)
         }
     })
@@ -52,15 +59,34 @@ export default function SubPeople() {
             persoanlInfoId: id
         },
         onCompleted: ({ getHospitalizationByPersonalInfo }) => {
-            console.log(getHospitalizationByPersonalInfo)
+            // console.log(getHospitalizationByPersonalInfo)
             setQuarantineData(getHospitalizationByPersonalInfo?.quarantineInfo)
             setHospitalData(getHospitalizationByPersonalInfo?.hospitalInfo)
         }
     })
 
+    const { data:caseData, refetch } = useQuery(GET_PERSON_BY_CASE, {
+        variables: {
+            page: page,
+            limit: limit,
+            keyword: keyword,
+            caseId: personalData?.case?.id
+        },
+        onCompleted: ({ getPersonalInfoByCaseWithPagination }) => {
+            let item = [...getPersonalInfoByCaseWithPagination?.personalInfos]
+            let index = item.findIndex(e => e.id === id)
+            item.splice(index, 1)
+            setSubCaseData(item)
+            console.log(item)
+            setSubCasePagination(getPersonalInfoByCaseWithPagination?.paginator)
+        }
+    })
+
     useEffect(() => {
-        //setPersonalData(peopleData[peopleData.findIndex(e => e.id === id)])
-        //console.log(peopleData)
+        // if(personalData){
+            
+        // }
+        // getCaseData()
     }, [])
 
     const handleDelete = () => {
@@ -107,7 +133,7 @@ export default function SubPeople() {
                         xs={24} md={10}
                     >
                         <ul className="list">
-                            <li>ឈ្មោះ៖ {personalData?.lastName} {personalData?.firstName} <EditOutlined className="link" onClick={() => setOpenEdit(true)} /></li>
+                            <li><Title level={5}>ឈ្មោះ៖ {personalData?.lastName} {personalData?.firstName} <EditOutlined className="link" onClick={() => setOpenEdit(true)} /></Title></li>
                             <li>ភេទ៖ {personalData?.gender}</li>
                             <li>សញ្ជាតិ៖ {personalData?.nationality}</li>
                             <li>លេខអត្តសញ្ញាណប័ណ្ឌ៖ {personalData?.idCard}</li>
@@ -125,7 +151,8 @@ export default function SubPeople() {
 
                     >
                         <ul className="list">
-                            <li><Title level={5}>ការធ្វើចត្តាឡីស័ក <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}><PlusCircleOutlined /></span></Title></li>
+                            <li><Title level={5}>ការធ្វើចត្តាឡីស័ក </Title></li>
+                            {/* <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}><PlusCircleOutlined /></span> */}
                             <li>កាលបរិច្ឆេទចាប់ផ្ដើម៖ {hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
                             <li>កាលបរិច្ឆេទចេញ៖ {hospitalData?.date_out !== undefined && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
                             <li>ទីតាំង៖ {quarantineData?.quarantineInfo?.locationName}</li>
@@ -148,7 +175,7 @@ export default function SubPeople() {
                 }}
                 className="subPeople-card"
             >
-                <Title level={5}>ស្ថានភាពបច្ចុប្បន្ន <span className="link" onClick={() => setOpenAddPeopleStatus(true)}><PlusCircleOutlined /></span></Title>
+                
                 {/* <Table
                     columns={statusCol({ handleDelete })}
                     dataSource={[{ id: "1", date: "alsdjas", status: "laskldfj", remark: "laksdjald" }]}
@@ -160,6 +187,7 @@ export default function SubPeople() {
                 <Row>
                     <Col xs={24} md={{ span: 11 }}>
                         <ul className="list">
+                            <li><Title level={5}>ស្ថានភាពបច្ចុប្បន្ន <span className="link" onClick={() => setOpenAddPeopleStatus(true)}><PlusCircleOutlined /></span></Title></li>
                             <li> {personalData?.currentState?.confirm ? <CloseOutlined style={{ color: "red" }} /> : <CheckOutlined style={{ color: "green" }} />} អវិជ្ជមាន</li>
                             <li> {personalData?.currentState?.confirm ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} វិជ្ជមាន</li>
                             {/* <li> {personalData?.currentState?.recovered ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} ជាសះស្បើយ</li>
@@ -187,8 +215,10 @@ export default function SubPeople() {
                 }}
                 className="subPeople-card"
             >
-                <Title level={5}>ប្រវត្តិដំណើរករណី <span className="link" onClick={() => setOpenAddPeopleHistory(true)}><PlusCircleOutlined /></span></Title>
+                
                 <ul className="list">
+                    <li><Title level={5}>ប្រវត្តិដំណើរករណី</Title></li>
+                    {/* <span className="link" onClick={() => setOpenAddPeopleHistory(true)}><PlusCircleOutlined /></span> */}
                     <li>ឈ្មោះករណី៖ {personalData?.case?.caseName !== undefined && personalData?.case?.caseName}</li>
                     <li>ទីតាំងករណី៖ {" "}
                         {(personalData?.case?.village !== "ក្រៅសៀមរាប" && personalData?.case?.village !== undefined) && "ភូមិ" + personalData?.case?.village + ","}
@@ -198,12 +228,14 @@ export default function SubPeople() {
                     </li>
                     <li>ទំនាក់ទំនង៖ {personalData?.direct ? "ផ្ទាល់" : "ប្រយោល"}</li>
                 </ul>
-                <Title level={5}>មណ្ឌលព្យាបាល <span className="link" onClick={() => setOpenAddPeopleHospital(true)}><PlusCircleOutlined /></span></Title>
+                
                 <Row>
                     <Col
                         xs={14}
                     >
                         <ul className="list">
+                            <li><Title level={5}>មណ្ឌលព្យាបាល</Title></li>
+                            {/* <li><span className="link" onClick={() => setOpenAddPeopleHospital(true)}><PlusCircleOutlined /></span></li> */}
                             <li>ឈ្មោះមណ្ឌល៖ {hospitalData?.hospitalInfo?.hospitalName}</li>
                             <li>អាសយដ្ឋាន៖  {" "}
                                 {(hospitalData?.hospitalInfo?.village !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.village !== undefined) && "ភូមិ" + hospitalData?.hospitalInfo?.village + ","}
@@ -230,6 +262,7 @@ export default function SubPeople() {
             >
                 <Title level={5}>ការធ្វើតេស្ត <span className="link" onClick={() => setOpenAddPeopleTest(true)} ><PlusCircleOutlined /></span></Title>
                 <Table
+                    className="table-personal"
                     columns={testCol({ handleDelete })}
                     dataSource={personalData?.sampleTest}
                     rowKey={record => record.id}
@@ -243,13 +276,15 @@ export default function SubPeople() {
                 style={{ paddingTop: 14, marginTop: 20 }}
             >
                 <Title level={5}>
-                    អ្នកពាក់ព័ន្ធ <span className="link" onClick={() => setOpenAddSubCase(true)}>
+                    អ្នកពាក់ព័ន្ធ 
+                    {/* <span className="link" onClick={() => setOpenAddSubCase(true)}>
                         <PlusCircleOutlined />
-                    </span>
+                    </span> */}
                 </Title>
                 <Table
+                    className="table-personal"
                     columns={relatedCol({ handleDelete })}
-                    dataSource={[{ id: "1", date: "alsdjas", status: "laskldfj", remark: "laksdjald" }]}
+                    dataSource={subCaseData}
                     rowKey={record => record.id}
                     pagination={true}
                     scroll={{ x: 1000, y: 300 }}

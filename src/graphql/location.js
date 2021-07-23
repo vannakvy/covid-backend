@@ -1,0 +1,44 @@
+import {gql} from '@apollo/client'
+
+export const GET_ALL_LOCATION = gql`
+query{
+    allAffectedLocations{
+      id
+      affectedLocationName
+      village
+      commune
+      district
+      province
+      other
+      open
+      openAt
+      closeAt
+      personalInfo{
+        id
+        firstName
+        lastName
+        gender
+        village
+        commune
+        district
+        province
+      }
+      case{
+        id
+        caseName
+        village
+        commune
+        district
+        province
+        other
+        date
+        long
+        lat
+      }
+      long
+      lat
+      coorporate
+      infected
+    }
+  }
+`;

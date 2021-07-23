@@ -262,3 +262,7 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
 .ant-btn-primary{
   background: #009966!important;
 }
+
+.table-personal tr td,.table-personal tr th{
+  font-size: 12px!important;
+}

@@ -34,7 +34,7 @@ export const testCol = ({handleDelete}) => {
             title: 'លើកទី',
             dataIndex: 'times',
             key: 'times',
-            width: 50,
+            width: 40,
         },
         {
             title: 'ទីតាំង',

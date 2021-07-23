@@ -11,48 +11,71 @@ export const relatedCol = ({handleDelete}) => {
             title: 'ល.រ',
             dataIndex: 'id',
             key: 'id',
-            width: 50,
+            width: 20,
             render: (text, record, i) => (
-                <Space size="middle">
+                <span size="middle">
                     {i += 1}
-                </Space>
+                </span>
             ),
         },
         {
             title: 'ឈ្មោះ',
-            dataIndex: 'date',
-            key: 'date',
+            dataIndex: 'name',
+            key: 'name',
             width: 80,
+            render: (text, record) => (
+                <span size="middle">
+                    {record?.lastName+" " +record?.firstName}
+                </span>
+            ),
         },
         {
             title: 'ភេទ',
-            dataIndex: 'status',
-            key: 'status',
-            width: 80,
+            dataIndex: 'gender',
+            key: 'gender',
+            width: 30,
         },
         {
             title: 'អាស័យដ្ឆាន',
-            dataIndex: 'status',
-            key: 'status',
-            width: 200,
+            dataIndex: 'address',
+            key: 'address',
+            width:100,
+            render: (text, record) => (
+            <span>
+                    {(record.village !== "ក្រៅសៀមរាប") && record.village+", "}
+                    {record.commune !== "ក្រៅសៀមរាប" && record.commune+", "}
+                    {record.district !== "ក្រៅសៀមរាប" && record.district+", "}
+                    {record.province && record.province}
+                </span>
+            )
         },
         {
             title: 'ស្ថានភាព',
             dataIndex: 'status',
             key: 'status',
-            width: 80,
+            width: 50,
+            render: (text, record) => (
+                <Space size="middle">
+                    {record?.currentState.confirm ? "វិជ្ជមាន" : "អវិជ្ជមាន"}
+                </Space>
+            ),
         },
         {
             title: 'លក្ខណៈពាក់ព័ន្ធ',
-            dataIndex: 'status',
-            key: 'status',
-            width: 150,
+            dataIndex: 'direct',
+            key: 'direct',
+            width:50,
+            render: (text, record) => (
+                <Space size="middle">
+                    {record?.direct? "វិជ្ជមាន" : "អវិជ្ជមាន"}
+                </Space>
+            ),
         },
         {
             key: 'action',
             dataIndex: 'action',
             fixed: 'right',
-            width: 40,
+            width: 20,
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">

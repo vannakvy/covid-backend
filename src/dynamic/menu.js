@@ -8,7 +8,7 @@ import {
     LoginOutlined,
     UserOutlined,
     BankOutlined,
-    ReconciliationOutlined
+    ReconciliationOutlined,AuditOutlined
 } from '@ant-design/icons';
 import Logo from '../asset/srLogo.png'
 import { Link } from 'react-router-dom'
@@ -85,6 +85,14 @@ export default function MenuHeader() {
                 <Menu.Item key="/hospital" style={{fontSize:16}} icon={<ReconciliationOutlined style={{fontSize:20}}  />}>
                     មន្ទីរពេទ្យ
                     <Link to="/hospital" />
+                </Menu.Item>
+                <Menu.Item key="/specifylocation" style={{fontSize:16}} icon={<AuditOutlined style={{fontSize:20}}  />}>
+                    ទីតាំងបិទបើក
+                    <Link to="/specifylocation" />
+                </Menu.Item>
+                <Menu.Item key="/interview" style={{fontSize:16}} icon={<AuditOutlined style={{fontSize:20}}  />}>
+                    ការសម្ភាសអ្នកជំងឺ
+                    <Link to="/interview" />
                 </Menu.Item>
                 <SubMenu key="sub1" style={{fontSize:16}} icon={<ContainerOutlined style={{fontSize:20}}  />} title="របាយការណ៍">
                     <Menu.Item style={{backgroundColor:'#009966'}} key="/reportdaily">
