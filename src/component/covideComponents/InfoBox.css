@@ -4,7 +4,7 @@
 padding-bottom: 5px;
 margin-top: 10px;
 /* background-color: red !important; */
-min-width: 300px !important;
+min-width: 200px !important;
 }
 
 .infoBox:not(:last-child) {

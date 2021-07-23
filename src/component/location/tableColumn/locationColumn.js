@@ -21,7 +21,7 @@ export const locationCol = ({ handleDelete, limit, page }) => {
             ),
         },
         {
-            title: 'ឈ្មោះករណី',
+            title: 'ទីតាំង',
             dataIndex: 'affectedLocationName',
             key: 'affectedLocationName',
             width: 150,
@@ -38,6 +38,17 @@ export const locationCol = ({ handleDelete, limit, page }) => {
                     {record.commune !== "ក្រៅសៀមរាប" && record.commune}
                     {record.district !== "ក្រៅសៀមរាប" && record.district}
                     {record.province && record.province}
+                </Space>
+            ),
+        },
+        {
+            title: 'ករណី',
+            dataIndex: 'address',
+            key: 'address',
+            width: 150,
+            render: (text, record) => (
+                <Space size="middle">
+                    {record?.case?.caseName}
                 </Space>
             ),
         },
@@ -79,7 +90,7 @@ export const locationCol = ({ handleDelete, limit, page }) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    {/* <Link className="link" to={"/subCase/" + record.id}><EditOutlined /></Link> */}
+                    <Link className="link" to={"/subCase/" + record.id}><EditOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}

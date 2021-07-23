@@ -31,19 +31,19 @@ const recoveredValue= data.recovered?.map(d=>d.y);
       data={{
         labels:cases,
         datasets:[{
-          label:'ករណីឆ្លង',
+          label:'អ្នកវិជ្ជមាន',
           data:casesValue,
           backgroundColor:'red',
           barThickness:12
         },
         { 
-          label:'ករណីជាសះស្បើយ',
+          label:'អ្នកជាសះស្បើយ',
           data:deathsValue,
           backgroundColor:'green',
           barThickness:12
         },
         {
-          label:'ករណីស្លាប់',
+          label:'អ្នកស្លាប់',
           data:deathsValue,
           backgroundColor:'orange',
           barThickness:12

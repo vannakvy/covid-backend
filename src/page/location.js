@@ -72,6 +72,7 @@ export default function Location() {
                     columns={locationCol({handleDelete, limit, page})}
                     dataSource={locationData}
                     rowKey={record => record.id}
+                    // size="small"
                     // pagination={{
                     //     total: caseData?.paginator?.totalDocs,
                     //     // showSizeChanger: true,

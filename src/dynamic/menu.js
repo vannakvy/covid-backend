@@ -22,8 +22,14 @@ const { SubMenu } = Menu;
 
 export default function MenuHeader() {
     const { urlPath, user } = useContext(HeaderData)
-
+console.log(user,"testing")
     const [collapsed, setCollapsed] = useState(false)
+
+    // const token =()=>{
+    //     let newToken =  JSON.parse(localStorage.getItem('user'))
+    //     return newToken?.token
+    //   }
+      
 
     const handleLoggout = ()=>{
         localStorage.removeItem("user")
@@ -108,7 +114,7 @@ export default function MenuHeader() {
                     ការកំណត់
                     <Link to="/setting" />
                 </Menu.Item> */}
-                {user.role === "Admin" ? (
+                {user.role !== "ADMIN" ? (
                     <Menu.Item key="/user" style={{fontSize:16}} icon={<UserOutlined style={{fontSize:20}}  />}>
                         អ្នកប្រើប្រាស់
                         <Link to="/user" />

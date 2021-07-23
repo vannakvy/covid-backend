@@ -192,32 +192,43 @@ const MapScreen = () => {
         <div className="app__stats">
           <InfoBox
             onClick={(e) => setCasesType("cases")}
-            title="ករណីឆ្លង "
+            title="អ្នកវិជ្ជមាន"
             isRed
             active={casesType === "cases"}
-            cases={prettyPrintStat(districtDatas.confirmedCaseToday)}
-            total={numeral(districtDatas.confirmedCase).format("0.0a")}
+            cases={districtDatas.confirmedCaseToday}
+            total={numeral(districtDatas.confirmedCase).format("0")}
             ImageShow={ImageCovid}
           />
           <InfoBox
             onClick={(e) => setCasesType("recovered")}
-            title="ចំនួនជាសះស្បើយ"
+            title="អ្នកជាសះស្បើយ"
             active={casesType === "recovered"}
-            cases={prettyPrintStat(districtDatas.recoveredToday)}
-            total={numeral(districtDatas.recovered).format("0.0a")}
+            cases={districtDatas.recoveredToday}
+            total={numeral(districtDatas.recovered).format("0")}
             ImageShow={ImageRecover}
           />
           <InfoBox
             onClick={(e) => setCasesType("deaths")}
-            title="ចំនួនអ្នកស្លាប់"
+            title="អ្នកស្លាប់"
             isRed
             active={casesType === "deaths"}
-            cases={prettyPrintStat(districtDatas.deathToday)}
-            total={numeral(districtDatas.death).format("0.0a")}
+            cases={districtDatas.deathToday}
+            total={numeral(districtDatas.death).format("0")}
+            ImageShow={ImageDeath}
+          />
+            <InfoBox
+            // onClick={(e) => setCasesType("active")}
+            title="អ្នកកំពុងសម្រាកព្យាបាល"
+            isRed
+            // active={casesType === "deaths"}
+            cases={districtDatas.confirmedCaseToday -districtDatas.recoveredToday }
+            // total={numeral(districtDatas.death).format("0")}
+            total={numeral(districtDatas.confirmedCase - districtDatas.recovered).format("0")}
             ImageShow={ImageDeath}
           />
         </div>
         <Map
+        
           district={districtInfo}
           casesType={casesType}
           center={mapCenter}
@@ -228,7 +239,7 @@ const MapScreen = () => {
         <Card style={{ marginTop:"70px"}}>
           <CardContent>
             <div className="app__information">
-              <h3 className="covid_table">ករណីឆ្លងតាមស្រុក</h3>
+              <h3 className="covid_table">អ្នកវិជ្ជមានតាមក្រុង/ស្រុក</h3>
               <Divider />
               <Table district={tableData} />
             </div>
@@ -237,10 +248,10 @@ const MapScreen = () => {
         <Card style={{marginTop:"10px"}}>
           <CardContent>
           {casesType === "recovered" ? (
-                <h3>ករណីជាសះស្បើយ ទូទាំងស្រុក</h3>
+                <h3>អ្នកជាសះស្បើយ ទូទាំងខេត្ត</h3>
               ) : null}
-              {casesType === "deaths" ? <h3>ករណីស្លាប់ ទូទាំងស្រុក</h3> : null}
-              {casesType === "cases" ? <h3>ករណីឆ្លង ទូទាំងស្រុក</h3> : null}
+              {casesType === "deaths" ? <h3>អ្នកស្លាប ទូទាំងខេត្ត</h3> : null}
+              {casesType === "cases" ? <h3>អ្នកវិជ្ជមាន ទូទាំងខេត្ត</h3> : null}
               <LineGraph casesType={casesType} />
          
           </CardContent>
@@ -250,7 +261,10 @@ const MapScreen = () => {
    
     </div>
     {/* graph three datasets  */}
+    
+              <Divider />
   <div className="graph ">
+  <h2 className="covid_table">ក្រាបបង្ហាញស្ថិតិប្រចាំថ្ងៃ</h2>
   <BarChart casesType={casesType}/>
 
   </div>
