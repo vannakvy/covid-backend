@@ -42,3 +42,34 @@ query{
     }
   }
 `;
+
+export const CREATE_NEW_LOCATION = gql`
+mutation createAffectedLocation(
+  $affectedLocationName:String,
+  $village:String,
+  $commune:String,
+  $district:String,
+  $province:String,
+  $other:String,
+  $case:ID!,
+  $long:Float,
+  $lat:Float,
+  $personalInfo:ID!
+){
+  createAffectedLocation(newAffectedLocation:{
+		affectedLocationName:$affectedLocationName
+    village:$village
+    commune:$commune
+    district:$district
+    province:$province
+    other:$other
+    case:$case
+    long:$long
+    lat:$lat
+    personalInfo:$personalInfo
+  }){
+    message
+    success
+  }
+}
+`;

@@ -70,30 +70,53 @@ export function ListSelect({ type, data, title, value, setValue, id, disabled })
                         })}
                     </Select>
                 ) : (
-                    <Select
-                        showSearch
-                        style={{ width: "100%" }}
-                        placeholder={title}
-                        value={value}
-                        onChange={e => setValue(e)}
-                        disabled={disabled}
-                        optionFilterProp="children"
-                        filterOption={(input, option) =>
-                            option.children.indexOf(input) >= 0
-                        }
-                        filterSort={(optionA, optionB) =>
-                            optionA.children.localeCompare(optionB.children)
-                        }
-                    >
-                        <Option value="មិនដឹងច្បាស់" key="none">មិនដឹងច្បាស់</Option>
-                        {data.map(load => {
-                            return <Option value={load.title} key={load.id}>{load.title}</Option>
-                        })}
-                    </Select>
-                )
-            )
 
+                    type === 3 ? (
+                        <Select
+                            showSearch
+                            style={{ width: "100%" }}
+                            placeholder={title}
+                            value={value}
+                            onChange={e => setValue(e)}
+                            disabled={disabled}
+                            optionFilterProp="children"
+                            filterOption={(input, option) =>
+                                option.children.indexOf(input) >= 0
+                            }
+                            filterSort={(optionA, optionB) =>
+                                optionA.children.localeCompare(optionB.children)
+                            }
+                        >
+                            {data.map(load => {
+                                return <Option value={load.id} key={load.id}>{load.caseName}</Option>
+                            })}
+                        </Select>
+                    ) :
+                        <Select
+                            showSearch
+                            style={{ width: "100%" }}
+                            placeholder={title}
+                            value={value}
+                            onChange={e => setValue(e)}
+                            disabled={disabled}
+                            optionFilterProp="children"
+                            filterOption={(input, option) =>
+                                option.children.indexOf(input) >= 0
+                            }
+                            filterSort={(optionA, optionB) =>
+                                optionA.children.localeCompare(optionB.children)
+                            }
+                        >
+                            <Option value="មិនដឹងច្បាស់" key="none">មិនដឹងច្បាស់</Option>
+                            {data.map(load => {
+                                return <Option value={load.title} key={load.id}>{load.title}</Option>
+                            })}
+                        </Select>
+                
+            )
         )
+
+    )
 
     )
 }

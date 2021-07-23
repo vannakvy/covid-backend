@@ -34,6 +34,8 @@ import { IS_LOGGED_IN } from './graphql/auth'
 import MapScreen from './page/map';
 import Report from './page/report';
 import Location from './page/location';
+import SubLocation from './component/location/subLocation';
+import Interview from './page/interview';
 const { Footer, Content } = Layout
 const Routes = () => {
   const { data: isLogin } = useQuery(IS_LOGGED_IN);
@@ -95,8 +97,11 @@ const Routes = () => {
                               <Route path="/specifylocation">
                                 <Location />
                               </Route>
+                              <Route path="/subLocation/:id">
+                                <SubLocation />
+                              </Route>
                               <Route path="/interview">
-                                <Location />
+                                <Interview />
                               </Route>
                             </Switch>
                           </HospitalContext>

@@ -53,15 +53,13 @@ export const locationCol = ({ handleDelete, limit, page }) => {
             ),
         },
         {
-            title: 'កាលបរិច្ឆេទបើក',
+            title: 'កាលបរិច្ឆេទបិទ',
             dataIndex: 'date',
             key: 'date',
             width: 100,
             render: (text, record) => (
                 <Space size="middle">
-                    {/* {record.date} */}
-                    {record.open ===null ? "មិនទាន់មានសកម្មភាព" : moment(record.openAt).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
-                    {console.log(record)}
+                    {record.open === null && record.closeAt !== false ? "មិនទាន់មានសកម្មភាព" : moment(record.closeAt).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
                 </Space>
             ),
         },
@@ -90,7 +88,7 @@ export const locationCol = ({ handleDelete, limit, page }) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    <Link className="link" to={"/subCase/" + record.id}><EditOutlined /></Link>
+                    {/* <Link className="link" to={"/subLocation/" + record.id}><EditOutlined /></Link> */}
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}

@@ -31,12 +31,12 @@ export function convertToVillage(commune, data) {
     return item
 }
 
-export function getRelated(e, condition){
+export function getRelated(e, condition) {
     var i = 0
-    if(e){
+    if (e) {
         e.map(load => {
-            if(load.direct === condition){
-                i+=1
+            if (load.direct === condition) {
+                i += 1
             }
             return null
         })
@@ -45,18 +45,33 @@ export function getRelated(e, condition){
     return i
 }
 
-export function getRoles(e){
+export function getRoles(e) {
     var txt = ""
     e.map(load => {
-        txt+=load.role+", "
+        txt += load.role + ", "
     })
     return txt
 }
 
-export function getFullNamePersonInCharge(e){
+export function getFullNamePersonInCharge(e) {
     var txt = ""
     e.map(load => {
-        txt+=load.firstName+" "+load.lastName
+        txt += load.firstName + " " + load.lastName
     })
     return txt
+}
+
+export function convertEditData(e) {
+    var array = []
+    for (let [key, value] of Object.entries(e)) {
+        array.push(
+            {
+                "name": [
+                    key
+                ],
+                "value": value
+            }
+        )
+    }
+    return array
 }

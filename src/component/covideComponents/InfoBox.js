@@ -3,6 +3,12 @@ import { Card, CardContent, Typography } from "@material-ui/core";
 import "./InfoBox.css";
 
 function InfoBox({ title, cases, total, active, isRed, ImageShow, ...props }) {
+  let r = -80;
+  if(title==="អ្នកវិជ្ជមាន"){
+    r = -120;
+  }else if(title ==="អ្នកកំពុងសម្រាកព្យាបាល"){
+    r = -130;
+  }
   return (
     <Card
       onClick={props.onClick}
@@ -24,9 +30,8 @@ function InfoBox({ title, cases, total, active, isRed, ImageShow, ...props }) {
           សរុប {total}
         </Typography>
 
-
         <img src={ImageShow} style={{
-          position: "absolute", top: -30,right:-25
+          position: "absolute", top: -30,right:r
         }} />
       </CardContent>
     </Card>

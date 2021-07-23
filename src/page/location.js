@@ -2,10 +2,10 @@ import React, {useContext, useState,useEffect} from 'react'
 import { Row, Col, Button, Input, Table, message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { locationCol } from '../component/location/tableColumn/locationColumn'
-import AddCase from '../component/case/modal/addCase';
 import { useQuery ,useMutation} from '@apollo/client';
 import {GET_ALL_CASES,DELETE_CASE_BY_ID} from '../graphql/case'
 import { GET_ALL_LOCATION } from '../graphql/location';
+import AddLocation from '../component/location/modal/addLocation';
 
 export default function Location() {
     //const {caseData, caseDataDispatch} = useContext(CaseController)
@@ -41,7 +41,7 @@ export default function Location() {
 
     return (
         <Row>
-            <AddCase open={openAdd} refetch={refetch} setOpen={setOpenAdd} />
+            <AddLocation open={openAdd} refetch={refetch} setOpen={setOpenAdd} />
             <Col
                 xs={8}
                 md={18}
