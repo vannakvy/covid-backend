@@ -53,7 +53,6 @@ const client = new ApolloClient({
     console.log('graphQLErrors', graphQLErrors)
     console.log('networkError', networkError)
   },
-
   link:splitLink
 });
 
