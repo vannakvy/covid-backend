@@ -174,7 +174,6 @@ query getQuarantineInfoById($id:ID!){
     commune
     district
     province
-    personInchage
     long
     lat
     createdAt

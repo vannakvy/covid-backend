@@ -74,13 +74,13 @@ export const showDataOnMap = (data, casesType = "cases") =>
           ></div> */}
           <div className="info-name">{quarantineInfo.district}</div>
           <div className="info-confirmed">
-            Cases: {numeral(quarantineInfo.confirmedCase).format("0,0")}
+            អ្នកឆ្លង៖ {numeral(quarantineInfo.confirmedCase).format("0,0")}
           </div>
           <div className="info-recovered">
-            Recovered: {numeral(quarantineInfo.recovered).format("0,0")}
+            អ្នកជាសះស្បើយ: {numeral(quarantineInfo.recovered).format("0,0")}
           </div>
           <div className="info-deaths">
-            Deaths: {numeral(quarantineInfo.death).format("0,0")}
+            អ្នកស្លាប់: {numeral(quarantineInfo.death).format("0,0")}
           </div>
         </div>
       </Popup>
@@ -99,7 +99,7 @@ export const showDataOnMap = (data, casesType = "cases") =>
       }}
       fillOpacity={0.8}
       radius={
-        5000
+        1000
         // Math.sqrt(quarantineInfo[casesType]) * casesTypeColors[casesType].multiplier
       }
     >
@@ -144,7 +144,7 @@ export const showDataOnMap = (data, casesType = "cases") =>
       }}
       fillOpacity={0.8}
       radius={
-        5000
+        500
         // Math.sqrt(hospitalInfo[casesType]) * casesTypeColors[casesType].multiplier
       }
     >
