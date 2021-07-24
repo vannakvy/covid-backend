@@ -17,6 +17,7 @@ query getPersonalInfoWithPagination($page:Int!,$limit:Int!,$keyword:String){
           village
           commune
           district
+          interviewed
           province
           case{
             id
@@ -71,6 +72,7 @@ mutation createPersonalInfo(
     $case:ID!,
     $direct:Boolean,
     $other:String,
+    $interviewed:Boolean
 ){
     createPersonalInfo(newInfo:{
             firstName:$firstName
@@ -89,6 +91,7 @@ mutation createPersonalInfo(
             case: $case
             direct:$direct
             other: $other
+            interviewed:$interviewed
     }){
       success
       message

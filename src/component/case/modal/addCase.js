@@ -8,16 +8,22 @@ import { CREATE_NEW_CASE } from '../../../graphql/case'
 import { useMutation } from '@apollo/client'
 import moment from 'moment'
 
-export default function AddCase({ open, setOpen, refetch }) {
+export default function AddCase({ open, setOpen, refetch, caseId, setCaseId }) {
     //const { caseDataDispatch } = useContext(CaseController)
-    const [createCase,{loading,error}] = useMutation(CREATE_NEW_CASE,{
-        onCompleted:({createCase})=>{
-            refetch();
+    const [createCase, { loading, error }] = useMutation(CREATE_NEW_CASE, {
+        onCompleted: ({ createCase }) => {
+            console.log("tset", createCase)
             message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            if (caseId === "new") {
+                setCaseId(createCase.case)
+            } else {
+                refetch()
+            }
         },
-        onError:(error)=>{
+        onError: (error) => {
             console.log(error.message)
-        }
+        },
+        // refetchQueries:
     })
 
 
@@ -28,19 +34,21 @@ export default function AddCase({ open, setOpen, refetch }) {
     let [form] = Form.useForm()
 
     const onFinish = (values) => {
-        console.log('Success:', values);
+        // console.log('Success:', values);
 
-        createCase({variables:{
-            caseName:values.caseName,
-            village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
-            commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
-            district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
-            province: values.province === undefined ? "ក្រៅសៀមរាប" : values.province,
-            date:moment(values.date).format(),
-            lat:parseFloat(values.lat),
-            long:parseFloat(values.long),
-            other:values.other,
-        }})
+        createCase({
+            variables: {
+                caseName: values.caseName,
+                village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
+                commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
+                district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
+                province: values.province === undefined ? "ក្រៅសៀមរាប" : values.province,
+                date: moment(values.date).format(),
+                lat: parseFloat(values.lat),
+                long: parseFloat(values.long),
+                other: values.other,
+            }
+        })
 
         setOpen(false)
         form.resetFields()
@@ -90,13 +98,18 @@ export default function AddCase({ open, setOpen, refetch }) {
         });
     };
 
+    const setPeopleCaseFn = () => {
+        setOpen(false)
+        setCaseId("")
+        console.log(caseId)
+    }
 
     return (
         <Modal
             title="បញ្ចូលករណីថ្មី"
             visible={open}
             onOk={() => setOpen(false)}
-            onCancel={() => setOpen(false)}
+            onCancel={() => caseId === "new" ? setPeopleCaseFn() : setOpen(false)}
             footer={null}
         >
             <Form
@@ -124,7 +137,7 @@ export default function AddCase({ open, setOpen, refetch }) {
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={province !== "សៀមរាប" ? {span: 24} : { span: 11 } }>
+                    <Col xs={24} md={province !== "សៀមរាប" ? { span: 24 } : { span: 11 }}>
                         <Form.Item
                             name="province"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -162,7 +175,7 @@ export default function AddCase({ open, setOpen, refetch }) {
                         </>
                     ) : null}
 
-                    
+
 
                     <Col xs={24}>
                         <Form.Item
@@ -181,7 +194,7 @@ export default function AddCase({ open, setOpen, refetch }) {
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11 , offset:2}}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lat"
                             rules={[{ required: true, message: 'Please input your username!' }]}

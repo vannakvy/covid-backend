@@ -16,6 +16,7 @@ import { useContext, useState } from 'react';
 import { HeaderData } from '../context/headerContext';
 // import { auth } from '../api/firebase';
 import { isLoggedInVar } from '../cache';
+import { keyMenu } from '../function/fn'
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -54,7 +55,7 @@ console.log(user,"testing")
             <Divider style={{background:'#FFF',height:2}} />
             <Menu theme="dark"
                 // defaultSelectedKeys={[urlPath]} 
-                selectedKeys={[urlPath]}
+                selectedKeys={[keyMenu(urlPath)]}
                 mode="inline"
                 style={{
                     // backgroundColor: '#06385f'
@@ -81,7 +82,7 @@ console.log(user,"testing")
                     <Link to="/case" />
                 </Menu.Item>
                 <Menu.Item key="/people" style={{fontSize:16}} icon={<TeamOutlined style={{fontSize:20}}  />}>
-                    ប្រវត្តិរូបប្រជាជន
+                    អ្នកប៉ះពាល់
                     <Link to="/people" />
                 </Menu.Item>
                 <Menu.Item key="/quarantine" style={{fontSize:16}} icon={<BankOutlined style={{fontSize:20}}  />}>

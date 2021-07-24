@@ -67,7 +67,7 @@ export const relatedCol = ({handleDelete}) => {
             width:50,
             render: (text, record) => (
                 <Space size="middle">
-                    {record?.direct? "វិជ្ជមាន" : "អវិជ្ជមាន"}
+                    {record?.direct? "ផ្ទាល់" : "ប្រយោល"}
                 </Space>
             ),
         },

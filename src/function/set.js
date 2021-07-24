@@ -312,6 +312,7 @@ export function setAddPeople(values) {
         direct:values.direct,
         other:values.other,
         vaccinated:parseInt(values.vaccinated),
+        interviewed: values.interviewed
     }
     return array
 }

@@ -89,6 +89,15 @@ export const peopleCol = ({handleDelete,limit,page}) => {
             width: 150,
         },
         {
+            title: 'ការសម្ភាស',
+            dataIndex: 'interview',
+            key: 'interview',
+            width: 150,
+            render: (text, record) => (
+                <span>{record?.interviewed ? "បានសម្ភាស" : "មិនទាន់បានសម្ភាស"}</span>
+                )
+        },
+        {
             key: 'action',
             dataIndex: 'action',
             fixed: 'right',

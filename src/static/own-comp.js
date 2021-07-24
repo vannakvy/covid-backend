@@ -107,16 +107,16 @@ export function ListSelect({ type, data, title, value, setValue, id, disabled })
                                 optionA.children.localeCompare(optionB.children)
                             }
                         >
-                            <Option value="មិនដឹងច្បាស់" key="none">មិនដឹងច្បាស់</Option>
+                            <Option value="new" key="new">បញ្ចូលថ្មី</Option>
                             {data.map(load => {
-                                return <Option value={load.title} key={load.id}>{load.title}</Option>
+                                return <Option value={load.id} key={load.id}>{load.caseName}</Option>
                             })}
                         </Select>
-                
-            )
-        )
 
-    )
+                )
+            )
+
+        )
 
     )
 }

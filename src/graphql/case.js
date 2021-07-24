@@ -51,6 +51,10 @@ mutation createCase($caseName:String,$village:String,$commune:String,$district:S
     }){
       success
       message
+      case{
+        id
+        caseName
+      }
     }
   }
 `;

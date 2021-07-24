@@ -75,3 +75,47 @@ export function convertEditData(e) {
     }
     return array
 }
+
+export function keyMenu(e){
+    const myArr = e.split("/");
+    let x = ""
+
+    if(myArr[1] === 'people' || myArr[1] === 'subPeople'){
+        x="/people"
+    }
+
+    else if(myArr[1] === 'case' || myArr[1] === 'subCase'){
+        x="/case"
+    }
+
+    else if(myArr[1] === 'quarantine' || myArr[1] === 'subQuarantine'){
+        x="/quarantine"
+    }
+
+    else if(myArr[1] === 'hospital' || myArr[1] === 'subHospital'){
+        x="/hospital"
+    }
+
+    else if(myArr[1] === 'specifylocation' || myArr[1] === 'location'){
+        x="/specifylocation"
+    }
+
+    else if(myArr[1] === 'interview' || myArr[1] === 'subInterview'){
+        x="/interview"
+    }
+
+    else if(myArr[1] === 'user'){
+        x="/user"
+    }
+
+    else if(myArr[1] === 'reportdaily'){
+        x="/reportdaily"
+    }
+
+    else{
+        x="/"
+    }
+    
+    return x
+}
+

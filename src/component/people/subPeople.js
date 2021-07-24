@@ -6,7 +6,7 @@ import { PeopleController } from '../../context/peopleContext'
 import { statusCol } from './tableColumn/statusColumn'
 import { testCol } from './tableColumn/testColumn'
 import { relatedCol } from './tableColumn/relatedColumn'
-import AddSubCase from '../case/modal/addSubCase'
+import AddPeopleRelated from './modal/addPeopleRelated'
 import AddPeopleTest from './modal/addPeopleTest'
 import AddPeopleHospital from './modal/addPeopleHospital'
 import AddPeopleStatus from './modal/addPeopleStatus'
@@ -26,7 +26,7 @@ export default function SubPeople() {
     const { id } = useParams()
 
     const [personalData, setPersonalData] = useState({})
-    const [openAddSubCase, setOpenAddSubCase] = useState(false)
+    const [openAddPeopleRelated, setOpenAddPeopleRelated] = useState(false)
     const [openAddPeopleTest, setOpenAddPeopleTest] = useState(false)
     const [openAddPeopleHospital, setOpenAddPeopleHospital] = useState(false)
     const [openAddPeopleStatus, setOpenAddPeopleStatus] = useState(false)
@@ -77,9 +77,12 @@ export default function SubPeople() {
             let index = item.findIndex(e => e.id === id)
             item.splice(index, 1)
             setSubCaseData(item)
-            console.log(item)
+            console.log(getPersonalInfoByCaseWithPagination,"dataCase")
             setSubCasePagination(getPersonalInfoByCaseWithPagination?.paginator)
-        }
+
+            
+        },
+        fetchPolicy:'network-only'
     })
 
     useEffect(() => {
@@ -95,7 +98,7 @@ export default function SubPeople() {
 
     return (
         <Row>
-            <AddSubCase open={openAddSubCase} setOpen={setOpenAddSubCase} caseId={"1"} />
+            <AddPeopleRelated open={openAddPeopleRelated} setOpen={setOpenAddPeopleRelated} caseId={personalData?.case?.id} refetch={refetch} />
             <AddPeopleTest open={openAddPeopleTest} setOpen={setOpenAddPeopleTest} peopleID={id} />
             <AddPeopleHospital open={openAddPeopleHospital} setOpen={setOpenAddPeopleHospital} />
             <AddPeopleStatus open={openAddPeopleStatus} setOpen={setOpenAddPeopleStatus} />
@@ -276,17 +279,18 @@ export default function SubPeople() {
                 style={{ paddingTop: 14, marginTop: 20 }}
             >
                 <Title level={5}>
-                    អ្នកពាក់ព័ន្ធ 
-                    {/* <span className="link" onClick={() => setOpenAddSubCase(true)}>
-                        <PlusCircleOutlined />
-                    </span> */}
+                    អ្នកពាក់ព័ន្ធ <span className="link" onClick={() => setOpenAddPeopleRelated(true)}><PlusCircleOutlined /></span>
                 </Title>
                 <Table
                     className="table-personal"
                     columns={relatedCol({ handleDelete })}
                     dataSource={subCaseData}
                     rowKey={record => record.id}
-                    pagination={true}
+                    pagination={{
+                        total: subCasePagination?.totalDocs,
+                        // showSizeChanger: true,
+                        onChange:((page, pageSize) => {setPage(page);setLimit(pageSize)} )
+                    }}
                     scroll={{ x: 1000, y: 300 }}
                     sticky
                 />

@@ -43,7 +43,8 @@ export default function SubCase() {
         onCompleted: ({ getPersonalInfoByCaseWithPagination }) => {
             console.log(getPersonalInfoByCaseWithPagination)
             setSubCaseData(getPersonalInfoByCaseWithPagination)
-        }
+        },
+        fetchPolicy:'network-only'
     })
 
     const { data: dataCase } = useQuery(GET_CASE_BY_ID, {
