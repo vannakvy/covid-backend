@@ -37,6 +37,7 @@ import Location from './page/location';
 import SubLocation from './component/location/subLocation';
 import Interview from './page/interview';
 import NotFound from './component/NotFound';
+import ImageBack from './asset/cover-bg.jpg'
 const { Footer, Content } = Layout
 const Routes = () => {
   const { data: isLogin } = useQuery(IS_LOGGED_IN);
@@ -55,7 +56,8 @@ const Routes = () => {
               <HeaderContext>
                 <Navbar />
               </HeaderContext>
-              <Content style={{ margin: '20px' }}>
+              <Content style={{ margin: '20px',  }}>
+                
                 <DashBoardContext>
                   <CaseContext>
                     <UserContext>
@@ -116,6 +118,7 @@ const Routes = () => {
                   </CaseContext>
                 </DashBoardContext>
               </Content>
+
               <Footer style={{ textAlign: 'center', color: 'red', fontSize: 17 }}>
                 <marquee>
                   <span style={{}}>

@@ -36,6 +36,7 @@ import BarChart from "../component/covideComponents/BarChart";
 import ImageCovid from '../asset/covid19.png'
 import ImageRecover from '../asset/recover.png'
 import ImageDeath from '../asset/death.png'
+import ImageCure from '../asset/curring.png'
 
 const MapScreen = () => {
   const districtLatLong = [
@@ -224,7 +225,7 @@ const MapScreen = () => {
             cases={districtDatas.confirmedCaseToday -districtDatas.recoveredToday }
             // total={numeral(districtDatas.death).format("0")}
             total={numeral(districtDatas.confirmedCase - districtDatas.recovered).format("0")}
-            ImageShow={ImageDeath}
+            ImageShow={ImageCure}
           />
         </div>
         <Map
