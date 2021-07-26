@@ -1,31 +1,33 @@
 {
   "files": {
-    "main.css": "./static/css/main.aeaf7634.chunk.css",
-    "main.js": "./static/js/main.2271c635.chunk.js",
-    "main.js.map": "./static/js/main.2271c635.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.51822f65.js",
-    "runtime-main.js.map": "./static/js/runtime-main.51822f65.js.map",
+    "main.css": "./static/css/main.09a8af1d.chunk.css",
+    "main.js": "./static/js/main.f9382733.chunk.js",
+    "main.js.map": "./static/js/main.f9382733.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.41fcacea.js",
+    "runtime-main.js.map": "./static/js/runtime-main.41fcacea.js.map",
     "static/css/2.859a63d7.chunk.css": "./static/css/2.859a63d7.chunk.css",
-    "static/js/2.a8f77887.chunk.js": "./static/js/2.a8f77887.chunk.js",
-    "static/js/2.a8f77887.chunk.js.map": "./static/js/2.a8f77887.chunk.js.map",
-    "static/js/3.77ce16eb.chunk.js": "./static/js/3.77ce16eb.chunk.js",
-    "static/js/3.77ce16eb.chunk.js.map": "./static/js/3.77ce16eb.chunk.js.map",
+    "static/js/2.b51ddf46.chunk.js": "./static/js/2.b51ddf46.chunk.js",
+    "static/js/2.b51ddf46.chunk.js.map": "./static/js/2.b51ddf46.chunk.js.map",
+    "static/js/3.9635e12d.chunk.js": "./static/js/3.9635e12d.chunk.js",
+    "static/js/3.9635e12d.chunk.js.map": "./static/js/3.9635e12d.chunk.js.map",
     "index.html": "./index.html",
     "static/css/2.859a63d7.chunk.css.map": "./static/css/2.859a63d7.chunk.css.map",
-    "static/css/main.aeaf7634.chunk.css.map": "./static/css/main.aeaf7634.chunk.css.map",
-    "static/js/2.a8f77887.chunk.js.LICENSE.txt": "./static/js/2.a8f77887.chunk.js.LICENSE.txt",
+    "static/css/main.09a8af1d.chunk.css.map": "./static/css/main.09a8af1d.chunk.css.map",
+    "static/js/2.b51ddf46.chunk.js.LICENSE.txt": "./static/js/2.b51ddf46.chunk.js.LICENSE.txt",
     "static/media/index.css": "./static/media/TACTENG.89f59e5d.TTF",
+    "static/media/cover-bg.ed223e12.jpg": "./static/media/cover-bg.ed223e12.jpg",
     "static/media/covid19.2861979f.png": "./static/media/covid19.2861979f.png",
+    "static/media/curring.b38d166b.png": "./static/media/curring.b38d166b.png",
     "static/media/death.e0bbc2c9.png": "./static/media/death.e0bbc2c9.png",
     "static/media/goglobalschool.cd293cd0.png": "./static/media/goglobalschool.cd293cd0.png",
     "static/media/recover.5d6bc409.png": "./static/media/recover.5d6bc409.png",
     "static/media/srLogo.85fb41d7.png": "./static/media/srLogo.85fb41d7.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.51822f65.js",
+    "static/js/runtime-main.41fcacea.js",
     "static/css/2.859a63d7.chunk.css",
-    "static/js/2.a8f77887.chunk.js",
-    "static/css/main.aeaf7634.chunk.css",
-    "static/js/main.2271c635.chunk.js"
+    "static/js/2.b51ddf46.chunk.js",
+    "static/css/main.09a8af1d.chunk.css",
+    "static/js/main.f9382733.chunk.js"
   ]
 }
