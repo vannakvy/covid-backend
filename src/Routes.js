@@ -36,6 +36,7 @@ import Report from './page/report';
 import Location from './page/location';
 import SubLocation from './component/location/subLocation';
 import Interview from './page/interview';
+import NotFound from './component/NotFound';
 import ImageBack from './asset/cover-bg.jpg'
 const { Footer, Content } = Layout
 const Routes = () => {
@@ -46,6 +47,7 @@ const Routes = () => {
     <Router>
       <div className="App">
         <Layout style={{ minHeight: '100vh' }}>
+          
           {login ? <>
             <HeaderContext>
               <MenuHeader />
@@ -104,6 +106,9 @@ const Routes = () => {
                               </Route>
                               <Route path="/interview">
                                 <Interview />
+                              </Route>
+                              <Route path="*">
+                                <NotFound/>
                               </Route>
                             </Switch>
                           </HospitalContext>
