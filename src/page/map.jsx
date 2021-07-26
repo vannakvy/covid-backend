@@ -37,6 +37,8 @@ import ImageCovid from '../asset/covid19.png'
 import ImageRecover from '../asset/recover.png'
 import ImageDeath from '../asset/death.png'
 import ImageCure from '../asset/curring.png'
+import ImageDirect from '../asset/direct.png'
+import ImageNotDirect from '../asset/notdirect.png'
 
 const MapScreen = () => {
   const districtLatLong = [
@@ -217,19 +219,58 @@ const MapScreen = () => {
             total={numeral(districtDatas.death).format("0")}
             ImageShow={ImageDeath}
           />
-            <InfoBox
+          <InfoBox
             // onClick={(e) => setCasesType("active")}
             title="អ្នកកំពុងសម្រាកព្យាបាល"
             isRed
             // active={casesType === "deaths"}
-            cases={districtDatas.confirmedCaseToday -districtDatas.recoveredToday }
+            cases={districtDatas.confirmedCaseToday - districtDatas.recoveredToday}
+            // total={numeral(districtDatas.death).format("0")}
+            total={numeral(districtDatas.confirmedCase - districtDatas.recovered).format("0")}
+            ImageShow={ImageCure}
+          />
+
+
+
+          <InfoBox
+            // onClick={(e) => setCasesType("cases")}
+            title="អ្នកប៉ះពាល់ផ្ទាល់"
+            isRed
+            // active={casesType === "cases"}
+            cases={districtDatas.confirmedCaseToday}
+            total={numeral(districtDatas.confirmedCase).format("0")}
+            ImageShow={ImageDirect}
+          />
+          <InfoBox
+            // onClick={(e) => setCasesType("recovered")}
+            title="អ្នកប៉ះពាល់ប្រយោល"
+            // active={casesType === "recovered"}
+            cases={districtDatas.recoveredToday}
+            total={numeral(districtDatas.recovered).format("0")}
+            ImageShow={ImageNotDirect}
+          />
+          <InfoBox
+            // onClick={(e) => setCasesType("deaths")}
+            title="ទីតាំងបិទ"
+            isRed
+            // active={casesType === "deaths"}
+            cases={districtDatas.deathToday}
+            total={numeral(districtDatas.death).format("0")}
+            ImageShow={ImageDeath}
+          />
+          <InfoBox
+            // onClick={(e) => setCasesType("active")}
+            title="ទីតាំងបើក"
+            isRed
+            // active={casesType === "deaths"}
+            cases={districtDatas.confirmedCaseToday - districtDatas.recoveredToday}
             // total={numeral(districtDatas.death).format("0")}
             total={numeral(districtDatas.confirmedCase - districtDatas.recovered).format("0")}
             ImageShow={ImageCure}
           />
         </div>
         <Map
-        
+
           district={districtInfo}
           casesType={casesType}
           center={mapCenter}
@@ -237,7 +278,7 @@ const MapScreen = () => {
         />
       </div>
       <div className="app__right">
-        <Card style={{ marginTop:"70px"}}>
+        <Card style={{ marginTop: "70px" }}>
           <CardContent>
             <div className="app__information">
               <h3 className="covid_table">អ្នកវិជ្ជមានតាមក្រុង/ស្រុក</h3>
@@ -246,29 +287,29 @@ const MapScreen = () => {
             </div>
           </CardContent>
         </Card>
-        <Card style={{marginTop:"10px"}}>
+        <Card style={{ marginTop: "10px" }}>
           <CardContent>
-          {casesType === "recovered" ? (
-                <h3>អ្នកជាសះស្បើយ ទូទាំងខេត្ត</h3>
-              ) : null}
-              {casesType === "deaths" ? <h3>អ្នកស្លាប ទូទាំងខេត្ត</h3> : null}
-              {casesType === "cases" ? <h3>អ្នកវិជ្ជមាន ទូទាំងខេត្ត</h3> : null}
-              <LineGraph casesType={casesType} />
-         
+            {casesType === "recovered" ? (
+              <h3>អ្នកជាសះស្បើយ ទូទាំងខេត្ត</h3>
+            ) : null}
+            {casesType === "deaths" ? <h3>អ្នកស្លាប ទូទាំងខេត្ត</h3> : null}
+            {casesType === "cases" ? <h3>អ្នកវិជ្ជមាន ទូទាំងខេត្ត</h3> : null}
+            <LineGraph casesType={casesType} />
+
           </CardContent>
         </Card>
       </div>
-  
-   
+
+
     </div>
     {/* graph three datasets  */}
-    
-              <Divider />
-  <div className="graph ">
-  <h2 className="covid_table">ក្រាបបង្ហាញស្ថិតិប្រចាំថ្ងៃ</h2>
-  <BarChart casesType={casesType}/>
 
-  </div>
+    <Divider />
+    <div className="graph ">
+      <h2 className="covid_table">ក្រាបបង្ហាញស្ថិតិប្រចាំថ្ងៃ</h2>
+      <BarChart casesType={casesType} />
+
+    </div>
   </>;
 };
 

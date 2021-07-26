@@ -65,7 +65,7 @@ export default function SubPeople() {
         }
     })
 
-    const { data:caseData, refetch } = useQuery(GET_PERSON_BY_CASE, {
+    const { data: caseData, refetch } = useQuery(GET_PERSON_BY_CASE, {
         variables: {
             page: page,
             limit: limit,
@@ -77,17 +77,17 @@ export default function SubPeople() {
             let index = item.findIndex(e => e.id === id)
             item.splice(index, 1)
             setSubCaseData(item)
-            console.log(getPersonalInfoByCaseWithPagination,"dataCase")
+            console.log(getPersonalInfoByCaseWithPagination, "dataCase")
             setSubCasePagination(getPersonalInfoByCaseWithPagination?.paginator)
 
-            
+
         },
-        fetchPolicy:'network-only'
+        fetchPolicy: 'network-only'
     })
 
     useEffect(() => {
         // if(personalData){
-            
+
         // }
         // getCaseData()
     }, [])
@@ -147,10 +147,11 @@ export default function SubPeople() {
                                 {personalData?.commune !== "ក្រៅសៀមរាប" && "ឃុំ" + personalData?.commune + ","}
                                 {personalData?.district !== "ក្រៅសៀមរាប" && "ស្រុក" + personalData?.district + ","}
                                 {"ខេត្ត" + personalData?.province}</li>
+                            <li>ស្ថានភាពបច្ចុប្បន្ន៖ {}</li>
                         </ul>
                     </Col>
                     <Col
-                        xs={24} md={{ span: 6}}
+                        xs={24} md={{ span: 6 }}
 
                     >
                         <ul className="list">
@@ -169,95 +170,140 @@ export default function SubPeople() {
                 </Row>
             </Col>
 
-            <Col
-                xs={24} md={{ span: 11 }}
+            {/* <Col
+                xs={24} md={{ span: 7 }}
                 style={{
                     border: "1px solid #d9d9d9",
-                    padding: "20px 20px 20px 20px",
+                    padding: "20px 60px 20px 60px",
                     marginTop: 20
                 }}
                 className="subPeople-card"
             >
-                
-                {/* <Table
-                    columns={statusCol({ handleDelete })}
-                    dataSource={[{ id: "1", date: "alsdjas", status: "laskldfj", remark: "laksdjald" }]}
-                    rowKey={record => record.id}
-                    pagination={true}
-                    scroll={{ x: 500, y: 300 }}
-                    sticky
-                /> */}
-                <Row>
-                    <Col xs={24} md={{ span: 11 }}>
-                        <ul className="list">
-                            <li><Title level={5}>ស្ថានភាពបច្ចុប្បន្ន <span className="link" onClick={() => setOpenAddPeopleStatus(true)}><PlusCircleOutlined /></span></Title></li>
-                            <li> {personalData?.currentState?.confirm ? <CloseOutlined style={{ color: "red" }} /> : <CheckOutlined style={{ color: "green" }} />} អវិជ្ជមាន</li>
-                            <li> {personalData?.currentState?.confirm ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} វិជ្ជមាន</li>
-                            {/* <li> {personalData?.currentState?.recovered ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} ជាសះស្បើយ</li>
-                            <li> {personalData?.currentState?.death ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} ស្លាប់​</li> */}
-                        </ul>
-                    </Col>
 
-                    <Col xs={24} md={{ span: 11 }}>
-                        <ul className="list">
-                            {/* <li> {personalData?.currentState?.confirm ? <CloseOutlined style={{ color: "red" }} /> : <CheckOutlined style={{ color: "green" }} />} អវិជ្ជមាន</li>
-                            <li> {personalData?.currentState?.confirm ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} វិជ្ជមាន</li> */}
-                            <li> {personalData?.currentState?.recovered ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} ជាសះស្បើយ</li>
-                            <li> {personalData?.currentState?.death ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} ស្លាប់​</li>
-                        </ul>
+                <Row>
+                    <Col
+                        xs={24}
+                        style={{ paddingBottom: 20 }}
+                    >
+                        <table className="tbl-subPeople1">
+                            <thead>
+                                <tr>
+                                    <th colSpan={2}><Title level={5}>ស្ថានភាពបច្ចុប្បន្ន <span className="link" onClick={() => setOpenAddPeopleStatus(true)}><PlusCircleOutlined /></span></Title></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td >{moment().format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                    <td>អវិជ្ជមាន</td>
+                                    <td>
+                                        <span style={{ border: "1px solid green", padding: ""}}>
+                                        {personalData?.currentState?.confirm ? <CloseOutlined style={{ color: "red" }} /> : <CheckOutlined style={{ color: "green" }} />}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td > {personalData?.currentState?.confirm ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} វិជ្ជមាន</td>
+                                    <td>{moment().format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                    <td>{moment().format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                </tr>
+                                <tr>
+                                    <td> {personalData?.currentState?.recovered ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} ជាសះស្បើយ</td>
+                                    <td>{moment().format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                </tr>
+                                <tr>
+                                    <td> {personalData?.currentState?.death ? <CheckOutlined style={{ color: "green" }} /> : <CloseOutlined style={{ color: "red" }} />} ស្លាប់</td>
+                                    <td>{moment().format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </Col>
                 </Row>
-
+            </Col> */}
+            <Col
+                xs={24} md={{ span: 11, offset: 0 }}
+                style={{
+                    border: "1px solid #d9d9d9",
+                    padding: "20px 60px 20px 60px",
+                    marginTop: 20,
+                }}
+                className="subPeople-card"
+            >
+                <Row>
+                    <Col
+                        xs={24}
+                        style={{ paddingBottom: 20 }}
+                    >
+                        <table className="tbl-subPeople">
+                            <thead>
+                                <tr>
+                                    <th colSpan={3}><Title level={5}>ប្រវត្តិដំណើរករណី</Title></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="150">ឈ្មោះករណី</td>
+                                    <td> ៖&emsp;</td>
+                                    <td>{personalData?.case?.caseName !== undefined && personalData?.case?.caseName}</td>
+                                </tr>
+                                <tr>
+                                    <td width="150">ទីតាំងករណី</td>
+                                    <td> ៖&emsp;</td>
+                                    <td>
+                                        {(personalData?.case?.village !== "ក្រៅសៀមរាប" && personalData?.case?.village !== undefined) && "ភូមិ" + personalData?.case?.village + ","}
+                                        {(personalData?.case?.commune !== "ក្រៅសៀមរាប" && personalData?.case?.commune !== undefined) && "ឃុំ" + personalData?.case?.commune + ","}
+                                        {(personalData?.case?.district !== "ក្រៅសៀមរាប" && personalData?.case?.district !== undefined) && "ស្រុក" + personalData?.case?.district + ","}
+                                        {personalData?.case?.province !== undefined && "ខេត្ត" + personalData?.case?.province}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150">ទំនាក់ទំនង</td>
+                                    <td> ៖&emsp;</td>
+                                    <td>{personalData?.direct ? "ផ្ទាល់" : "ប្រយោល"}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </Col>
+                    <Col
+                        xs={24}
+                    >
+                        <table className="tbl-subPeople">
+                            <thead>
+                                <tr>
+                                    <th colSpan={2}><Title level={5}>មណ្ឌលព្យាបាល</Title></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="150">ឈ្មោះមណ្ឌល</td>
+                                    <td> ៖&emsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="150">អាស័យដ្ឋាន</td>
+                                    <td> ៖&emsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="150">កាលបរិច្ឆេទចូល</td>
+                                    <td> ៖&emsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="150">កាលបរិចេ្ឆទចេញ</td>
+                                    <td> ៖&emsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </Col>
+                </Row>
             </Col>
             <Col
                 xs={24} md={{ span: 12, offset: 1 }}
                 style={{
                     border: "1px solid #d9d9d9",
-                    padding: "20px 20px 20px 20px",
+                    padding: "20px 60px 20px 60px",
                     marginTop: 20,
                 }}
                 className="subPeople-card"
             >
-                
-                <ul className="list">
-                    <li><Title level={5}>ប្រវត្តិដំណើរករណី</Title></li>
-                    {/* <span className="link" onClick={() => setOpenAddPeopleHistory(true)}><PlusCircleOutlined /></span> */}
-                    <li>ឈ្មោះករណី៖ {personalData?.case?.caseName !== undefined && personalData?.case?.caseName}</li>
-                    <li>ទីតាំងករណី៖ {" "}
-                        {(personalData?.case?.village !== "ក្រៅសៀមរាប" && personalData?.case?.village !== undefined) && "ភូមិ" + personalData?.case?.village + ","}
-                        {(personalData?.case?.commune !== "ក្រៅសៀមរាប" && personalData?.case?.commune !== undefined) && "ឃុំ" + personalData?.case?.commune + ","}
-                        {(personalData?.case?.district !== "ក្រៅសៀមរាប" && personalData?.case?.district !== undefined) && "ស្រុក" + personalData?.case?.district + ","}
-                        {personalData?.case?.province !== undefined && "ខេត្ត" + personalData?.case?.province}
-                    </li>
-                    <li>ទំនាក់ទំនង៖ {personalData?.direct ? "ផ្ទាល់" : "ប្រយោល"}</li>
-                </ul>
-                
-                <Row>
-                    <Col
-                        xs={14}
-                    >
-                        <ul className="list">
-                            <li><Title level={5}>មណ្ឌលព្យាបាល</Title></li>
-                            {/* <li><span className="link" onClick={() => setOpenAddPeopleHospital(true)}><PlusCircleOutlined /></span></li> */}
-                            <li>ឈ្មោះមណ្ឌល៖ {hospitalData?.hospitalInfo?.hospitalName}</li>
-                            <li>អាសយដ្ឋាន៖  {" "}
-                                {(hospitalData?.hospitalInfo?.village !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.village !== undefined) && "ភូមិ" + hospitalData?.hospitalInfo?.village + ","}
-                                {(hospitalData?.hospitalInfo?.commune !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.commune !== undefined) && "ឃុំ" + hospitalData?.hospitalInfo?.commune + ","}
-                                {(hospitalData?.hospitalInfo?.district !== "ក្រៅសៀមរាប" && hospitalData?.hospitalInfo?.district !== undefined) && "ស្រុក" + hospitalData?.hospitalInfo?.district + ","}
 
-                                {hospitalData?.hospitalInfo?.province !== undefined && "ខេត្ត" + hospitalData?.hospitalInfo?.province}</li>
-                            {/* <li>ទំនាក់ទំនង៖ {hospitalData?.hospitalInfo?.hospitalName}</li> */}
-                        </ul>
-                    </Col>
-                    <Col
-                        xs={10}
-                    >
-                        <ul className="list">
-                            <li>កាលបរិច្ឆេទចូល៖ {hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
-                            <li>កាលបរិចេ្ឆទចេញ៖ {hospitalData?.date_out !== undefined && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
-                        </ul>
-                    </Col>
-                </Row>
             </Col>
             <Col
                 xs={24} md={{ span: 11 }}
@@ -289,7 +335,7 @@ export default function SubPeople() {
                     pagination={{
                         total: subCasePagination?.totalDocs,
                         // showSizeChanger: true,
-                        onChange:((page, pageSize) => {setPage(page);setLimit(pageSize)} )
+                        onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
                     }}
                     scroll={{ x: 1000, y: 300 }}
                     sticky

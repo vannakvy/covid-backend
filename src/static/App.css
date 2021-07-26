@@ -4,7 +4,10 @@
 
 
 h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
-  font-family: khmerOsSiemReap;
+  font-family: khmerOsSiemReap!important;
+}
+.barChart {
+  font-family: khmerOsSiemReap!important;
 }
 
 .HeaderFont{
@@ -265,4 +268,14 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
 
 .table-personal tr td,.table-personal tr th{
   font-size: 12px!important;
+}
+
+.tbl-subPeople tr > th,.tbl-subPeople > tr >  td{
+  /* padding-left: 40px; */
+  text-align: left;
+}
+
+.tbl-subPeople1 > tr > th,.tbl-subPeople1 > tr >  td{
+  /* padding-left: 40px; */
+  text-align: center;
 }

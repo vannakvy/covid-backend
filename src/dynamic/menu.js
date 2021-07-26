@@ -82,28 +82,33 @@ console.log(user,"testing")
                     <Link to="/case" />
                 </Menu.Item>
                 <Menu.Item key="/people" style={{fontSize:16}} icon={<TeamOutlined style={{fontSize:20}}  />}>
-                    អ្នកប៉ះពាល់
+                    ព័ត៌មានអ្នកជំងឺ
                     <Link to="/people" />
                 </Menu.Item>
-                <Menu.Item key="/quarantine" style={{fontSize:16}} icon={<BankOutlined style={{fontSize:20}}  />}>
-                    ចត្តាឡីស័ក
-                    <Link to="/quarantine" />
-                </Menu.Item>
+
                 <Menu.Item key="/hospital" style={{fontSize:16}} icon={<ReconciliationOutlined style={{fontSize:20}}  />}>
-                    មន្ទីរពេទ្យ
+                    ការព្យាបាល
                     <Link to="/hospital" />
                 </Menu.Item>
-                <Menu.Item key="/specifylocation" style={{fontSize:16}} icon={<AuditOutlined style={{fontSize:20}}  />}>
-                    ទីតាំងបិទបើក
-                    <Link to="/specifylocation" />
-                </Menu.Item>
+
                 <Menu.Item key="/interview" style={{fontSize:16}} icon={<AuditOutlined style={{fontSize:20}}  />}>
                     ការសម្ភាសអ្នកជំងឺ
                     <Link to="/interview" />
                 </Menu.Item>
+
+                <Menu.Item key="/quarantine" style={{fontSize:16}} icon={<BankOutlined style={{fontSize:20}}  />}>
+                    ចត្តាឡីស័ក
+                    <Link to="/quarantine" />
+                </Menu.Item>
+                
+                <Menu.Item key="/specifylocation" style={{fontSize:16}} icon={<AuditOutlined style={{fontSize:20}}  />}>
+                    ទីតាំងបិទ/បើក
+                    <Link to="/specifylocation" />
+                </Menu.Item>
+                
                 <SubMenu key="sub1" style={{fontSize:16}} icon={<ContainerOutlined style={{fontSize:20}}  />} title="របាយការណ៍">
                     <Menu.Item style={{backgroundColor:'#009966'}} key="/reportdaily">
-                        របាយការណ៍ប្រចាំថ្ងៃ
+                        របាយការណ៍
                         <Link to="/reportdaily" />
                     </Menu.Item>
                     {/* <Menu.Item key="5">
@@ -117,7 +122,7 @@ console.log(user,"testing")
                 </Menu.Item> */}
                 {user.role !== "ADMIN" ? (
                     <Menu.Item key="/user" style={{fontSize:16}} icon={<UserOutlined style={{fontSize:20}}  />}>
-                        អ្នកប្រើប្រាស់
+                        កំណត់អ្នកប្រើប្រាស់
                         <Link to="/user" />
                     </Menu.Item>
                 ) : (

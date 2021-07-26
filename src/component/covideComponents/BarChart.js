@@ -2,7 +2,7 @@
 import {GET_DATA_FOR_GRAP} from '../../graphql/dashboardAndReport'
 import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
-import { Bar,Line } from "react-chartjs-2";
+import { Bar,Line  } from "react-chartjs-2";
 import numeral from "numeral";
 
 
@@ -24,17 +24,22 @@ const deathsValue= data.deaths?.map(d=>d.y);
 const recovered= data.recovered?.map(d=>d.x);
 const recoveredValue= data.recovered?.map(d=>d.y);
 
+const labelText =() => {
+  return (
+    <span></span>
+  )
+}
 
   return (
     <div className="barChart">
-      <Bar
+      <Line
       data={{
         labels:cases,
         datasets:[{
-          label:'អ្នកវិជ្ជមាន',
+          label:"អ្នកស្លាប់",
           data:casesValue,
           backgroundColor:'red',
-          barThickness:12
+          barThickness:12,
         },
         { 
           label:'អ្នកជាសះស្បើយ',
@@ -102,7 +107,7 @@ const recoveredValue= data.recovered?.map(d=>d.y);
       }}
       >
 
-      </Bar>
+      </Line>
     </div>
   );
 }

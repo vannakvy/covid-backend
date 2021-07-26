@@ -3,13 +3,14 @@
  flex: 1;
 padding-bottom: 5px;
 margin-top: 10px;
+margin:5px;
 /* background-color: red !important; */
-min-width: 200px !important;
+min-width: 250px !important;
 }
 
-.infoBox:not(:last-child) {
+/* .infoBox:not(:last-child) {
  margin-right: 10px;
-}
+} */
 
 .infoBox--selected {
  border-top: 10px solid greenyellow;

@@ -79,9 +79,7 @@ export default function SubCase() {
             <Col
                 xs={24}
             >
-                <Title level={5}>ឈ្មោះករណី៖ {caseData?.caseName + " "}
-                    <EditOutlined className="link" onClick={() => setOpenEdit(true)} />
-                </Title>
+
             </Col>
             <Col
                 xs={24}
@@ -90,12 +88,23 @@ export default function SubCase() {
             >
                 <table>
                     <tr>
-                        <td style={{width:'50%'}}><p>កាលបរិច្ឆេទ</p></td>
-                        <td style={{width:'50%'}}><p>៖ {moment(caseData?.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}</p></td>
+                        <td style={{ width: '50%' }}>
+                            <Title level={5}>ឈ្មោះករណី
+                            </Title>
+                            </td>
+                        <td style={{ width: '50%' }}>
+                            <Title level={5}>៖ {caseData?.caseName + " "}
+                                <EditOutlined className="link" onClick={() => setOpenEdit(true)} />
+                            </Title>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={{ width: '50%' }}><p>កាលបរិច្ឆេទ</p></td>
+                        <td style={{ width: '50%' }}><p>៖ {moment(caseData?.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}</p></td>
                     </tr>
                     <tr>
                         <td>អាសយដ្ឋាន</td>
-                        <td> <p>៖
+                        <td> <p>៖ {" "}
                             {caseData?.village !== "ក្រៅសៀមរាប" && caseData?.village + ","}
                             {caseData?.commune !== "ក្រៅសៀមរាប" && caseData?.commune + ","}
                             {caseData?.district !== "ក្រៅសៀមរាប" && caseData?.district + ","}
@@ -113,16 +122,25 @@ export default function SubCase() {
 
 
 
-                
-                
+
+
             </Col>
             <Col
                 xs={24}
                 md={{ span: 11, offset: 2 }}
                 className="subCase-card"
             >
-                <p>ចំនួនអ្នកពាក់ព័ន្ធផ្ទាល់៖ {getRelated(subCaseData?.personalInfos, true)}នាក់</p>
-                <p>ចំនួនអ្នកពាក់ព័ន្ធប្រយោល៖ {getRelated(subCaseData?.personalInfos, false)}នាក់</p>
+                <table>
+                    <tr>
+                        <td style={{width:'50%'}}><p>ចំនួនអ្នកពាក់ព័ន្ធផ្ទាល់</p></td>
+                        <td style={{width:'50%'}}><p>៖ {getRelated(subCaseData?.personalInfos, true)}នាក់</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>ចំនួនអ្នកពាក់ព័ន្ធប្រយោល</p></td>
+                        <td><p>៖ {getRelated(subCaseData?.personalInfos, false)}នាក់</p></td>
+                    </tr>
+                </table>
+                
                 {/* <p>ចំនួនអ្នកជាសះស្បើយ៖ {getRelated(subCaseData, "សះស្បើយ")}នាក់</p>
                 <p>ចំនួនអ្នកស្លាប់៖ {getRelated(subCaseData, "ស្លាប់")}នាក់</p> */}
             </Col>
