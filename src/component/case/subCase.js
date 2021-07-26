@@ -44,7 +44,7 @@ export default function SubCase() {
             console.log(getPersonalInfoByCaseWithPagination)
             setSubCaseData(getPersonalInfoByCaseWithPagination)
         },
-        fetchPolicy:'network-only'
+        fetchPolicy: 'network-only'
     })
 
     const { data: dataCase } = useQuery(GET_CASE_BY_ID, {
@@ -88,15 +88,33 @@ export default function SubCase() {
                 md={11}
                 className="subCase-card"
             >
-                <p>កាលបរិច្ឆេទ៖ {moment(caseData?.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}</p>
+                <table>
+                    <tr>
+                        <td style={{width:'50%'}}><p>កាលបរិច្ឆេទ</p></td>
+                        <td style={{width:'50%'}}><p>៖ {moment(caseData?.date).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}</p></td>
+                    </tr>
+                    <tr>
+                        <td>អាសយដ្ឋាន</td>
+                        <td> <p>៖
+                            {caseData?.village !== "ក្រៅសៀមរាប" && caseData?.village + ","}
+                            {caseData?.commune !== "ក្រៅសៀមរាប" && caseData?.commune + ","}
+                            {caseData?.district !== "ក្រៅសៀមរាប" && caseData?.district + ","}
+                            {caseData?.province}</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>ចំនួនអ្នកពាក់ព័ន្ធករណី</p></td>
+                        <td><p>៖ {subCaseData?.personalInfos?.length}</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>ផ្សេងៗ</p></td>
+                        <td><p>៖ {caseData?.other}</p></td>
+                    </tr>
+                </table>
 
-                <p>អាសយដ្ឋាន៖ {" "}
-                    {caseData?.village !== "ក្រៅសៀមរាប" && caseData?.village + ","}
-                    {caseData?.commune !== "ក្រៅសៀមរាប" && caseData?.commune + ","}
-                    {caseData?.district !== "ក្រៅសៀមរាប" && caseData?.district + ","}
-                    {caseData?.province}</p>
-                <p>ចំនួនអ្នកពាក់ព័ន្ធករណី៖ {subCaseData?.personalInfos?.length}</p>
-                <p>ផ្សេងៗ៖ {caseData?.other}</p>
+
+
+                
+                
             </Col>
             <Col
                 xs={24}
