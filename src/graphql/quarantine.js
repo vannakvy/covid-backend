@@ -134,10 +134,8 @@ query getQuarantineByQurantineIdWithPagination(
   getQuarantineByQurantineIdWithPagination(page:$page,limit:$limit,keyword:$keyword,quarantineInfoId:$quarantineInfoId){
     quarantines{
       id
-      in
       date_in
       date_out
-      out_status
       personalInfo{
       	id
         firstName

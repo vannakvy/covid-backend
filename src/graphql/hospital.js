@@ -134,7 +134,6 @@ query getQuarantineByHospitalIdIdWithPagination($page:Int!,$limit:Int!,$keyword:
       id
       date_in
       date_out
-      out_status
       personalInfo{
         id
         firstName

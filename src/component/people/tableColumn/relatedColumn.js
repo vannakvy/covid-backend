@@ -79,6 +79,7 @@ export const relatedCol = ({handleDelete}) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
+                    <Link className="link" to={"/subPeople/" + record.id}><EyeOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}
