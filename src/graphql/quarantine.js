@@ -76,6 +76,18 @@ mutation createQuarantineInfo(
     }){
       success
       message
+      quarantineInfo{
+        capacity
+        id
+        locationName
+        village
+        commune
+        district
+        province
+        long
+        lat
+        other
+      }
     }
   }
 `;
@@ -91,7 +103,6 @@ mutation deleteQuarantineInfo($id:ID!){
 
 export const CREATE_PERSON_QUARANTINE = gql`
 mutation createQuarantine(
-  $in:Boolean,
   $date_in:DateTime,
   $date_out:DateTime,
   $personalInfo:ID!,
@@ -100,7 +111,6 @@ mutation createQuarantine(
   $personalType:String
 ){
   createQuarantine(newQuarantine:{
-    in:$in
     date_in:$date_in
     date_out:$date_out
     personalInfo:$personalInfo

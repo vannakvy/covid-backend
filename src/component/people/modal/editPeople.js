@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Modal, Form, Input, Row, Col, Button, Select, Divider, DatePicker, message, Checkbox } from 'antd'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
+import { provinceData, districtData, communeData, villageData, genderData, nationalityData } from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
 import { useQuery, useMutation } from '@apollo/client'
@@ -12,7 +12,7 @@ import AddCase from '../../case/modal/addCase'
 
 const { Option } = Select
 
-export default function EditPeople({ open, setOpen, personId, personalData }) {
+export default function EditPeople({ open, setOpen, personId, personalData ,setRefetch}) {
 
     // console.log(personalData)
     let [form] = Form.useForm()
@@ -28,6 +28,7 @@ export default function EditPeople({ open, setOpen, personId, personalData }) {
 
     const [updatePersonalInfo, { loading: loadingCreate, error: errorCreate }] = useMutation(UPDATE_PERSON_BY_ID, {
         onCompleted: ({ createPersonalInfo }) => {
+            setRefetch()
             message.success("កែប្រែទិន្នន័យជោគជ័យ")
         },
         onError: (error) => {
@@ -43,14 +44,16 @@ export default function EditPeople({ open, setOpen, personId, personalData }) {
     })
 
     useEffect(() => {
-        if (personalData !== undefined){
+        form.resetFields()
+        if (personalData !== undefined){    
+            
             // form.setFieldsValue(setEditCase(personalData))
-            setProvince(personalData.province)
-            setDistrict(personalData.district)
-            setCommune(personalData.commune)
+            setProvince(personalData?.province)
+            setDistrict(personalData?.district)
+            setCommune(personalData?.commune)
         }
 
-    }, [personalData])
+    }, [personalData,open])
 
     const onFinish = (values) => {
         console.log('Success:', {...setEditPeople(values), case: caseData.id});
@@ -95,6 +98,12 @@ export default function EditPeople({ open, setOpen, personId, personalData }) {
     const setToGenderFn = (e) => {
         form.setFieldsValue({
             gender: e
+        });
+    };
+
+    const setToNationalityFn = (e) => {
+        form.setFieldsValue({
+            nationality: e
         });
     };
 
@@ -248,7 +257,7 @@ export default function EditPeople({ open, setOpen, personId, personalData }) {
                             name="nationality"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="សញ្ជាតិ" />
+                            <ListSelect type={0} data={nationalityData} title="សញ្ជាតិ" setValue={setToNationalityFn} />
                         </Form.Item>
                     </Col>
 

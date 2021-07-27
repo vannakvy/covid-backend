@@ -343,9 +343,7 @@ export function setAddSubQuarantine(values){
     var array= {
         date_in: moment(values.date_in).format(),
         date_out: moment(values.date_out).format(),
-        in: values.in,
         others: values.others,
-        personalInfo: values.personalInfo,
         personalType:values.personalType
     }
     return array;
@@ -375,9 +373,21 @@ export function setEditQuarantine(values){
 
 export function setPeopleLocation(values){
     var array ={
-        affectedLocation: values.affectedLocation,
-        loactionType: values.locationType,
+        affectedLocationId: values.affectedLocationId,
+        type: values.type   ,
         other: values.other === undefined ? "" : values.other,
+        date: moment(values.date).format()
+    }
+
+    return array;
+}
+
+export function setPeopleHospital(values){
+    var array ={
+        date_in: moment(values.date_in),
+        date_out: values.date_out === undefined ? null : moment(values.date_out),
+        hospitalInfo: values.hospitalInfo,
+        others: values.others
     }
 
     return array;

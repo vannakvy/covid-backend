@@ -10,7 +10,7 @@ import { setAddHospital } from '../../../function/set';
 
 const { Option } = Select;
 
-export default function AddHospital({ open, setOpen }) {
+export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }) {
     //const { hospitalDataDispatch } = useContext(HospitalController)
 
     let [form] = Form.useForm() 
@@ -21,8 +21,13 @@ export default function AddHospital({ open, setOpen }) {
 
     const [createHospitalInfo,{loading,error}] = useMutation(CREATE_HOSPITALINFO,{
         onCompleted:({createHospitalInfo})=>{
-            
+            console.log("test",createHospitalInfo)
             message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            if (hospitalId === "new") {
+                setHospitalId(createHospitalInfo.hospitalInfos)
+            }else{
+                // setRefetch()
+            }
         },
         onError:(error)=>{
             console.log(error.message)
@@ -99,13 +104,19 @@ export default function AddHospital({ open, setOpen }) {
         });
     };
 
+    const setPeopleHospitalFn = () => {
+        setOpen(false)
+        setHospitalId("")
+        // console.log(locationId)
+    }
+
 
     return (
         <Modal
             title="បញ្ចូលមន្ទីរពេទ្យថ្មី"
             visible={open}
             onOk={() => setOpen(false)}
-            onCancel={() => setOpen(false)}
+            onCancel={() => hospitalId === "new" ? setPeopleHospitalFn() : setOpen(false)}
             footer={null}
         >
             <Form

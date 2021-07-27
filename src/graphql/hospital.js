@@ -76,6 +76,18 @@ mutation createHospitalInfo(
     }){
       success
       message
+      hospitalInfos{
+        id
+        hospitalName
+        village
+        commune
+        district
+        province
+        long
+        lat
+        other
+      
+      }
     }
   }
 `;
@@ -91,7 +103,6 @@ mutation deleteHospitalInfo($id:ID!){
 
 export const CREATE_NEW_HOSPITALIZATION = gql`
 mutation createHospitalization(
-    $in:Boolean
     $date_in:DateTime
     $date_out:DateTime
     $personalInfo:ID!
@@ -100,7 +111,6 @@ mutation createHospitalization(
     
 ){
   createHospitalization(newHospitalization:{
-    in:$in
     date_in:$date_in
     date_out:$date_out
     personalInfo:$personalInfo
@@ -122,7 +132,6 @@ query getQuarantineByHospitalIdIdWithPagination($page:Int!,$limit:Int!,$keyword:
   getQuarantineByHospitalIdIdWithPagination(page:$page,limit:$limit,keyword:$keyword,hospitalId:$hospitalId){
     hospitalizations{
       id
-      in
       date_in
       date_out
       out_status
@@ -224,20 +233,16 @@ mutation updateHospitalInfo(
 
 export const UPDATE_PERSON_BY_HOSPITALINFO = gql`
 mutation updateHospitalization(
-    $in:Boolean,
     $date_in:DateTime,
     $date_out:DateTime,
-    $out_status:String,
     $personalInfo:ID!,
     $hospitalInfo:ID!,
     $others:String,
     $id:ID!
 ){
 	updateHospitalization(updatedHospitalization:{
-    in:$in
     date_in:$date_in
     date_out:$date_out
-    out_status:$out_status
     personalInfo:$personalInfo
     hospitalInfo:$hospitalInfo
     others:$others
@@ -260,23 +265,23 @@ mutation deleteHospitalization($id:ID!){
 export const ALL_HOSPIAL_INFO = gql`
   query  allHospitalInfos{
     allHospitalInfos{
-id
-hospitalName
-village
-commune
-district
-province
-long
-lat
-other
-createdAt
-updatedAt
-personInCharge{
-  firstName
-  lastName
-  position
-  tel
-}
+      id
+      hospitalName
+      village
+      commune
+      district
+      province
+      long
+      lat
+      other
+      createdAt
+      updatedAt
+      personInCharge{
+        firstName
+        lastName
+        position
+        tel
+      }
     }
   }
 `

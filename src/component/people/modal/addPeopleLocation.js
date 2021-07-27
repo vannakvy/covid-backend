@@ -10,9 +10,10 @@ import { GET_ALL_CASES_NO_LIMIT } from '../../../graphql/case'
 import { GET_ALL_LOCATION} from '../../../graphql/location'
 import { useMutation,useQuery } from '@apollo/client'
 import AddLocation from '../../location/modal/addLocation'
+import { CREATE_NEW_HISTORYLOCATION } from '../../../graphql/historylocation'
 import moment from 'moment'
 
-export default function AddPeopleLocation({ open, setOpen, refetch, caseId, peopleId }) {
+export default function AddPeopleLocation({ open, setOpen, setRefetch, caseId, peopleId }) {
 
     
     const [province, setProvince] = useState("")
@@ -24,9 +25,9 @@ export default function AddPeopleLocation({ open, setOpen, refetch, caseId, peop
     const [openModal, setOpenModal] = useState(false)
 
     //const { caseDataDispatch } = useContext(CaseController)
-    const [createCase, { loading:createLoading}] = useMutation(CREATE_NEW_LOCATION, {
+    const [createHistoryLocation, { loading:createLoading}] = useMutation(CREATE_NEW_HISTORYLOCATION, {
         onCompleted: ({ createCase }) => {
-            refetch();
+            setRefetch()
             message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
         },
         onError: (error) => {
@@ -49,10 +50,16 @@ export default function AddPeopleLocation({ open, setOpen, refetch, caseId, peop
         // console.log(location)
 
         if(locationId === 'new'){
-            console.log({...setPeopleLocation(values), case: caseId, personalInfo: peopleId, affectedLocation: location.id})
+            createHistoryLocation({
+                variables:{...setPeopleLocation(values), case: caseId, personalInfo: peopleId, affectedLocationId: location.id}
+            })
         }else {
-            console.log({...setPeopleLocation(values), case: caseId, personalInfo: peopleId})
+            createHistoryLocation({
+                variables:{...setPeopleLocation(values), case: caseId, personalInfo: peopleId, affectedLocationId:values.affectedLocationId}
+            })
         }
+
+        
 
         // createCase({
         //     variables: {
@@ -130,13 +137,13 @@ export default function AddPeopleLocation({ open, setOpen, refetch, caseId, peop
 
     const setLocationTypeFn = (e) => {
         form.setFieldsValue({
-            locationType: e
+            type: e
         });
     };
 
     const setToLocationFn = (e) => {
         form.setFieldsValue({
-            affectedLocation: e
+            affectedLocationId: e
         });
         if (e === "new") {
             setOpenModal(true)
@@ -146,10 +153,11 @@ export default function AddPeopleLocation({ open, setOpen, refetch, caseId, peop
     };
 
     const callbackLocation = (e) => {
+        // console.log("test",e)
         if(e === ""){
             setLocationId(e)
             form.setFieldsValue({
-                affectedLocation: null
+                affectedLocationId: null
             })
         }else {
             setLocation(e)
@@ -177,7 +185,7 @@ export default function AddPeopleLocation({ open, setOpen, refetch, caseId, peop
                 <Row>
                     <Col xs={24} md={{span: 11, offset: 0}}>
                         <Form.Item
-                            name="affectedLocation"
+                            name="affectedLocationId"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             {/* <Input placeholder="ទីតាំង" /> */}
@@ -199,7 +207,7 @@ export default function AddPeopleLocation({ open, setOpen, refetch, caseId, peop
                     
                     <Col xs={24} md={locationId === "new" ? {span: 11, offset: 0} : {span: 11, offset: 2}}>
                         <Form.Item
-                            name="locationType"
+                            name="type"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             {/* <Input placeholder="ទីតាំង" /> */}
@@ -209,6 +217,16 @@ export default function AddPeopleLocation({ open, setOpen, refetch, caseId, peop
                             ]} title="ប្រភេទ" setValue={setLocationTypeFn}/>
                         </Form.Item>
                     </Col>
+
+                    <Col xs={24} md={locationId === "new" ? {span: 11, offset: 2} : {span: 24}}>
+                        <Form.Item
+                            name="date"
+                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
+                        </Form.Item>
+                    </Col>
+
 
                     <Col xs={24}>
                         <Form.Item

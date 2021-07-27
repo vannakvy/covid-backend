@@ -137,7 +137,7 @@ export default function AddSubQuarantine({ open, setOpen, quarantineId, peopleDa
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 24}}>
+                    {/* <Col xs={24} md={{ span: 24}}>
                         <Form.Item
                             name="in"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -148,7 +148,7 @@ export default function AddSubQuarantine({ open, setOpen, quarantineId, peopleDa
                                 <Option value={false}>ចេញ</Option>
                             </Select>
                         </Form.Item>
-                    </Col>
+                    </Col> */}
 
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
@@ -162,7 +162,7 @@ export default function AddSubQuarantine({ open, setOpen, quarantineId, peopleDa
                     <Col xs={24} md={{ span: 11, offset:2 }}>
                         <Form.Item
                             name="date_out"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>
@@ -171,7 +171,7 @@ export default function AddSubQuarantine({ open, setOpen, quarantineId, peopleDa
                     <Col xs={24} md={{ span: 24}}>
                         <Form.Item
                             name="others"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
 
                             <Input placeholder="ផ្សេងៗ" />

@@ -25,7 +25,7 @@ export default function AddSubHospital({ open, setOpen, hospitalId,peopleData })
 
         //subHospitalDataDispatch({ type: 'ADD_SUB_HOSPITAL', payload: {...values, hospitalId: hospitalId} })
         createHospitalization({variables:{
-            in: values.in,
+            // in: values.in,
             date_in:moment(values.date_in).format(),
             date_out:moment(values.date_out).format(),
             personalInfo:values.personalInfo,
@@ -97,7 +97,7 @@ export default function AddSubHospital({ open, setOpen, hospitalId,peopleData })
                         </Form.Item>
                     </Col> */}
 
-                    <Col xs={24} md={{ span: 11,offset:2}}>
+                    {/* <Col xs={24} md={{ span: 11,offset:2}}>
                         <Form.Item
                             name="in"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -108,9 +108,9 @@ export default function AddSubHospital({ open, setOpen, hospitalId,peopleData })
                                 <Option value={false}>ចេញ</Option>
                             </Select>
                         </Form.Item>
-                    </Col>
+                    </Col> */}
 
-                    <Col xs={24} md={{ span: 11 }}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="date_in"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -119,7 +119,7 @@ export default function AddSubHospital({ open, setOpen, hospitalId,peopleData })
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11, offset:2 }}>
+                    <Col xs={24} md={{ span: 24, offset:0 }}>
                         <Form.Item
                             name="date_out"
                             rules={[{ required: true, message: 'Please input your username!' }]}

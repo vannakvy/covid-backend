@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Modal, Form, Input, Row, Col, Button, Select, Divider, DatePicker, message, Checkbox } from 'antd'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
+import { provinceData, districtData, communeData, villageData, genderData, nationalityData } from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
 import { PeopleController } from '../../../context/peopleContext'
@@ -63,6 +63,12 @@ export default function AddPeople({ open, setOpen }) {
     const setToGenderFn = (e) => {
         form.setFieldsValue({
             gender: e
+        });
+    };
+
+    const setToNationalityFn = (e) => {
+        form.setFieldsValue({
+            nationality: e
         });
     };
 
@@ -147,12 +153,21 @@ export default function AddPeople({ open, setOpen }) {
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
-                    <Col xs={24} md={{ span: 24 }}>
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="idCard"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="អត្តសញ្ញាណប័ណ្ណ" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset:2 }}>
+                        <Form.Item
+                            name="patientId"
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="អត្តលេខអ្នកជំងឺ" />
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={{ span: 11 }}>
@@ -170,6 +185,15 @@ export default function AddPeople({ open, setOpen }) {
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="នាម" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 24 }}>
+                        <Form.Item
+                            name="englishName"
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="ឈ្មោះជាភាសាឡាតាំង" />
                         </Form.Item>
                     </Col>
 
@@ -195,7 +219,7 @@ export default function AddPeople({ open, setOpen }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="occupation"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="មុខរបរ" />
                         </Form.Item>
@@ -214,7 +238,7 @@ export default function AddPeople({ open, setOpen }) {
                             name="nationality"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="សញ្ជាតិ" />
+                            <ListSelect type={0} data={nationalityData} title="សញ្ជាតិ" setValue={setToNationalityFn} />
                         </Form.Item>
                     </Col>
 

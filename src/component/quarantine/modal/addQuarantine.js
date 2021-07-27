@@ -10,7 +10,7 @@ import { setAddQuarantine } from '../../../function/set';
 
 const { Option } = Select;
 
-export default function AddQuarantine({ open, setOpen }) {
+export default function AddQuarantine({ open, setOpen, quarantineId, setQuarantineId }) {
     //const { quarantineDataDispatch } = useContext(QuarantineController)
 
     let [form] = Form.useForm()
@@ -21,14 +21,15 @@ export default function AddQuarantine({ open, setOpen }) {
 
     const [createQuarantineInfo,{loading,error}]=useMutation(CREATE_QUARANTINEINFO,{
         onCompleted:({createQuarantineInfo})=>{
+            console.log("test",createQuarantineInfo)
             message.success("បញ្ចូលបានជោគជ័យ")
+            if (quarantineId === "new") {
+                setQuarantineId(createQuarantineInfo.quarantineInfo)
+            }else{
+                // setRefetch()
+            }
         },
-        onError:({error})=>{
-            message.error("បញ្ចូលបរាជ័យ")
-
-                console.log(error)
-            
-        }
+        
     })
 
     const onFinish = (values) => {
@@ -92,13 +93,19 @@ export default function AddQuarantine({ open, setOpen }) {
         });
     };
 
+    const setPeopleQuarantineFn = () => {
+        setOpen(false)
+        setQuarantineId("")
+        // console.log(locationId)
+    }
+
 
     return (
         <Modal
             title="បញ្ចូលមណ្ឌលចត្តាឡីស័កថ្មី"
             visible={open}
             onOk={() => setOpen(false)}
-            onCancel={() => setOpen(false)}
+            onCancel={() => quarantineId === "new" ? setPeopleQuarantineFn() : setOpen(false)}
             footer={null}
         >
             <Form

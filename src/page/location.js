@@ -1,47 +1,73 @@
-import React, {useContext, useState,useEffect} from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Row, Col, Button, Input, Table, message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { locationCol } from '../component/location/tableColumn/locationColumn'
-import { useQuery ,useMutation} from '@apollo/client';
-import {GET_ALL_CASES,DELETE_CASE_BY_ID} from '../graphql/case'
-import { GET_ALL_LOCATION } from '../graphql/location';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_ALL_CASES, DELETE_CASE_BY_ID } from '../graphql/case'
+import { GET_AFFECTED_LOCATION_PAGINATION } from '../graphql/location';
 import AddLocation from '../component/location/modal/addLocation';
+import { DELETE_AFFECTEDLOCATION_BY_ID } from '../graphql/location';
 
 export default function Location() {
     //const {caseData, caseDataDispatch} = useContext(CaseController)
-    const [locationData,setLocationData] = useState([])
+    // const [locationData, setLocationData] = useState([])
     const [openAdd, setOpenAdd] = useState(false)
 
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(10)
+    const [limit, setLimit] = useState(20)
     const [keyword, setKeyword] = useState("")
 
-    const {data, loading,error, refetch} = useQuery(GET_ALL_LOCATION,{
-        onCompleted:({allAffectedLocations})=>{
-        console.log(allAffectedLocations)
-        setLocationData(allAffectedLocations)
-    }})
+    const { data, loading, error, refetch } = useQuery(GET_AFFECTED_LOCATION_PAGINATION, {
+        variables: {
+            page:page,
+            limit:limit,
+            keyword:keyword,
+        },
+        // onCompleted: ({ getAffectedLocationWithPagination }) => {
+        //     console.log(getAffectedLocationWithPagination)
+        //     setLocationData(getAffectedLocationWithPagination)
 
-    const [deleteCase,{loading:deleteLoading}]=useMutation(DELETE_CASE_BY_ID,{
-        onCompleted:()=>{
-            message.success("លុបទិន្នន័យជោគជ័យ")
+        // },
+        fetchPolicy:'network-only'
+    })
+
+    const getAffectedLocationWithPagination = data?.getAffectedLocationWithPagination
+    
+    const [deleteAffectedLocation, { loading: deleteLoading }] = useMutation(DELETE_AFFECTEDLOCATION_BY_ID, {
+        onCompleted: ({deleteAffectedLocation}) => {
+            
+            if(deleteAffectedLocation.success === true){
+                refetch()
+                message.success("លុបទិន្នន័យជោគជ័យ")
+            }else{
+                message.error("បរាជ័យ")
+            }
+            
         }
     })
 
     useEffect(() => {
         refetch()
-    }, [page,limit,keyword])
+    }, [page, limit, keyword])
+
+    const callRefetch = ()=>{
+        console.log("ref")
+        
+    }
+
 
     const handleDelete = (e) => {
         //caseDataDispatch({type: "DELETE_CASE", payload: e})
-        deleteCase({variables:{
-            id:e
-        }})
+        deleteAffectedLocation({
+            variables: {
+                id: e
+            }
+        })
     }
 
     return (
         <Row>
-            <AddLocation open={openAdd} refetch={refetch} setOpen={setOpenAdd} />
+            <AddLocation open={openAdd} setRefetch={refetch} setOpen={setOpenAdd} />
             <Col
                 xs={8}
                 md={18}
@@ -59,7 +85,7 @@ export default function Location() {
                 md={6}
             >
                 <Input.Search
-                    onChange={(e)=> setKeyword(e.target.value)}
+                    onChange={(e) => setKeyword(e.target.value)}
                     placeholder="ស្វែងរក..."
                 />
             </Col>
@@ -69,8 +95,8 @@ export default function Location() {
             >
                 <Table
                     className="table-go-list"
-                    columns={locationCol({handleDelete, limit, page})}
-                    dataSource={locationData}
+                    columns={locationCol({ handleDelete, limit, page })}
+                    dataSource={getAffectedLocationWithPagination?.affectedLocations}
                     rowKey={record => record.id}
                     // size="small"
                     // pagination={{
@@ -78,8 +104,8 @@ export default function Location() {
                     //     // showSizeChanger: true,
                     //     onChange:((page, pageSize) => {setPage(page);setLimit(pageSize)} )
                     // }}
-                    scroll={{ x: 1500 }} 
-                    sticky 
+                    scroll={{ x: 1500 }}
+                    sticky
                 />
             </Col>
         </Row>

@@ -16,20 +16,21 @@ export default function Case() {
     const [limit, setLimit] = useState(200)
     const [keyword, setKeyword] = useState("")
 
-    const { data, loading, error, refetch,fetchMore } = useQuery(GET_ALL_CASES, {
+    const { data, loading, error, refetch} = useQuery(GET_ALL_CASES, {
         variables: {
             page: page,
             limit: limit,
             keyword: keyword,
         }, onCompleted: ({ getCaseWithPagination }) => {
-            console.log("casePage",getCaseWithPagination)
+            // console.log("casePage",getCaseWithPagination)
             setCaseData(getCaseWithPagination)
         },
-        fetchPolicy:'cache-and-network'
+        fetchPolicy:"network-only"
     })
 
     const [deleteCase, { loading: deleteLoading }] = useMutation(DELETE_CASE_BY_ID, {
         onCompleted: () => {
+            refetch()
             message.success("លុបទិន្នន័យជោគជ័យ")
         }
     })
@@ -38,8 +39,14 @@ export default function Case() {
         refetch()
     }, [page, limit, keyword])
 
+    const callRefetch = ()=>{
+        console.log("ref")
+        refetch()
+    }
+
     const handleDelete = (e) => {
         //caseDataDispatch({type: "DELETE_CASE", payload: e})
+        
         deleteCase({
             variables: {
                 id: e
@@ -49,7 +56,7 @@ export default function Case() {
 
     return (
         <Row>
-            <AddCase open={openAdd} refetch={fetchMore} setOpen={setOpenAdd} />
+            <AddCase open={openAdd} refetch={refetch} setOpen={setOpenAdd} />
             <Col
                 xs={8}
                 md={18}
