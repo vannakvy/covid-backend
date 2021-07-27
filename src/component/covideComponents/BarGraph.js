@@ -6,52 +6,43 @@ import { Bar,Line } from "react-chartjs-2";
 import numeral from "numeral";
 
 
-function LineGraph({ casesType }) {
+function BarGraph() {
   const [data, setData] = useState({});
+
   const {dat,refetch} = useQuery(GET_DATA_FOR_GRAP,{onCompleted:({getDataForGrap})=>{
     setData(getDataForGrap);
   }})
 
 let color = "rgb(167, 11, 153)";
-let caseData=data.cases;
-switch(casesType){
-  case "deaths": 
-    color = "rgb(222, 13, 45)"
-    caseData = data.deaths
-    break;
-      case "recovered":
-        color = "rgb(125, 215, 29)"
-        caseData = data.recovered
-    break;
-  default:
-    color = "rgb(167, 11, 153)"
-    caseData = data.cases
-    break;
-}
 
 
-const dd= caseData?.map(d=>d.x);
-const va= caseData?.map(d=>d.y);
+// const dd= caseData?.map(d=>d.x);
+// const va= caseData?.map(d=>d.y);
+
+const a = [10,20,30,50];
+const b =["ករណីឆ្លង","ករណីឆ្លង","ករណីឆ្លង","ករណីឆ្លង"];
+
+
 
 const datas = {
-  labels: dd,
+  labels: b,
   datasets: [
     {
-      label: casesType,
-      data: va,
+      label: "Total",
+      data: a,
       fill: false,
-      backgroundColor: color,
+      backgroundColor:["red","yellow","blue","green"],
       borderColor: color
     },
   ]
 };
   return (
     <div>
-        <Line
+        <Bar
         data={datas}
         />
     </div>
   );
 }
 
-export default LineGraph;
+export default BarGraph;
