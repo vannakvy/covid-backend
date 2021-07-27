@@ -51,7 +51,7 @@ export const subQuarantineCol = ({handleDelete, handleEditSubQuarantine,limit,pa
             width: 50,
             render: (text, record) => (
                 <Space size="middle">
-                    {moment(record?.date_out).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
+                    {record?.date_out === null ? "គ្មាន":moment(record?.date_out).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
                 </Space>
             ),
         },
