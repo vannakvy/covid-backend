@@ -220,10 +220,8 @@ query getHospitalizationByPersonalInfo($personalId:ID!){
   getHospitalizationByPersonalInfo(personalId:$personalId){
     hospitalInfo{
       id
-      in
       date_in
       date_out
-      out_status
       others
       hospitalInfo{
         id
@@ -236,10 +234,8 @@ query getHospitalizationByPersonalInfo($personalId:ID!){
     }
     quarantineInfo{
       id
-      in
       date_in
       date_out
-      out_status
       quarantineInfo{
         id
         locationName

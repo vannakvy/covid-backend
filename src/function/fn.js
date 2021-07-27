@@ -119,3 +119,22 @@ export function keyMenu(e){
     return x
 }
 
+export function convertHospitalToSelect(e){
+    let array = []
+
+    e?.map(load => {
+        return array.push({id: load.id, title: load.hospitalName})
+    })
+
+    return array
+}
+
+export function convertQurantineToSelect(e){
+    let array = []
+
+    e?.map(load => {
+        return array.push({id: load.id, title: load.locationName})
+    })
+
+    return array
+}

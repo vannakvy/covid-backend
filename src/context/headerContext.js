@@ -10,6 +10,7 @@ export const districtData = require('../asset/data/district.json')
 export const communeData = require('../asset/data/commune.json')
 export const villageData = require('../asset/data/village.json')
 export const districForMap = require('../asset/data/districtFormap.json')
+export const nationalityData = require('../asset/data/nationality.json')
 
 export default function HeaderContext(props) {
     let userData = JSON.parse(localStorage.getItem('user'))

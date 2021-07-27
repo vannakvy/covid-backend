@@ -14,22 +14,25 @@ export default function People() {
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(10)
     const [keyword, setKeyword] = useState("")
-    const [peopleData, setPeopleData] = useState([])
+    // const [peopleData, setPeopleData] = useState([])
 
-    const {data,loading,error} = useQuery(GET_ALL_PERSONINFO,{
+    const {data,loading,error,refetch} = useQuery(GET_ALL_PERSONINFO,{
         variables:{
             page:page,
             limit:limit,
             keyword:keyword,
         },
         onCompleted:({getPersonalInfoWithPagination})=>{
-            //console.log(getPersonalInfoWithPagination)
-            setPeopleData(getPersonalInfoWithPagination)
+            console.log(getPersonalInfoWithPagination)
+            // setPeopleData(getPersonalInfoWithPagination)
         }
     })
 
+    const getPersonalInfoWithPagination = data?.getPersonalInfoWithPagination
+
     const [deletePersonalInfo,{loading:deleteLoading}] = useMutation(DELETE_PERSONALINFO_BY_ID,{
         onCompleted:()=>{
+            refetch()
             message.success("លុបទិន្នន័យជោគជ័យ")
         }
     })
@@ -73,13 +76,13 @@ export default function People() {
                 <Table
                     className="table-go-list"
                     columns={peopleCol({handleDelete,limit,page})}
-                    dataSource={peopleData?.personalInfos}
+                    dataSource={getPersonalInfoWithPagination?.personalInfos}
                     rowKey={record => record.id}
                     pagination={{
-                        total: peopleData?.paginator?.totalDocs,
+                        total: getPersonalInfoWithPagination?.paginator?.totalDocs,
                         //pageSizeOptions:["10", "20"],
                         // showSizeChanger: true,
-                        current: peopleData?.paginator?.currentPage,
+                        current: getPersonalInfoWithPagination?.paginator?.currentPage,
                         onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
                     }}
                     scroll={{ x: 1000 }} 

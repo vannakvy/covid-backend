@@ -10,7 +10,7 @@ import { GET_ALL_PERSONINFO_NO_LIMIT } from '../../../graphql/people'
 import { useMutation, useQuery } from '@apollo/client'
 import moment from 'moment'
 
-export default function AddLocation({ open, setOpen, refetch, locationId, setLocationId }) {
+export default function AddLocation({ open, setOpen, setRefetch,  locationId, setLocationId }) {
 
 
     const [province, setProvince] = useState("")
@@ -19,16 +19,19 @@ export default function AddLocation({ open, setOpen, refetch, locationId, setLoc
     const [allCases, setAllCases] = useState([])
     const [peopleData, setPeopleData] = useState([])
 
+    console.log(locationId)
+
     //const { caseDataDispatch } = useContext(CaseController)
     const [createAffectedLocation, { loading: createLoading }] = useMutation(CREATE_NEW_LOCATION, {
         onCompleted: ({ createAffectedLocation }) => {
-            refetch();
             message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
-            // if (caseId === "new") {
-            //     setLocationId(createAffectedLocation.case)
-            // } else {
-            //     refetch()
-            // }
+            console.log(createAffectedLocation)
+            
+            if (locationId === "new") {
+                setLocationId(createAffectedLocation.affectedLocation)
+            }else{
+                setRefetch()
+            }
         },
         onError: (error) => {
             console.log(error.message)
@@ -61,8 +64,8 @@ export default function AddLocation({ open, setOpen, refetch, locationId, setLoc
                 district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
                 province: values.province === undefined ? "" : values.province,
                 other: values.other,
-                long: values.long,
-                lat: values.lat,
+                long: parseFloat(values.long),
+                lat: parseFloat(values.lat),
             }
         })
 
