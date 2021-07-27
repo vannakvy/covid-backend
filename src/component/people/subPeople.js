@@ -1,4 +1,4 @@
-import { Col, Image, message, Row, Table, Typography } from 'antd'
+import { Col, Image, message, Row, Table, Typography, Timeline } from 'antd'
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { CameraOutlined, PlusCircleOutlined, CheckOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
@@ -12,6 +12,8 @@ import AddPeopleHospital from './modal/addPeopleHospital'
 import AddPeopleStatus from './modal/addPeopleStatus'
 import AddPeopleQuarantine from './modal/addPeopleQuarantine'
 import AddPeopleHistory from './modal/addPeopleHistory'
+import AddPeopleLocation from './modal/addPeopleLocation'
+import EditPeople from './modal/editPeople'
 import UploadPic from './modal/uploadPic'
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_PERSONALINFO_BY_ID } from '../../graphql/people';
@@ -32,6 +34,7 @@ export default function SubPeople() {
     const [openAddPeopleStatus, setOpenAddPeopleStatus] = useState(false)
     const [openAddPeopleQuarantine, setOpenAddPeopleQuarantine] = useState(false)
     const [openAddPeopleHistory, setOpenAddPeopleHistory] = useState(false)
+    const [openAddPeopleLocation, setOpenAddPeopleLocation] = useState(false)
     const [openUploadPic, setOpenUploadPic] = useState(false)
     const [openEdit, setOpenEdit] = useState(false)
     const [subCaseData, setSubCaseData] = useState([])
@@ -46,7 +49,7 @@ export default function SubPeople() {
 
     const { data } = useQuery(GET_PERSONALINFO_BY_ID, {
         variables: {
-            id: id
+            id:id
         },
         onCompleted: ({ getPersonalInfoById }) => {
             // console.log(getPersonalInfoById)
@@ -56,14 +59,17 @@ export default function SubPeople() {
 
     const { data: hospital_quarantine } = useQuery(GET_HOSPITAL_QUARANTINE_BY_PERSON, {
         variables: {
-            persoanlInfoId: id
+            personalId:id
         },
         onCompleted: ({ getHospitalizationByPersonalInfo }) => {
-            // console.log(getHospitalizationByPersonalInfo)
+            console.log(getHospitalizationByPersonalInfo)
             setQuarantineData(getHospitalizationByPersonalInfo?.quarantineInfo)
             setHospitalData(getHospitalizationByPersonalInfo?.hospitalInfo)
-        }
+        },
+        fetchPolicy: 'network-only'
     })
+
+    console.log(hospitalData)
 
     const { data: caseData, refetch } = useQuery(GET_PERSON_BY_CASE, {
         variables: {
@@ -77,7 +83,7 @@ export default function SubPeople() {
             let index = item.findIndex(e => e.id === id)
             item.splice(index, 1)
             setSubCaseData(item)
-            console.log(getPersonalInfoByCaseWithPagination, "dataCase")
+            // console.log(getPersonalInfoByCaseWithPagination, "dataCase")
             setSubCasePagination(getPersonalInfoByCaseWithPagination?.paginator)
 
 
@@ -104,7 +110,9 @@ export default function SubPeople() {
             <AddPeopleStatus open={openAddPeopleStatus} setOpen={setOpenAddPeopleStatus} />
             <AddPeopleQuarantine open={openAddPeopleQuarantine} setOpen={setOpenAddPeopleQuarantine} />
             <AddPeopleHistory open={openAddPeopleHistory} setOpen={setOpenAddPeopleHistory} />
+            <AddPeopleLocation open={openAddPeopleLocation} setOpen={setOpenAddPeopleLocation} caseId={personalData?.case?.id} peopleId={id}/>
             <UploadPic open={openUploadPic} setOpen={setOpenUploadPic} />
+            <EditPeople open={openEdit} setOpen={setOpenEdit} personId={id} personalData={personalData} />
             <Col
                 xs={24} md={24}
                 className="subPeople-card"
@@ -147,7 +155,10 @@ export default function SubPeople() {
                                 {personalData?.commune !== "ក្រៅសៀមរាប" && "ឃុំ" + personalData?.commune + ","}
                                 {personalData?.district !== "ក្រៅសៀមរាប" && "ស្រុក" + personalData?.district + ","}
                                 {"ខេត្ត" + personalData?.province}</li>
-                            <li>ស្ថានភាពបច្ចុប្បន្ន៖ {}</li>
+                            <li>ចំនួនចាក់វ៉ាក់សាំង៖ {personalData?.vaccinated} លើក</li>
+                            <li>ការសម្ភាស៖ {personalData?.interviewed ? "រួចរាល់" : "មិនទាន់រូចរាល់"}</li>
+                            <li>ចំណាំ៖ {personalData?.other}</li>
+                            <li>ស្ថានភាពបច្ចុប្បន្ន៖ { }</li>
                         </ul>
                     </Col>
                     <Col
@@ -283,11 +294,11 @@ export default function SubPeople() {
                                 </tr>
                                 <tr>
                                     <td width="150">កាលបរិច្ឆេទចូល</td>
-                                    <td> ៖&emsp;</td>
+                                    <td> ៖&emsp;{hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
                                 </tr>
                                 <tr>
                                     <td width="150">កាលបរិចេ្ឆទចេញ</td>
-                                    <td> ៖&emsp;</td>
+                                    <td> ៖&emsp;{hospitalData?.date_out !== undefined && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -303,7 +314,15 @@ export default function SubPeople() {
                 }}
                 className="subPeople-card"
             >
-
+                <Title level={5} style={{marginBottom: 20}}>
+                    ទីតាំង <span className="link" onClick={() => setOpenAddPeopleLocation(true)}><PlusCircleOutlined /></span>
+                </Title>
+                <Timeline mode="right">
+                    <Timeline.Item label="2015-09-01" color="red">Create a services</Timeline.Item>
+                    <Timeline.Item label="2015-09-01 09:12:11" color="green">Solve initial network problems</Timeline.Item>
+                    <Timeline.Item color="green">Technical testing</Timeline.Item>
+                    <Timeline.Item label="2015-09-01 09:12:11" color="green">Network problems being solved</Timeline.Item>
+                </Timeline>
             </Col>
             <Col
                 xs={24} md={{ span: 11 }}

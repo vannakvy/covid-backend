@@ -279,3 +279,8 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   /* padding-left: 40px; */
   text-align: center;
 }
+
+.ant-typography ul li, .ant-typography ol li{
+  margin: 0;
+  padding-bottom: 30px;
+}

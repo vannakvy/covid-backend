@@ -6,14 +6,15 @@ import { convertToCommune, convertToDistrict, convertToVillage } from '../../../
 import { useQuery, useMutation } from '@apollo/client'
 import { GET_ALL_CASES_NO_LIMIT } from '../../../graphql/case'
 import { CREATE_NEW_PERSON } from '../../../graphql/people'
-import { setAddPeople } from '../../../function/set'
+import { UPDATE_PERSON_BY_ID } from '../../../graphql/people'
+import { setEditPeople } from '../../../function/set'
 import AddCase from '../../case/modal/addCase'
 
 const { Option } = Select
 
-export default function EditPeople({ open, setOpen }) {
+export default function EditPeople({ open, setOpen, personId, personalData }) {
 
-
+    // console.log(personalData)
     let [form] = Form.useForm()
 
     const [province, setProvince] = useState("")
@@ -25,9 +26,9 @@ export default function EditPeople({ open, setOpen }) {
 
     const [openModal, setOpenModal] = useState(false)
 
-    const [createPersonalInfo, { loading: loadingCreate, error: errorCreate }] = useMutation(CREATE_NEW_PERSON, {
+    const [updatePersonalInfo, { loading: loadingCreate, error: errorCreate }] = useMutation(UPDATE_PERSON_BY_ID, {
         onCompleted: ({ createPersonalInfo }) => {
-            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            message.success("កែប្រែទិន្នន័យជោគជ័យ")
         },
         onError: (error) => {
             console.log(error.message)
@@ -41,15 +42,47 @@ export default function EditPeople({ open, setOpen }) {
         }
     })
 
-    const onFinish = (values) => {
-        console.log('Success:', {...setAddPeople(values), case: caseData.id});
-
-        if(caseId === 'new'){
-            createPersonalInfo({ variables: {...setAddPeople(values), case: caseData.id} })
-        }else {
-            
-        createPersonalInfo({ variables: setAddPeople(values) })
+    useEffect(() => {
+        if (personalData !== undefined){
+            // form.setFieldsValue(setEditCase(personalData))
+            setProvince(personalData.province)
+            setDistrict(personalData.district)
+            setCommune(personalData.commune)
         }
+
+    }, [personalData])
+
+    const onFinish = (values) => {
+        console.log('Success:', {...setEditPeople(values), case: caseData.id});
+
+        updatePersonalInfo({
+            variables: {
+                firstName:values.firstName,
+                lastName:values.lastName,
+                age:parseInt(values.age),
+                gender:values.gender,
+                tel:values.tel,
+                nationality:values.nationality,
+                occupation:values.occupation,
+                idCard:values.idCard,
+                village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
+                commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
+                district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
+                province: values.province === undefined ? "" : values.province,
+                case:personalData?.case?.id,
+                other:values.other,
+                vaccinated:parseInt(values.vaccinated),
+                interviewed: values.interviewed,
+                id:personId
+            }
+        })
+
+        // if(caseId === 'new'){
+        //     createPersonalInfo({ variables: {...setAddPeople(values), case: caseData.id} })
+        // }else {
+            
+        // createPersonalInfo({ variables: setAddPeople(values) })
+        // }
 
         setOpen(false)
         form.resetFields()
@@ -132,18 +165,20 @@ export default function EditPeople({ open, setOpen }) {
 
     return (
         <Modal
-            title="បញ្ចូលប្រជាជនថ្មី"
+            title="កែប្រែប្រជាជន"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
             footer={null}
+            
         >
-            <AddCase open={openModal} setOpen={setOpenModal} caseId={caseId} setCaseId={callbackCase} />
+            {/* <AddCase open={openModal} setOpen={setOpenModal} caseId={caseId}  /> */}
             <Form
                 form={form}
                 name="addPeople"
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
+                initialValues={personalData}
             >
                 <Row>
                     <Col xs={24} md={{ span: 24 }}>
@@ -263,43 +298,6 @@ export default function EditPeople({ open, setOpen }) {
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input type="number" placeholder="ចំនួនចាក់វ៉ាក់សាំង" />
-                        </Form.Item>
-                    </Col>
-
-                    <Divider>ពាក់ព័ន្ធករណី</Divider>
-                    <Col xs={24} md={{ span: 11 }}>
-                        <Form.Item
-                            name="case"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            {/* <Input type="number" placeholder="ចំនួនចាក់វ៉ាក់សាំង" /> */}
-
-                            <ListSelect type={4} data={allCases} title="ករណី" setValue={setToCaseFn} disabled={caseId === "new" ? true : false}/>
-                        </Form.Item>
-                    </Col>
-
-                    {
-                        caseId === "new" ? (
-                            <Col xs={24} md={{ span: 11, offset: 2 }}>
-                                <Form.Item
-                                    name="caseName"
-                                >
-                                    <Input disabled={true} style={{backgroundColor: "white", color: "black"}}/>
-                                </Form.Item>
-                            </Col>
-                        ) : null
-                    }
-
-                    <Col xs={24} md={caseId === "new" ? {span:24} : { span: 11, offset: 2 }}>
-                        <Form.Item
-                            name="direct"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Select placeholder="លក្ខណៈពាក់ព័ន្ធ" style={{ width: "100%" }}>
-                                <Option value={true}>ផ្ទាល់</Option>
-                                <Option value={false}>ប្រយោល</Option>
-
-                            </Select>
                         </Form.Item>
                     </Col>
 

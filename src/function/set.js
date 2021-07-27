@@ -317,6 +317,28 @@ export function setAddPeople(values) {
     return array
 }
 
+export function setEditPeople(values) {
+    var array = {
+        firstName:values.firstName,
+        lastName:values.lastName,
+        age:parseInt(values.age),
+        gender:values.gender,
+        tel:values.tel,
+        nationality:values.nationality,
+        occupation:values.occupation,
+        idCard:values.idCard,
+        village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
+        commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
+        district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
+        province: values.province === undefined ? "" : values.province,
+        case:values.case,
+        other:values.other,
+        vaccinated:parseInt(values.vaccinated),
+        interviewed: values.interviewed
+    }
+    return array
+}
+
 export function setAddSubQuarantine(values){
     var array= {
         date_in: moment(values.date_in).format(),
@@ -351,3 +373,12 @@ export function setEditQuarantine(values){
     return array;
 }
 
+export function setPeopleLocation(values){
+    var array ={
+        affectedLocation: values.affectedLocation,
+        loactionType: values.locationType,
+        other: values.other === undefined ? "" : values.other,
+    }
+
+    return array;
+}

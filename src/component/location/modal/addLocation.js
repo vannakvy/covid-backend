@@ -4,41 +4,46 @@ import { CaseController } from '../../../context/caseContext'
 import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
-import { CREATE_NEW_LOCATION} from '../../../graphql/location'
+import { CREATE_NEW_LOCATION } from '../../../graphql/location'
 import { GET_ALL_CASES_NO_LIMIT } from '../../../graphql/case'
 import { GET_ALL_PERSONINFO_NO_LIMIT } from '../../../graphql/people'
-import { useMutation,useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import moment from 'moment'
 
-export default function AddLocation({ open, setOpen, refetch }) {
+export default function AddLocation({ open, setOpen, refetch, locationId, setLocationId }) {
 
-    
+
     const [province, setProvince] = useState("")
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
-    const [allCases,setAllCases] = useState([])
-    const [peopleData,setPeopleData]= useState([])
+    const [allCases, setAllCases] = useState([])
+    const [peopleData, setPeopleData] = useState([])
 
     //const { caseDataDispatch } = useContext(CaseController)
-    const [createCase, { loading:createLoading}] = useMutation(CREATE_NEW_LOCATION, {
-        onCompleted: ({ createCase }) => {
+    const [createAffectedLocation, { loading: createLoading }] = useMutation(CREATE_NEW_LOCATION, {
+        onCompleted: ({ createAffectedLocation }) => {
             refetch();
             message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            // if (caseId === "new") {
+            //     setLocationId(createAffectedLocation.case)
+            // } else {
+            //     refetch()
+            // }
         },
         onError: (error) => {
             console.log(error.message)
         }
     })
 
-    const {data,loading} = useQuery(GET_ALL_CASES_NO_LIMIT,{
-        onCompleted:({allCases})=>{
+    const { data, loading } = useQuery(GET_ALL_CASES_NO_LIMIT, {
+        onCompleted: ({ allCases }) => {
             console.log(allCases)
             setAllCases(allCases)
         }
     })
 
-    const {data:people} = useQuery(GET_ALL_PERSONINFO_NO_LIMIT,{
-        onCompleted:({allPersonalInfos})=>{
+    const { data: people } = useQuery(GET_ALL_PERSONINFO_NO_LIMIT, {
+        onCompleted: ({ allPersonalInfos }) => {
             // console.log(allPersonalInfos)
             setPeopleData(allPersonalInfos)
         }
@@ -48,20 +53,18 @@ export default function AddLocation({ open, setOpen, refetch }) {
 
     const onFinish = (values) => {
         console.log('Success:', values);
-
-        // createCase({
-        //     variables: {
-        //         caseName: values.caseName,
-        //         village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
-        //         commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
-        //         district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
-        //         province: values.province === undefined ? "ក្រៅសៀមរាប" : values.province,
-        //         date: moment(values.date).format(),
-        //         lat: parseFloat(values.lat),
-        //         long: parseFloat(values.long),
-        //         other: values.other,
-        //     }
-        // })
+        createAffectedLocation({
+            variables: {
+                affectedLocationName: values.affectedLocationName,
+                village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
+                commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
+                district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
+                province: values.province === undefined ? "" : values.province,
+                other: values.other,
+                long: values.long,
+                lat: values.lat,
+            }
+        })
 
         setOpen(false)
         form.resetFields()
@@ -117,19 +120,24 @@ export default function AddLocation({ open, setOpen, refetch }) {
         });
     };
 
-
     const setToPeopleFn = (e) => {
         form.setFieldsValue({
             personalInfo: e
         });
     };
 
+    const setPeopleLocationFn = () => {
+        setOpen(false)
+        setLocationId("")
+        console.log(locationId)
+    }
+
     return (
         <Modal
             title="បញ្ចូលទីតាំង"
             visible={open}
             onOk={() => setOpen(false)}
-            onCancel={() => setOpen(false)}
+            onCancel={() => locationId === "new" ? setPeopleLocationFn() : setOpen(false)}
             footer={null}
         >
             <Form
@@ -148,14 +156,14 @@ export default function AddLocation({ open, setOpen, refetch }) {
                         </Form.Item>
                     </Col>
 
-                    
+
 
                     {/* <Select placeholder="លទ្ធផល" style={{ width: "100%" }}>
                         <Option value={true}>វិជ្ជមាន</Option>
                         <Option value={false}>អវិជ្ជមាន</Option>
                     </Select> */}
 
-                    <Col xs={24} md={{span: 11,offset:2 }}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="province"
                             rules={[{ required: true, message: 'Please input your username!' }]}
@@ -166,7 +174,7 @@ export default function AddLocation({ open, setOpen, refetch }) {
 
                     {province === "សៀមរាប" ? (
                         <>
-                            <Col xs={24} md={{ span: 11}}>
+                            <Col xs={24} md={{ span: 11 }}>
                                 <Form.Item
                                     name="district"
                                     rules={[{ required: true, message: 'Please input your username!' }]}
@@ -174,7 +182,7 @@ export default function AddLocation({ open, setOpen, refetch }) {
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} md={{ span: 11,offset:2 }}>
+                            <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="commune"
                                     rules={[{ required: true, message: 'Please input your username!' }]}
@@ -182,7 +190,7 @@ export default function AddLocation({ open, setOpen, refetch }) {
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} md={{ span: 24}}>
+                            <Col xs={24} md={{ span: 24 }}>
                                 <Form.Item
                                     name="village"
                                     rules={[{ required: true, message: 'Please input your username!' }]}
@@ -192,25 +200,6 @@ export default function AddLocation({ open, setOpen, refetch }) {
                             </Col>
                         </>
                     ) : null}
-
-                    <Col xs={24} md={{ span: 11}}>
-                        <Form.Item
-                            name="case"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <ListSelect type={3} data={allCases} title="ករណី" setValue={setToCaseFn}/>
-                        </Form.Item>
-                    </Col>
-
-                        
-                    <Col xs={24} md={{ span: 11,offset:2}}>
-                        <Form.Item
-                            name="personalInfo"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                        <ListSelect type={2} data={peopleData} title="អ្នកឆ្លង" setValue={setToPeopleFn}/>
-                        </Form.Item>
-                    </Col>
 
                     <Col xs={24}>
                         <Form.Item

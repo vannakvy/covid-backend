@@ -21,7 +21,7 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
         }
     })
 
-    console.log(peopleID)
+    // console.log(peopleID)
 
     const onFinish = (values) => {
         console.log('Success:', values);

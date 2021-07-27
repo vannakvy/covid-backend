@@ -165,6 +165,7 @@ query getPersonalInfoById($id:ID!){
     village
     commune
     district
+    interviewed
     province
     case{
       id
@@ -254,4 +255,48 @@ query getHospitalizationByPersonalInfo($personalId:ID!){
   }
 }
 
+`;
+
+export const UPDATE_PERSON_BY_ID = gql`
+mutation updatePersonalInfo(
+    $firstName:String,
+    $interviewed:Boolean,
+    $lastName:String,
+    $age:Int,
+    $gender:String,
+    $other:String,
+    $tel:String,
+    $case:ID!,
+    $nationality:String,
+    $occupation:String,
+    $idCard:String,
+    $village:String,
+    $commune:String,
+    $district:String,
+    $province:String,
+    $vaccinated:Int,
+    $id:ID!
+){
+  updatePersonalInfo(updatedInfo:{
+    firstName:$firstName
+    interviewed:$interviewed
+    lastName:$lastName
+    age:$age
+    gender:$gender
+    other:$other
+    tel:$tel
+    case:$case
+    nationality:$nationality
+    occupation:$occupation
+    idCard:$idCard
+    village:$village
+    commune:$commune
+    district:$district
+    province:$province
+    vaccinated:$vaccinated
+  },id:$id){
+    success
+    message
+  }
+}
 `;
