@@ -12,7 +12,7 @@ import AddCase from '../../case/modal/addCase'
 
 const { Option } = Select
 
-export default function EditPeople({ open, setOpen, personId, personalData ,setRefetch}) {
+export default function EditPeople({ open, setOpen, personId, personalData, setRefetch }) {
 
     // console.log(personalData)
     let [form] = Form.useForm()
@@ -45,45 +45,48 @@ export default function EditPeople({ open, setOpen, personId, personalData ,setR
 
     useEffect(() => {
         form.resetFields()
-        if (personalData !== undefined){    
-            
+        if (personalData !== undefined) {
+
             // form.setFieldsValue(setEditCase(personalData))
             setProvince(personalData?.province)
             setDistrict(personalData?.district)
             setCommune(personalData?.commune)
         }
 
-    }, [personalData,open])
+    }, [personalData, open])
 
     const onFinish = (values) => {
-        console.log('Success:', {...setEditPeople(values), case: caseData.id});
-
+        console.log('Success:', { ...setEditPeople(values), case: caseData.id,englishName: values.englishName, patientId: values.patientId, relation: values.relation, illness: values.illness});
+        // illness: values.illness
         updatePersonalInfo({
             variables: {
-                firstName:values.firstName,
-                lastName:values.lastName,
-                age:parseInt(values.age),
-                gender:values.gender,
-                tel:values.tel,
-                nationality:values.nationality,
-                occupation:values.occupation,
-                idCard:values.idCard,
+                firstName: values.firstName,
+                lastName: values.lastName,
+                age: parseInt(values.age),
+                gender: values.gender,
+                tel: values.tel,
+                nationality: values.nationality,
+                occupation: values.occupation,
+                idCard: values.idCard,
                 village: values.village === undefined ? "ក្រៅសៀមរាប" : values.village,
                 commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
                 district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
                 province: values.province === undefined ? "" : values.province,
-                case:personalData?.case?.id,
-                other:values.other,
-                vaccinated:parseInt(values.vaccinated),
+                case: personalData?.case?.id,
+                other: values.other,
+                vaccinated: parseInt(values.vaccinated),
                 interviewed: values.interviewed,
-                id:personId
+                id: personId,
+                englishName: values.englishName,
+                patientId: values.patientId,
+                relation: values.relation,
             }
         })
 
         // if(caseId === 'new'){
         //     createPersonalInfo({ variables: {...setAddPeople(values), case: caseData.id} })
         // }else {
-            
+
         // createPersonalInfo({ variables: setAddPeople(values) })
         // }
 
@@ -159,12 +162,12 @@ export default function EditPeople({ open, setOpen, personId, personalData ,setR
     };
 
     const callbackCase = (e) => {
-        if(e === ""){
+        if (e === "") {
             setCaseId(e)
             form.setFieldsValue({
                 case: null
             })
-        }else {
+        } else {
             setCaseData(e)
             form.setFieldsValue({
                 caseName: e.caseName
@@ -179,7 +182,7 @@ export default function EditPeople({ open, setOpen, personId, personalData ,setR
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
             footer={null}
-            
+
         >
             {/* <AddCase open={openModal} setOpen={setOpenModal} caseId={caseId}  /> */}
             <Form
@@ -190,12 +193,20 @@ export default function EditPeople({ open, setOpen, personId, personalData ,setR
                 initialValues={personalData}
             >
                 <Row>
-                    <Col xs={24} md={{ span: 24 }}>
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="idCard"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="អត្តសញ្ញាណប័ណ្ណ" />
+                        </Form.Item>
+                    </Col>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
+                        <Form.Item
+                            name="patientId"
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="អត្តលេខអ្នកជំងឺ" />
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={{ span: 11 }}>
@@ -213,6 +224,15 @@ export default function EditPeople({ open, setOpen, personId, personalData ,setR
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="នាម" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 24 }}>
+                        <Form.Item
+                            name="englishName"
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="ឈ្មោះជាភាសាឡាតាំង" />
                         </Form.Item>
                     </Col>
 
@@ -301,6 +321,15 @@ export default function EditPeople({ open, setOpen, personId, personalData ,setR
                         </>
                     ) : null}
 
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="relation"
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="ទំនាក់ទំនង" />
+                        </Form.Item>
+                    </Col>
+
                     <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
                             name="vaccinated"
@@ -310,51 +339,14 @@ export default function EditPeople({ open, setOpen, personId, personalData ,setR
                         </Form.Item>
                     </Col>
 
-                    {/* <Divider>ស្ថានភាពបច្ចុប្បន្ន</Divider>
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
-                            name="status"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            name="illness"
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Select placeholder="ស្ថានភាព" style={{ width: "100%" }}>
-                                <Option value="អវិជ្ជមាន">អវិជ្ជមាន</Option>
-                                <Option value="វិជ្ជមាន">វិជ្ជមាន</Option>
-
-                            </Select>
+                            <Input placeholder="ជំងឺបច្ចុប្បន្ន" />
                         </Form.Item>
                     </Col>
-
-                    <Col xs={24} md={{ span: 11,offset:2 }}>
-                        <Form.Item
-                            name="date"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <DatePicker placeholder="កាលបរិច្ឆេទ" style={{ width: "100%" }} />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 11 }}>
-                        <Form.Item
-                            name="direct"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-                            <Select placeholder="លក្ខណៈពាក់ព័ន្ធ" style={{ width: "100%" }}>
-                                <Option value={true}>ផ្ទាល់</Option>
-                                <Option value={false}>ប្រយោល</Option>
-
-                            </Select>
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span:11, offset:2 }}>
-                        <Form.Item
-                            name="otherOfStatus"
-                            
-                        >
-                            <Input placeholder="ផ្សេងៗ" />
-                        </Form.Item>
-                    </Col> */}
-
 
 
                     <Col xs={24} md={{ span: 24 }}>

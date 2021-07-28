@@ -12,7 +12,7 @@ import AddCase from '../../case/modal/addCase'
 
 const { Option } = Select
 
-export default function AddPeople({ open, setOpen }) {
+export default function AddPeople({ open, setOpen,setRefetch }) {
 
 
     let [form] = Form.useForm()
@@ -28,6 +28,7 @@ export default function AddPeople({ open, setOpen }) {
 
     const [createPersonalInfo, { loading: loadingCreate, error: errorCreate }] = useMutation(CREATE_NEW_PERSON, {
         onCompleted: ({ createPersonalInfo }) => {
+            setRefetch()
             message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
         },
         onError: (error) => {
@@ -43,13 +44,14 @@ export default function AddPeople({ open, setOpen }) {
     })
 
     const onFinish = (values) => {
-        console.log('Success:', {...setAddPeople(values), case: caseData.id});
+        console.log('Success:', { ...setAddPeople(values), case: caseData.id, englishName: values.englishName, patientId: values.patientId, relation: values.relation, illness: values.illness });
 
-        if(caseId === 'new'){
-            createPersonalInfo({ variables: {...setAddPeople(values), case: caseData.id} })
-        }else {
+        if (caseId === 'new') {
+            createPersonalInfo({ variables: { ...setAddPeople(values), case: caseData.id } })
+        } else {
             
-        createPersonalInfo({ variables: setAddPeople(values) })
+            // , illness: values.illness
+            createPersonalInfo({ variables: {...setAddPeople(values),englishName: values.englishName, patientId: values.patientId, relation: values.relation }})
         }
 
         setOpen(false)
@@ -124,12 +126,12 @@ export default function AddPeople({ open, setOpen }) {
     };
 
     const callbackCase = (e) => {
-        if(e === ""){
+        if (e === "") {
             setCaseId(e)
             form.setFieldsValue({
                 case: null
             })
-        }else {
+        } else {
             setCaseData(e)
             form.setFieldsValue({
                 caseName: e.caseName
@@ -156,16 +158,16 @@ export default function AddPeople({ open, setOpen }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="idCard"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="អត្តសញ្ញាណប័ណ្ណ" />
                         </Form.Item>
                     </Col>
 
-                    <Col xs={24} md={{ span: 11, offset:2 }}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="patientId"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="អត្តលេខអ្នកជំងឺ" />
                         </Form.Item>
@@ -191,7 +193,7 @@ export default function AddPeople({ open, setOpen }) {
                     <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
                             name="englishName"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="ឈ្មោះជាភាសាឡាតាំង" />
                         </Form.Item>
@@ -219,7 +221,7 @@ export default function AddPeople({ open, setOpen }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="occupation"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="មុខរបរ" />
                         </Form.Item>
@@ -282,12 +284,30 @@ export default function AddPeople({ open, setOpen }) {
                         </>
                     ) : null}
 
-                    <Col xs={24} md={{ span: 24 }}>
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="relation"
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="ទំនាក់ទំនង" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="vaccinated"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input type="number" placeholder="ចំនួនចាក់វ៉ាក់សាំង" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="illness"
+                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                            <Input placeholder="ជំងឺបច្ចុប្បន្ន" />
                         </Form.Item>
                     </Col>
 
@@ -299,7 +319,7 @@ export default function AddPeople({ open, setOpen }) {
                         >
                             {/* <Input type="number" placeholder="ចំនួនចាក់វ៉ាក់សាំង" /> */}
 
-                            <ListSelect type={4} data={allCases} title="ករណី" setValue={setToCaseFn} disabled={caseId === "new" ? true : false}/>
+                            <ListSelect type={4} data={allCases} title="ករណី" setValue={setToCaseFn} disabled={caseId === "new" ? true : false} />
                         </Form.Item>
                     </Col>
 
@@ -309,13 +329,13 @@ export default function AddPeople({ open, setOpen }) {
                                 <Form.Item
                                     name="caseName"
                                 >
-                                    <Input disabled={true} style={{backgroundColor: "white", color: "black"}}/>
+                                    <Input disabled={true} style={{ backgroundColor: "white", color: "black" }} />
                                 </Form.Item>
                             </Col>
                         ) : null
                     }
 
-                    <Col xs={24} md={caseId === "new" ? {span:24} : { span: 11, offset: 2 }}>
+                    <Col xs={24} md={caseId === "new" ? { span: 24 } : { span: 11, offset: 2 }}>
                         <Form.Item
                             name="direct"
                             rules={[{ required: true, message: 'Please input your username!' }]}

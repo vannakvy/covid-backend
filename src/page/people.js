@@ -47,7 +47,7 @@ export default function People() {
 
     return (
         <Row>
-            <AddPeople open={openAdd} setOpen={setOpenAdd} />
+            <AddPeople open={openAdd} setOpen={setOpenAdd} setRefetch={refetch} />
             <Col
                 xs={8}
                 md={18}

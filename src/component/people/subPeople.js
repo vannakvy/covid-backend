@@ -59,6 +59,7 @@ export default function SubPeople() {
     })
 
     const getPersonalInfoById = data?.getPersonalInfoById
+    console.log(getPersonalInfoById)
 
     const { data: hospital_quarantine, refetch: refetchHospital } = useQuery(GET_HOSPITAL_QUARANTINE_BY_PERSON, {
         variables: {
@@ -161,45 +162,140 @@ export default function SubPeople() {
                     <Col
                         xs={24} md={10}
                     >
-                        <ul className="list">
-                            <li><Title level={5}>ឈ្មោះ៖ {getPersonalInfoById?.lastName} {getPersonalInfoById?.firstName} <EditOutlined className="link" onClick={() => setOpenEdit(true)} /></Title></li>
-                            <li>ភេទ៖ {getPersonalInfoById?.gender}</li>
-                            <li>សញ្ជាតិ៖ {getPersonalInfoById?.nationality}</li>
-                            <li>លេខអត្តសញ្ញាណប័ណ្ឌ៖ {getPersonalInfoById?.idCard}</li>
-                            <li>លេខទូរស័ព្ទ៖ {getPersonalInfoById?.tel}</li>
-                            <li>មុខរបរ៖ {getPersonalInfoById?.occupation}</li>
-                            <li>អាស័យដ្ឋាន៖  {" "}
-                                {getPersonalInfoById?.village !== "ក្រៅសៀមរាប" && "ភូមិ" + getPersonalInfoById?.village + ","}
-                                {getPersonalInfoById?.commune !== "ក្រៅសៀមរាប" && "ឃុំ" + getPersonalInfoById?.commune + ","}
-                                {getPersonalInfoById?.district !== "ក្រៅសៀមរាប" && "ស្រុក" + getPersonalInfoById?.district + ","}
-                                {"ខេត្ត" + getPersonalInfoById?.province}</li>
-                            <li>ចំនួនចាក់វ៉ាក់សាំង៖ {getPersonalInfoById?.vaccinated} លើក</li>
-                            <li>ការសម្ភាស៖ {getPersonalInfoById?.interviewed ? "រួចរាល់" : "មិនទាន់រូចរាល់"}</li>
-                            <li>ចំណាំ៖ {getPersonalInfoById?.other}</li>
-                            <li>ស្ថានភាពបច្ចុប្បន្ន៖ { }</li>
-                        </ul>
+
+                        <table style={{marginLeft:30}} className="tbl-subPeople">
+                            <tr>
+                                <td width="150"><Title level={5}>ឈ្មោះ</Title></td>
+                                <td><Title level={5}>៖&emsp;</Title></td>
+                                <td><Title level={5}>{getPersonalInfoById?.lastName} {getPersonalInfoById?.firstName} <EditOutlined className="link" onClick={() => setOpenEdit(true)} /></Title></td>
+                            </tr>
+
+                            <tr>
+                                <td>ឈ្មោះជាភាសាឡាតាំង</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.englishName}</td>
+                            </tr>
+
+                            <tr>
+                                <td>អត្តលេខអ្នកជំងឺ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.patientId}</td>
+                            </tr>
+
+                            <tr>
+                                <td>ភេទ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.gender}</td>
+                            </tr>
+
+                            <tr>
+                                <td>សញ្ជាតិ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.nationality}</td>
+                            </tr>
+
+                            <tr>
+                                <td>លេខអត្តសញ្ញាណប័ណ្ឌ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.idCard}</td>
+                            </tr>
+
+                            <tr>
+                                <td>លេខទូរស័ព្ទ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.tel}</td>
+                            </tr>
+
+                            <tr>
+                                <td>មុខរបរ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.occupation}</td>
+                            </tr>
+
+                            <tr>
+                                <td>អាស័យដ្ឋាន</td>
+                                <td> ៖&emsp;</td>
+                                <td> {getPersonalInfoById?.village !== "ក្រៅសៀមរាប" && "ភូមិ" + getPersonalInfoById?.village + ","}
+                                    {getPersonalInfoById?.commune !== "ក្រៅសៀមរាប" && "ឃុំ" + getPersonalInfoById?.commune + ","}
+                                    {getPersonalInfoById?.district !== "ក្រៅសៀមរាប" && "ស្រុក" + getPersonalInfoById?.district + ","}
+                                    {"ខេត្ត" + getPersonalInfoById?.province}</td>
+                            </tr>
+
+                            <tr>
+                                <td>ចំនួនចាក់វ៉ាក់សាំង</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.vaccinated} លើក</td>
+                            </tr>
+
+                            <tr>
+                                <td>ការសម្ភាស</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.interviewed ? "រួចរាល់" : "មិនទាន់រូចរាល់"}</td>
+                            </tr>
+
+                            <tr>
+                                <td>ត្រូវជា</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.relation}</td>
+                            </tr>
+
+                            <tr>
+                                <td>ស្ថានភាពបច្ចុប្បន្ន</td>
+                                <td> ៖&emsp;</td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>ចំណាំ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.other}</td>
+                            </tr>
+                        </table>
                     </Col>
                     <Col
                         xs={24} md={{ span: 6 }}
 
                     >
-                        <ul className="list">
-                            <li>
-                                <Title level={5}>
+                       
+                        <table style={{marginLeft:30}}  className="tbl-subPeople">
+                            <tr>
+                                <td width="150"><Title level={5}>
                                     ការធ្វើចត្តាឡីស័ក
                                     <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}> <PlusCircleOutlined /></span>
-                                </Title>
-                            </li>
-                            {/* <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}><PlusCircleOutlined /></span> */}
-                            <li>កាលបរិច្ឆេទចាប់ផ្ដើម៖ {hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
-                            <li>កាលបរិច្ឆេទចេញ៖ {hospitalData?.date_out !== null && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</li>
-                            <li>ទីតាំង៖ {quarantineData?.quarantineInfo?.locationName}</li>
-                            <li>អាស័យដ្ឋាន៖  {" "}
+                                </Title></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>កាលបរិច្ឆេទចាប់ផ្ដើម</td>
+                                <td> ៖&emsp;</td>
+                                <td>{hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                            </tr>
+
+                            <tr>
+                                <td>កាលបរិច្ឆេទចេញ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{hospitalData?.date_out !== null && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                            </tr>
+
+                            <tr>
+                                <td>ទីតាំង</td>
+                                <td> ៖&emsp;</td>
+                                <td>{quarantineData?.quarantineInfo?.locationName}</td>
+                            </tr>
+
+                            <tr>
+                                <td>អាស័យដ្ឋាន</td>
+                                <td> ៖&emsp;</td>
+                                <td>
                                 {(quarantineData?.quarantineInfo?.village !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.village !== undefined) && "ភូមិ" + quarantineData?.quarantineInfo?.village + ","}
                                 {(quarantineData?.quarantineInfo?.commune !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.commune !== undefined) && "ឃុំ" + quarantineData?.quarantineInfo?.commune + ","}
                                 {(quarantineData?.quarantineInfo?.district !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.district !== undefined) && "ស្រុក" + quarantineData?.quarantineInfo?.district + ","}
-                                {quarantineData?.quarantineInfo?.province !== undefined && quarantineData?.quarantineInfo?.province}</li>
-                        </ul>
+                                {quarantineData?.quarantineInfo?.province !== undefined && quarantineData?.quarantineInfo?.province}
+                                </td>
+                            </tr>
+                        </table>
                     </Col>
                 </Row>
             </Col>

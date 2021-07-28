@@ -4,7 +4,7 @@ export const GET_ALL_PERSONINFO = gql`
 query getPersonalInfoWithPagination($page:Int!,$limit:Int!,$keyword:String){
     getPersonalInfoWithPagination(page:$page,limit:$limit,keyword:$keyword){
         personalInfos{
-            id
+          id
           firstName
           lastName
           age
@@ -19,6 +19,10 @@ query getPersonalInfoWithPagination($page:Int!,$limit:Int!,$keyword:String){
           district
           interviewed
           province
+          englishName
+          patientId
+          illness
+          relation
           case{
             id
           }
@@ -73,6 +77,10 @@ mutation createPersonalInfo(
     $direct:Boolean,
     $other:String,
     $interviewed:Boolean
+    $englishName:String
+    $patientId:String
+    
+    $relation:String
 ){
     createPersonalInfo(newInfo:{
             firstName:$firstName
@@ -92,12 +100,18 @@ mutation createPersonalInfo(
             direct:$direct
             other: $other
             interviewed:$interviewed
+            englishName:$englishName
+            patientId:$patientId
+            
+            relation:$relation
     }){
       success
       message
     }
   }
 `
+// $illness:String
+// #illness:$illness
 
 export const GET_ALL_PERSONINFO_NO_LIMIT = gql`
 query allPersonalInfos{
@@ -167,6 +181,10 @@ query getPersonalInfoById($id:ID!){
     district
     interviewed
     province
+    englishName
+    patientId
+    illness
+    relation
     case{
       id
       caseName
@@ -272,6 +290,9 @@ mutation updatePersonalInfo(
     $province:String,
     $vaccinated:Int,
     $id:ID!
+    $englishName:String,
+    $patientId:String,
+    $relation:String
 ){
   updatePersonalInfo(updatedInfo:{
     firstName:$firstName
@@ -290,6 +311,9 @@ mutation updatePersonalInfo(
     district:$district
     province:$province
     vaccinated:$vaccinated
+    englishName:$englishName
+    patientId:$patientId
+    relation:$relation
   },id:$id){
     success
     message

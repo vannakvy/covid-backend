@@ -6,7 +6,21 @@ margin-top: 10px;
 margin:5px;
 /* background-color: red !important; */
 min-width: 250px !important;
+box-shadow: 0px 5px 20px #CCC!important;
+transition: transform 1s;
+cursor: pointer;
 }
+
+.infoBox:hover{
+    transform: rotate(-3deg);
+    
+}
+
+@keyframes rotate {
+    0% {transform: scale(1,1);}
+    50% {transform: scale(2,1.5);}
+    /* 100% {transform: scale(1,1);} */
+  }
 
 /* .infoBox:not(:last-child) {
  margin-right: 10px;

@@ -34,7 +34,7 @@
 .app__header {
  display: flex;
  align-items: center;
- margin-bottom: 5px;
+ margin-bottom: 20px;
  justify-content: space-between;
 }
 
@@ -69,4 +69,8 @@
  .app {
   flex-direction: column;
  }
+}
+
+.first-card, .sec-card{
+  box-shadow: 0px 5px 20px #CCC!important;
 }
