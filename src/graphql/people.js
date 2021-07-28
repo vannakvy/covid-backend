@@ -79,7 +79,7 @@ mutation createPersonalInfo(
     $interviewed:Boolean
     $englishName:String
     $patientId:String
-    
+    $illness:String
     $relation:String
 ){
     createPersonalInfo(newInfo:{
@@ -102,7 +102,7 @@ mutation createPersonalInfo(
             interviewed:$interviewed
             englishName:$englishName
             patientId:$patientId
-            
+            illness:$illness
             relation:$relation
     }){
       success
@@ -110,8 +110,6 @@ mutation createPersonalInfo(
     }
   }
 `
-// $illness:String
-// #illness:$illness
 
 export const GET_ALL_PERSONINFO_NO_LIMIT = gql`
 query allPersonalInfos{
@@ -293,6 +291,7 @@ mutation updatePersonalInfo(
     $englishName:String,
     $patientId:String,
     $relation:String
+    $illness:String
 ){
   updatePersonalInfo(updatedInfo:{
     firstName:$firstName
@@ -314,6 +313,7 @@ mutation updatePersonalInfo(
     englishName:$englishName
     patientId:$patientId
     relation:$relation
+    illness:$illness
   },id:$id){
     success
     message

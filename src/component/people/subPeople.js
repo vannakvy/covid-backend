@@ -240,6 +240,12 @@ export default function SubPeople() {
                             </tr>
 
                             <tr>
+                                <td>ជំងឺប្រចាំកាយ</td>
+                                <td> ៖&emsp;</td>
+                                <td>{getPersonalInfoById?.illness}</td>
+                            </tr>
+
+                            <tr>
                                 <td>ស្ថានភាពបច្ចុប្បន្ន</td>
                                 <td> ៖&emsp;</td>
                                 <td></td>

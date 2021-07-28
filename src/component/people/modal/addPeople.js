@@ -50,8 +50,7 @@ export default function AddPeople({ open, setOpen,setRefetch }) {
             createPersonalInfo({ variables: { ...setAddPeople(values), case: caseData.id } })
         } else {
             
-            // , illness: values.illness
-            createPersonalInfo({ variables: {...setAddPeople(values),englishName: values.englishName, patientId: values.patientId, relation: values.relation }})
+            createPersonalInfo({ variables: {...setAddPeople(values),englishName: values.englishName, patientId: values.patientId, relation: values.relation, illness: values.illness }})
         }
 
         setOpen(false)

@@ -80,6 +80,7 @@ export default function EditPeople({ open, setOpen, personId, personalData, setR
                 englishName: values.englishName,
                 patientId: values.patientId,
                 relation: values.relation,
+                illness: values.illness
             }
         })
 

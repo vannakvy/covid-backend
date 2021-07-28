@@ -19,7 +19,7 @@ import {
   convertToVillage,
 } from "../function/fn";
 import InfoBox from "../component/covideComponents/InfoBox";
-import LineGraph from "../component/covideComponents/LineGraph";
+
 import Table from "../component/covideComponents/Table";
 import { sortData, prettyPrintStat } from "../component/covideComponents/util";
 import numeral from "numeral";
@@ -41,6 +41,9 @@ import ImageDirect from '../asset/direct.png'
 import ImageClose from '../asset/close-area.png'
 import ImageNotDirect from '../asset/notdirect.png'
 import ImageOpen from '../asset/open-area.png'
+import LineGraph from "../component/covideComponents/LineGraph";
+import BarGraph from '../component/covideComponents/BarGraph'
+import LineChartTesting from "../component/covideComponents/LineChartTesting";
 
 const MapScreen = () => {
   const districtLatLong = [
@@ -234,7 +237,6 @@ const MapScreen = () => {
           />
 
 
-
           <InfoBox
             // onClick={(e) => setCasesType("cases")}
             title="អ្នកប៉ះពាល់ផ្ទាល់"
@@ -273,7 +275,6 @@ const MapScreen = () => {
           />
         </div>
         <Map
-
           district={districtInfo}
           casesType={casesType}
           center={mapCenter}
@@ -292,18 +293,21 @@ const MapScreen = () => {
         </Card>
         <Card  className="sec-card" style={{ marginTop: "10px" }}>
           <CardContent>
+              <h3>ទិន្នន័យសរុប</h3>
+            <BarGraph />
+          </CardContent>
+        </Card>
+        <Card style={{ marginTop: "10px" }}>
+          <CardContent>
             {casesType === "recovered" ? (
               <h3>អ្នកជាសះស្បើយ ទូទាំងខេត្ត</h3>
             ) : null}
             {casesType === "deaths" ? <h3>អ្នកស្លាប ទូទាំងខេត្ត</h3> : null}
             {casesType === "cases" ? <h3>អ្នកវិជ្ជមាន ទូទាំងខេត្ត</h3> : null}
             <LineGraph casesType={casesType} />
-
           </CardContent>
         </Card>
       </div>
-
-
     </div>
     {/* graph three datasets  */}
 
@@ -311,6 +315,8 @@ const MapScreen = () => {
     <div className="graph ">
       <h2 className="covid_table">ក្រាបបង្ហាញស្ថិតិប្រចាំថ្ងៃ</h2>
       <BarChart casesType={casesType} />
+      {/* <BarGraph/> */}
+      {/* <LineChartTesting/> */}
 
     </div>
   </>;

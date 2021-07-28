@@ -8,11 +8,10 @@ import numeral from "numeral";
 
 function LineGraph({ casesType }) {
   const [data, setData] = useState({});
- console.log(data)
   const {dat,refetch} = useQuery(GET_DATA_FOR_GRAP,{onCompleted:({getDataForGrap})=>{
     setData(getDataForGrap);
   }})
-  console.log(casesType)
+
 let color = "rgb(167, 11, 153)";
 let caseData=data.cases;
 switch(casesType){
