@@ -145,6 +145,11 @@ mutation recordSampleTest(
   $result:Boolean,
   $symptom:String,
   $other:String,
+  $reasonForTesting:String,
+  $symptomStart:DateTime,
+  $labFormCompletedBy:String,
+  $specimentType:String,
+  $laboratory:String,
   $personalInfoId:ID!,
 ){
   recordSampleTest(sampleTest:{
@@ -154,6 +159,11 @@ mutation recordSampleTest(
     result:$result
     symptom:$symptom
     other:$other
+    reasonForTesting:$reasonForTesting
+    symptomStart:$symptomStart
+    labFormCompletedBy:$labFormCompletedBy
+    specimentType:$specimentType
+    laboratory:$laboratory
   },personalInfoId:$personalInfoId){
     message
     success
@@ -216,6 +226,11 @@ query getPersonalInfoById($id:ID!){
       result
       symptom
       other
+      reasonForTesting
+      symptomStart
+      labFormCompletedBy
+      specimentType
+      laboratory
     }
   }
 }
@@ -320,3 +335,13 @@ mutation updatePersonalInfo(
   }
 }
 `;
+
+export const DELETE_SAMPLETEST = gql`
+mutation deleteSampleTest($sampleTestId:ID!,$personalInfoId:ID!){
+  deleteSampleTest(sampleTestId:$sampleTestId,personalInfoId:$personalInfoId){
+    success
+    message
+  }
+}
+
+`

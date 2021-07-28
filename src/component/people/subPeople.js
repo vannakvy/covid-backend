@@ -20,6 +20,7 @@ import { GET_PERSONALINFO_BY_ID } from '../../graphql/people';
 import { GET_HOSPITAL_QUARANTINE_BY_PERSON } from '../../graphql/people';
 import { GET_PERSON_BY_CASE } from '../../graphql/case';
 import { GET_HISTORYLOCATION_BY_PERSON } from '../../graphql/historylocation';
+import { DELETE_SAMPLETEST } from '../../graphql/people';
 import moment from 'moment';
 
 const { Title } = Typography
@@ -74,7 +75,6 @@ export default function SubPeople() {
     })
 
     const getHospitalizationByPersonalInfo = hospital_quarantine?.getHospitalizationByPersonalInfo
-    console.log(getHospitalizationByPersonalInfo)
 
     const { data: caseData, refetch } = useQuery(GET_PERSON_BY_CASE, {
         variables: {
@@ -108,7 +108,13 @@ export default function SubPeople() {
     })
 
     const getHistoryLocationByPersonalInfoId = historylocation?.getHistoryLocationByPersonalInfoId
-    console.log(getHistoryLocationByPersonalInfoId)
+
+    const [deleteSampleTest,{loading:deleteLoading}]=useMutation(DELETE_SAMPLETEST,{
+        onCompleted:()=>{
+            refetchPerson()
+            message.success("លុបទិន្នន័យជោគជ័យ")
+        }
+    })
 
     useEffect(() => {
         // if(personalData){
@@ -121,9 +127,19 @@ export default function SubPeople() {
 
     }
 
+    const handleSampleTestDelete = (e) => {
+        console.log(e)
+        deleteSampleTest({
+            variables:{
+                sampleTestId:e,
+                personalInfoId:id
+            }
+        })
+    }
+
     return (
         <Row>
-            <AddPeopleRelated open={openAddPeopleRelated} setOpen={setOpenAddPeopleRelated} caseId={getPersonalInfoById?.case?.id} refetch={refetch} />
+            <AddPeopleRelated open={openAddPeopleRelated} setOpen={setOpenAddPeopleRelated} caseId={getPersonalInfoById?.case?.id} setRefetch={refetchPerson} />
             <AddPeopleTest open={openAddPeopleTest} setOpen={setOpenAddPeopleTest} peopleID={id} />
             <AddPeopleHospital open={openAddPeopleHospital} setOpen={setOpenAddPeopleHospital} peopleId={id} />
             <AddPeopleStatus open={openAddPeopleStatus} setOpen={setOpenAddPeopleStatus} />
@@ -469,7 +485,7 @@ export default function SubPeople() {
                 <Title level={5}>ការធ្វើតេស្ត <span className="link" onClick={() => setOpenAddPeopleTest(true)} ><PlusCircleOutlined /></span></Title>
                 <Table
                     className="table-personal"
-                    columns={testCol({ handleDelete })}
+                    columns={testCol({ handleSampleTestDelete })}
                     dataSource={getPersonalInfoById?.sampleTest}
                     rowKey={record => record.id}
                     pagination={true}

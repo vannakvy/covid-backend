@@ -6,7 +6,7 @@ import {
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-export const testCol = ({handleDelete}) => {
+export const testCol = ({handleSampleTestDelete}) => {
     var array = [
         {
             title: 'ល.រ',
@@ -76,7 +76,7 @@ export const testCol = ({handleDelete}) => {
                 <Space size="middle">
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
-                        onConfirm={() => { handleDelete(record.id) }}
+                        onConfirm={() => { handleSampleTestDelete(record.id) }}
                         okText="ចង់"
                         cancelText="មិនចង់"
                     >
