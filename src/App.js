@@ -1,4 +1,5 @@
 import './static/App.css';
+
 import React, { useState } from 'react'
 import {cache} from './cache'
 import {
@@ -19,17 +20,16 @@ const token =()=>{
 }
 
 const tokens = token()
-
+console.log(process.env.React_App_WS,"env")
  const upLoadLink = createUploadLink({
-    uri: "http://192.168.1.152:4000/graphql",
+    uri: process.env.React_App_URI,
     headers:{
       Authorization: tokens
     }
-    
   })
 
 const wsLink = new WebSocketLink({
-  uri: "ws://192.168.1.152:4000/graphql",
+  uri: process.env.React_App_WS,
   options: {
     reconnect: true
   }

@@ -13,7 +13,7 @@ import { GET_ALL_PERSONINFO_NO_LIMIT } from '../../graphql/people'
 import { GET_PERSON_BY_HOSPITALINFO } from '../../graphql/hospital'
 import { GET_HOSPITALINFO_BY_ID } from '../../graphql/hospital'
 import { DELETE_PERSON_BY_HOSPITAL } from '../../graphql/hospital'
-import { load } from 'dotenv'
+
 
 const { Title } = Typography
 
