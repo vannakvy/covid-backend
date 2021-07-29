@@ -1,7 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react'
-import { Modal, Form, Input, DatePicker, Row, Col, Button ,Select,Divider,message} from 'antd'
-import {HospitalController} from '../../../context/hospitalContext'
-import {setEditHospital} from '../../../function/set'
+import React, { useEffect, useState } from 'react'
+import { Modal, Form, Input, Row, Col, Button, Divider, message } from 'antd'
+import { setEditHospital } from '../../../function/set'
 
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
@@ -9,10 +8,7 @@ import { convertToDistrict, convertToCommune, convertToVillage } from '../../../
 import { useMutation } from '@apollo/client'
 import { UPDATE_HOSPITALINFO_BY_ID } from '../../../graphql/hospital'
 
-const { Option } = Select
-
-export default function EditHospital({ open, setOpen, data, hospitalId,setRefetch }) {
-    const {hospitalDataDispatch} = useContext(HospitalController)
+export default function EditHospital({ open, setOpen, data, hospitalId, setRefetch }) {
 
     let [form] = Form.useForm()
 
@@ -20,30 +16,33 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
 
-    const [updateHospitalInfo,{loading}] = useMutation(UPDATE_HOSPITALINFO_BY_ID,{
-        onCompleted:()=>{
-            setRefetch()
-            message.success("កែប្រែទិន្នន័យជោគជ័យ")
+    const [updateHospitalInfo, { loading }] = useMutation(UPDATE_HOSPITALINFO_BY_ID, {
+        onCompleted: () => {
+            if (loading) {
+                message.loading("កំពុងកែប្រែទិន្នន័យ...")
+            } else {
+                setRefetch()
+                message.success("កែប្រែទិន្នន័យជោគជ័យ")
+            }
+
         }
     })
 
     useEffect(() => {
-        
-        if (data !== undefined){
+
+        if (data !== undefined) {
             form.setFieldsValue(setEditHospital(data))
             setProvince(data.province)
             setDistrict(data.district)
             setCommune(data.commune)
         }
 
-        
+
     }, [data])
 
     const onFinish = (values) => {
-        console.log('Success:', values);
-
         updateHospitalInfo({
-            variables:{
+            variables: {
                 lat: values.lat,
                 hospitalName: values.hospitalName,
                 long: values.long,
@@ -57,7 +56,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
                 commune: values.commune === undefined ? "ក្រៅសៀមរាប" : values.commune,
                 district: values.district === undefined ? "ក្រៅសៀមរាប" : values.district,
                 province: values.province === undefined ? "" : values.province,
-                id:hospitalId
+                id: hospitalId
             }
         })
 
@@ -122,7 +121,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
             footer={null}
-            destroyOnClose={false} 
+            destroyOnClose={false}
             getContainer={false}
             forceRender
         >
@@ -134,7 +133,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
-                <Col xs={24} md={{ span: 11 }}>
+                    <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="hospitalName"
                             rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
@@ -202,7 +201,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="long"
-                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="longtitude" />
                         </Form.Item>
@@ -211,7 +210,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lat"
-                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="latitude" />
                         </Form.Item>
@@ -221,7 +220,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
                     <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="firstName"
-                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="នាម" style={{ width: "100%" }} />
                         </Form.Item>
@@ -230,7 +229,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lastName"
-                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="គោត្តនាម" style={{ width: "100%" }} />
                         </Form.Item>
@@ -239,7 +238,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
                     <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="position"
-                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="តួនាទីការងារ" style={{ width: "100%" }} />
                         </Form.Item>
@@ -248,7 +247,7 @@ export default function EditHospital({ open, setOpen, data, hospitalId,setRefetc
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="tel"
-                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="លេខទូរស័ព្ទ" style={{ width: "100%" }} />
                         </Form.Item>

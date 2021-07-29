@@ -1,5 +1,5 @@
 import { Col, Row, Typography, Table } from 'antd'
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import moment from 'moment'
 import { subCaseCol } from './tableColumn/subCaseColumn'
@@ -13,7 +13,6 @@ import { GET_CASE_BY_ID } from '../../graphql/case'
 const { Title } = Typography
 
 export default function SubCase() {
-    // const { subCaseData, subCaseDataDispatch } = useContext(CaseController)
 
     let { id } = useParams();
 

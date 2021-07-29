@@ -1,47 +1,48 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Modal, Form, Input, DatePicker, Row, Col, Button, message } from 'antd'
-import { CaseController } from '../../../context/caseContext'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
+import { provinceData, districtData, communeData, villageData} from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage, convertEditData } from '../../../function/fn'
 import { UPDATE_AFFECTEDLOCATION_BY_ID } from '../../../graphql/location'
-import { GET_ALL_CASES_NO_LIMIT } from '../../../graphql/case'
-import { GET_ALL_PERSONINFO_NO_LIMIT } from '../../../graphql/people'
-import { useMutation, useQuery } from '@apollo/client'
+// import { GET_ALL_CASES_NO_LIMIT } from '../../../graphql/case'
+// import { GET_ALL_PERSONINFO_NO_LIMIT } from '../../../graphql/people'
+import { useMutation } from '@apollo/client'
 import moment from 'moment'
 
 export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
 
-
     const [province, setProvince] = useState("")
     const [district, setDistrict] = useState("")
     const [commune, setCommune] = useState("")
-    const [allCases, setAllCases] = useState([])
-    const [peopleData, setPeopleData] = useState([])
 
     //const { caseDataDispatch } = useContext(CaseController)
     const [updateAffectedLocation, { loading: createLoading }] = useMutation(UPDATE_AFFECTEDLOCATION_BY_ID, {
         onCompleted: ({ updateAffectedLocation }) => {
-            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            if(createLoading){
+                message.loading("កំពុងកែប្រែទិន្នន័យ...")
+            }else{
+                message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            }
+            
         },
         onError: (error) => {
             console.log(error.message)
         }
     })
 
-    const { data, loading } = useQuery(GET_ALL_CASES_NO_LIMIT, {
-        onCompleted: ({ allCases }) => {
-            console.log(allCases)
-            setAllCases(allCases)
-        }
-    })
+    // const { data, loading } = useQuery(GET_ALL_CASES_NO_LIMIT, {
+    //     onCompleted: ({ allCases }) => {
+    //         console.log(allCases)
+    //         setAllCases(allCases)
+    //     }
+    // })
 
-    const { data: people } = useQuery(GET_ALL_PERSONINFO_NO_LIMIT, {
-        onCompleted: ({ allPersonalInfos }) => {
-            // console.log(allPersonalInfos)
-            setPeopleData(allPersonalInfos)
-        }
-    })
+    // const { data: people } = useQuery(GET_ALL_PERSONINFO_NO_LIMIT, {
+    //     onCompleted: ({ allPersonalInfos }) => {
+    //         // console.log(allPersonalInfos)
+    //         setPeopleData(allPersonalInfos)
+    //     }
+    // })
 
     let [form] = Form.useForm()
 
@@ -111,17 +112,17 @@ export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
         });
     };
 
-    const setToCaseFn = (e) => {
-        form.setFieldsValue({
-            case: e
-        });
-    };
+    // const setToCaseFn = (e) => {
+    //     form.setFieldsValue({
+    //         case: e
+    //     });
+    // };
 
-    const setToPeopleFn = (e) => {
-        form.setFieldsValue({
-            personalInfo: e
-        });
-    };
+    // const setToPeopleFn = (e) => {
+    //     form.setFieldsValue({
+    //         personalInfo: e
+    //     });
+    // };
 
     // console.log(convertEditData(dataEdit))
 
@@ -150,7 +151,7 @@ export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="affectedLocationName"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ទីតាំង" />
                         </Form.Item>
@@ -166,7 +167,7 @@ export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="province"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
@@ -177,7 +178,7 @@ export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
                             <Col xs={24} md={{ span: 11 }}>
                                 <Form.Item
                                     name="district"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
@@ -185,7 +186,7 @@ export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="commune"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
@@ -193,7 +194,7 @@ export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
                             <Col xs={24} md={{ span: 24 }}>
                                 <Form.Item
                                     name="village"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
                                 </Form.Item>
@@ -234,7 +235,7 @@ export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="long"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="longtitude" />
                         </Form.Item>
@@ -243,7 +244,7 @@ export default function AddLocation({ open, setOpen, setRefetch, dataEdit }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lat"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="latitude" />
                         </Form.Item>

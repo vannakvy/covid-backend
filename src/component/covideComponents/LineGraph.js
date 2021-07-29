@@ -1,9 +1,9 @@
 
 import {GET_DATA_FOR_GRAP} from '../../graphql/dashboardAndReport'
 import { useQuery } from "@apollo/client";
-import React, { useState, useEffect } from "react";
-import { Bar,Line } from "react-chartjs-2";
-import numeral from "numeral";
+import React, { useState } from "react";
+import { Line } from "react-chartjs-2";
+// import numeral from "numeral";
 
 
 function LineGraph({ casesType }) {

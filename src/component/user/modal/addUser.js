@@ -61,7 +61,7 @@ export default function AddUser({ open, setOpen,setRefetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="username"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ឈ្មោះសម្គាល់អ្នកប្រើប្រាស់" />
                         </Form.Item>
@@ -70,7 +70,7 @@ export default function AddUser({ open, setOpen,setRefetch }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="password"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="លេខកូដសម្ងាត់" style={{ width: "100%" }} />
                         </Form.Item>
@@ -79,7 +79,7 @@ export default function AddUser({ open, setOpen,setRefetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="firstname"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="នាម" />
                         </Form.Item>
@@ -88,7 +88,7 @@ export default function AddUser({ open, setOpen,setRefetch }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lastname"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="គោត្តនាម" style={{ width: "100%" }} />
                         </Form.Item>
@@ -97,7 +97,7 @@ export default function AddUser({ open, setOpen,setRefetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="role"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             {/* <Input placeholder="តួនាទី" /> */}
                             <Select placeholder="តួនាទី" style={{ width: "100%" }}>

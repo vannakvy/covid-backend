@@ -43,7 +43,7 @@ export default function AddPeopleHistory({ open, setOpen }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="caseName"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ឈ្មោះករណី" />
                         </Form.Item>
@@ -51,7 +51,7 @@ export default function AddPeopleHistory({ open, setOpen }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="place"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ទីតាំង" />
                         </Form.Item>
@@ -59,7 +59,7 @@ export default function AddPeopleHistory({ open, setOpen }) {
                     <Col xs={24} md={{ span: 24}}>
                         <Form.Item
                             name="ទំនាក់ទំនង"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ទំនាក់ទំនង" />
                         </Form.Item>

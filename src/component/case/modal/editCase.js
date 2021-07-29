@@ -17,8 +17,13 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
 
     const [updateCase,{loading}] = useMutation(UPDATE_CASE_BY_ID,{
         onCompleted:()=>{
-            setRetetch()
-            message.success("កែប្រែទិន្នន័យជោគជ័យ")
+            if(loading){
+                message.loading("កំពុងកែប្រែ...")
+            }else{
+                setRetetch()
+                message.success("កែប្រែទិន្នន័យជោគជ័យ")
+            }
+            
         }
     })
 
@@ -122,7 +127,7 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
                     <Col xs={24} md={{span:11}}>
                         <Form.Item
                             name="caseName"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ឈ្មោះករណី" />
                         </Form.Item>
@@ -131,7 +136,7 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
                     <Col xs={24} md={{span:11, offset: 2}}>
                         <Form.Item
                             name="date"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទ" style={{width: "100%"}} />
                         </Form.Item>
@@ -140,7 +145,7 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="province"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
@@ -151,7 +156,7 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="district"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
@@ -159,7 +164,7 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
                             <Col xs={24} md={{ span: 11 }}>
                                 <Form.Item
                                     name="commune"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
@@ -167,7 +172,7 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="village"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
                                 </Form.Item>
@@ -187,7 +192,7 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="long"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type={1} placeholder="longtitude" />
                         </Form.Item>
@@ -196,7 +201,7 @@ export default function EditCase({ open, setOpen, data, caseId,setRetetch}) {
                     <Col xs={24} md={{ span: 11 , offset:2}}>
                         <Form.Item
                             name="lat"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type={1} placeholder="latitude" />
                         </Form.Item>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, {useState } from 'react'
 import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
@@ -89,7 +89,7 @@ export default function AddSubCase({ open, setOpen, caseId}) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="name"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ឈ្មោះ" />
                         </Form.Item>
@@ -98,7 +98,7 @@ export default function AddSubCase({ open, setOpen, caseId}) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="gender"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
 
                             <ListSelect type={0} data={genderData} title="ភេទ" setValue={setToGenderFn} />
@@ -108,7 +108,7 @@ export default function AddSubCase({ open, setOpen, caseId}) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="province"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
@@ -119,7 +119,7 @@ export default function AddSubCase({ open, setOpen, caseId}) {
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="district"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
@@ -127,7 +127,7 @@ export default function AddSubCase({ open, setOpen, caseId}) {
                             <Col xs={24} md={{ span: 11 }}>
                                 <Form.Item
                                     name="commune"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
@@ -135,7 +135,7 @@ export default function AddSubCase({ open, setOpen, caseId}) {
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="village"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
                                 </Form.Item>
@@ -147,7 +147,7 @@ export default function AddSubCase({ open, setOpen, caseId}) {
                     <Col xs={24} md={province === "សៀមរាប" ? { span: 11 } : {span: 11, offset: 2}}>
                         <Form.Item
                             name="status"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Select
                                 showSearch
@@ -167,7 +167,7 @@ export default function AddSubCase({ open, setOpen, caseId}) {
                     <Col xs={24} md={province === "សៀមរាប" ? {span: 11, offset: 2} : { span: 24 }}>
                         <Form.Item
                             name="relatedInfo"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Select
                                 showSearch

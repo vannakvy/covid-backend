@@ -1,4 +1,7 @@
-import { InMemoryCache, Reference, makeVar } from '@apollo/client';
+import { 
+  InMemoryCache, 
+  // Reference, 
+  makeVar } from '@apollo/client';
 
 
 // Initializes to true if localStorage includes a 'token' key,

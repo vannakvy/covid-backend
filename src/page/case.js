@@ -23,21 +23,31 @@ export default function Case() {
             keyword: keyword,
         }, onCompleted: ({ getCaseWithPagination }) => {
             // console.log("casePage",getCaseWithPagination)
-            // setCaseData(getCaseWithPagination)
+            setCaseData(getCaseWithPagination)
         },
         fetchPolicy:"network-only"
     })
 
     const [deleteCase, { loading: deleteLoading }] = useMutation(DELETE_CASE_BY_ID, {
         onCompleted: () => {
-            refetch()
+            if(loading){
+                message.loading("កំពុងលុបទិន្នន័យ...")
+            }else{
+                refetch()
             message.success("លុបទិន្នន័យជោគជ័យ")
+            }
+            
         }
     })
 
     useEffect(()=>{
         if(data){
-            setCaseData(data?.getCaseWithPagination)
+            if(loading){
+                message.loading("កំពុងទាញ...")
+            }else{
+                setCaseData(data?.getCaseWithPagination)
+            }
+            
         }
     },[data])
 
@@ -102,6 +112,9 @@ export default function Case() {
                     sticky
                 />
             </Col>
+            {
+                // console.log(caseData?.cases?.length,caseData?.paginator?.totalDocs)
+            }
         </Row>
     )
 }

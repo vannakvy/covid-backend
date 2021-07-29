@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Form, Modal, Input, Row, Col, Button, DatePicker, message } from 'antd'
 import { ListSelect } from '../../../static/own-comp'
 import { setEditSubHospital } from '../../../function/set'
@@ -12,8 +12,13 @@ export default function EditSubHospital({ open, setOpen, data, hospitalId, peopl
 
     const [updateHospitalization, { loading }] = useMutation(UPDATE_PERSON_BY_HOSPITALINFO, {
         onCompleted: () => {
-            setRefetch()
-            message.success("កែប្រែទិន្នន័យជោគជ័យ")
+            if(loading){
+                message.loading("កំពុងកែប្រែទិន្នន័យ...")
+            }else{
+                setRefetch()
+                message.success("កែប្រែទិន្នន័យជោគជ័យ")
+            }
+            
         }
     })
 

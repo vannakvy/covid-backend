@@ -1,6 +1,5 @@
 import { Space, Popconfirm } from 'antd'
 import {
-    EditOutlined,
     DeleteOutlined,
     EyeOutlined
 } from '@ant-design/icons';

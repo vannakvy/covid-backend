@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import MenuHeader from './dynamic/menu';
 import Navbar from './dynamic/navbar';
 import {
@@ -16,7 +16,7 @@ import UserContext from './context/userContext';
 import QuarantineContext from './context/quarantineContext';
 import HospitalContext from './context/hospitalContext';
 
-import Dashboard from './page/dashboard';
+// import Dashboard from './page/dashboard';
 import Case from './page/case'
 import SubCase from './component/case/subCase';
 import User from './page/user';
@@ -37,7 +37,7 @@ import Location from './page/location';
 import SubLocation from './component/location/subLocation';
 import Interview from './page/interview';
 import NotFound from './component/NotFound';
-import ImageBack from './asset/cover-bg.jpg'
+// import ImageBack from './asset/cover-bg.jpg'
 const { Footer, Content } = Layout
 const Routes = () => {
   const { data: isLogin } = useQuery(IS_LOGGED_IN);

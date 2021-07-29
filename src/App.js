@@ -1,12 +1,12 @@
 import './static/App.css';
 
-import React, { useState } from 'react'
+import React from 'react'
 import {cache} from './cache'
 import {
   split,
-   HttpLink,
+  //  HttpLink,
   ApolloClient,
-  InMemoryCache,
+  // InMemoryCache,
   ApolloProvider
 } from "@apollo/client";
 import { createUploadLink } from 'apollo-upload-client';

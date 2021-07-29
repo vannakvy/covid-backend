@@ -1,4 +1,4 @@
-import React, { useContext,useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import { Modal, Form, Input, Row, Col, Button,Select, Divider, message} from 'antd';
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
@@ -40,12 +40,6 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
-    };
-
-    const setToGenderFn = (e) => {
-        form.setFieldsValue({
-            gender: e
-        });
     };
 
     const setToProviceFn = (e) => {
@@ -161,7 +155,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24}>
                         <Form.Item
                             name="other"
-                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ចំណាំ" />
                         </Form.Item>
@@ -170,7 +164,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="long"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="longtitude" />
                         </Form.Item>
@@ -179,7 +173,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11 , offset:2}}>
                         <Form.Item
                             name="lat"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="latitude" />
                         </Form.Item>

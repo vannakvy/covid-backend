@@ -1,14 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Form, Input, Row, Col, Button, Select, Divider, DatePicker, message, Checkbox } from 'antd'
 import { provinceData, districtData, communeData, villageData, genderData, nationalityData } from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
 import { useQuery, useMutation } from '@apollo/client'
 import { GET_ALL_CASES_NO_LIMIT } from '../../../graphql/case'
-import { CREATE_NEW_PERSON } from '../../../graphql/people'
 import { UPDATE_PERSON_BY_ID } from '../../../graphql/people'
-import { setEditPeople } from '../../../function/set'
-import AddCase from '../../case/modal/addCase'
 
 const { Option } = Select
 
@@ -56,7 +53,7 @@ export default function EditPeople({ open, setOpen, personId, personalData, setR
     }, [personalData, open])
 
     const onFinish = (values) => {
-        console.log('Success:', { ...setEditPeople(values), case: caseData.id,englishName: values.englishName, patientId: values.patientId, relation: values.relation, illness: values.illness});
+        //console.log('Success:', { ...setEditPeople(values), case: caseData.id,englishName: values.englishName, patientId: values.patientId, relation: values.relation, illness: values.illness});
         // illness: values.illness
         updatePersonalInfo({
             variables: {

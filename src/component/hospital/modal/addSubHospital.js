@@ -1,13 +1,9 @@
-import React, { useContext, useState } from 'react'
-import { Form, Modal, Input, Row, Col, Button, Select, message, DatePicker } from 'antd'
+import React from 'react'
+import { Form, Modal, Input, Row, Col, Button, message, DatePicker } from 'antd'
 import { ListSelect } from '../../../static/own-comp'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
-import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
 import { useMutation } from '@apollo/client'
 import { CREATE_NEW_HOSPITALIZATION } from '../../../graphql/hospital'
 import moment from 'moment'
-
-const { Option } = Select
 
 export default function AddSubHospital({ open, setOpen, hospitalId, peopleData, setRefetch }) {
 
@@ -15,8 +11,13 @@ export default function AddSubHospital({ open, setOpen, hospitalId, peopleData, 
 
     const [createHospitalization, { loading }] = useMutation(CREATE_NEW_HOSPITALIZATION, {
         onCompleted: () => {
-            setRefetch()
-            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            if (loading) {
+                message.loading("កំពុងបញ្ចូលទិន្នន័យ...")
+            } else {
+                setRefetch()
+                message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            }
+
         }
     })
 

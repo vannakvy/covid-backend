@@ -1,19 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { Modal, Form, Input, Row, Col, Button, Select, DatePicker } from 'antd'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
-import { ListSelect } from '../../../static/own-comp'
-import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
-import { PeopleController } from '../../../context/peopleContext'
 
 export default function AddPeopleStatus({ open, setOpen }) {
-    const { peopleDataDispatch } = useContext(PeopleController)
-
     let [form] = Form.useForm()
 
     const onFinish = (values) => {
         console.log('Success:', values);
-
-        peopleDataDispatch({ type: 'ADD_PEOPLE', payload: values })
 
         setOpen(false)
         form.resetFields()
@@ -41,7 +33,7 @@ export default function AddPeopleStatus({ open, setOpen }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="date"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបវិច្ឆេទ" style={{width:"100%"}}/>
                         </Form.Item>
@@ -49,7 +41,7 @@ export default function AddPeopleStatus({ open, setOpen }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="status"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ស្ថានភាព" />
                         </Form.Item>
@@ -58,7 +50,7 @@ export default function AddPeopleStatus({ open, setOpen }) {
                     <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
                             name="remark"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ផ្សេងៗ" />
                         </Form.Item>

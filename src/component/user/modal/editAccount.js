@@ -81,7 +81,7 @@ export default function EditAccount({ open, setOpen, data,setRefetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="username"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ឈ្មោះសម្គាល់អ្នកប្រើប្រាស់" />
                         </Form.Item>
@@ -90,7 +90,7 @@ export default function EditAccount({ open, setOpen, data,setRefetch }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="password"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input.Password placeholder="លេខកូដសម្ងាត់" style={{ width: "100%" }} iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
                         </Form.Item>
@@ -99,7 +99,7 @@ export default function EditAccount({ open, setOpen, data,setRefetch }) {
                     <Col xs={24} md={{ span: 11}}>
                         <Form.Item
                             name="cfpassword"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input.Password placeholder="បញ្ជាក់លេខកូដសម្ងាត់" style={{ width: "100%" }} iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
                         </Form.Item>

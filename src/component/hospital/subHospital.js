@@ -1,7 +1,6 @@
-import { Col, Row, Typography, Table, message, List, Avatar } from 'antd'
-import React, { useState, useContext, useEffect } from 'react'
+import { Col, Row, Typography, Table, message } from 'antd'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { HospitalController } from '../../context/hospitalContext'
 import moment from 'moment'
 import { subHospitalCol } from './tableColumn/subHospitalColumn'
 import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
@@ -19,11 +18,8 @@ const { Title } = Typography
 
 export default function SubHospital() {
 
-    //const { hospitalData, subHospitalData, subHospitalDataDispatch } = useContext(HospitalController)
-
     let { id } = useParams();
 
-    const [headerData, setHeaderData] = useState()
     const [updateSubData, setUpdateSubData] = useState({})
     const [peopleData, setPeopleData] = useState([])
     const [openEdit, setOpenEdit] = useState(false)
@@ -67,7 +63,7 @@ export default function SubHospital() {
             hospitalId: id
         },
         onCompleted: ({ getQuarantineByHospitalIdIdWithPagination }) => {
-           
+
             setSubHospitalData(getQuarantineByHospitalIdIdWithPagination)
         }
     })
@@ -80,8 +76,13 @@ export default function SubHospital() {
 
     const [deleteHospitalization, { loading }] = useMutation(DELETE_PERSON_BY_HOSPITAL, {
         onCompleted: () => {
-            refetchSub()
-            message.success("លុបទិន្នន័យជោគជ័យ")
+            if (loading) {
+                message.loading("កំពុងលុបទិន្នន័យ...")
+            } else {
+                refetchSub()
+                message.success("លុបទិន្នន័យជោគជ័យ")
+            }
+
         }
     })
 

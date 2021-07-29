@@ -66,7 +66,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="personalInfo"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             {/* <Input placeholder="ឈ្មោះ" /> */}
                             <Select placeholder="អ្នកចត្តាឡីស័ក" style={{ width: "100%" }} onChange={(e) => console.log(e)}>
@@ -81,7 +81,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="personalType"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
 
                             <Select placeholder="ប្រភេទ" style={{ width: "100%" }}>
@@ -95,7 +95,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="date_in"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>
@@ -104,7 +104,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="date_out"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>
@@ -113,7 +113,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                     <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
                             name="others"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
 
                             <Input placeholder="ផ្សេងៗ" />
