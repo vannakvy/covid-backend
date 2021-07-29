@@ -251,22 +251,18 @@ mutation deleteQuarantine($id:ID!){
 
 export const UPDATE_PEOPLE_BY_QUARANTINE = gql`
 mutation updateQuarantine(
-    $in:Boolean,
     $date_in:DateTime,
     $date_out:DateTime,
     $personalType:String,
-    $out_status:String,
     $personalInfo:ID!,
     $quarantineInfo:ID!,
     $others:String,
     $id:ID!
 ){
   updateQuarantine(updatedQuarantine:{
-    in:$in
     date_in:$date_in
     date_out:$date_out
     personalType:$personalType
-    out_status:$out_status
     personalInfo:$personalInfo
     quarantineInfo:$quarantineInfo
     others:$others

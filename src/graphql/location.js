@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client'
+import { gql } from '@apollo/client'
 
 export const GET_ALL_LOCATION = gql`
 query{
@@ -98,3 +98,34 @@ mutation deleteAffectedLocation($id:ID!){
 }
 
 `
+
+export const UPDATE_AFFECTEDLOCATION_BY_ID = gql`
+mutation updateAffectedLocation(
+  $id:ID!,
+  $affectedLocationName: String,
+  $village: String,
+  $commune: String,
+  $district: String,
+  $province: String,
+  $other: String,
+  $openAt: DateTime,
+  $closeAt: DateTime,
+  $long: Float,
+  $lat: Float,
+  ){
+  updateAffectedLocation(id:$id, updatedAffectedLocation:{
+affectedLocationName: $affectedLocationName
+village: $village
+commune: $commune
+district: $district
+province: $province
+other: $other
+openAt: $openAt
+closeAt: $closeAt
+long: $long
+lat: $lat
+  }){
+    success
+    message
+  }
+}`

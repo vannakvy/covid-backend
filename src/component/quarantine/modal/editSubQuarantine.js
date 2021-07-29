@@ -1,18 +1,18 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Form, Modal, Input, Row, Col, Button, Select, DatePicker, message } from 'antd'
-import { QuarantineController } from '../../../context/quarantineContext'
 import { setEditSubQuarantine } from '../../../function/set'
 import { useMutation } from '@apollo/client'
 import { UPDATE_PEOPLE_BY_QUARANTINE } from '../../../graphql/quarantine'
 import moment from 'moment'
 const { Option } = Select
 
-export default function EditSubQuarantine({ open, setOpen, data, quarantineId, peopleData }) {
+export default function EditSubQuarantine({ open, setOpen, data, quarantineId, peopleData, setRefetch }) {
 
     let [form] = Form.useForm()
 
     const [updateQuarantine,{loading}]=useMutation(UPDATE_PEOPLE_BY_QUARANTINE,{
         onCompleted:()=>{
+            setRefetch()
             message.success("កែប្រែទិន្នន័យជោគជ័យ")
         }
     })
@@ -23,10 +23,7 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
     }, [data, open])
 
     const onFinish = (values) => {
-        console.log('Success:', values);
 
-        // subQuarantineDataDispatch({type: 'EDIT_SUB_QUARANTINE', payload: {...values, id: data.id}})
-        // setData({...values, id: data.id})
         updateQuarantine({
             variables:{
                 in:values.in,
@@ -91,19 +88,6 @@ export default function EditSubQuarantine({ open, setOpen, data, quarantineId, p
                                 <Option value="សហគមន៍">សហគមន៍</Option>
                                 <Option value="តាមផ្លូងអាកាស">តាមផ្លូងអាកាស</Option>
                                 <Option value="ពលករ">ពលករ</Option>
-                            </Select>
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} md={{ span: 24 }}>
-                        <Form.Item
-                            name="in"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
-                        >
-
-                            <Select placeholder="ចត្តាឡីស័ក" style={{ width: "100%" }}>
-                                <Option value={true}>ចូល</Option>
-                                <Option value={false}>ចេញ</Option>
                             </Select>
                         </Form.Item>
                     </Col>

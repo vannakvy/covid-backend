@@ -8,7 +8,7 @@ import { CREATE_NEW_CASE } from '../../../graphql/case'
 import { useMutation } from '@apollo/client'
 import moment from 'moment'
 
-export default function AddCase({ open, setOpen, refetch, caseId, setCaseId }) {
+export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }) {
     //const { caseDataDispatch } = useContext(CaseController)
     const [createCase, { loading, error }] = useMutation(CREATE_NEW_CASE, {
         onCompleted: ({ createCase }) => {
@@ -17,7 +17,7 @@ export default function AddCase({ open, setOpen, refetch, caseId, setCaseId }) {
             if (caseId === "new") {
                 setCaseId(createCase.case)
             } else {
-                refetch()
+                setRefetch()
             }
         },
         onError: (error) => {

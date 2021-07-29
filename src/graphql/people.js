@@ -145,6 +145,11 @@ mutation recordSampleTest(
   $result:Boolean,
   $symptom:String,
   $other:String,
+  $reasonForTesting:String,
+  $symptomStart:DateTime,
+  $labFormCompletedBy:String,
+  $specimentType:String,
+  $laboratory:String,
   $personalInfoId:ID!,
 ){
   recordSampleTest(sampleTest:{
@@ -154,6 +159,11 @@ mutation recordSampleTest(
     result:$result
     symptom:$symptom
     other:$other
+    reasonForTesting:$reasonForTesting
+    symptomStart:$symptomStart
+    labFormCompletedBy:$labFormCompletedBy
+    specimentType:$specimentType
+    laboratory:$laboratory
   },personalInfoId:$personalInfoId){
     message
     success
@@ -182,6 +192,7 @@ query getPersonalInfoById($id:ID!){
     englishName
     patientId
     illness
+    createdAt
     relation
     case{
       id
@@ -216,6 +227,11 @@ query getPersonalInfoById($id:ID!){
       result
       symptom
       other
+      reasonForTesting
+      symptomStart
+      labFormCompletedBy
+      specimentType
+      laboratory
     }
   }
 }
@@ -319,4 +335,78 @@ mutation updatePersonalInfo(
     message
   }
 }
+`;
+
+export const DELETE_SAMPLETEST = gql`
+mutation deleteSampleTest($sampleTestId:ID!,$personalInfoId:ID!){
+  deleteSampleTest(sampleTestId:$sampleTestId,personalInfoId:$personalInfoId){
+    success
+    message
+  }
+}
+
+`
+
+export const UPDATE_CURRENTSTATE_BY_ID = gql`
+mutation updateCurrentState(
+  $personalInfoId:ID!,
+  $confirm: Boolean,
+  $confirmedAt: DateTime,
+  $recovered: Boolean,
+  $recoveredAt: DateTime,
+  $death: Boolean,
+  $deathAt: DateTime
+){
+  updateCurrentState(personalInfoId:$personalInfoId,updateValue:{
+    confirm:$confirm
+    confirmedAt:$confirmedAt
+    recovered:$recovered
+    recoveredAt:$recoveredAt
+    death:$death
+    deathAt:$deathAt
+  }){
+    success
+    message
+  }
+}
+`
+
+
+export const GET_INTERVIEW = gql`
+query getConfirmedPersonalInfoByInterviewWithPagination($interview: Boolean,$page:Int!,$limit:Int!,$keyword:String){
+  getConfirmedPersonalInfoByInterviewWithPagination(interview:$interview, page:$page,limit:$limit,keyword:$keyword){
+        personalInfos{
+          id
+          idCard
+          patientId
+          firstName
+          lastName
+          gender
+          age
+          nationality
+          village
+          commune
+          district
+          province
+          tel
+          other
+          interviewed
+          currentState{ 
+            confirm
+          }
+        }
+      paginator{
+        slNo
+        prev
+        next
+        perPage
+        totalPosts
+        totalPages
+        currentPage
+        hasPrevPage
+        hasNextPage
+        totalDocs
+      }
+    }
+  }
 `;

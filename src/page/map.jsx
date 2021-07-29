@@ -282,7 +282,7 @@ const MapScreen = () => {
         />
       </div>
       <div className="app__right">
-        <Card className="first-card" style={{ marginTop: "70px" }}>
+        <Card className="first-card" style={{ marginTop: "55px" }}>
           <CardContent >
             <div className="app__information">
               <h3 className="covid_table">អ្នកវិជ្ជមានតាមក្រុង/ស្រុក</h3>
@@ -291,13 +291,13 @@ const MapScreen = () => {
             </div>
           </CardContent>
         </Card>
-        <Card  className="sec-card" style={{ marginTop: "10px" }}>
+        <Card className="sec-card" style={{ marginTop: "10px" }}>
           <CardContent>
               <h3>ទិន្នន័យសរុប</h3>
             <BarGraph />
           </CardContent>
         </Card>
-        <Card style={{ marginTop: "10px" }}>
+        <Card className="third-card" style={{ marginTop: "10px" }}>
           <CardContent>
             {casesType === "recovered" ? (
               <h3>អ្នកជាសះស្បើយ ទូទាំងខេត្ត</h3>

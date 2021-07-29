@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
-import { CaseController } from '../../../context/caseContext'
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
@@ -9,8 +8,7 @@ import {setEditSubCase} from '../../../function/set'
 const { Option } = Select
 
 export default function EditSubCase({ open, setOpen, data, setData }) {
-    const {subCaseDataDispatch} = useContext(CaseController)
-    
+
     let [form] = Form.useForm()
 
     const [province, setProvince] = useState("")
@@ -28,9 +26,6 @@ export default function EditSubCase({ open, setOpen, data, setData }) {
 
     const onFinish = (values) => {
         console.log('Success:', values);
-
-        subCaseDataDispatch({type: 'EDIT_SUB_CASE', payload: {...values, id: data.id}})
-        setData({...values, id: data.id})
 
         setOpen(false)
         form.resetFields()

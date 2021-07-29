@@ -16,6 +16,7 @@ export const caseCol = ({ handleDelete, limit, page }) => {
             width: 50,
             render: (text, record, i) => (
                 <Space size="middle">
+                {console.log(page)}
                     {no += 1}
                 </Space>
             ),

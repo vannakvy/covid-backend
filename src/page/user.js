@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Row, Col, Button, Input, Table, message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { userCol } from '../component/user/tableColumn/userColumn'
-import { UserController } from '../context/userContext'
 import AddUser from '../component/user/modal/addUser';
 import EditUser from '../component/user/modal/editUser';
 import { useQuery, useMutation } from '@apollo/client'
@@ -34,8 +33,8 @@ export default function User() {
             limit: limit,
             keyword: keyword,
         }, onCompleted: ({ getUserWithPagination }) => {
-            console.log(getUserWithPagination)
-            setUserData(getUserWithPagination)
+            //console.log(getUserWithPagination)
+            setUserData(data?.getUserWithPagination)
         }
     })
 
@@ -46,6 +45,12 @@ export default function User() {
             message.success("លុបបានជោគជ័យ")
         }
     })
+
+    useEffect(()=>{
+        if(data){
+            setUserData(data?.getUserWithPagination)
+        }
+    },[data])
 
     useEffect(() => {
         refetch()
@@ -68,7 +73,7 @@ export default function User() {
 
     const handleDelete = (e) => {
         //userDataDispatch({ type: "DELETE_USER", payload: e })
-        console.log(e)
+        // console.log(e)
         deleteUser({variables:{
             userId:e
         }})
@@ -76,10 +81,10 @@ export default function User() {
 
     return (
         <Row>
-            <AddUser open={openAdd} setOpen={setOpenAdd} />
-            <EditUser open={openEdit} setOpen={setOpenEdit} data={userEdit} />
-            <AddRole open={openRole} setOpen={setOpenRole} userID={roleUserID} dataRoles={dataRoles} />
-            <EditAccount open={openEditAccount} setOpen={setOpenEditAccount} data={userEdit} />
+            <AddUser open={openAdd} setOpen={setOpenAdd} setRefetch={refetch} />
+            <EditUser open={openEdit} setOpen={setOpenEdit} data={userEdit} setRefetch={refetch} />
+            <AddRole open={openRole} setOpen={setOpenRole} userID={roleUserID} dataRoles={dataRoles} setRefetch={refetch} />
+            <EditAccount open={openEditAccount} setOpen={setOpenEditAccount} data={userEdit} setRefetch={refetch} />
             <Col
                 xs={8}
                 md={18}

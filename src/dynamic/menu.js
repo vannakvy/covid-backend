@@ -23,7 +23,6 @@ const { SubMenu } = Menu;
 
 export default function MenuHeader() {
     const { urlPath, user } = useContext(HeaderData)
-console.log(user,"testing")
     const [collapsed, setCollapsed] = useState(false)
 
     // const token =()=>{
@@ -39,12 +38,14 @@ console.log(user,"testing")
 
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)}
+        className="side-custom"
             style={{
                 // backgroundColor: '#06385f' 
                 // backgroundColor: '#22252A' 
                 // backgroundColor:'#1e3b87'
                 // backgroundColor:'#005438'
-                background: 'repeating-linear-gradient(-55deg,#005b3d,#005b3d 30px,#005438 30px,#005438 40px)'
+                // background: 'repeating-linear-gradient(-55deg,#005b3d,#005b3d 30px,#005438 30px,#005438 40px)'
+                // background: 'url("../asset/covid-19-bg.png") repeat center'
 
             }}>
             <Link to="/">

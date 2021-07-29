@@ -10,7 +10,7 @@ import moment from 'moment'
 
 const {Option} = Select
 
-export default function AddPeopleTest({ open, setOpen, peopleID }) {
+export default function AddPeopleTest({ open, setOpen, peopleID, setRefetch }) {
     //const { peopleDataDispatch } = useContext(PeopleController)
 
     let [form] = Form.useForm()
@@ -37,6 +37,10 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
                 symptom:values.symptom,
                 other:values.other,
                 personalInfoId:peopleID,
+                labFormCompletedBy: values.labFormCompletedBy,
+                laboratory:values.laboratory,
+                reasonForTesting:values.reasonForTesting,
+                symptomStart:moment(values.symptomStart).format(),
             }
         })
 
@@ -66,7 +70,7 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="date"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបវិច្ឆេទការធ្វើតេស្ត" style={{width:"100%"}}/>
                         </Form.Item>
@@ -74,7 +78,7 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="location"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ទីតាំង" />
                         </Form.Item>
@@ -82,8 +86,66 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
 
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
+                            name="reasonForTesting"
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        >
+                            {/* <Input placeholder="លទ្ធផល" /> */}
+                            <Select placeholder="បំណងធ្វើតេស្ត" style={{ width: "100%" }}>
+                                <Option value="សង្ស័យ">សង្ស័យ</Option>
+                                <Option value="រលាកសួត">រលាកសួត</Option>
+                                <Option value="បុគ្គលិកពេទ្យ">បុគ្គលិកពេទ្យ</Option>
+                                <Option value="ពលករ">ពលករ</Option>
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset:2 }}>
+                        <Form.Item
+                            name="symptomStart"
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        >
+                            <DatePicker placeholder="កាលបរិច្ឆេទរោគសញ្ញា" style={{width:"100%"}}/>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="specimentType"
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        >
+                            {/* <Input placeholder="លទ្ធផល" /> */}
+                            <Select placeholder="វត្ថុវិភាគ" style={{ width: "100%" }}>
+                                <Option value="ច្រមុះ">ច្រមុះ</Option>
+                                <Option value="បំពង់ក">បំពង់ក</Option>
+                                <Option value="ផ្សេងទៀត">ផ្សេងទៀត</Option>
+                                
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset:2 }}>
+                        <Form.Item
+                            name="laboratory"
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        >
+                             <Select placeholder="មន្ទីពិសោធន៍" style={{ width: "100%" }}>
+                                <Option value="IPC">IPC</Option>
+                                <Option value="NIPH">NIPH</Option>
+                                <Option value="PKML">PKML</Option>
+                                <Option value="MKB">MKB</Option>
+                                <Option value="BTB">BTB</Option>
+                                <Option value="TKV">TKV</Option>
+                                <Option value="SRH">SRH</Option>
+                                <Option value="NBTC">NBTC</Option>
+                                <Option value="SHV">SHV</Option>
+                            </Select>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
                             name="result"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             {/* <Input placeholder="លទ្ធផល" /> */}
                             <Select placeholder="លទ្ធផល" style={{ width: "100%" }}>
@@ -96,7 +158,7 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="times"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="លើក" />
                         </Form.Item>
@@ -105,11 +167,12 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
                     <Col xs={24} md={{ span: 24}}>
                         <Form.Item
                             name="symptom"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="អាការ" />
                         </Form.Item>
                     </Col>
+
 
                     <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
@@ -117,6 +180,15 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
                         
                         >
                             <Input placeholder="ចំណាំ" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11}}>
+                        <Form.Item
+                            name="labFormCompletedBy"
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        >
+                            <Input placeholder="បំពេញទំរង់ដោយ" />
                         </Form.Item>
                     </Col>
 

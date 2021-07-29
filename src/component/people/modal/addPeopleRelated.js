@@ -11,7 +11,7 @@ import { setAddPeople } from '../../../function/set'
 
 const { Option } = Select
 
-export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
+export default function AddPeopleRelated({ open, setOpen, caseId, setRefetch }) {
 
 
     let [form] = Form.useForm()
@@ -23,8 +23,9 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
 
     const [createPersonalInfo, { loading: loadingCreate, error: errorCreate }] = useMutation(CREATE_NEW_PERSON, {
         onCompleted: ({ createPersonalInfo }) => {
-            // message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
-            refetch()
+            setRefetch()
+            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+            
         },
         onError: (error) => {
             console.log(error.message)
@@ -42,7 +43,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
     const onFinish = (values) => {
         console.log('Success:', setAddPeople(values));
 
-        createPersonalInfo({ variables: {...setAddPeople(values),case:caseId} })
+        createPersonalInfo({ variables: { ...setAddPeople(values), case: caseId,englishName: values.englishName, patientId: values.patientId, relation: values.relation, illness: values.illness  } })
 
         setOpen(false)
         // form.resetFields()
@@ -100,7 +101,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
 
     return (
         <Modal
-            title="បញ្ចូលប្រជាជនថ្មី"
+            title="បញ្ចូលអ្នកពាក់ព័ន្ធថ្មី"
             visible={open}
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
@@ -113,18 +114,27 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                 onFinishFailed={onFinishFailed}
             >
                 <Row>
-                    <Col xs={24} md={{ span: 24 }}>
+                    <Col xs={24} md={{ span:11 }}>
                         <Form.Item
                             name="idCard"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="អត្តសញ្ញាណប័ណ្ណ" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
+                        <Form.Item
+                            name="patientId"
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        >
+                            <Input placeholder="អត្តលេខអ្នកជំងឺ" />
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="lastName"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="គោត្តនាម" />
                         </Form.Item>
@@ -133,7 +143,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="firstName"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="នាម" />
                         </Form.Item>
@@ -142,7 +152,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="gender"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
 
                             <ListSelect type={0} data={genderData} title="ភេទ" setValue={setToGenderFn} />
@@ -152,7 +162,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="age"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="អាយុ" type="number" />
                         </Form.Item>
@@ -161,7 +171,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="occupation"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="មុខរបរ" />
                         </Form.Item>
@@ -169,7 +179,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="tel"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ទូរស័ព្ទ" addonBefore="+855" type="number" />
                         </Form.Item>
@@ -178,7 +188,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="nationality"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="សញ្ជាតិ" />
                         </Form.Item>
@@ -189,7 +199,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="province"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
@@ -200,7 +210,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                             <Col xs={24} md={{ span: 11 }}>
                                 <Form.Item
                                     name="district"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
@@ -208,7 +218,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="commune"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
@@ -216,7 +226,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                             <Col xs={24} md={{ span: 24 }}>
                                 <Form.Item
                                     name="village"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
                                 </Form.Item>
@@ -224,12 +234,30 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                         </>
                     ) : null}
 
-                    <Col xs={24} md={{ span: 24 }}>
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="relation"
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        >
+                            <Input placeholder="ត្រូវជា" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11, offset:2 }}>
                         <Form.Item
                             name="vaccinated"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="ចំនួនចាក់វ៉ាក់សាំង" />
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={{ span: 11 }}>
+                        <Form.Item
+                            name="illness"
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
+                        >
+                            <Input placeholder="ជំងឺប្រចាំកាយ" />
                         </Form.Item>
                     </Col>
 
@@ -237,7 +265,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     {/* <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="case"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Select placeholder="ករណី" style={{ width: "100%" }} onChange={(e)=> console.log(e)}>
                                 {
@@ -250,10 +278,10 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                         </Form.Item>
                     </Col> */}
 
-                    <Col xs={24} md={{ span: 11, offset:0 }}>
+                    <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="direct"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Select placeholder="លក្ខណៈពាក់ព័ន្ធ" style={{ width: "100%" }}>
                                 <Option value={true}>ផ្ទាល់</Option>
@@ -267,7 +295,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="status"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Select placeholder="ស្ថានភាព" style={{ width: "100%" }}>
                                 <Option value="អវិជ្ជមាន">អវិជ្ជមាន</Option>
@@ -280,7 +308,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11,offset:2 }}>
                         <Form.Item
                             name="date"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទ" style={{ width: "100%" }} />
                         </Form.Item>
@@ -289,7 +317,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="direct"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Select placeholder="លក្ខណៈពាក់ព័ន្ធ" style={{ width: "100%" }}>
                                 <Option value={true}>ផ្ទាល់</Option>
@@ -310,7 +338,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
 
 
 
-                    <Col xs={24} md={{ span: 11, offset:2 }}>
+                    <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="other"
 
@@ -318,7 +346,7 @@ export default function AddPeopleRelated({ open, setOpen, caseId,refetch }) {
                             <Input placeholder="ចំណាំ" />
                         </Form.Item>
                     </Col>
-                    
+
 
                     <Col xs={24}>
                         <Form.Item

@@ -1,28 +1,24 @@
 import React, { useContext, useState } from 'react'
 import { Modal, Form, Input, Row, Col, Button, Select, message, Table } from 'antd';
-import { UserController } from '../../../context/userContext'
 import { useMutation } from '@apollo/client';
 import { ADD_USER_ROLE } from '../../../graphql/auth';
 import { roleColumn } from '../tableColumn/roleColumn';
 
 const { Option } = Select;
 
-export default function AddRole({ open, setOpen,userID, dataRoles }) {
+export default function AddRole({ open, setOpen,userID, dataRoles , setRefetch }) {
    
     const [addRole, { loading, error }] = useMutation(ADD_USER_ROLE, {
         onCompleted: ({ addRole }) => {
+            setRefetch()
             message.success("បញ្ចូលបានជោគជ័យ")
         },
         onError: (error) => {
-            console.log(error.message)
             message.error("បញ្ចូលបានជោគជ័យ")
         }
     })
 
     let [form] = Form.useForm()
-    // const [data, setData] = useState(dataRoles)
-
-    // console.log(userID)
 
     const onFinish = (values) => {
         // console.log('Success:', values);

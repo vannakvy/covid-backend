@@ -1,6 +1,5 @@
 import React, { useContext,useState,useEffect } from 'react'
 import { Modal, Form, Input, Row, Col, Button,Select, Divider, message} from 'antd';
-import { QuarantineController } from '../../../context/quarantineContext'
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
 import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
@@ -10,8 +9,7 @@ import { setAddQuarantine } from '../../../function/set';
 
 const { Option } = Select;
 
-export default function AddQuarantine({ open, setOpen, quarantineId, setQuarantineId }) {
-    //const { quarantineDataDispatch } = useContext(QuarantineController)
+export default function AddQuarantine({ open, setOpen, quarantineId, setQuarantineId , setRefetch }) {
 
     let [form] = Form.useForm()
 
@@ -21,21 +19,18 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
 
     const [createQuarantineInfo,{loading,error}]=useMutation(CREATE_QUARANTINEINFO,{
         onCompleted:({createQuarantineInfo})=>{
-            console.log("test",createQuarantineInfo)
+            
             message.success("បញ្ចូលបានជោគជ័យ")
             if (quarantineId === "new") {
                 setQuarantineId(createQuarantineInfo.quarantineInfo)
             }else{
-                // setRefetch()
+                setRefetch()
             }
         },
         
     })
 
     const onFinish = (values) => {
-        // console.log('Success:', values);
-
-        //quarantineDataDispatch({ type: 'ADD_QUARANTINE', payload: values })
 
         createQuarantineInfo({variables:setAddQuarantine(values)})
 
@@ -118,7 +113,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="locationName"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ឈ្មោះមណ្ឌល" />
                         </Form.Item>
@@ -128,7 +123,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11, offset:2 }}>
                         <Form.Item
                             name="province"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
@@ -139,7 +134,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                             <Col xs={24} md={{ span: 11, offset: 0 }}>
                                 <Form.Item
                                     name="district"
-                                    rules={[{ required: true, message: 'Field is required!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
@@ -147,7 +142,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="commune"
-                                    rules={[{ required: true, message: 'Field is required!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
@@ -155,7 +150,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                             <Col xs={24} md={{ span: 24, offset: 0 }}>
                                 <Form.Item
                                     name="village"
-                                    rules={[{ required: true, message: 'Field is required!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
                                 </Form.Item>
@@ -175,7 +170,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="long"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input type="number" placeholder="longtitude" />
                         </Form.Item>
@@ -184,7 +179,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11 , offset:2}}>
                         <Form.Item
                             name="lat"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input type="number" placeholder="latitude" />
                         </Form.Item>
@@ -194,7 +189,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="firstName"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="នាម" style={{ width: "100%" }} />
                         </Form.Item>
@@ -203,7 +198,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lastName"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="គោត្តនាម" style={{ width: "100%" }} />
                         </Form.Item>
@@ -212,7 +207,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="position"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="តួនាទីការងារ" style={{ width: "100%" }} />
                         </Form.Item>
@@ -221,7 +216,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="tel"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="លេខទូរស័ព្ទ" style={{ width: "100%" }} />
                         </Form.Item>
@@ -230,7 +225,7 @@ export default function AddQuarantine({ open, setOpen, quarantineId, setQuaranti
                     <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="others"
-                            //rules={[{ required: true, message: 'Field is required!' }]}
+                            //rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ផ្សេងៗ" style={{ width: "100%" }} />
                         </Form.Item>

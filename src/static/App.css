@@ -284,3 +284,33 @@ h1, h2, h3, h4, h5, h6, p, span, input, li, th, td, button, div, label, title {
   margin: 0;
   padding-bottom: 30px;
 }
+
+.side-custom {
+  background: #005438 url("../asset/covid-19-bg.png") repeat fixed !important;
+}
+
+.nav-custom{
+  background: #005438 url("../asset/covid-19-bg.png") repeat fixed !important;
+}
+
+ul{
+  list-style: none;
+}
+
+.tbl-Report1 > thead > tr > th{
+  width: 100px;
+}
+.tbl-Report1 {
+  font-size: 9pt;
+  width: "100%";
+  text-align: center;
+}
+
+.tbl-Report2 > thead > tr > th{
+  width: 300px;
+}
+.tbl-Report2 {
+  font-size: 9pt;
+  width: "100%";
+  text-align: center;
+}
