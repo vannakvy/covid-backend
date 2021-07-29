@@ -1,14 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { Form, Modal, Input, Row, Col, Button, Select } from 'antd'
-import { CaseController } from '../../../context/caseContext'
 import { ListSelect } from '../../../static/own-comp'
 import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
 import { convertToDistrict, convertToCommune, convertToVillage } from '../../../function/fn'
 
 const { Option } = Select
 
-export default function AddSubCase({ open, setOpen, caseId }) {
-    const { subCaseDataDispatch } = useContext(CaseController)
+export default function AddSubCase({ open, setOpen, caseId}) {
 
     let [form] = Form.useForm()
 
@@ -18,8 +16,6 @@ export default function AddSubCase({ open, setOpen, caseId }) {
 
     const onFinish = (values) => {
         console.log('Success:', values);
-
-        subCaseDataDispatch({ type: 'ADD_SUB_CASE', payload: {...values, caseId: caseId} })
 
         setOpen(false)
         form.resetFields()

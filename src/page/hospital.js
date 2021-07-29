@@ -2,7 +2,6 @@ import React, {useContext, useState, useEffect} from 'react'
 import { Row, Col, Button, Input, Table,message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { hospitalCol } from '../component/hospital/tableColumn/hospitalColumn'
-import { HospitalController } from '../context/hospitalContext'
 import AddHospital from '../component/hospital/modal/addHospital';
 import { useQuery,useMutation } from '@apollo/client';
 import { GET_ALL_HOSPITAL } from '../graphql/hospital';
@@ -10,7 +9,6 @@ import { DELETE_HOSPITALINFO_BY_ID } from '../graphql/hospital';
 
 export default function Hospital() {
 
-    // const {hospitalData, hospitalDataDispatch} = useContext(HospitalController)
     const [hospitalData, setHospitalData] = useState([])
 
     const [openAdd, setOpenAdd] = useState(false)
@@ -25,18 +23,23 @@ export default function Hospital() {
             keyword: keyword,
         },
         onCompleted:({getHospitalInfoWithPagination})=>{
-            console.log(getHospitalInfoWithPagination)
+            
             setHospitalData(getHospitalInfoWithPagination)
         }
     })
+
+    useEffect(()=>{
+        if(data){
+            setHospitalData(data?.getHospitalInfoWithPagination)
+        }
+    }, [data])
 
     const [deleteHospitalInfo, { loading: deleteLoading, error: deleteError }] = useMutation(DELETE_HOSPITALINFO_BY_ID, {     
         onCompleted: () => {
             refetch()
             message.success("ទិន្នន័យត្រូវបានលុប")
         },
-        // refetchQueries: [{ query: GET_ALL_QUARANTINEINFO, variables: { keyword: keyword, limit: limit, page: page } }],
-        // awaitRefetchQueries: true,
+
     })
 
     useEffect(() => {
@@ -53,7 +56,7 @@ export default function Hospital() {
 
     return (
         <Row>
-            <AddHospital open={openAdd} setOpen={setOpenAdd}/>
+            <AddHospital open={openAdd} setOpen={setOpenAdd} setRefetch={refetch}/>
             {/* <EditUser open={openEdit} setOpen={setOpenEdit} user={userEdit} /> */}
             <Col
                 xs={8}

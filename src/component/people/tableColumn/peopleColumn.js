@@ -94,7 +94,7 @@ export const peopleCol = ({handleDelete,limit,page}) => {
             key: 'interview',
             width: 150,
             render: (text, record) => (
-                <span>{record?.interviewed ? "បានសម្ភាស" : "មិនទាន់បានសម្ភាស"}</span>
+                <span>{record?.interviewed ? "រួចរាល់" : "មិនទាន់រួចរាល់"}</span>
                 )
         },
         {

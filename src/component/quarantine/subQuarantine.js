@@ -1,7 +1,6 @@
 import { Col, Row, Typography, Table, message } from 'antd'
 import React, { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { QuarantineController } from '../../context/quarantineContext'
 import moment from 'moment'
 import { subQuarantineCol } from './tableColumn/subQuarantineColumn'
 import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
@@ -17,8 +16,6 @@ import { DELETE_PERSON_BY_QUARANTINE } from '../../graphql/quarantine'
 const {Title} = Typography
 
 export default function SubQuarantine() {
-
-    //const { quarantineData, subQuarantineData, subQuarantineDataDispatch } = useContext(QuarantineController)
 
     const districtLatLong = [
         {
@@ -87,7 +84,6 @@ export default function SubQuarantine() {
     let { id } = useParams();
 
     const [peopleData, setPeopleData] = useState([])
-    const [headerData, setHeaderData] = useState()
     const [updateSubData, setUpdateSubData] = useState({})
 
     const [openEdit, setOpenEdit] = useState(false)
@@ -99,14 +95,14 @@ export default function SubQuarantine() {
     const [keyword, setKeyword] = useState("")
     const [quarantineData,setQuarantineData] = useState({})
 
-    const {data} = useQuery(GET_ALL_PERSONINFO_NO_LIMIT,{
+    const {data, refetch:refetchPerson} = useQuery(GET_ALL_PERSONINFO_NO_LIMIT,{
         onCompleted:({allPersonalInfos})=>{
             // console.log(allPersonalInfos)
             setPeopleData(allPersonalInfos)
         }
     })
 
-    const {data:quarantine,loading} = useQuery(GET_QUARANTINE_BY_ID,{
+    const {data:quarantine,loading, refetch:refetchQuarantine} = useQuery(GET_QUARANTINE_BY_ID,{
         variables:{
             id:id
         },
@@ -116,7 +112,13 @@ export default function SubQuarantine() {
         }
     })
 
-    const {data:subQuarantine} = useQuery(GET_PERSON_BY_QUARANTINE,{
+    useEffect(()=>{
+        if(quarantine){
+            setQuarantineData(quarantine?.getQuarantineInfoById)
+        }
+    },[quarantine])
+
+    const {data:subQuarantine,refetch:refetchSub} = useQuery(GET_PERSON_BY_QUARANTINE,{
         variables:{
             page:page,
             limit:limit,
@@ -132,15 +134,18 @@ export default function SubQuarantine() {
         }
     })
 
+    useEffect(()=>{
+        if(subQuarantine){
+            setSubQuarantineData(subQuarantine?.getQuarantineByQurantineIdWithPagination)
+        }
+    }, [subQuarantine])
+
     const [deleteQuarantine,{loading:deleteLoading}] = useMutation(DELETE_PERSON_BY_QUARANTINE,{
         onCompleted:()=>{
+            refetchSub()
             message.success("លុបទិន្នន័យជោគជ័យ")
         }
     })
-
-    useEffect(() => {
-        // console.log(updateSubData)
-    }, [])
 
     // console.log(headerData)
     const handleDelete = (e) => {
@@ -170,9 +175,9 @@ export default function SubQuarantine() {
         <>
         {/* { loading ? message.loading("test"): */}
         <Row>
-            <EditQuarantine open={openEdit} setOpen={setOpenEdit} data={quarantineData} quarantineId={id}/>
-            <AddSubQuarantine open={openAddSub} setOpen={setOpenAddSub} quarantineId={id} peopleData={peopleData} />
-            <EditSubQuarantine open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} quarantineId={id} peopleData={peopleData} />
+            <EditQuarantine open={openEdit} setOpen={setOpenEdit} data={quarantineData} quarantineId={id} setRefetch={refetchQuarantine}/>
+            <AddSubQuarantine open={openAddSub} setOpen={setOpenAddSub} quarantineId={id} peopleData={peopleData} setRefetch={refetchSub} />
+            <EditSubQuarantine open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} quarantineId={id} peopleData={peopleData} setRefetch={refetchSub} />
             <Col
                 xs={24}
             >

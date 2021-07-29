@@ -10,7 +10,7 @@ import moment from 'moment'
 
 const {Option} = Select
 
-export default function AddPeopleTest({ open, setOpen, peopleID }) {
+export default function AddPeopleTest({ open, setOpen, peopleID, setRefetch }) {
     //const { peopleDataDispatch } = useContext(PeopleController)
 
     let [form] = Form.useForm()
@@ -115,8 +115,8 @@ export default function AddPeopleTest({ open, setOpen, peopleID }) {
                         >
                             {/* <Input placeholder="លទ្ធផល" /> */}
                             <Select placeholder="វត្ថុវិភាគ" style={{ width: "100%" }}>
-                                <Option value="ច្រមុះ">សង្ស័យ</Option>
-                                <Option value="បំពង់ក">រលាកសួត</Option>
+                                <Option value="ច្រមុះ">ច្រមុះ</Option>
+                                <Option value="បំពង់ក">បំពង់ក</Option>
                                 <Option value="ផ្សេងទៀត">ផ្សេងទៀត</Option>
                                 
                             </Select>

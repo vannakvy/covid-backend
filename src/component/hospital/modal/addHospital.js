@@ -10,7 +10,7 @@ import { setAddHospital } from '../../../function/set';
 
 const { Option } = Select;
 
-export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }) {
+export default function AddHospital({ open, setOpen, hospitalId, setHospitalId, setRefetch }) {
     //const { hospitalDataDispatch } = useContext(HospitalController)
 
     let [form] = Form.useForm() 
@@ -21,12 +21,12 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
 
     const [createHospitalInfo,{loading,error}] = useMutation(CREATE_HOSPITALINFO,{
         onCompleted:({createHospitalInfo})=>{
-            console.log("test",createHospitalInfo)
+            setRefetch()
             message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
             if (hospitalId === "new") {
                 setHospitalId(createHospitalInfo.hospitalInfos)
             }else{
-                // setRefetch()
+                setRefetch()
             }
         },
         onError:(error)=>{
@@ -121,7 +121,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
         >
             <Form
                 form={form}
-                name="addUser"
+                name="addHospital"
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
@@ -129,7 +129,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="hospitalName"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ឈ្មោះមណ្ឌល" />
                         </Form.Item>
@@ -138,7 +138,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11, offset: 2  }}>
                         <Form.Item
                             name="province"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
@@ -149,7 +149,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                             <Col xs={24} md={{ span: 11}}>
                                 <Form.Item
                                     name="district"
-                                    rules={[{ required: true, message: 'Field is required!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
@@ -157,7 +157,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                             <Col xs={24} md={{ span: 11, offset:2 }}>
                                 <Form.Item
                                     name="commune"
-                                    rules={[{ required: true, message: 'Field is required!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
@@ -165,7 +165,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                             <Col xs={24}>
                                 <Form.Item
                                     name="village"
-                                    rules={[{ required: true, message: 'Field is required!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
                                 </Form.Item>
@@ -176,7 +176,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24}>
                         <Form.Item
                             name="other"
-                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ចំណាំ" />
                         </Form.Item>
@@ -185,7 +185,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="long"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="longtitude" />
                         </Form.Item>
@@ -194,7 +194,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11 , offset:2}}>
                         <Form.Item
                             name="lat"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="latitude" />
                         </Form.Item>
@@ -204,7 +204,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="firstName"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="នាម" style={{ width: "100%" }} />
                         </Form.Item>
@@ -213,7 +213,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lastName"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="គោត្តនាម" style={{ width: "100%" }} />
                         </Form.Item>
@@ -222,7 +222,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="position"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="តួនាទីការងារ" style={{ width: "100%" }} />
                         </Form.Item>
@@ -231,7 +231,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="tel"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="លេខទូរស័ព្ទ" style={{ width: "100%" }} />
                         </Form.Item>
@@ -240,7 +240,7 @@ export default function AddHospital({ open, setOpen, hospitalId, setHospitalId }
                     <Col xs={24} md={{ span: 11, offset: 0 }}>
                         <Form.Item
                             name="others"
-                            //rules={[{ required: true, message: 'Field is required!' }]}
+                            //rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ផ្សេងៗ" style={{ width: "100%" }} />
                         </Form.Item>

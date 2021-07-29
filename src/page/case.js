@@ -13,7 +13,7 @@ export default function Case() {
     const [openAdd, setOpenAdd] = useState(false)
 
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(200)
+    const [limit, setLimit] = useState(15)
     const [keyword, setKeyword] = useState("")
 
     const { data, loading, error, refetch} = useQuery(GET_ALL_CASES, {
@@ -23,7 +23,7 @@ export default function Case() {
             keyword: keyword,
         }, onCompleted: ({ getCaseWithPagination }) => {
             // console.log("casePage",getCaseWithPagination)
-            setCaseData(getCaseWithPagination)
+            // setCaseData(getCaseWithPagination)
         },
         fetchPolicy:"network-only"
     })
@@ -34,6 +34,12 @@ export default function Case() {
             message.success("លុបទិន្នន័យជោគជ័យ")
         }
     })
+
+    useEffect(()=>{
+        if(data){
+            setCaseData(data?.getCaseWithPagination)
+        }
+    },[data])
 
     useEffect(() => {
         refetch()
@@ -87,12 +93,11 @@ export default function Case() {
                     columns={caseCol({ handleDelete, limit, page })}
                     dataSource={caseData?.cases}
                     rowKey={record => record.id}
-                    // pagination={{
-                    //     total: caseData?.paginator?.totalDocs,
-                    //     // showSizeChanger: true,
-                    //     onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
-                    // }}
-                    pagination={false}
+                    pagination={{
+                        total: caseData?.paginator?.totalDocs,
+                        // showSizeChanger: true,
+                        onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
+                    }}
                     scroll={{ x: 1500 }}
                     sticky
                 />

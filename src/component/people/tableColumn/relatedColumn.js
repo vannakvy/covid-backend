@@ -5,7 +5,7 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-export const relatedCol = ({handleDelete}) => {
+export const relatedCol = ({handleRelatedDelete}) => {
     var array = [
         {
             title: 'ល.រ',
@@ -82,7 +82,7 @@ export const relatedCol = ({handleDelete}) => {
                     <Link className="link" to={"/subPeople/" + record.id}><EyeOutlined /></Link>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
-                        onConfirm={() => { handleDelete(record.id) }}
+                        onConfirm={() => { handleRelatedDelete(record.id) }}
                         okText="ចង់"
                         cancelText="មិនចង់"
                     >

@@ -101,7 +101,7 @@ const Routes = () => {
                               <Route path="/specifylocation">
                                 <Location />
                               </Route>
-                              <Route path="/subLocation/:id">
+                              <Route path="/subSpecifylocation/:id">
                                 <SubLocation />
                               </Route>
                               <Route path="/interview">

@@ -1,16 +1,15 @@
 import React, { useContext } from 'react'
 import { Modal, Form, Input, Row, Col, Button,Select, message} from 'antd';
-import { UserController } from '../../../context/userContext'
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '../../../graphql/auth';
 
 const { Option } = Select;
 
-export default function AddUser({ open, setOpen }) {
+export default function AddUser({ open, setOpen,setRefetch }) {
 
     const [registerUser,{loading,error}] = useMutation(REGISTER_USER,{
         onCompleted:({registerUser})=>{
-            console.log(registerUser)
+            setRefetch()
             message.success("បញ្ចូលបានជោគជ័យ")
             setOpen(false)
         },
@@ -22,7 +21,6 @@ export default function AddUser({ open, setOpen }) {
     let [form] = Form.useForm()
 
     const onFinish = (values) => {
-        console.log('Success:', values);
 
         registerUser({
             variables:{

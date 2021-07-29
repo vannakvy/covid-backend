@@ -1,7 +1,6 @@
-import { Space, Popconfirm } from 'antd'
+import { Space } from 'antd'
 import {
-    EditOutlined,
-    DeleteOutlined
+    EyeOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -23,6 +22,12 @@ export const interviewCol = ({ handleDelete, limit, page, handleEdit }) => {
             title: 'អត្តសញ្ញាណប័ណ្ណ',
             dataIndex: 'idCard',
             key: 'idCard',
+            width: 150,
+        },
+        {
+            title: 'លេខកូដអ្នកជំងឺ',
+            dataIndex: 'patientId',
+            key: 'patientId',
             width: 150,
         },
         {
@@ -71,12 +76,6 @@ export const interviewCol = ({ handleDelete, limit, page, handleEdit }) => {
             ),
         },
         {
-            title: 'មុខរបរ',
-            dataIndex: 'occupation',
-            key: 'occupation',
-            width: 150,
-        },
-        {
             title: 'ទូរស័ព្ទ',
             dataIndex: 'tel',
             key: 'tel',
@@ -89,10 +88,15 @@ export const interviewCol = ({ handleDelete, limit, page, handleEdit }) => {
             width: 150,
         },
         {
-            title: 'ទិន្នន័យត្រឹមត្រូវ',
-            dataIndex: 'confirm',
-            key: 'confirm',
+            title: 'សម្ភាស',
+            dataIndex: 'interviewed',
+            key: 'interviewed',
             width: 150,
+            render: (text, record) => (
+                <span>
+                    {record.interviewed ? "រួចរាល់" : "មិនទាន់រួចរាល់"}
+                </span>
+            )
         },
         {
             key: 'action',
@@ -102,25 +106,7 @@ export const interviewCol = ({ handleDelete, limit, page, handleEdit }) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    {/* <Link className="link" to={"/subPeople/" + record.id}><EyeOutlined /></Link> */}
-                    <span
-                        className="link"
-                        style={{ color: "green" }}
-                        onClick={() => {
-                            handleEdit(record)
-                        }}
-                    >
-                        <EditOutlined />
-                    </span>
-                    <Popconfirm
-                        title="តើអ្នកពិតចង់លុបមែនឬទេ?"
-                        onConfirm={() => { handleDelete(record.id) }}
-                        okText="ចង់"
-                        cancelText="មិនចង់"
-                    >
-                        <span className="link" style={{ color: "red" }}><DeleteOutlined /></span>
-                    </Popconfirm>
-
+                    <Link className="link" to={"/subPeople/" + record.id}><EyeOutlined /></Link>
                 </Space>
             ),
         }

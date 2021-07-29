@@ -6,7 +6,7 @@ import {
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
-export const locationCol = ({ handleDelete, limit, page }) => {
+export const locationCol = ({ handleDelete, handleEdit, limit, page }) => {
     let no = ((page - 1) * limit)
     var array = [
         {
@@ -16,6 +16,7 @@ export const locationCol = ({ handleDelete, limit, page }) => {
             width: 50,
             render: (text, record, i) => (
                 <Space size="middle">
+                {console.log(page)}
                     {no += 1}
                 </Space>
             ),
@@ -54,23 +55,23 @@ export const locationCol = ({ handleDelete, limit, page }) => {
         },
         {
             title: 'កាលបរិច្ឆេទបិទ',
-            dataIndex: 'date',
-            key: 'date',
+            dataIndex: 'closeAt',
+            key: 'closeAt',
             width: 100,
             render: (text, record) => (
                 <Space size="middle">
-                    {record.open === null && record.closeAt !== false ? "មិនទាន់មានសកម្មភាព" : moment(record.closeAt).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
+                    {record.closeAt === null? "មិនទាន់មានសកម្មភាព" : moment(record.closeAt).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
                 </Space>
             ),
         },
         {
-            title: 'សកម្មភាព',
-            dataIndex: 'open',
-            key: 'open',
+            title: 'កាលបរិច្ឆេទបើក',
+            dataIndex: 'openAt',
+            key: 'openAt',
             width: 100,
             render: (text, record) => (
                 <Space size="middle">
-                    {record.open ===null ? "មិនទាន់មានសកម្មភាព" :record.open ? "បើក":"បិទ"}
+                    {record.openAt === null? "មិនទាន់មានសកម្មភាព" : moment(record.openAt).format("ថ្ងែDD ខែMM ឆ្នាំYYYY")}
                 </Space>
             ),
         },
@@ -88,7 +89,8 @@ export const locationCol = ({ handleDelete, limit, page }) => {
             align: 'center',
             render: (text, record) => (
                 <Space size="middle">
-                    {/* <Link className="link" to={"/subLocation/" + record.id}><EditOutlined /></Link> */}
+                    {/* <Link className="link" to={"/subSpecifylocation/" + record.id}><EditOutlined /></Link> */}
+                    <span className="link" onClick={() => handleEdit(record)}><EditOutlined /></span>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"
                         onConfirm={() => { handleDelete(record.id) }}

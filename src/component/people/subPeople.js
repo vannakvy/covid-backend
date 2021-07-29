@@ -21,7 +21,9 @@ import { GET_HOSPITAL_QUARANTINE_BY_PERSON } from '../../graphql/people';
 import { GET_PERSON_BY_CASE } from '../../graphql/case';
 import { GET_HISTORYLOCATION_BY_PERSON } from '../../graphql/historylocation';
 import { DELETE_SAMPLETEST } from '../../graphql/people';
+import { DELETE_PERSONALINFO_BY_ID } from '../../graphql/people';
 import moment from 'moment';
+import EditCurrentState from './modal/editCurrentState';
 
 const { Title } = Typography
 
@@ -41,12 +43,13 @@ export default function SubPeople() {
     const [openEdit, setOpenEdit] = useState(false)
     const [subCaseData, setSubCaseData] = useState([])
     const [subCasePagination, setSubCasePagination] = useState({})
+    const [openEditCurrentState,setOpenEditCurrentState] = useState(false)
 
     const [quarantineData, setQuarantineData] = useState({})
     const [hospitalData, setHospitalData] = useState({})
 
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(10)
+    const [limit, setLimit] = useState(100)
     const [keyword, setKeyword] = useState("")
 
     const { data, refetch: refetchPerson } = useQuery(GET_PERSONALINFO_BY_ID, {
@@ -60,7 +63,6 @@ export default function SubPeople() {
     })
 
     const getPersonalInfoById = data?.getPersonalInfoById
-    console.log(getPersonalInfoById)
 
     const { data: hospital_quarantine, refetch: refetchHospital } = useQuery(GET_HOSPITAL_QUARANTINE_BY_PERSON, {
         variables: {
@@ -84,16 +86,28 @@ export default function SubPeople() {
             caseId: getPersonalInfoById?.case?.id
         },
         onCompleted: ({ getPersonalInfoByCaseWithPagination }) => {
-            let item = [...getPersonalInfoByCaseWithPagination?.personalInfos]
-            let index = item.findIndex(e => e.id === id)
-            item.splice(index, 1)
-            setSubCaseData(item)
+
             // console.log(getPersonalInfoByCaseWithPagination, "dataCase")
-            setSubCasePagination(getPersonalInfoByCaseWithPagination?.paginator)
+
 
         },
         fetchPolicy: 'network-only'
     })
+
+    const getPersonalInfoByCaseWithPagination = caseData?.getPersonalInfoByCaseWithPagination
+
+    useEffect(() => {
+
+        if (caseData) {
+            let item = [...getPersonalInfoByCaseWithPagination?.personalInfos]
+            let index = item.findIndex(e => e.id === id)
+            item.splice(index, 1)
+            setSubCaseData(item)
+            setSubCasePagination(getPersonalInfoByCaseWithPagination?.paginator)
+        }
+
+    }, [caseData])
+
 
     const { data: historylocation, refetch: refetchHistoryLocation } = useQuery(GET_HISTORYLOCATION_BY_PERSON, {
         variables: {
@@ -109,37 +123,42 @@ export default function SubPeople() {
 
     const getHistoryLocationByPersonalInfoId = historylocation?.getHistoryLocationByPersonalInfoId
 
-    const [deleteSampleTest,{loading:deleteLoading}]=useMutation(DELETE_SAMPLETEST,{
-        onCompleted:()=>{
+    const [deleteSampleTest, { loading: deleteLoading }] = useMutation(DELETE_SAMPLETEST, {
+        onCompleted: () => {
             refetchPerson()
             message.success("លុបទិន្នន័យជោគជ័យ")
         }
     })
 
-    useEffect(() => {
-        // if(personalData){
+    const [deletePersonalInfo, { loading: deleteRelated }] = useMutation(DELETE_PERSONALINFO_BY_ID, {
+        onCompleted: () => {
+            refetch()
+            message.success("លុបទិន្នន័យជោគជ័យ")
+        }
+    })
 
-        // }
-        // getCaseData()
-    }, [])
+    const handleRelatedDelete = (e) => {
 
-    const handleDelete = () => {
-
+        deletePersonalInfo({
+            variables: {
+                id: e
+            }
+        })
     }
 
     const handleSampleTestDelete = (e) => {
-        console.log(e)
+
         deleteSampleTest({
-            variables:{
-                sampleTestId:e,
-                personalInfoId:id
+            variables: {
+                sampleTestId: e,
+                personalInfoId: id
             }
         })
     }
 
     return (
         <Row>
-            <AddPeopleRelated open={openAddPeopleRelated} setOpen={setOpenAddPeopleRelated} caseId={getPersonalInfoById?.case?.id} setRefetch={refetchPerson} />
+            <AddPeopleRelated open={openAddPeopleRelated} setOpen={setOpenAddPeopleRelated} caseId={getPersonalInfoById?.case?.id} setRefetch={refetch} />
             <AddPeopleTest open={openAddPeopleTest} setOpen={setOpenAddPeopleTest} peopleID={id} />
             <AddPeopleHospital open={openAddPeopleHospital} setOpen={setOpenAddPeopleHospital} peopleId={id} />
             <AddPeopleStatus open={openAddPeopleStatus} setOpen={setOpenAddPeopleStatus} />
@@ -148,6 +167,7 @@ export default function SubPeople() {
             <AddPeopleLocation open={openAddPeopleLocation} setOpen={setOpenAddPeopleLocation} setRefetch={refetchHistoryLocation} caseId={getPersonalInfoById?.case?.id} peopleId={id} />
             <UploadPic open={openUploadPic} setOpen={setOpenUploadPic} />
             <EditPeople open={openEdit} setOpen={setOpenEdit} personId={id} setRefetch={refetchPerson} personalData={getPersonalInfoById} />
+            <EditCurrentState open={openEditCurrentState} setOpen={setOpenEditCurrentState} peopleId={id} setRefetch={refetchPerson} currentStateData={getPersonalInfoById?.currentState} />
             <Col
                 xs={24} md={24}
                 className="subPeople-card"
@@ -179,7 +199,7 @@ export default function SubPeople() {
                         xs={24} md={10}
                     >
 
-                        <table style={{marginLeft:30}} className="tbl-subPeople">
+                        <table style={{ marginLeft: 30 }} className="tbl-subPeople">
                             <tr>
                                 <td width="150"><Title level={5}>ឈ្មោះ</Title></td>
                                 <td><Title level={5}>៖&emsp;</Title></td>
@@ -278,46 +298,93 @@ export default function SubPeople() {
                         xs={24} md={{ span: 6 }}
 
                     >
-                       
-                        <table style={{marginLeft:30}}  className="tbl-subPeople">
-                            <tr>
-                                <td width="150"><Title level={5}>
-                                    ការធ្វើចត្តាឡីស័ក
-                                    <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}> <PlusCircleOutlined /></span>
-                                </Title></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                        <Row>
+                            <Col xs={24}
+                                style={{ paddingBottom: 20 }}
+                            >
 
-                            <tr>
-                                <td>កាលបរិច្ឆេទចាប់ផ្ដើម</td>
-                                <td> ៖&emsp;</td>
-                                <td>{hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
-                            </tr>
+                                <table style={{ marginLeft: 30 }} className="tbl-subPeople">
+                                    <tr>
+                                        <td width="150"><Title level={5}>
+                                            ការធ្វើចត្តាឡីស័ក
+                                            <span className="link" onClick={() => setOpenAddPeopleQuarantine(true)}> <PlusCircleOutlined /></span>
+                                        </Title></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
 
-                            <tr>
-                                <td>កាលបរិច្ឆេទចេញ</td>
-                                <td> ៖&emsp;</td>
-                                <td>{hospitalData?.date_out !== null && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
-                            </tr>
+                                    <tr>
+                                        <td>កាលបរិច្ឆេទចាប់ផ្ដើម</td>
+                                        <td> ៖&emsp;</td>
+                                        <td>{hospitalData?.date_in !== undefined && moment(hospitalData?.date_in).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                    </tr>
 
-                            <tr>
-                                <td>ទីតាំង</td>
-                                <td> ៖&emsp;</td>
-                                <td>{quarantineData?.quarantineInfo?.locationName}</td>
-                            </tr>
+                                    <tr>
+                                        <td>កាលបរិច្ឆេទចេញ</td>
+                                        <td> ៖&emsp;</td>
+                                        <td>{hospitalData?.date_out !== null && moment(hospitalData?.date_out).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                    </tr>
 
-                            <tr>
-                                <td>អាស័យដ្ឋាន</td>
-                                <td> ៖&emsp;</td>
-                                <td>
-                                {(quarantineData?.quarantineInfo?.village !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.village !== undefined) && "ភូមិ" + quarantineData?.quarantineInfo?.village + ","}
-                                {(quarantineData?.quarantineInfo?.commune !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.commune !== undefined) && "ឃុំ" + quarantineData?.quarantineInfo?.commune + ","}
-                                {(quarantineData?.quarantineInfo?.district !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.district !== undefined) && "ស្រុក" + quarantineData?.quarantineInfo?.district + ","}
-                                {quarantineData?.quarantineInfo?.province !== undefined && quarantineData?.quarantineInfo?.province}
-                                </td>
-                            </tr>
-                        </table>
+                                    <tr>
+                                        <td>ទីតាំង</td>
+                                        <td> ៖&emsp;</td>
+                                        <td>{quarantineData?.quarantineInfo?.locationName}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>អាស័យដ្ឋាន</td>
+                                        <td> ៖&emsp;</td>
+                                        <td>
+                                            {(quarantineData?.quarantineInfo?.village !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.village !== undefined) && "ភូមិ" + quarantineData?.quarantineInfo?.village + ","}
+                                            {(quarantineData?.quarantineInfo?.commune !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.commune !== undefined) && "ឃុំ" + quarantineData?.quarantineInfo?.commune + ","}
+                                            {(quarantineData?.quarantineInfo?.district !== "ក្រៅសៀមរាប" && quarantineData?.quarantineInfo?.district !== undefined) && "ស្រុក" + quarantineData?.quarantineInfo?.district + ","}
+                                            {quarantineData?.quarantineInfo?.province !== undefined && quarantineData?.quarantineInfo?.province}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </Col>
+                            <Col xs={24}>
+
+                                <table style={{ marginLeft: 30 }} className="tbl-subPeople">
+                                    <tr>
+                                        <td width="150"><Title level={5}>
+                                            ស្ថានភាពបច្ចុប្បន្ន
+                                            <span className="link" onClick={() => setOpenEditCurrentState(true)}> <PlusCircleOutlined /></span>
+                                        </Title></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>អវិជ្ជមាន</td>
+                                        <td> ៖&emsp;</td>
+                                        <td> &emsp;</td>
+                                        <td>{getPersonalInfoById?.createdAt !== undefined && moment(getPersonalInfoById?.createdAt).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>វិជ្ជមាន</td>
+                                        <td> ៖&emsp;</td>
+                                        <td> {getPersonalInfoById?.currentState?.confirm ? "វិជ្ជមាន":""}&emsp;</td>
+                                        <td>{getPersonalInfoById?.currentState?.confirmedAt !== null && moment(getPersonalInfoById?.currentState?.confirmedAt).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>ជាសះស្បើយ</td>
+                                        <td> ៖&emsp;</td>
+                                        <td> {getPersonalInfoById?.currentState?.recovered ? "ជាសះស្បើយ":""}&emsp;</td>
+                                        <td>{getPersonalInfoById?.currentState?.recoveredAt !== null && moment(getPersonalInfoById?.currentState?.recoveredAt).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>ស្លាប់</td>
+                                        <td> ៖&emsp;</td>
+                                        <td> {getPersonalInfoById?.currentState?.death ? "ស្លាប់":""}&emsp;</td>
+                                        <td>{getPersonalInfoById?.currentState?.deathAt !== null && moment(getPersonalInfoById?.currentState?.deathAt).format("ថ្ងៃDD ខែMM ឆ្នាំYYYY")}</td>
+                                    </tr>
+                                </table>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
             </Col>
@@ -488,7 +555,7 @@ export default function SubPeople() {
                     columns={testCol({ handleSampleTestDelete })}
                     dataSource={getPersonalInfoById?.sampleTest}
                     rowKey={record => record.id}
-                    pagination={true}
+                    pagination={false}
                     scroll={{ x: 800, y: 300 }}
                     sticky
                 />
@@ -502,14 +569,15 @@ export default function SubPeople() {
                 </Title>
                 <Table
                     className="table-personal"
-                    columns={relatedCol({ handleDelete })}
+                    columns={relatedCol({ handleRelatedDelete })}
                     dataSource={subCaseData}
                     rowKey={record => record.id}
-                    pagination={{
-                        total: subCasePagination?.totalDocs,
-                        // showSizeChanger: true,
-                        onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
-                    }}
+                    pagination={false}
+                    // pagination={{
+                    //     total: subCasePagination?.totalDocs,
+                    //     // showSizeChanger: true,
+                    //     onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
+                    // }}
                     scroll={{ x: 1000, y: 300 }}
                     sticky
                 />

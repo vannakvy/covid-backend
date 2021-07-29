@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export function convertToDistrict(data) {
     var item = []
     data.map(load => {
@@ -64,14 +66,25 @@ export function getFullNamePersonInCharge(e) {
 export function convertEditData(e) {
     var array = []
     for (let [key, value] of Object.entries(e)) {
-        array.push(
-            {
-                "name": [
-                    key
-                ],
-                "value": value
-            }
-        )
+        if(key === "openAt" || key === "closeAt"){
+            array.push(
+                {
+                    "name": [
+                        key
+                    ],
+                    "value": value === null ? null : moment(value)
+                }
+            )
+        }else{
+            array.push(
+                {
+                    "name": [
+                        key
+                    ],
+                    "value": value
+                }
+            )
+        }
     }
     return array
 }
@@ -96,7 +109,7 @@ export function keyMenu(e){
         x="/hospital"
     }
 
-    else if(myArr[1] === 'specifylocation' || myArr[1] === 'location'){
+    else if(myArr[1] === 'specifylocation' || myArr[1] === 'subSpecifylocation'){
         x="/specifylocation"
     }
 

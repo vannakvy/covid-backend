@@ -1,4 +1,4 @@
-import { Col, Row, Typography, Table, message,List,Avatar } from 'antd'
+import { Col, Row, Typography, Table, message, List, Avatar } from 'antd'
 import React, { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { HospitalController } from '../../context/hospitalContext'
@@ -36,7 +36,7 @@ export default function SubHospital() {
     const [limit, setLimit] = useState(10)
     const [keyword, setKeyword] = useState("")
 
-    const { data: hospital } = useQuery(GET_HOSPITALINFO_BY_ID, {
+    const { data: hospital, refetch: refetchHospital } = useQuery(GET_HOSPITALINFO_BY_ID, {
         variables: {
             id: id
         },
@@ -46,6 +46,12 @@ export default function SubHospital() {
         }
     })
 
+    useEffect(() => {
+        if (hospital) {
+            setHospitalData(hospital?.getHospitalInfoById)
+        }
+    }, [hospital])
+
     const { data } = useQuery(GET_ALL_PERSONINFO_NO_LIMIT, {
         onCompleted: ({ allPersonalInfos }) => {
             // console.log(allPersonalInfos)
@@ -53,9 +59,7 @@ export default function SubHospital() {
         }
     })
 
-    
-
-    const { data: hospitalSub } = useQuery(GET_PERSON_BY_HOSPITALINFO, {
+    const { data: hospitalSub, refetch: refetchSub } = useQuery(GET_PERSON_BY_HOSPITALINFO, {
         variables: {
             page: page,
             limit: limit,
@@ -63,22 +67,23 @@ export default function SubHospital() {
             hospitalId: id
         },
         onCompleted: ({ getQuarantineByHospitalIdIdWithPagination }) => {
-            console.log(getQuarantineByHospitalIdIdWithPagination)
+           
             setSubHospitalData(getQuarantineByHospitalIdIdWithPagination)
         }
     })
 
+    useEffect(() => {
+        if (hospitalSub) {
+            setSubHospitalData(hospitalSub?.getQuarantineByHospitalIdIdWithPagination)
+        }
+    }, [hospitalSub])
+
     const [deleteHospitalization, { loading }] = useMutation(DELETE_PERSON_BY_HOSPITAL, {
         onCompleted: () => {
+            refetchSub()
             message.success("លុបទិន្នន័យជោគជ័យ")
         }
     })
-
-
-
-    useEffect(() => {
-        //setHeaderData(hospitalData[hospitalData.findIndex(e => e.id === id)])
-    }, [])
 
     // console.log(headerData)
     const handleDelete = (e) => {
@@ -95,23 +100,24 @@ export default function SubHospital() {
         setOpenEditSub(true)
     }
     return (
-        <Row>
-            <EditHospital open={openEdit} setOpen={setOpenEdit} data={hospitalData} hospitalId={id} />
-            <AddSubHospital open={openAddSub} setOpen={setOpenAddSub} hospitalId={id} peopleData={peopleData} />
-            <EditSubHospital open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} hospitalId={id} peopleData={peopleData} />
-            <Col
-                xs={24}
-            >
-                {/* <Title level={5}>ឈ្មោះករណី៖ 
+        <>
+            <Row>
+                <EditHospital open={openEdit} setOpen={setOpenEdit} data={hospitalData} hospitalId={id} setRefetch={refetchHospital} />
+                <AddSubHospital open={openAddSub} setOpen={setOpenAddSub} hospitalId={id} peopleData={peopleData} setRefetch={refetchSub} />
+                <EditSubHospital open={openEditSub} setOpen={setOpenEditSub} data={updateSubData} hospitalId={id} peopleData={peopleData} setRefetch={refetchSub} />
+                <Col
+                    xs={24}
+                >
+                    {/* <Title level={5}>ឈ្មោះករណី៖ 
                     <EditOutlined className="link" onClick={() => setOpenEdit(true)}/>
                 </Title> */}
-            </Col>
-            <Col
-                xs={24}
-                md={11}
-                className="subCase-card"
-            >
-                {/* <p>ឈ្មោះមណ្ឌល៖ {hospitalData?.hospitalName} <EditOutlined className="link" onClick={() => setOpenEdit(true)} /></p>
+                </Col>
+                <Col
+                    xs={24}
+                    md={11}
+                    className="subCase-card"
+                >
+                    {/* <p>ឈ្មោះមណ្ឌល៖ {hospitalData?.hospitalName} <EditOutlined className="link" onClick={() => setOpenEdit(true)} /></p>
                 <p>អាសយដ្ឋាន៖ {" "}
                     {hospitalData?.village !== "ក្រៅសៀមរាប" && hospitalData?.village + ","}
                     {hospitalData?.commune !== "ក្រៅសៀមរាប" && hospitalData?.commune + ","}
@@ -121,39 +127,40 @@ export default function SubHospital() {
                 <p>អ្នកទទួលខុសត្រូវ៖ {hospitalData?.personInCharge?.lastName} {hospitalData?.personInCharge?.firstName}</p>
                 <p>លេខទូរស័ព្ទ៖ {hospitalData?.personInCharge?.tel}</p>
                 <p>ចំណាំ៖ {hospitalData?.other}</p> */}
+                    <table>
+                        <tbody>
+                            <tr >
+                                <td style={{ width: '40%' }}><p>ឈ្មោះមណ្ឌល</p></td>
+                                <td style={{ width: '60%' }}><p>៖ {hospitalData?.hospitalName} <EditOutlined className="link" onClick={() => setOpenEdit(true)} /></p></td>
+                            </tr>
+                            <tr>
+                                <td><p>អាសយដ្ឋាន</p></td>
+                                <td><p>៖ {hospitalData?.village !== "ក្រៅសៀមរាប" && hospitalData?.village + ","}
+                                    {hospitalData?.commune !== "ក្រៅសៀមរាប" && hospitalData?.commune + ","}
+                                    {hospitalData?.district !== "ក្រៅសៀមរាប" && hospitalData?.district + ","}
+                                    {hospitalData?.province}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>អ្នកទទួលខុសត្រូវ</p></td>
+                                <td><p>៖ {hospitalData?.personInCharge?.lastName}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>លេខទូរស័ព្ទ</p></td>
+                                <td><p>៖ {hospitalData?.personInCharge?.tel}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>ចំណាំ</p></td>
+                                <td><p>៖ {hospitalData?.other}</p></td>
+                            </tr>
 
-                <table>
-                    <tr >
-                        <td style={{width:'40%'}}><p>ឈ្មោះមណ្ឌល</p></td>
-                        <td style={{width:'60%'}}><p>៖ {hospitalData?.hospitalName} <EditOutlined className="link" onClick={() => setOpenEdit(true)} /></p></td>
-                    </tr>
-                    <tr>
-                        <td><p>អាសយដ្ឋាន</p></td>
-                        <td><p>៖ {hospitalData?.village !== "ក្រៅសៀមរាប" && hospitalData?.village + ","}
-                            {hospitalData?.commune !== "ក្រៅសៀមរាប" && hospitalData?.commune + ","}
-                            {hospitalData?.district !== "ក្រៅសៀមរាប" && hospitalData?.district + ","}
-                            {hospitalData?.province}</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>អ្នកទទួលខុសត្រូវ</p></td>
-                        <td><p>៖ {hospitalData?.personInCharge?.lastName}</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>លេខទូរស័ព្ទ</p></td>
-                        <td><p>៖ {hospitalData?.personInCharge?.tel}</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>ចំណាំ</p></td>
-                        <td><p>៖ {hospitalData?.other}</p></td>
-                    </tr>
-                
-                    <tr>
-                        
-                    </tr>
-                </table>
-            </Col>
+                            <tr>
 
-            {/* <Col
+                            </tr>
+                        </tbody>
+                    </table>
+                </Col>
+
+                {/* <Col
                 xs={24}
                 md={{ span: 11, offset: 2 }}
                 className="subCase-card"
@@ -167,34 +174,35 @@ export default function SubHospital() {
             </Col> */}
 
 
-            <Col
-                xs={24}
-                style={{ marginTop: 20 }}
-            >
-                <Title level={5}>
-                    អ្នកជំងឺ៖ {" "}
+                <Col
+                    xs={24}
+                    style={{ marginTop: 20 }}
+                >
+                    <Title level={5}>
+                        អ្នកជំងឺ៖ {" "}
 
-                    <PlusCircleOutlined className="link" onClick={() => setOpenAddSub(true)} />
-                </Title>
+                        <PlusCircleOutlined className="link" onClick={() => setOpenAddSub(true)} />
+                    </Title>
 
-            </Col>
-            <Col
-                xs={24}
-                md={24}
-            >
-                <Table
-                    columns={subHospitalCol({ handleDelete, handleEditSubHospital, limit, page })}
-                    dataSource={subHospitalData?.hospitalizations}
-                    rowKey={record => record.id}
-                    pagination={{
-                        total: subHospitalData?.paginator?.totalDocs,
-                        // showSizeChanger: true,
-                        onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
-                    }}
-                    scroll={{ x: 240 }}
-                    sticky
-                />
-            </Col>
-        </Row>
+                </Col>
+                <Col
+                    xs={24}
+                    md={24}
+                >
+                    <Table
+                        columns={subHospitalCol({ handleDelete, handleEditSubHospital, limit, page })}
+                        dataSource={subHospitalData?.hospitalizations}
+                        rowKey={record => record.id}
+                        pagination={{
+                            total: subHospitalData?.paginator?.totalDocs,
+                            // showSizeChanger: true,
+                            onChange: ((page, pageSize) => { setPage(page); setLimit(pageSize) })
+                        }}
+                        scroll={{ x: 240 }}
+                        sticky
+                    />
+                </Col>
+            </Row>
+        </>
     )
 }

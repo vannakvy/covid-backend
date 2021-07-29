@@ -1,22 +1,20 @@
 import React, { useContext } from 'react'
 import { Modal, Form, Input, Row, Col, Button, Select, message } from 'antd';
-import { UserController } from '../../../context/userContext'
-import { setEditUser } from '../../../function/set';
+
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER_DETAIL } from '../../../graphql/auth';
 
 const { Option } = Select;
 
-export default function EditUser({ open, setOpen, data }) {
+export default function EditUser({ open, setOpen, data, setRefetch }) {
     //const { userDataDispatch } = useContext(UserController)
 
     const [updateUserDetail, { loading, error }] = useMutation(UPDATE_USER_DETAIL,{
         onCompleted:({updateUserDetail})=>{
-            console.log(updateUserDetail)
+            setRefetch()
             message.success("កែប្រែបានជោគជ័យ")
         },
         onError:(error)=>{
-            console.log(error.message)
             message.success("កែប្រែមានបញ្ហា!")
         }
     })
@@ -26,8 +24,6 @@ export default function EditUser({ open, setOpen, data }) {
     
 
     const onFinish = (values) => {
-
-        console.log(values)
         updateUserDetail({variables:{
             userId:data.id,
             firstName:values.firstName,
@@ -75,7 +71,6 @@ export default function EditUser({ open, setOpen, data }) {
                         value: data.email,
                     },
                     
-
                 ]}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}

@@ -11,8 +11,7 @@ import moment from 'moment'
 
 const { Option } = Select
 
-export default function AddSubQuarantine({ open, setOpen, quarantineId, peopleData }) {
-    const { subQuarantineDataDispatch } = useContext(QuarantineController)
+export default function AddSubQuarantine({ open, setOpen, quarantineId, peopleData, setRefetch }) {
 
     let [form] = Form.useForm()
 
@@ -22,13 +21,12 @@ export default function AddSubQuarantine({ open, setOpen, quarantineId, peopleDa
 
     const [createQuarantine,{data}]=useMutation(CREATE_PERSON_QUARANTINE,{
         onCompleted:({createQuarantine})=>{
+            setRefetch()
             message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
         }
     })
 
     const onFinish = (values) => {
-        console.log('Success:', setAddSubQuarantine(values));
-
         createQuarantine({variables:{
             in:values.in,
             date_in:moment(values.date_in).format(),
