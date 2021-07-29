@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "./static/css/main.67e2be43.chunk.css",
+    "main.js": "./static/js/main.7b277395.chunk.js",
+    "main.js.map": "./static/js/main.7b277395.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.94913380.js",
+    "runtime-main.js.map": "./static/js/runtime-main.94913380.js.map",
+    "static/css/2.859a63d7.chunk.css": "./static/css/2.859a63d7.chunk.css",
+    "static/js/2.ca7a20bd.chunk.js": "./static/js/2.ca7a20bd.chunk.js",
+    "static/js/2.ca7a20bd.chunk.js.map": "./static/js/2.ca7a20bd.chunk.js.map",
+    "static/js/3.7443c00d.chunk.js": "./static/js/3.7443c00d.chunk.js",
+    "static/js/3.7443c00d.chunk.js.map": "./static/js/3.7443c00d.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.859a63d7.chunk.css.map": "./static/css/2.859a63d7.chunk.css.map",
+    "static/css/main.67e2be43.chunk.css.map": "./static/css/main.67e2be43.chunk.css.map",
+    "static/js/2.ca7a20bd.chunk.js.LICENSE.txt": "./static/js/2.ca7a20bd.chunk.js.LICENSE.txt",
+    "static/media/index.css": "./static/media/TACTENG.89f59e5d.TTF",
+    "static/media/close-area.6b62123e.png": "./static/media/close-area.6b62123e.png",
+    "static/media/cover-bg.ed223e12.jpg": "./static/media/cover-bg.ed223e12.jpg",
+    "static/media/App.css": "./static/media/covid-19-bg.70a9f37a.png",
+    "static/media/covid19.2861979f.png": "./static/media/covid19.2861979f.png",
+    "static/media/curring.b38d166b.png": "./static/media/curring.b38d166b.png",
+    "static/media/death.e0bbc2c9.png": "./static/media/death.e0bbc2c9.png",
+    "static/media/direct.216dfd63.png": "./static/media/direct.216dfd63.png",
+    "static/media/goglobalschool.cd293cd0.png": "./static/media/goglobalschool.cd293cd0.png",
+    "static/media/notdirect.a2fd079a.png": "./static/media/notdirect.a2fd079a.png",
+    "static/media/open-area.70f8fc85.png": "./static/media/open-area.70f8fc85.png",
+    "static/media/recover.5d6bc409.png": "./static/media/recover.5d6bc409.png",
+    "static/media/srLogo.85fb41d7.png": "./static/media/srLogo.85fb41d7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.94913380.js",
+    "static/css/2.859a63d7.chunk.css",
+    "static/js/2.ca7a20bd.chunk.js",
+    "static/css/main.67e2be43.chunk.css",
+    "static/js/main.7b277395.chunk.js"
+  ]
+}
