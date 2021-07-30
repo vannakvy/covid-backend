@@ -1,5 +1,16 @@
 import { gql } from "@apollo/client";
 
+
+export const GET_FOR_BARGRAPH = gql`
+  query getDataForBarGraphTotal {
+    getDataForBarGraphTotal{
+    deaths
+    recovered
+    confirm
+  }
+  }
+`;
+
 export const GET_ALL_PROVINCE = gql`
   query getAllProvince($district: String) {
     getAllProvince(district: $district) {
@@ -45,3 +56,5 @@ export const GET_DATA_FOR_GRAP = gql`
         }
   }
 `;
+
+

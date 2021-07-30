@@ -1,5 +1,5 @@
 
-import {GET_DATA_FOR_GRAP} from '../../graphql/dashboardAndReport'
+import {GET_FOR_BARGRAPH} from '../../graphql/dashboardAndReport'
 import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
 import { Bar,Line } from "react-chartjs-2";
@@ -9,18 +9,13 @@ import numeral from "numeral";
 function BarGraph() {
   const [data, setData] = useState({});
 
-  const {dat,refetch} = useQuery(GET_DATA_FOR_GRAP,{onCompleted:({getDataForGrap})=>{
-    setData(getDataForGrap);
+  const {refetch} = useQuery(GET_FOR_BARGRAPH,{onCompleted:({getDataForBarGraphTotal})=>{
+    setData(getDataForBarGraphTotal);
   }})
-
 let color = "rgb(167, 11, 153)";
 
-
-// const dd= caseData?.map(d=>d.x);
-// const va= caseData?.map(d=>d.y);
-
-const a = [10,20,30,50];
-const b =["ករណីឆ្លង","ករណីឆ្លង","ករណីឆ្លង","ករណីឆ្លង"];
+const a = [data?.confirm,data?.recovered,data?.deaths,data?.confirm - data?.recovered];
+const b =["ករណីឆ្លង","ករណីជាសះស្បើយ","ករណីស្លាប់","កំពុងសំរាកព្យាបាល"];
 
 
 
@@ -31,15 +26,28 @@ const datas = {
       label: "Total",
       data: a,
       fill: false,
-      backgroundColor:["red","yellow","blue","green"],
+      backgroundColor:["purple","green","red","yellow"],
       borderColor: color
     },
   ]
 };
+
+
   return (
     <div>
         <Bar
         data={datas}
+        options= {
+          {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+        }
+      }
         />
     </div>
   );

@@ -38,12 +38,10 @@ import ImageRecover from '../asset/recover.png'
 import ImageDeath from '../asset/death.png'
 import ImageCure from '../asset/curring.png'
 import ImageDirect from '../asset/direct.png'
-import ImageClose from '../asset/close-area.png'
 import ImageNotDirect from '../asset/notdirect.png'
-import ImageOpen from '../asset/open-area.png'
 import LineGraph from "../component/covideComponents/LineGraph";
 import BarGraph from '../component/covideComponents/BarGraph'
-import LineChartTesting from "../component/covideComponents/LineChartTesting";
+
 
 const MapScreen = () => {
   const districtLatLong = [
@@ -183,7 +181,6 @@ const MapScreen = () => {
         <div className="app__header">
           <FormControl className="app__dropdown">
             <Form.Item
-              style={{marginBottom:0}}
               name="district"
               rules={[
                 { required: true, message: "Please input your username!" },
@@ -261,7 +258,7 @@ const MapScreen = () => {
             // active={casesType === "deaths"}
             cases={districtDatas.deathToday}
             total={numeral(districtDatas.death).format("0")}
-            ImageShow={ImageClose}
+            ImageShow={ImageDeath}
           />
           <InfoBox
             // onClick={(e) => setCasesType("active")}
@@ -271,7 +268,7 @@ const MapScreen = () => {
             cases={districtDatas.confirmedCaseToday - districtDatas.recoveredToday}
             // total={numeral(districtDatas.death).format("0")}
             total={numeral(districtDatas.confirmedCase - districtDatas.recovered).format("0")}
-            ImageShow={ImageOpen}
+            ImageShow={ImageCure}
           />
         </div>
         <Map
@@ -282,8 +279,8 @@ const MapScreen = () => {
         />
       </div>
       <div className="app__right">
-        <Card className="first-card" style={{ marginTop: "55px" }}>
-          <CardContent >
+        <Card style={{ marginTop: "70px" }}>
+          <CardContent>
             <div className="app__information">
               <h3 className="covid_table">អ្នកវិជ្ជមានតាមក្រុង/ស្រុក</h3>
               <Divider />
@@ -291,13 +288,13 @@ const MapScreen = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="sec-card" style={{ marginTop: "10px" }}>
+        <Card style={{ marginTop: "10px" }}>
           <CardContent>
               <h3>ទិន្នន័យសរុប</h3>
             <BarGraph />
           </CardContent>
         </Card>
-        <Card className="third-card" style={{ marginTop: "10px" }}>
+        <Card style={{ marginTop: "10px" }}>
           <CardContent>
             {casesType === "recovered" ? (
               <h3>អ្នកជាសះស្បើយ ទូទាំងខេត្ត</h3>
@@ -317,7 +314,6 @@ const MapScreen = () => {
       <BarChart casesType={casesType} />
       {/* <BarGraph/> */}
       {/* <LineChartTesting/> */}
-
     </div>
   </>;
 };

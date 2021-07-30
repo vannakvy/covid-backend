@@ -31,12 +31,12 @@ const options={
           gridLines:{
           display: false
         },
-        //   scaleLabel:{
-        //     labelString:'Months',
-        //     display:true,
-        //     fontColor:'blue',
-        //     fontSize:20
-        //   },
+          scaleLabel:{
+            labelString:'Months',
+            display:true,
+            fontColor:'blue',
+            fontSize:20
+          },
           ticks:{
             fontColor:'green'
           }
