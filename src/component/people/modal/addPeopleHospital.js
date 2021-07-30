@@ -124,7 +124,7 @@ export default function AddPeopleHospital({ open, setOpen, peopleId }) {
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="hospitalInfo"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <ListSelect type={6} data={convertHospitalToSelect(allHospitalInfos)} title="មណ្ឌលព្យាបាល" setValue={setToPeopleHospitalFn} disabled={hospitalId === "new" ? true : false} />
                         </Form.Item>
@@ -144,7 +144,7 @@ export default function AddPeopleHospital({ open, setOpen, peopleId }) {
                     {/* <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="personalType"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
 
                             <Select placeholder="ប្រភេទ" style={{ width: "100%" }}>
@@ -158,7 +158,7 @@ export default function AddPeopleHospital({ open, setOpen, peopleId }) {
                     {/* <Col xs={24} md={{ span: 11,offset:2}}>
                         <Form.Item
                             name="in"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
 
                             <Select placeholder="តេស្ត" style={{ width: "100%" }}>
@@ -171,7 +171,7 @@ export default function AddPeopleHospital({ open, setOpen, peopleId }) {
                     <Col xs={24} md={hospitalId === "new" ? { span: 11, offset: 0 } : {span: 11, offset: 2}}>
                         <Form.Item
                             name="date_in"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>
@@ -180,7 +180,7 @@ export default function AddPeopleHospital({ open, setOpen, peopleId }) {
                     <Col xs={24} md={hospitalId === "new" ? { span: 11, offset: 2 } : {span: 24}}>
                         <Form.Item
                             name="date_out"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទចេញ" style={{ width: "100%" }} />
                         </Form.Item>
@@ -189,7 +189,7 @@ export default function AddPeopleHospital({ open, setOpen, peopleId }) {
                     <Col xs={24} md={{ span: 24 }}>
                         <Form.Item
                             name="others"
-                        //rules={[{ required: true, message: 'Please input your username!' }]}
+                        //rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
 
                             <Input placeholder="ផ្សេងៗ" />

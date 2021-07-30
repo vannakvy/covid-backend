@@ -1,9 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Modal, Form, Input, Row, Col, Button, Select, DatePicker,message } from 'antd'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
-import { ListSelect } from '../../../static/own-comp'
-import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
-import { PeopleController } from '../../../context/peopleContext'
+
 import { useMutation,useQuery } from '@apollo/client';
 import { RECORD_SAMPLETEST } from '../../../graphql/people';
 import moment from 'moment'
@@ -11,7 +8,6 @@ import moment from 'moment'
 const {Option} = Select
 
 export default function AddPeopleTest({ open, setOpen, peopleID, setRefetch }) {
-    //const { peopleDataDispatch } = useContext(PeopleController)
 
     let [form] = Form.useForm()
 
@@ -21,12 +17,8 @@ export default function AddPeopleTest({ open, setOpen, peopleID, setRefetch }) {
         }
     })
 
-    // console.log(peopleID)
-
     const onFinish = (values) => {
         console.log('Success:', values);
-
-        //peopleDataDispatch({ type: 'ADD_PEOPLE', payload: values })
 
         recordSampleTest({
             variables:{

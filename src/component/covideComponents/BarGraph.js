@@ -17,8 +17,6 @@ let color = "rgb(167, 11, 153)";
 const a = [data?.confirm,data?.recovered,data?.deaths,data?.confirm - data?.recovered];
 const b =["ករណីឆ្លង","ករណីជាសះស្បើយ","ករណីស្លាប់","កំពុងសំរាកព្យាបាល"];
 
-
-
 const datas = {
   labels: b,
   datasets: [

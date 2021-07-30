@@ -3,7 +3,7 @@ import { Space, Popconfirm } from 'antd'
 import {
     EditOutlined,
     DeleteOutlined,
-    KeyOutlined
+    SettingOutlined
 } from '@ant-design/icons';
 import { getRoles } from '../../../function/fn';
 
@@ -76,7 +76,7 @@ export const userCol = ({ handleDelete, handleUserEdit,handleAccountEdit,handleU
             render: (text, record) => (
                 <Space size="middle">
                     
-                    <span className="link" onClick={() => handleAccountEdit(record)}><KeyOutlined /></span>
+                    <span className="link" onClick={() => handleAccountEdit(record)}><SettingOutlined /></span>
                     <span className="link" onClick={() => handleUserEdit(record)}><EditOutlined /></span>
                     <Popconfirm
                         title="តើអ្នកពិតចង់លុបមែនឬទេ?"

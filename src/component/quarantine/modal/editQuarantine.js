@@ -196,7 +196,7 @@ export default function EditQuarantine({ open, setOpen, data, quarantineId, setR
                     <Col xs={24}>
                         <Form.Item
                             name="other"
-                        // rules={[{ required: true, message: 'Please input your username!' }]}
+                        // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ចំណាំ" />
                         </Form.Item>
@@ -205,7 +205,7 @@ export default function EditQuarantine({ open, setOpen, data, quarantineId, setR
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="long"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="longtitude" />
                         </Form.Item>
@@ -214,7 +214,7 @@ export default function EditQuarantine({ open, setOpen, data, quarantineId, setR
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lat"
-                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="latitude" />
                         </Form.Item>

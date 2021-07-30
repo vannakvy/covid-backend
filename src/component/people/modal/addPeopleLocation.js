@@ -186,7 +186,7 @@ export default function AddPeopleLocation({ open, setOpen, setRefetch, caseId, p
                     <Col xs={24} md={{span: 11, offset: 0}}>
                         <Form.Item
                             name="affectedLocationId"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             {/* <Input placeholder="ទីតាំង" /> */}
                             <ListSelect type={5} data={locationData} title="ទីតាំង" setValue={setToLocationFn} disabled={locationId === "new" ? true : false} />
@@ -208,7 +208,7 @@ export default function AddPeopleLocation({ open, setOpen, setRefetch, caseId, p
                     <Col xs={24} md={locationId === "new" ? {span: 11, offset: 0} : {span: 11, offset: 2}}>
                         <Form.Item
                             name="type"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             {/* <Input placeholder="ទីតាំង" /> */}
                             <ListSelect type={1} data={[
@@ -221,7 +221,7 @@ export default function AddPeopleLocation({ open, setOpen, setRefetch, caseId, p
                     <Col xs={24} md={locationId === "new" ? {span: 11, offset: 2} : {span: 24}}>
                         <Form.Item
                             name="date"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទចូល" style={{ width: "100%" }} />
                         </Form.Item>

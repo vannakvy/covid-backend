@@ -1,5 +1,5 @@
 import React from 'react'
-import { Space, Tooltip, Popconfirm } from 'antd'
+import { Space, Popconfirm } from 'antd'
 import {
     EditOutlined,
     DeleteOutlined
@@ -15,7 +15,7 @@ export const hospitalCol = ({handleDelete,limit,page}) => {
             dataIndex: 'id',
             key: 'id',
             width: 50,
-            render: (text, record, i) => (
+            render: (text, record) => (
                 <Space size="middle">
                     {no += 1}
                 </Space>

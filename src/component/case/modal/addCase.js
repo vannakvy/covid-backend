@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Modal, Form, Input, DatePicker, Row, Col, Button, message } from 'antd'
-import { CaseController } from '../../../context/caseContext'
-import { provinceData, districtData, communeData, villageData, genderData } from '../../../context/headerContext'
+import { provinceData, districtData, communeData, villageData } from '../../../context/headerContext'
 import { ListSelect } from '../../../static/own-comp'
 import { convertToCommune, convertToDistrict, convertToVillage } from '../../../function/fn'
 import { CREATE_NEW_CASE } from '../../../graphql/case'
@@ -10,15 +9,19 @@ import moment from 'moment'
 
 export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }) {
     //const { caseDataDispatch } = useContext(CaseController)
-    const [createCase, { loading, error }] = useMutation(CREATE_NEW_CASE, {
+    const [createCase, { loading}] = useMutation(CREATE_NEW_CASE, {
         onCompleted: ({ createCase }) => {
-            console.log("tset", createCase)
-            message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
-            if (caseId === "new") {
-                setCaseId(createCase.case)
-            } else {
-                setRefetch()
+            if(loading){
+                message.loading("កំពុងបញ្ចូល...")
+            }else{
+                message.success("បញ្ចូលទិន្នន័យជោគជ័យ")
+                if (caseId === "new") {
+                    setCaseId(createCase.case)
+                } else {
+                    setRefetch()
+                }
             }
+            
         },
         onError: (error) => {
             console.log(error.message)
@@ -122,7 +125,7 @@ export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="caseName"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input placeholder="ឈ្មោះករណី" />
                         </Form.Item>
@@ -131,7 +134,7 @@ export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="date"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <DatePicker placeholder="កាលបរិច្ឆេទ" style={{ width: "100%" }} />
                         </Form.Item>
@@ -140,7 +143,7 @@ export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }
                     <Col xs={24} md={province !== "សៀមរាប" ? { span: 24 } : { span: 11 }}>
                         <Form.Item
                             name="province"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <ListSelect type={1} data={provinceData} title="ខេត្ត/ក្រុង" setValue={setToProviceFn} />
                         </Form.Item>
@@ -151,7 +154,7 @@ export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="district"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={0} data={convertToDistrict(districtData)} title="ស្រុក/ខណ្ឌ" setValue={setToDistrictFn} disabled={province !== "សៀមរាប" ? true : false} />
                                 </Form.Item>
@@ -159,7 +162,7 @@ export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }
                             <Col xs={24} md={{ span: 11 }}>
                                 <Form.Item
                                     name="commune"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToCommune(district, communeData)} title="ឃុំ/សង្កាត់" setValue={setToCommuneFn} disabled={district === "" || district === null ? true : false} />
                                 </Form.Item>
@@ -167,7 +170,7 @@ export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }
                             <Col xs={24} md={{ span: 11, offset: 2 }}>
                                 <Form.Item
                                     name="village"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                                 >
                                     <ListSelect type={1} data={convertToVillage(commune, villageData)} title="ភូមិ" setValue={setToVillageFn} disabled={commune === "" || commune === null ? true : false} />
                                 </Form.Item>
@@ -188,7 +191,7 @@ export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }
                     <Col xs={24} md={{ span: 11 }}>
                         <Form.Item
                             name="long"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            // rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             <Input type="number" placeholder="longtitude" />
                         </Form.Item>
@@ -197,9 +200,9 @@ export default function AddCase({ open, setOpen, setRefetch, caseId, setCaseId }
                     <Col xs={24} md={{ span: 11, offset: 2 }}>
                         <Form.Item
                             name="lat"
-                            rules={[{ required: true, message: 'Please input your username!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
-                            <Input type="number" placeholder="latitude" />
+                            {/* <Input type="number" placeholder="latitude" /> */}
                         </Form.Item>
                     </Col>
 

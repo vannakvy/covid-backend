@@ -30,7 +30,7 @@ function InfoBox({ title, cases, total, active, isRed, ImageShow, ...props }) {
           សរុប {total}
         </Typography>
 
-        <img src={ImageShow} style={{
+        <img alt="" src={ImageShow} style={{
           position: "absolute", top: -30,right:r
         }} />
       </CardContent>

@@ -56,7 +56,7 @@ export default function AddRole({ open, setOpen,userID, dataRoles , setRefetch }
                     <Col xs={12}>
                         <Form.Item
                             name="role"
-                            rules={[{ required: true, message: 'Field is required!' }]}
+                            rules={[{ required: true, message: 'ត្រូវបំពេញប្រអប់ខាងលើ!' }]}
                         >
                             {/* <Input placeholder="តួនាទី" /> */}
                             <Select placeholder="តួនាទី" style={{ width: "100%" }}>
