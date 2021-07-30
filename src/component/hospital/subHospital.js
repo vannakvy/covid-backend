@@ -73,8 +73,6 @@ export default function SubHospital() {
         }
     })
 
-
-
     useEffect(() => {
         //setHeaderData(hospitalData[hospitalData.findIndex(e => e.id === id)])
     }, [])
